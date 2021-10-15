@@ -3,16 +3,18 @@ import React, { useEffect } from "react"
 import { Route, Switch, Redirect } from "react-router-dom"
 import { connect } from "react-redux"
 
+import { auth, createUserProfileDocument } from "../firebase/firebaseUtils"
+import { setCurrentUser } from "../redux/user/userActions"
+import PrivateRoute from "./privateRoute/PrivateRoute"
+
 // Import pages
 import LandingPage from "../pages/landing/LandingPage"
 import InvitePage from "../pages/invite/InvitePage"
 import NotFoundPage from "../pages/notFound/NotFoundPage"
-import SingIn from "../pages/signIn/SignInPage"
+import SingIn from "../pages/signInAndSignUp/signInAndSignUpPage"
 import HeaderComponent from "./header/HeaderComponent"
-import { auth, createUserProfileDocument } from "../firebase/firebaseUtils"
-import { setCurrentUser } from "../redux/user/userActions"
-
-// Import components
+import StartGamePage from "../pages/startGame/StartGamePage"
+import CreateGamePage from "../pages/createGame/CreateGamePage"
 
 const App = ({ setCurrentUser }) => {
   useEffect(() => {
@@ -39,10 +41,24 @@ const App = ({ setCurrentUser }) => {
     <div>
       <HeaderComponent />
       <Switch>
-        <Route path="/sign-in" component={SingIn} />
-        <Route path="/invite" component={InvitePage} />
-        <Route path="/" exact component={LandingPage} />
-        <Route path="/not-found" component={NotFoundPage} />
+        <PrivateRoute exact onlyLogged={false} redirect="/" path="/sign-in" component={SingIn} />
+        <PrivateRoute
+          exact
+          onlyLogged={true}
+          redirect="/"
+          path="/create-game"
+          component={CreateGamePage}
+        />
+        <PrivateRoute
+          exact
+          onlyLogged={true}
+          redirect="/"
+          path="/start-game"
+          component={StartGamePage}
+        />
+        <Route exact path="/invite" component={InvitePage} />
+        <Route exact path="/" component={LandingPage} />
+        <Route exact path="/not-found" component={NotFoundPage} />
         <Redirect to="/not-found" />
       </Switch>
     </div>

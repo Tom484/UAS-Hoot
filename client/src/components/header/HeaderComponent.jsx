@@ -10,6 +10,8 @@ const Header = ({ currentUser }) => {
     <div className="header-component">
       <Link to="/">Home</Link>
       <Link to="/invite">Invite</Link>
+      <Link to="/start-game">Start Game</Link>
+      <Link to="/create-game">Create Game</Link>
       {currentUser ? (
         <div
           onClick={() => {
@@ -25,8 +27,8 @@ const Header = ({ currentUser }) => {
   )
 }
 
-const mapStateToProps = state => ({
-  currentUser: state.user.currentUser,
+const mapStateToProps = ({ user }) => ({
+  currentUser: user.currentUser,
 })
 
 export default connect(mapStateToProps)(Header)

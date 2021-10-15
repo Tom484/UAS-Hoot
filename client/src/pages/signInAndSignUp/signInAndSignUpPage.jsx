@@ -3,7 +3,7 @@ import React from "react"
 import SignInComponent from "../../components/signIn/SignInComponent"
 import SignUpComponent from "../../components/signUp/SignUpComponent"
 
-import "./signInPage.scss"
+import "./signInAndSignUpPage.scss"
 
 const SignIn = () => {
   return (
@@ -13,5 +13,5 @@ const SignIn = () => {
     </div>
   )
 }
-
+//
 export default SignIn
