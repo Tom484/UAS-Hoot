@@ -1,3 +1,11 @@
+// Import pages styles
+@import "../pages/invite/invitePage.scss";
+@import "../pages/landing/landingPage.scss";
+@import "../pages/notFound/notFoundPage.scss";
+@import "../pages/signIn/signInPage.scss";
+
+// Import components
+@import "../components/header/headerComponent.scss";
 *,
 *::before,
 *::after {
@@ -8,4 +16,12 @@ body {
   font-family: "Nunito", sans-serif;
   margin: 0;
   padding: 0;
+}
+
+.space-around-development {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  min-height: 90vh;
+  width: 100%;
 }
