@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { signInWithGoogle } from "../../firebase/firebaseUtils"
+import { auth, createUserProfileDocument, signInWithGoogle } from "../../firebase/firebaseUtils"
 import ButtonComponent from "../button/ButtonComponent"
 import FormInputComponent from "../formInput/FormInputComponent"
 
@@ -16,9 +16,18 @@ const SignInComponent = () => {
     setUserCredentials(prevUserCredentials => ({ ...prevUserCredentials, [name]: value }))
   }
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault()
-    console.log(userCredentials)
+    const { email, password } = userCredentials
+
+    try {
+      const { user } = await auth.signInWithEmailAndPassword(email, password)
+      await createUserProfileDocument(user)
+
+      setUserCredentials({ email: "", password: "" })
+    } catch (error) {
+      console.error(error)
+    }
   }
 
   return (

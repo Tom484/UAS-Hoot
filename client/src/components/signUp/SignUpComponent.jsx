@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import { auth, createUserProfileDocument } from "../../firebase/firebaseUtils"
 import ButtonComponent from "../button/ButtonComponent"
 import FormInputComponent from "../formInput/FormInputComponent"
 
@@ -17,9 +18,23 @@ const SignUpComponent = () => {
     setUserCredentials(prevUserCredentials => ({ ...prevUserCredentials, [name]: value }))
   }
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault()
-    console.log(userCredentials)
+    const { displayName, email, password, passwordConfirm } = userCredentials
+
+    if (password !== passwordConfirm) {
+      alert("passwords do not much")
+      return
+    }
+
+    try {
+      const { user } = await auth.createUserWithEmailAndPassword(email, password)
+      await createUserProfileDocument(user, { displayName })
+
+      setUserCredentials({ displayName: "", email: "", password: "", passwordConfirm: "" })
+    } catch (error) {
+      console.error(error)
+    }
   }
 
   return (
