@@ -3,6 +3,8 @@ import { signInWithGoogle } from "../../firebase/firebaseUtils"
 import ButtonComponent from "../button/ButtonComponent"
 import FormInputComponent from "../formInput/FormInputComponent"
 
+import "./signInComponent.scss"
+
 const SignInComponent = () => {
   const [userCredentials, setUserCredentials] = useState({
     email: "",

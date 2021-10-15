@@ -2,6 +2,8 @@ import React, { useState } from "react"
 import ButtonComponent from "../button/ButtonComponent"
 import FormInputComponent from "../formInput/FormInputComponent"
 
+import "./signUpComponent.scss"
+
 const SignUpComponent = () => {
   const [userCredentials, setUserCredentials] = useState({
     displayName: "",
