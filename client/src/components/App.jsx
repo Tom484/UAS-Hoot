@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect } from "react"
 
 import { Route, Switch, Redirect } from "react-router-dom"
+import { connect } from "react-redux"
 
 // Import pages
 import LandingPage from "../pages/landing/LandingPage"
@@ -9,22 +10,17 @@ import NotFoundPage from "../pages/notFound/NotFoundPage"
 import SingIn from "../pages/signIn/SignInPage"
 import HeaderComponent from "./header/HeaderComponent"
 import { auth, createUserProfileDocument } from "../firebase/firebaseUtils"
+import { setCurrentUser } from "../redux/user/userActions"
 
 // Import components
 
-const App = () => {
-  const [currentUser, setCurrentUser] = useState(null)
-
+const App = ({ setCurrentUser }) => {
   useEffect(() => {
     let unsubscribe = auth.onAuthStateChanged(async userAuth => {
       if (userAuth) {
         const userRef = await createUserProfileDocument(userAuth)
         userRef.onSnapshot(snapShot => {
           setCurrentUser({
-            id: snapShot.id,
-            ...snapShot.data(),
-          })
-          console.log({
             id: snapShot.id,
             ...snapShot.data(),
           })
@@ -41,7 +37,7 @@ const App = () => {
 
   return (
     <div>
-      <HeaderComponent currentUser={currentUser} />
+      <HeaderComponent />
       <Switch>
         <Route path="/sign-in" component={SingIn} />
         <Route path="/invite" component={InvitePage} />
@@ -53,4 +49,8 @@ const App = () => {
   )
 }
 
-export default App
+const mapDispatchToProps = dispatch => ({
+  setCurrentUser: user => dispatch(setCurrentUser(user)),
+})
+
+export default connect(null, mapDispatchToProps)(App)
