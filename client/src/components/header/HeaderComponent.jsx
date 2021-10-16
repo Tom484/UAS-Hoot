@@ -3,19 +3,18 @@ import { Link } from "react-router-dom"
 import { auth } from "../../firebase/firebaseUtils"
 import { connect } from "react-redux"
 
-import { ICONSunBold } from "../../icons/Icons"
-
 import "./headerComponent.scss"
+import DarkThemeToggleComponent from "../darkThemeToggle/DarkThemeToggleComponent"
 
 const Header = ({ currentUser }) => {
   return (
     <div className="header-component">
+      <DarkThemeToggleComponent />
       <Link to="/">Home</Link>
       <Link to="/invite">Invite</Link>
       <Link to="/create-game">Games</Link>
       <Link to="/start-game">Start</Link>
       <Link to="/create-game">Create</Link>
-      <ICONSunBold fill="yellow" className="svg-icon-default-size" />
       {currentUser ? (
         <div
           onClick={() => {
