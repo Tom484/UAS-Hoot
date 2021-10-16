@@ -1,37 +1,5 @@
-import uuid from "react-uuid"
+import { userCollectionSkeleton } from "./userCollectionsSkeleton"
 
-export const createCollection = previousCollections => {
-  return {
-    ...previousCollections,
-    [uuid()]: {
-      name: "",
-      createdAt: "",
-      createdBy: "",
-      slides: [
-        {
-          time: 20,
-          type: "select",
-          question: "name",
-          answers: [
-            {
-              text: "",
-              correct: false,
-            },
-            {
-              text: "",
-              correct: false,
-            },
-            {
-              text: "",
-              correct: false,
-            },
-            {
-              text: "",
-              correct: false,
-            },
-          ],
-        },
-      ],
-    },
-  }
+export const createCollection = (previousCollections, { name, creatorName }) => {
+  return { ...previousCollections, ...userCollectionSkeleton(name, creatorName) }
 }

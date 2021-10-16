@@ -11,7 +11,7 @@ const Header = ({ currentUser }) => {
     <div className="header-component">
       <DarkThemeToggleComponent />
       <Link to="/">Home</Link>
-      {currentUser && <Link to="/create">Create</Link>}
+      {currentUser && <Link to="/creator">Create</Link>}
       {currentUser && <Link to="/discover">Discover</Link>}
       {currentUser && <Link to="/library">Library</Link>}
       {currentUser && <Link to="/reports">Reports</Link>}

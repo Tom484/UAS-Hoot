@@ -68,7 +68,7 @@ const App = ({ setCurrentUser, createCollection }) => {
           path="/discover"
           component={DiscoverPage}
         />
-        <PrivateRoute exact onlyLogged={true} redirect="/" path="/create" component={CreatePage} />
+        <PrivateRoute exact onlyLogged={true} redirect="/" path="/creator" component={CreatePage} />
         <PrivateRoute exact onlyLogged={false} redirect="/" path="/sign-in" component={SingIn} />
         <Route exact path="/" component={HomePage} />
         <Route exact path="/not-found" component={NotFoundPage} />
@@ -80,7 +80,8 @@ const App = ({ setCurrentUser, createCollection }) => {
 
 const mapDispatchToProps = dispatch => ({
   setCurrentUser: user => dispatch(setCurrentUser(user)),
-  createCollection: () => dispatch(createCollection()),
+  createCollection: () =>
+    dispatch(createCollection({ name: "Project", creatorName: "Tomáš Kůrka" })),
 })
 
 export default connect(null, mapDispatchToProps)(App)

@@ -10,7 +10,7 @@ const userCollectionsReducer = (state = INITIAL_STATE, action) => {
     case UserCollectionsActionTypes.CREATE_COLLECTION:
       return {
         ...state,
-        collections: createCollection(state.collections),
+        collections: createCollection(state.collections, action.payload),
       }
 
     default:
