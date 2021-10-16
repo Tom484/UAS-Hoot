@@ -17,8 +17,9 @@ import CreatePage from "../pages/creator/create/CreatePage"
 import DiscoverPage from "../pages/creator/discover/DiscoverPage"
 import LibraryPage from "../pages/creator/library/LibraryPage"
 import ReportsPage from "../pages/creator/reports/ReportsPage"
+import { createCollection } from "../redux/userCollections/userCollectionsActions"
 
-const App = ({ setCurrentUser }) => {
+const App = ({ setCurrentUser, createCollection }) => {
   useEffect(() => {
     let unsubscribe = auth.onAuthStateChanged(async userAuth => {
       if (userAuth) {
@@ -33,6 +34,9 @@ const App = ({ setCurrentUser }) => {
         setCurrentUser(userAuth)
       }
     })
+    createCollection()
+    createCollection()
+    createCollection()
     return () => {
       unsubscribe()
     }
@@ -76,6 +80,7 @@ const App = ({ setCurrentUser }) => {
 
 const mapDispatchToProps = dispatch => ({
   setCurrentUser: user => dispatch(setCurrentUser(user)),
+  createCollection: () => dispatch(createCollection()),
 })
 
 export default connect(null, mapDispatchToProps)(App)
