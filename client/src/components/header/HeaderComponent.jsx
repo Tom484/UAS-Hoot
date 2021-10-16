@@ -3,6 +3,8 @@ import { Link } from "react-router-dom"
 import { auth } from "../../firebase/firebaseUtils"
 import { connect } from "react-redux"
 
+import { ICONSunBold } from "../../icons/Icons"
+
 import "./headerComponent.scss"
 
 const Header = ({ currentUser }) => {
@@ -13,6 +15,7 @@ const Header = ({ currentUser }) => {
       <Link to="/create-game">Games</Link>
       <Link to="/start-game">Start</Link>
       <Link to="/create-game">Create</Link>
+      <ICONSunBold fill="yellow" className="svg-icon-default-size" />
       {currentUser ? (
         <div
           onClick={() => {
