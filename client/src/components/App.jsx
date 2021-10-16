@@ -15,6 +15,7 @@ import SingIn from "../pages/signInAndSignUp/signInAndSignUpPage"
 import HeaderComponent from "./header/HeaderComponent"
 import StartGamePage from "../pages/startGame/StartGamePage"
 import CreateGamePage from "../pages/createGame/CreateGamePage"
+import GamesMenuPage from "../pages/games/GamesMenuPage"
 
 const App = ({ setCurrentUser }) => {
   useEffect(() => {
@@ -55,6 +56,13 @@ const App = ({ setCurrentUser }) => {
           redirect="/"
           path="/start-game"
           component={StartGamePage}
+        />
+        <PrivateRoute
+          exact
+          onlyLogged={true}
+          redirect="/"
+          path="/games-menu"
+          component={GamesMenuPage}
         />
         <Route exact path="/invite" component={InvitePage} />
         <Route exact path="/" component={LandingPage} />

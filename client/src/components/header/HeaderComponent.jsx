@@ -10,8 +10,9 @@ const Header = ({ currentUser }) => {
     <div className="header-component">
       <Link to="/">Home</Link>
       <Link to="/invite">Invite</Link>
-      <Link to="/start-game">Start Game</Link>
-      <Link to="/create-game">Create Game</Link>
+      <Link to="/create-game">Games</Link>
+      <Link to="/start-game">Start</Link>
+      <Link to="/create-game">Create</Link>
       {currentUser ? (
         <div
           onClick={() => {
