@@ -1,0 +1,40 @@
+.create-question-component {
+  background: gray;
+  height: 100%;
+  padding: 10px;
+
+  .title-input {
+    width: 100%;
+    font-size: 28px;
+    background: none;
+    border: none;
+    outline: none;
+  }
+
+  .answers-container {
+    display: grid;
+    width: 100%;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    & > div {
+      width: 100%;
+    }
+  }
+
+  .textarea-create {
+    outline: none;
+    border: none;
+    font-family: Nunito;
+    resize: none;
+    display: flex;
+    height: 25px;
+  }
+
+  .textarea-question {
+    width: 100%;
+    background: none;
+    padding: 20px;
+    font-size: 28px;
+    text-align: center;
+  }
+}

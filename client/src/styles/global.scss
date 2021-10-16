@@ -29,3 +29,13 @@ button {
 .svg-icon-default-color {
   fill: rgb(40, 42, 46);
 }
+
+.svg-icon-tick-square {
+  cursor: pointer;
+  opacity: 0.3;
+  width: 30px;
+  transition: opacity 0.3s;
+  &:hover {
+    opacity: 1;
+  }
+}

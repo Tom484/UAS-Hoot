@@ -8,14 +8,15 @@ import { setCurrentUser } from "../redux/user/userActions"
 import PrivateRoute from "./privateRoute/PrivateRoute"
 
 // Import pages
-import LandingPage from "../pages/landing/LandingPage"
-import InvitePage from "../pages/invite/InvitePage"
+import HomePage from "../pages/home/HomePage"
 import NotFoundPage from "../pages/notFound/NotFoundPage"
 import SingIn from "../pages/signInAndSignUp/SignInAndSignUpPage"
 import HeaderComponent from "./header/HeaderComponent"
-import StartGamePage from "../pages/startGame/StartGamePage"
-import CreateGamePage from "../pages/createGame/CreateGamePage"
-import GamesMenuPage from "../pages/games/GamesMenuPage"
+
+import CreatePage from "../pages/creator/create/CreatePage"
+import DiscoverPage from "../pages/creator/discover/DiscoverPage"
+import LibraryPage from "../pages/creator/library/LibraryPage"
+import ReportsPage from "../pages/creator/reports/ReportsPage"
 
 const App = ({ setCurrentUser }) => {
   useEffect(() => {
@@ -42,30 +43,30 @@ const App = ({ setCurrentUser }) => {
     <div>
       <HeaderComponent />
       <Switch>
+        <PrivateRoute
+          exact
+          onlyLogged={true}
+          redirect="/"
+          path="/reports"
+          component={ReportsPage}
+        />
+        <PrivateRoute
+          exact
+          onlyLogged={true}
+          redirect="/"
+          path="/library"
+          component={LibraryPage}
+        />
+        <PrivateRoute
+          exact
+          onlyLogged={true}
+          redirect="/"
+          path="/discover"
+          component={DiscoverPage}
+        />
+        <PrivateRoute exact onlyLogged={true} redirect="/" path="/create" component={CreatePage} />
         <PrivateRoute exact onlyLogged={false} redirect="/" path="/sign-in" component={SingIn} />
-        <PrivateRoute
-          exact
-          onlyLogged={true}
-          redirect="/"
-          path="/create-game"
-          component={CreateGamePage}
-        />
-        <PrivateRoute
-          exact
-          onlyLogged={true}
-          redirect="/"
-          path="/start-game"
-          component={StartGamePage}
-        />
-        <PrivateRoute
-          exact
-          onlyLogged={true}
-          redirect="/"
-          path="/games-menu"
-          component={GamesMenuPage}
-        />
-        <Route exact path="/invite" component={InvitePage} />
-        <Route exact path="/" component={LandingPage} />
+        <Route exact path="/" component={HomePage} />
         <Route exact path="/not-found" component={NotFoundPage} />
         <Redirect to="/not-found" />
       </Switch>
