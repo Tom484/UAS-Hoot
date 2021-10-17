@@ -1,6 +1,5 @@
 import React from "react"
-import PreviewCollectionsComponent from "../../../components/previewCollections/PreviewCollectionsComponent"
-
+import PreviewCollectionsComponent from "../../components/previewCollections/PreviewCollectionsComponent"
 import "./libraryPage.scss"
 
 const LibraryPage = ({ history }) => {

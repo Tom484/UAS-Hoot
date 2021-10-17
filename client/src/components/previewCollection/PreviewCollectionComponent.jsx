@@ -16,7 +16,7 @@ const PreviewCollectionComponent = ({ collection: { name, lastChangedAt, creator
           </span>
           <div className="side-container-2">
             <span className="creator-name">{format(new Date(lastChangedAt), "LLLL dd yyyy")}</span>
-            <button onClick={() => history.push(`/creator/${id}`)} className="button">
+            <button onClick={() => history.push(`/edit/${id}`)} className="button">
               Edit
             </button>
             <button className="button">Delete</button>

@@ -13,10 +13,10 @@ import NotFoundPage from "../pages/notFound/NotFoundPage"
 import SingIn from "../pages/signInAndSignUp/SignInAndSignUpPage"
 import HeaderComponent from "./header/HeaderComponent"
 
-import CreatePage from "../pages/creator/creator/CreatorPage"
-import DiscoverPage from "../pages/creator/discover/DiscoverPage"
-import LibraryPage from "../pages/creator/library/LibraryPage"
-import ReportsPage from "../pages/creator/reports/ReportsPage"
+import EditPage from "../pages/edit/EditPage"
+import DiscoverPage from "../pages/discover/DiscoverPage"
+import LibraryPage from "../pages/library/LibraryPage"
+import ReportsPage from "../pages/reports/ReportsPage"
 import { createCollection } from "../redux/collections/collectionsActions"
 
 const App = ({ setCurrentUser, createCollection }) => {
@@ -68,13 +68,7 @@ const App = ({ setCurrentUser, createCollection }) => {
           path="/discover"
           component={DiscoverPage}
         />
-        <PrivateRoute
-          exact
-          onlyLogged={true}
-          redirect="/"
-          path="/creator/:id"
-          component={CreatePage}
-        />
+        <PrivateRoute exact onlyLogged={true} redirect="/" path="/edit/:id" component={EditPage} />
         <PrivateRoute exact onlyLogged={false} redirect="/" path="/sign-in" component={SingIn} />
         <Route exact path="/" component={HomePage} />
         <Route exact path="/not-found" component={NotFoundPage} />
