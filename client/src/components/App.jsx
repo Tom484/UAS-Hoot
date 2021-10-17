@@ -17,7 +17,7 @@ import CreatePage from "../pages/creator/creator/CreatorPage"
 import DiscoverPage from "../pages/creator/discover/DiscoverPage"
 import LibraryPage from "../pages/creator/library/LibraryPage"
 import ReportsPage from "../pages/creator/reports/ReportsPage"
-import { createCollection } from "../redux/userCollections/userCollectionsActions"
+import { createCollection } from "../redux/collections/collectionsActions"
 
 const App = ({ setCurrentUser, createCollection }) => {
   useEffect(() => {

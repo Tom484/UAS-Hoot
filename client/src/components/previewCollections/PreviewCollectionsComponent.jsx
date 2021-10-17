@@ -14,8 +14,8 @@ const PreviewCollectionsComponent = ({ userCollections }) => {
   )
 }
 
-const mapStateToProps = ({ userCollections }) => ({
-  userCollections: userCollections.collections,
+const mapStateToProps = ({ collections }) => ({
+  userCollections: collections.userCollections,
 })
 
 export default connect(mapStateToProps)(PreviewCollectionsComponent)
