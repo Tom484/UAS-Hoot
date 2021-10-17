@@ -13,7 +13,7 @@ import NotFoundPage from "../pages/notFound/NotFoundPage"
 import SingIn from "../pages/signInAndSignUp/SignInAndSignUpPage"
 import HeaderComponent from "./header/HeaderComponent"
 
-import CreatePage from "../pages/creator/create/CreatePage"
+import CreatePage from "../pages/creator/creator/CreatorPage"
 import DiscoverPage from "../pages/creator/discover/DiscoverPage"
 import LibraryPage from "../pages/creator/library/LibraryPage"
 import ReportsPage from "../pages/creator/reports/ReportsPage"
@@ -68,7 +68,13 @@ const App = ({ setCurrentUser, createCollection }) => {
           path="/discover"
           component={DiscoverPage}
         />
-        <PrivateRoute exact onlyLogged={true} redirect="/" path="/creator" component={CreatePage} />
+        <PrivateRoute
+          exact
+          onlyLogged={true}
+          redirect="/"
+          path="/creator/:id"
+          component={CreatePage}
+        />
         <PrivateRoute exact onlyLogged={false} redirect="/" path="/sign-in" component={SingIn} />
         <Route exact path="/" component={HomePage} />
         <Route exact path="/not-found" component={NotFoundPage} />

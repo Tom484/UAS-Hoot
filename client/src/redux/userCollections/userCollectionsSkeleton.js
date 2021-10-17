@@ -9,7 +9,7 @@ export const userCollectionSkeleton = (name, creatorName) => {
       createdAt: new Date().getTime(),
       lastChangedAt: new Date().getTime(),
       creatorName: creatorName || "anonymous",
-      slides: [
+      questions: [
         {
           time: 20,
           type: "select",

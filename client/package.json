@@ -21,6 +21,7 @@
     "react-textarea-autosize": "^8.3.3",
     "react-uuid": "^1.0.2",
     "redux-logger": "^3.0.6",
+    "reselect": "^4.0.0",
     "sass": "^1.43.2",
     "web-vitals": "^1.0.1",
     "zxcvbn": "^4.4.2"

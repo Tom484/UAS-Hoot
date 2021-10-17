@@ -3,10 +3,19 @@ import PreviewCollectionsComponent from "../../../components/previewCollections/
 
 import "./libraryPage.scss"
 
-const LibraryPage = () => {
+const LibraryPage = ({ history }) => {
+  const handleClickNewCollection = () => {
+    history.push("/")
+  }
+
   return (
     <div className="library-page">
-      Library
+      <div className="library-page-header">
+        <span className="title">Your Library</span>
+        <button className="button button-new" onClick={handleClickNewCollection}>
+          New
+        </button>
+      </div>
       <PreviewCollectionsComponent />
     </div>
   )

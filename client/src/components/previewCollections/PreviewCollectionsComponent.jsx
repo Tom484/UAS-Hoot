@@ -6,7 +6,7 @@ import "./previewCollectionsComponent.scss"
 const PreviewCollectionsComponent = ({ userCollections }) => {
   const arrayUserCollections = Object.values(userCollections)
   return (
-    <div>
+    <div className="preview-collections-component">
       {arrayUserCollections?.map(collection => (
         <PreviewCollectionComponent key={collection.id} collection={collection} />
       ))}

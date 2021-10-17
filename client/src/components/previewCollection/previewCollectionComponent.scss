@@ -1,18 +1,30 @@
 .preview-collection-component {
   width: 100%;
-  padding: 10px;
   .preview-collection-component-container {
     width: 100%;
     display: flex;
     justify-content: center;
-    padding: 10px;
+    padding: 10px 10px;
     flex-direction: column;
     background: rgb(219, 219, 219);
     border-radius: 6px;
     gap: 20px;
+    .title {
+      font-size: 28px;
+    }
     .property-container {
       display: flex;
       justify-content: space-between;
+      .side-container-1 {
+        display: flex;
+        align-items: center;
+      }
+      .side-container-2 {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+      }
     }
   }
 }

@@ -1,9 +1,10 @@
 import React from "react"
 import QuestionComponent from "../../../components/create/question/QuestionComponent"
 
-import "./createPage.scss"
+import "./creatorPage.scss"
 
-const CreatePage = () => {
+const CreatePage = ({ match }) => {
+  console.log(match.params.id)
   return (
     <div className="create-page">
       <div className="create-page-container">
