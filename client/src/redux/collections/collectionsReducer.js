@@ -1,5 +1,5 @@
 import CollectionsActionTypes from "./collectionsTypes"
-import { createCollection } from "./collectionsUtils"
+import { createCollection, editCollectionSelectQuestion } from "./collectionsUtils"
 
 const INITIAL_STATE = {
   userCollections: {},
@@ -11,6 +11,11 @@ const collectionsReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         userCollections: createCollection(state.userCollections, action.payload),
+      }
+    case CollectionsActionTypes.EDIT_COLLECTION_SELECT_QUESTION:
+      return {
+        ...state,
+        userCollections: editCollectionSelectQuestion(state.userCollections, action.payload),
       }
 
     default:
