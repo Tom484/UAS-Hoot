@@ -8,6 +8,7 @@ const EditPage = ({ match, collections }) => {
   const editPageValues = {
     collection: collections[match.params.collectionId],
     collectionId: match.params.collectionId,
+
     questionId: Object.values(collections[match.params.collectionId].questions)[
       match.params.questionOrder - 1
     ].id,
@@ -16,7 +17,14 @@ const EditPage = ({ match, collections }) => {
     question: Object.values(collections[match.params.collectionId].questions)[
       match.params.questionOrder - 1
     ],
+    answers: Object.values(
+      Object.values(collections[match.params.collectionId].questions)[
+        match.params.questionOrder - 1
+      ].answers
+    ),
   }
+
+  console.log(editPageValues.answers)
 
   return (
     <div className="create-page">
