@@ -35,8 +35,6 @@ const App = ({ setCurrentUser, createCollection }) => {
       }
     })
     createCollection()
-    // createCollection()
-    // createCollection()
     return () => {
       unsubscribe()
     }
@@ -68,7 +66,13 @@ const App = ({ setCurrentUser, createCollection }) => {
           path="/discover"
           component={DiscoverPage}
         />
-        <PrivateRoute exact onlyLogged={true} redirect="/" path="/edit/:id" component={EditPage} />
+        <PrivateRoute
+          exact
+          onlyLogged={true}
+          redirect="/"
+          path="/edit/:collectionId/:questionOrder"
+          component={EditPage}
+        />
         <PrivateRoute exact onlyLogged={false} redirect="/" path="/sign-in" component={SingIn} />
         <Route exact path="/" component={HomePage} />
         <Route exact path="/not-found" component={NotFoundPage} />

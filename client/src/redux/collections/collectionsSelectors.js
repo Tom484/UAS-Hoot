@@ -1,5 +1,18 @@
 import { createSelector } from "reselect"
 
-const selectCollections = state => state.collection
+const functionSelectUserCollections = state => state.collections.userCollections
 
-export const selectCollectionUser
+export const selectUserCollections = createSelector(
+  [functionSelectUserCollections],
+  collections => collections
+)
+
+export const selectUserCollection = id =>
+  createSelector([functionSelectUserCollections], collections =>
+    collections ? collections[id] : null
+  )
+
+export const selectUserQuestions = id =>
+  createSelector([functionSelectUserCollections], collections =>
+    collections ? collections[id].questions : null
+  )

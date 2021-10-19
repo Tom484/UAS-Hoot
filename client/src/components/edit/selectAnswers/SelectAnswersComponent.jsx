@@ -4,6 +4,8 @@ import SelectAnswerComponent from "../selectAnswer/SelectAnswerComponent"
 import "./selectAnswersComponent.scss"
 
 const SelectAnswersComponent = ({ answers, questionId, collectionId }) => {
+  console.log("answer render")
+
   return (
     <div className="select-answers-component">
       {answers.map((answer, i) => (
