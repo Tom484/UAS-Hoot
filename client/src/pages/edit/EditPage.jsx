@@ -1,14 +1,16 @@
 import React from "react"
+import EditSlidePropertiesComponent from "../../components/edit/editSlideProperties/EditSlidePropertiesComponent"
 import EditSlideQuestionComponent from "../../components/edit/editSlideQuestion/EditSlideQuestionComponent"
+import EditSlidesComponent from "../../components/edit/editSlides/EditSlidesComponent"
 import "./editPage.scss"
 
 const EditPage = () => {
   return (
     <div className="create-page">
       <div className="create-page-container">
-        <div className="container-1"></div>
+        <EditSlidesComponent />
         <EditSlideQuestionComponent />
-        <div className="container-3"></div>
+        <EditSlidePropertiesComponent />
       </div>
     </div>
   )

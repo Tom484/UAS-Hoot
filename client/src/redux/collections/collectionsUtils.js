@@ -3,6 +3,16 @@ import { collectionSkeleton } from "./collectionsSkeleton"
 export const createCollection = (previousCollections, { name, creatorName }) => {
   return { ...previousCollections, ...collectionSkeleton(name, creatorName) }
 }
+export const editCollection = (previousCollections, { collectionId, properties }) => {
+  const newCollections = { ...previousCollections }
+
+  newCollections[collectionId] = {
+    ...newCollections[collectionId],
+    ...properties,
+  }
+
+  return { ...JSON.parse(JSON.stringify(newCollections)) }
+}
 
 export const editCollectionQuestion = (
   previousCollections,
@@ -14,9 +24,8 @@ export const editCollectionQuestion = (
     ...newCollections[collectionId].questions[questionId],
     ...properties,
   }
-  const objectWithoutReference = JSON.parse(JSON.stringify(newCollections))
 
-  return { ...objectWithoutReference }
+  return { ...JSON.parse(JSON.stringify(newCollections)) }
 }
 
 export const editCollectionAnswer = (
@@ -29,7 +38,6 @@ export const editCollectionAnswer = (
     ...newCollections[collectionId].questions[questionId].answers[answerId],
     ...properties,
   }
-  const objectWithoutReference = JSON.parse(JSON.stringify(newCollections))
 
-  return { ...objectWithoutReference }
+  return { ...JSON.parse(JSON.stringify(newCollections)) }
 }

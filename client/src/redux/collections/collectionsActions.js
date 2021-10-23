@@ -5,6 +5,11 @@ export const createCollection = nameAndCreatorName => ({
   payload: nameAndCreatorName,
 })
 
+export const editCollection = idsAndProperties => ({
+  type: CollectionActions.CREATE_COLLECTION,
+  payload: idsAndProperties,
+})
+
 export const editCollectionQuestion = idsAndProperties => ({
   type: CollectionActions.EDIT_COLLECTION_QUESTION,
   payload: idsAndProperties,
