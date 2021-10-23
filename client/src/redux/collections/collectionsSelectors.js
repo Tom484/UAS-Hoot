@@ -19,6 +19,12 @@ export const selectUserQuestionsOrder = collectionId =>
 export const selectUserQuestions = collectionId =>
   createSelector([selectUserCollection(collectionId)], userCollection => userCollection.questions)
 
+export const selectUserQuestionsArray = collectionId =>
+  createSelector(
+    [selectUserQuestions(collectionId), selectUserQuestionsOrder(collectionId)],
+    (questions, order) => order.map(value => questions[value])
+  )
+
 export const selectUserQuestion = (collectionId, questionOrder) =>
   createSelector(
     [selectUserQuestions(collectionId), selectUserQuestionsOrder(collectionId)],

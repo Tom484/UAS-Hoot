@@ -4,6 +4,8 @@ import {
   editCollection,
   editCollectionAnswer,
   editCollectionQuestion,
+  removeCollectionQuestion,
+  addCollectionQuestion,
 } from "./collectionsUtils"
 
 const INITIAL_STATE = {
@@ -26,6 +28,16 @@ const collectionsReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         userCollections: editCollectionQuestion(state.userCollections, action.payload),
+      }
+    case CollectionActions.ADD_COLLECTION_QUESTION:
+      return {
+        ...state,
+        userCollections: addCollectionQuestion(state.userCollections, action.payload),
+      }
+    case CollectionActions.REMOVE_COLLECTION_QUESTION:
+      return {
+        ...state,
+        userCollections: removeCollectionQuestion(state.userCollections, action.payload),
       }
     case CollectionActions.EDIT_COLLECTION_ANSWER:
       return {

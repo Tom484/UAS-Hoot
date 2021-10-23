@@ -20,7 +20,7 @@ export const collectionSkeleton = (name, creatorName) => {
         [questionId]: {
           id: questionId,
           question: "Enter question",
-          time: 20,
+          time: 30,
           points: 1,
           answers: {
             [answer1Id]: {
