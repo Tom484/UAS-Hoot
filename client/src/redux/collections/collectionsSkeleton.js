@@ -15,11 +15,13 @@ export const collectionSkeleton = (name, creatorName) => {
       createdAt: new Date().getTime(),
       lastChangedAt: new Date().getTime(),
       creatorName: creatorName || "anonymous",
+      questionsOrder: [questionId],
       questions: {
         [questionId]: {
           id: questionId,
           question: "Enter question",
           time: 20,
+          points: 1,
           answers: {
             [answer1Id]: {
               id: answer1Id,

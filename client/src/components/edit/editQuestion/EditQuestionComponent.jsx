@@ -1,70 +1,41 @@
 import React from "react"
-import TextareaAutosize from "react-textarea-autosize"
-
-import {
-  selectUserCollections,
-  selectUserCollection,
-  selectUserQuestions,
-} from "../../../redux/collections/collectionsSelectors"
-
-import "./editQuestionComponent.scss"
-import SelectAnswersComponent from "../selectAnswers/SelectAnswersComponent"
-import { editCollectionSelectQuestion } from "../../../redux/collections/collectionsActions"
 import { connect } from "react-redux"
 import { withRouter } from "react-router-dom"
+import TextareaAutosize from "react-textarea-autosize"
+import { editCollectionQuestion } from "../../../redux/collections/collectionsActions"
+import { selectUserQuestion } from "../../../redux/collections/collectionsSelectors"
 
-const EditQuestionComponent = ({
-  editPageValues: { collectionId, question, questionId, answers },
-  editQuestion,
-  userCollections,
-  userCollection,
-  userQuestion,
-}) => {
-  const handleQuestionQuestion = e => {
+import "./editQuestionComponent.scss"
+
+const EditQuestionComponent = ({ editQuestion, question, match }) => {
+  const handleChange = e => {
     editQuestion({
-      collectionId,
-      questionId,
+      collectionId: match.params.collectionId,
+      questionId: question.id,
       properties: { question: e.target.value },
     })
   }
 
-  console.log(userCollections)
-  console.log(userCollection)
-  console.log(userQuestion)
-
   return (
-    <div className="create-question-component">
+    <div>
       <TextareaAutosize
-        onChange={handleQuestionQuestion}
+        onChange={handleChange}
         value={question.question}
         className="textarea-create textarea-question"
-      />
-      <SelectAnswersComponent
-        answers={answers}
-        questionId={questionId}
-        collectionId={collectionId}
       />
     </div>
   )
 }
 
-// const mapStateToProps = (state, ownProps) => ({
-//   // collections: selectUserCollections(state),
-//   // collection: selectUserCollection(ownProps.match.params.collectionId)(state),
-//   // questions: selectUserQuestions(ownProps.match.params.collectionId)(state),
-// })
-
-const mapStateToProps = (state, ownProps) => ({
-  userCollections: state.collections.userCollections,
-  userCollection: state.collections.userCollections[ownProps.match.params.collectionId],
-  userQuestion:
-    state.collections.userCollections[ownProps.match.params.collectionId].questions[
-      ownProps.match.params.questionOrder
-    ],
-})
+const mapStateToProps = (state, ownProps) => {
+  const { collectionId, currentQuestion } = ownProps.match.params
+  return {
+    question: selectUserQuestion(collectionId, currentQuestion)(state),
+  }
+}
 
 const mapDispatchToProps = dispatch => ({
-  editQuestion: idsAndProperties => dispatch(editCollectionSelectQuestion(idsAndProperties)),
+  editQuestion: idsAndProperties => dispatch(editCollectionQuestion(idsAndProperties)),
 })
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(EditQuestionComponent))

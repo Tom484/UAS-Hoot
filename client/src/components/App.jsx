@@ -70,7 +70,7 @@ const App = ({ setCurrentUser, createCollection }) => {
           exact
           onlyLogged={true}
           redirect="/"
-          path="/edit/:collectionId/:questionOrder"
+          path="/edit/:collectionId/:currentQuestion"
           component={EditPage}
         />
         <PrivateRoute exact onlyLogged={false} redirect="/" path="/sign-in" component={SingIn} />
