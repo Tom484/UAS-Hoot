@@ -30,6 +30,11 @@ export const removeCollectionQuestion = ids => ({
   payload: ids,
 })
 
+export const duplicateCollectionQuestion = ids => ({
+  type: CollectionActions.DUPLICATE_COLLECTION_QUESTION,
+  payload: ids,
+})
+
 export const editCollectionAnswer = idsAndProperties => ({
   type: CollectionActions.EDIT_COLLECTION_ANSWER,
   payload: idsAndProperties,

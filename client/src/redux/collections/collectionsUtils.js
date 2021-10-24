@@ -1,3 +1,4 @@
+import { collectionQuestionDuplicateQuestion } from "./collectionQuestionDuplicateFunction"
 import { collectionSkeleton } from "./collectionsSkeleton"
 import { questionSkeleton } from "./questionSkeleton"
 
@@ -51,6 +52,25 @@ export const removeCollectionQuestion = (previousCollections, { collectionId, qu
   const index = newCollections[collectionId].questionsOrder.indexOf(questionId)
   console.log(index)
   newCollections[collectionId].questionsOrder.splice(index, 1)
+
+  return cleanObject(newCollections)
+}
+
+// function insertAt(array, index, ...elementsArray) {
+//   array.splice(index, 0, ...elements)
+// }
+
+export const duplicateCollectionQuestion = (
+  previousCollections,
+  { collectionId, questionId, currentQuestion }
+) => {
+  const newCollections = { ...previousCollections }
+
+  collectionQuestionDuplicateQuestion(
+    previousCollections[collectionId],
+    questionId,
+    currentQuestion
+  )
 
   return cleanObject(newCollections)
 }

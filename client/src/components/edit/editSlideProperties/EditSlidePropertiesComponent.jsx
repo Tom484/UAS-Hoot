@@ -1,6 +1,6 @@
 import React from "react"
 import EditPropertiesSelectBoxComponent from "../editPropertiesSelectBox/EditPropertiesSelectBoxComponent"
-
+import DuplicateButtonComponent from "../duplicateButton/DublicateButtonComponent"
 import "./editSlidePropertiesComponent.scss"
 
 const EditSlidePropertiesComponent = () => {
@@ -9,6 +9,7 @@ const EditSlidePropertiesComponent = () => {
       <div className="edit-slide-properties-component-container">
         <EditPropertiesSelectBoxComponent title="Time" values={timeValues} name="time" />
         <EditPropertiesSelectBoxComponent title="Points" values={pointsValues} name="points" />
+        <DuplicateButtonComponent />
       </div>
     </div>
   )

@@ -22,8 +22,6 @@ const EditPropertiesSelectBoxComponent = ({
     })
   }
 
-  console.log("render", question[name])
-
   return (
     <div className="component-box">
       <div className="component-box-title">{title}</div>
