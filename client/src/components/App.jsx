@@ -34,9 +34,8 @@ const App = ({ setCurrentUser, createCollection }) => {
         setCurrentUser(userAuth)
       }
     })
-    createCollection()
-    createCollection()
-    createCollection()
+    // createCollection()
+    // createCollection()
     return () => {
       unsubscribe()
     }

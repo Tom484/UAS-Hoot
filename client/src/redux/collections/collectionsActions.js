@@ -1,8 +1,8 @@
 import CollectionActions from "./collectionsTypes"
 
-export const createCollection = nameAndCreatorName => ({
+export const createCollection = properties => ({
   type: CollectionActions.CREATE_COLLECTION,
-  payload: nameAndCreatorName,
+  payload: properties,
 })
 
 export const editCollection = idsAndProperties => ({

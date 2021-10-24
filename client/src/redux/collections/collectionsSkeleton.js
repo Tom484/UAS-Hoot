@@ -1,7 +1,10 @@
 import uuid from "react-uuid"
 
-export const collectionSkeleton = (name, creatorName) => {
-  const collectionId = uuid()
+export const collectionSkeleton = ({
+  name = "Project",
+  creatorName = "anonymous",
+  collectionId = uuid(),
+}) => {
   const questionId = uuid()
   const answer1Id = uuid()
   const answer2Id = uuid()
@@ -11,15 +14,15 @@ export const collectionSkeleton = (name, creatorName) => {
   return {
     [collectionId]: {
       id: collectionId,
-      name: name || "Project",
+      name: name,
       createdAt: new Date().getTime(),
       lastChangedAt: new Date().getTime(),
-      creatorName: creatorName || "anonymous",
+      creatorName: creatorName,
       questionsOrder: [questionId],
       language: { value: "english", label: "English" },
       lobbyMusic: { value: "cold", label: "Neffex - Cold" },
       description: "",
-      collectionSettingCardVisible: false,
+      collectionSettingCardVisible: true,
       questions: {
         [questionId]: {
           id: questionId,

@@ -4,8 +4,9 @@ import { questionSkeleton } from "./questionSkeleton"
 
 const cleanObject = object => JSON.parse(JSON.stringify(object))
 
-export const createCollection = (previousCollections, { name, creatorName }) => {
-  return { ...previousCollections, ...collectionSkeleton(name, creatorName) }
+export const createCollection = (previousCollections, properties) => {
+  console.log(properties)
+  return { ...previousCollections, ...collectionSkeleton(properties) }
 }
 export const editCollection = (previousCollections, { collectionId, properties }) => {
   const newCollections = { ...previousCollections }
@@ -55,10 +56,6 @@ export const removeCollectionQuestion = (previousCollections, { collectionId, qu
 
   return cleanObject(newCollections)
 }
-
-// function insertAt(array, index, ...elementsArray) {
-//   array.splice(index, 0, ...elements)
-// }
 
 export const duplicateCollectionQuestion = (
   previousCollections,
