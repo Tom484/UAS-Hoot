@@ -1,7 +1,9 @@
 import React from "react"
 import EditPropertiesSelectBoxComponent from "../editPropertiesSelectBox/EditPropertiesSelectBoxComponent"
-import DuplicateButtonComponent from "../duplicateButton/DublicateButtonComponent"
+import DuplicateQuestionButtonComponent from "../duplicateQuestionButton/DublicateQuestionButtonComponent"
+import RemoveQuestionButtonComponent from "../removeQuestionButton/RemoveQuestionButtonComponent"
 import "./editSlidePropertiesComponent.scss"
+import CollectionSettingCartToggleButtonComponent from "../collectionSettingCartToggleButton/CollectionSettingCartToggleButtonComponent"
 
 const EditSlidePropertiesComponent = () => {
   return (
@@ -9,7 +11,9 @@ const EditSlidePropertiesComponent = () => {
       <div className="edit-slide-properties-component-container">
         <EditPropertiesSelectBoxComponent title="Time" values={timeValues} name="time" />
         <EditPropertiesSelectBoxComponent title="Points" values={pointsValues} name="points" />
-        <DuplicateButtonComponent />
+        <DuplicateQuestionButtonComponent />
+        <RemoveQuestionButtonComponent />
+        <CollectionSettingCartToggleButtonComponent />
       </div>
     </div>
   )

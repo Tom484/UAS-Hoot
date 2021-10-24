@@ -6,7 +6,7 @@ export const createCollection = nameAndCreatorName => ({
 })
 
 export const editCollection = idsAndProperties => ({
-  type: CollectionActions.CREATE_COLLECTION,
+  type: CollectionActions.EDIT_COLLECTION,
   payload: idsAndProperties,
 })
 

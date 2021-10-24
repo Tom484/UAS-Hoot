@@ -3,6 +3,7 @@ import EditSlidePropertiesComponent from "../../components/edit/editSlidePropert
 import EditSlideQuestionComponent from "../../components/edit/editSlideQuestion/EditSlideQuestionComponent"
 import EditSlidesComponent from "../../components/edit/editSlides/EditSlidesComponent"
 import "./editPage.scss"
+import EditCollection from "../../components/edit/editCollection/EditCollection"
 
 const EditPage = () => {
   return (
@@ -11,6 +12,7 @@ const EditPage = () => {
         <EditSlidesComponent />
         <EditSlideQuestionComponent />
         <EditSlidePropertiesComponent />
+        <EditCollection />
       </div>
     </div>
   )

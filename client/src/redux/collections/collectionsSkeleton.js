@@ -16,6 +16,10 @@ export const collectionSkeleton = (name, creatorName) => {
       lastChangedAt: new Date().getTime(),
       creatorName: creatorName || "anonymous",
       questionsOrder: [questionId],
+      language: { value: "english", label: "English" },
+      lobbyMusic: { value: "cold", label: "Neffex - Cold" },
+      description: "",
+      collectionSettingCardVisible: false,
       questions: {
         [questionId]: {
           id: questionId,

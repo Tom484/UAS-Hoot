@@ -4,13 +4,18 @@ import { withRouter } from "react-router-dom"
 import { duplicateCollectionQuestion } from "../../../redux/collections/collectionsActions"
 import { selectUserQuestion } from "../../../redux/collections/collectionsSelectors"
 
-import "./duplicateButtonComponent.scss"
+import "./duplicateQuestionButtonComponent.scss"
 
-const DuplicateButtonComponent = ({ duplicateQuestion, match, question, currentQuestion }) => {
-  const { collectionId } = match.params
-  if (!currentQuestion) {
-    currentQuestion = match.params.currentQuestion
-  }
+const DuplicateButtonComponent = ({
+  duplicateQuestion,
+  match,
+  question,
+  currentQuestion,
+  collectionId,
+  questionId,
+}) => {
+  collectionId = collectionId || match.params.collectionId
+  questionId = questionId || question.id
 
   return (
     <button

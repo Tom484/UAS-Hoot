@@ -1,7 +1,13 @@
+@import "./input.scss";
+@import "./textarea.scss";
+@import "./button.scss";
+
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box; /* Firefox, other Gecko */
+  box-sizing: border-box; /* Opera/IE 8+ */
 }
 
 body {
@@ -14,43 +20,10 @@ button {
   outline: none;
 }
 
-.space-around-development {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  min-height: 90vh;
-  width: 100%;
-}
-
 .svg-icon-default-size {
   width: 24px;
 }
 
 .svg-icon-default-color {
   fill: rgb(40, 42, 46);
-}
-
-.svg-icon-tick-square {
-  cursor: pointer;
-  opacity: 0.3;
-  width: 30px;
-  transition: opacity 0.3s;
-  &:hover {
-    opacity: 1;
-  }
-}
-
-.button {
-  border: none;
-  outline: none;
-  padding: 8px 12px;
-  font-size: 16px;
-  border-radius: 5px;
-  font-weight: 400;
-  background: rgb(232, 232, 235);
-  &:hover {
-    background: gray;
-    color: white;
-    cursor: pointer;
-  }
 }
