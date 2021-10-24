@@ -27,3 +27,13 @@ export { ReactComponent as ICONCloudOutline } from "./icons/cloud/cloud-outline.
 export { ReactComponent as ICONDropBold } from "./icons/drop/drop-bold.svg"
 export { ReactComponent as ICONDropBroken } from "./icons/drop/drop-broken.svg"
 export { ReactComponent as ICONDropOutline } from "./icons/drop/drop-outline.svg"
+
+// Trash
+export { ReactComponent as ICONTrashBold } from "./icons/trash/trash-bold.svg"
+export { ReactComponent as ICONTrashBroken } from "./icons/trash/trash-broken.svg"
+export { ReactComponent as ICONTrashOutline } from "./icons/trash/trash-outline.svg"
+
+// Copy
+export { ReactComponent as ICONCopyBold } from "./icons/copy/copy-bold.svg"
+export { ReactComponent as ICONCopyBroken } from "./icons/copy/copy-broken.svg"
+export { ReactComponent as ICONCopyOutline } from "./icons/copy/copy-outline.svg"

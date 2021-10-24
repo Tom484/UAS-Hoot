@@ -12,6 +12,7 @@ const RemoveQuestionButtonComponent = ({
   questionId,
   match,
   question,
+  children,
 }) => {
   collectionId = collectionId || match.params.collectionId
   questionId = questionId || question.id
@@ -19,6 +20,8 @@ const RemoveQuestionButtonComponent = ({
   const clickHandler = () => {
     removeQuestion({ collectionId, questionId })
   }
+
+  if (children) return <span onClick={clickHandler}>{children}</span>
   return <button onClick={clickHandler}>Remove</button>
 }
 

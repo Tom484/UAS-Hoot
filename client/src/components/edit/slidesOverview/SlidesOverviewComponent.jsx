@@ -11,9 +11,11 @@ const SlidesOverviewComponent = ({ questionsArray, addQuestion, match }) => {
   const { collectionId } = match.params
   return (
     <div>
-      {questionsArray.map((question, i) => (
-        <SlideOverviewComponent question={question} key={i} order={i} />
-      ))}
+      <div className="slides-container">
+        {questionsArray.map((question, i) => (
+          <SlideOverviewComponent question={question} key={i} order={i} />
+        ))}
+      </div>
       <button onClick={() => addQuestion({ collectionId })}>Add question</button>
     </div>
   )

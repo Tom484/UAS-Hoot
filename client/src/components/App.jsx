@@ -18,6 +18,7 @@ import DiscoverPage from "../pages/discover/DiscoverPage"
 import LibraryPage from "../pages/library/LibraryPage"
 import ReportsPage from "../pages/reports/ReportsPage"
 import { createCollection } from "../redux/collections/collectionsActions"
+import AccountPage from "../pages/account/AccountPage"
 
 const App = ({ setCurrentUser, createCollection }) => {
   useEffect(() => {
@@ -34,8 +35,6 @@ const App = ({ setCurrentUser, createCollection }) => {
         setCurrentUser(userAuth)
       }
     })
-    // createCollection()
-    // createCollection()
     return () => {
       unsubscribe()
     }
@@ -73,6 +72,13 @@ const App = ({ setCurrentUser, createCollection }) => {
           redirect="/"
           path="/edit/:collectionId/:currentQuestion"
           component={EditPage}
+        />
+        <PrivateRoute
+          exact
+          onlyLogged={true}
+          redirect="/"
+          path="/account"
+          component={AccountPage}
         />
         <PrivateRoute exact onlyLogged={false} redirect="/" path="/sign-in" component={SingIn} />
         <Route exact path="/" component={HomePage} />

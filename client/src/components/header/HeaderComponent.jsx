@@ -11,10 +11,10 @@ const Header = ({ currentUser }) => {
     <div className="header-component">
       <DarkThemeToggleComponent />
       <Link to="/">Home</Link>
-      {currentUser && <Link to="/edit">Create</Link>}
       {currentUser && <Link to="/discover">Discover</Link>}
       {currentUser && <Link to="/library">Library</Link>}
       {currentUser && <Link to="/reports">Reports</Link>}
+      {currentUser && <Link to="/account">Account</Link>}
       {currentUser ? (
         <div
           onClick={() => {

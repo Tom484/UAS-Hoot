@@ -5,21 +5,28 @@ import { createCollection } from "../../../redux/collections/collectionsActions"
 
 import "./createCollectionButtonComponent.scss"
 import uuid from "react-uuid"
+import { selectCurrentUser } from "../../../redux/user/userSelectors"
 
-const CreateCollectionButtonComponent = ({ createCollection, history }) => {
+const CreateCollectionButtonComponent = ({ createCollection, history, currentUser, children }) => {
   const clickHandler = () => {
     const collectionId = uuid()
-    createCollection({ collectionId })
+    createCollection({ collectionId, creatorName: currentUser.displayName })
+    console.log(currentUser)
     history.push(`/edit/${collectionId}/1`)
-
-    console.log("click")
   }
 
+  if (children) return <span onClick={clickHandler}>{children}</span>
   return <button onClick={clickHandler}>New</button>
 }
+
+const mapStateToProps = state => ({
+  currentUser: selectCurrentUser(state),
+})
 
 const mapDispatchToProps = dispatch => ({
   createCollection: properties => dispatch(createCollection(properties)),
 })
 
-export default withRouter(connect(null, mapDispatchToProps)(CreateCollectionButtonComponent))
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(CreateCollectionButtonComponent)
+)

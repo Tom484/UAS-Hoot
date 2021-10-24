@@ -1,6 +1,7 @@
 @import "./input.scss";
 @import "./textarea.scss";
 @import "./button.scss";
+@import "./icon.scss";
 
 *,
 *::before,
@@ -18,12 +19,4 @@ body {
 
 button {
   outline: none;
-}
-
-.svg-icon-default-size {
-  width: 24px;
-}
-
-.svg-icon-default-color {
-  fill: rgb(40, 42, 46);
 }

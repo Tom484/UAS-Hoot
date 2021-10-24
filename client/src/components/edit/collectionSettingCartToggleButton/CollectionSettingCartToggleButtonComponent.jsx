@@ -5,22 +5,25 @@ import { editCollection } from "../../../redux/collections/collectionsActions"
 
 import "./collectionSettingCartToggleButtonComponent.scss"
 
-const CollectionSettingCartToggleButtonComponent = ({ collectionId, match, editCollection }) => {
+const CollectionSettingCartToggleButtonComponent = ({
+  collectionId,
+  match,
+  editCollection,
+  children,
+}) => {
   collectionId = collectionId || match.params.collectionId
-  return (
-    <button
-      onClick={() =>
-        editCollection({
-          collectionId,
-          properties: {
-            collectionSettingCardVisible: true,
-          },
-        })
-      }
-    >
-      Collection Setting
-    </button>
-  )
+
+  const clickHandler = () => {
+    editCollection({
+      collectionId,
+      properties: {
+        collectionSettingCardVisible: true,
+      },
+    })
+  }
+
+  if (children) return <span onClick={clickHandler}>{children}</span>
+  return <button onClick={clickHandler}>Collection Setting</button>
 }
 
 const mapDispatchToProps = dispatch => ({
