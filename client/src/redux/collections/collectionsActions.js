@@ -10,6 +10,11 @@ export const editCollection = idsAndProperties => ({
   payload: idsAndProperties,
 })
 
+export const removeCollection = id => ({
+  type: CollectionActions.REMOVE_COLLECTION,
+  payload: id,
+})
+
 export const editCollectionQuestion = idsAndProperties => ({
   type: CollectionActions.EDIT_COLLECTION_QUESTION,
   payload: idsAndProperties,

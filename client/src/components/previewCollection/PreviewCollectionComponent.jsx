@@ -3,8 +3,13 @@ import { format } from "date-fns"
 import { useHistory } from "react-router"
 
 import "./previewCollectionComponent.scss"
+import { removeCollection } from "../../redux/collections/collectionsActions"
+import { connect } from "react-redux"
 
-const PreviewCollectionComponent = ({ collection: { name, lastChangedAt, creatorName, id } }) => {
+const PreviewCollectionComponent = ({
+  collection: { name, lastChangedAt, creatorName, id },
+  removeCollection,
+}) => {
   const history = useHistory()
   return (
     <div className="preview-collection-component">
@@ -19,7 +24,9 @@ const PreviewCollectionComponent = ({ collection: { name, lastChangedAt, creator
             <button onClick={() => history.push(`/edit/${id}/1`)} className="button">
               Edit
             </button>
-            <button className="button">Delete</button>
+            <button className="button" onClick={() => removeCollection({ collectionId: id })}>
+              Delete
+            </button>
           </div>
         </div>
       </div>
@@ -27,4 +34,8 @@ const PreviewCollectionComponent = ({ collection: { name, lastChangedAt, creator
   )
 }
 
-export default PreviewCollectionComponent
+const mapDispatchToProps = dispatch => ({
+  removeCollection: id => dispatch(removeCollection(id)),
+})
+
+export default connect(null, mapDispatchToProps)(PreviewCollectionComponent)

@@ -6,7 +6,13 @@
   padding: 10px 15px;
   grid-template-columns: 25px 1fr 30px;
   background: rgb(255, 255, 255);
-  border-radius: 6px;
+  border-radius: 0 8px 8px 0;
+  border-left: 5px solid rgb(180, 33, 156);
+  font-size: 18px;
+
+  .textarea-answer {
+    font-size: 18px;
+  }
 
   .icon {
     opacity: 0.3;

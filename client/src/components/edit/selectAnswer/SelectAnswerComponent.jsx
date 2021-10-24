@@ -22,7 +22,7 @@ const SelectAnswerComponent = ({ answer, order, editAnswer, questionId, match })
     <div className="select-answer-component">
       <span className="order">{order}</span>
       <TextareaAutosize
-        className="textarea-create textarea"
+        className="textarea-create textarea textarea-answer"
         value={answer.answer}
         onChange={e => editAnswerProperties({ answer: e.target.value })}
       />

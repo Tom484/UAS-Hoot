@@ -22,10 +22,12 @@ const EditPropertiesSelectBoxComponent = ({
     })
   }
 
+  console.log("render", question[name])
+
   return (
     <div className="component-box">
       <div className="component-box-title">{title}</div>
-      <select onChange={changeHandler} defaultValue={question[name]}>
+      <select onChange={changeHandler} value={question[name]}>
         {values.map((value, i) => (
           <option key={i} value={value.value}>
             {value.label}
