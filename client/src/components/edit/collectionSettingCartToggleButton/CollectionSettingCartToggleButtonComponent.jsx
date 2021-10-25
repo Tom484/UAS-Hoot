@@ -10,6 +10,7 @@ const CollectionSettingCartToggleButtonComponent = ({
   match,
   editCollection,
   children,
+  className,
 }) => {
   collectionId = collectionId || match.params.collectionId
 
@@ -23,7 +24,11 @@ const CollectionSettingCartToggleButtonComponent = ({
   }
 
   if (children) return <span onClick={clickHandler}>{children}</span>
-  return <button onClick={clickHandler}>Collection Setting</button>
+  return (
+    <button className={"button button-basic " + className} onClick={clickHandler}>
+      Collection Setting
+    </button>
+  )
 }
 
 const mapDispatchToProps = dispatch => ({

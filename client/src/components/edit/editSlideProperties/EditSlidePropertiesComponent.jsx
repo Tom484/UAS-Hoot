@@ -9,11 +9,15 @@ const EditSlidePropertiesComponent = () => {
   return (
     <div className="edit-slide-properties-component">
       <div className="edit-slide-properties-component-container">
-        <EditPropertiesSelectBoxComponent title="Time" values={timeValues} name="time" />
-        <EditPropertiesSelectBoxComponent title="Points" values={pointsValues} name="points" />
-        <DuplicateQuestionButtonComponent />
-        <RemoveQuestionButtonComponent />
-        <CollectionSettingCartToggleButtonComponent />
+        <div className="properties">
+          <EditPropertiesSelectBoxComponent title="Time" options={timeValues} name="time" />
+          <EditPropertiesSelectBoxComponent title="Points" options={pointsValues} name="points" />
+        </div>
+        <div className="buttons">
+          <DuplicateQuestionButtonComponent className="button-100" />
+          <RemoveQuestionButtonComponent className="button-100" />
+          <CollectionSettingCartToggleButtonComponent className="button-100 span-full" />
+        </div>
       </div>
     </div>
   )

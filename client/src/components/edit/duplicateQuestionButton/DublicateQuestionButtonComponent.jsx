@@ -14,6 +14,7 @@ const DuplicateButtonComponent = ({
   collectionId,
   questionId,
   children,
+  className,
 }) => {
   collectionId = collectionId || match.params.collectionId
   questionId = questionId || question.id
@@ -27,7 +28,11 @@ const DuplicateButtonComponent = ({
   }
 
   if (children) return <span onClick={clickHandler}>{children}</span>
-  return <button onClick={clickHandler}>Duplicate</button>
+  return (
+    <button className={"button button-basic " + className} onClick={clickHandler}>
+      Duplicate
+    </button>
+  )
 }
 
 const mapStateToProps = (state, ownProps) => {

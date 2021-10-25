@@ -13,6 +13,7 @@ const RemoveQuestionButtonComponent = ({
   match,
   question,
   children,
+  className,
 }) => {
   collectionId = collectionId || match.params.collectionId
   questionId = questionId || question.id
@@ -22,7 +23,11 @@ const RemoveQuestionButtonComponent = ({
   }
 
   if (children) return <span onClick={clickHandler}>{children}</span>
-  return <button onClick={clickHandler}>Remove</button>
+  return (
+    <button className={"button button-basic " + className} onClick={clickHandler}>
+      Remove
+    </button>
+  )
 }
 
 const mapStateToProps = (state, ownProps) => {

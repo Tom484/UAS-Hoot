@@ -11,7 +11,6 @@ const CreateCollectionButtonComponent = ({ createCollection, history, currentUse
   const clickHandler = () => {
     const collectionId = uuid()
     createCollection({ collectionId, creatorName: currentUser.displayName })
-    console.log(currentUser)
     history.push(`/edit/${collectionId}/1`)
   }
 

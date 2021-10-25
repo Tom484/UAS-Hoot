@@ -27,7 +27,7 @@ const SlideOverviewComponent = ({ question, match, order, history }) => {
         onClick={() => history.push(`/edit/${collectionId}/${order + 1}`)}
       >
         <div className="question-label">{question.question || "Question"}</div>
-        <div className="time-label">{question.time}</div>
+        <div className="time-label">{question.time.value}</div>
         <div className="answers-container">
           {Object.values(question.answers).map((answer, i) => (
             <div key={i} className={`answer-container ${answer.correct ? "active-answer" : ""}`}>

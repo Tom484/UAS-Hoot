@@ -1,7 +1,26 @@
 .edit-slide-properties-component {
   box-shadow: rgba(117, 127, 138, 0.3) 0px 8px 24px;
   background: white;
+  height: 100%;
+
   .edit-slide-properties-component-container {
-    margin: 20px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    .properties {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    .buttons {
+      display: grid;
+      gap: 10px;
+      grid-template-columns: 1fr 1fr;
+      .span-full {
+        grid-column: 1 / span 2;
+      }
+    }
   }
 }

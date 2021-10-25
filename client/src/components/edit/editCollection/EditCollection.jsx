@@ -1,11 +1,11 @@
 import React from "react"
 
 import "./editCollection.scss"
-import Select from "react-select"
 import { connect } from "react-redux"
 import { editCollection } from "../../../redux/collections/collectionsActions"
 import { withRouter } from "react-router-dom"
 import { selectUserCollection } from "../../../redux/collections/collectionsSelectors"
+import CustomSelectBoxComponent from "../../customSelectBox/CustomSelectBoxComponent"
 
 const EditCollection = ({ collection, editCollection, collectionId, match }) => {
   const { name, description, language, lobbyMusic } = collection
@@ -35,9 +35,8 @@ const EditCollection = ({ collection, editCollection, collectionId, match }) => 
 
                 <div className="box">
                   <div className="label">Language</div>
-                  <Select
+                  <CustomSelectBoxComponent
                     options={languageOptions}
-                    theme={theme}
                     value={language}
                     onChange={e => edit({ language: e })}
                   />
@@ -55,9 +54,8 @@ const EditCollection = ({ collection, editCollection, collectionId, match }) => 
 
                 <div className="box">
                   <div className="label">Lobby Music</div>
-                  <Select
+                  <CustomSelectBoxComponent
                     options={musicOptions}
-                    theme={theme}
                     value={lobbyMusic}
                     onChange={e => edit({ lobbyMusic: e })}
                   />
@@ -93,18 +91,6 @@ const mapDispatchToProps = dispatch => ({
 })
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(EditCollection))
-
-const theme = theme => ({
-  ...theme,
-  borderRadius: 4,
-  colors: {
-    ...theme.colors,
-    primary75: "#e9e9e9",
-    primary50: "#e9e9e9",
-    primary25: "#e9e9e9",
-    primary: "#6070ff",
-  },
-})
 
 const musicOptions = [
   { value: "cold", label: "Neffex - Cold" },

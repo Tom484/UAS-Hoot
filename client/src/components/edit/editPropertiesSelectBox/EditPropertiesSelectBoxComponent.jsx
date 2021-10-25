@@ -3,11 +3,12 @@ import { connect } from "react-redux"
 import { withRouter } from "react-router-dom"
 import { editCollectionQuestion } from "../../../redux/collections/collectionsActions"
 import { selectUserQuestion } from "../../../redux/collections/collectionsSelectors"
+import CustomSelectBoxComponent from "../../customSelectBox/CustomSelectBoxComponent"
 
 import "./editPropertiesSelectBoxComponent.scss"
 
 const EditPropertiesSelectBoxComponent = ({
-  values,
+  options,
   title,
   match,
   name,
@@ -15,23 +16,22 @@ const EditPropertiesSelectBoxComponent = ({
   question,
 }) => {
   const changeHandler = e => {
+    console.log(e)
     editCollectionQuestion({
       collectionId: match.params.collectionId,
       questionId: question.id,
-      properties: { [name]: parseInt(e.target.value) },
+      properties: { [name]: e },
     })
   }
 
   return (
     <div className="component-box">
-      <div className="component-box-title">{title}</div>
-      <select onChange={changeHandler} value={question[name]}>
-        {values.map((value, i) => (
-          <option key={i} value={value.value}>
-            {value.label}
-          </option>
-        ))}
-      </select>
+      <div className="box-label">{title}</div>
+      <CustomSelectBoxComponent
+        options={options}
+        onChange={changeHandler}
+        value={question[name]}
+      ></CustomSelectBoxComponent>
     </div>
   )
 }

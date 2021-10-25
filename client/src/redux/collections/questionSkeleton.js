@@ -11,8 +11,8 @@ export const questionSkeleton = object => {
   object.questions[questionId] = {
     id: questionId,
     question: "Enter question",
-    time: 30,
-    points: 1,
+    time: { value: 30, label: "30 seconds" },
+    points: { value: 1, label: "Standard" },
     answers: {
       [answer1Id]: {
         id: answer1Id,
