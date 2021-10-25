@@ -5,7 +5,6 @@ import { questionSkeleton } from "./questionSkeleton"
 const cleanObject = object => JSON.parse(JSON.stringify(object))
 
 export const createCollection = (previousCollections, properties) => {
-  console.log(properties)
   return { ...previousCollections, ...collectionSkeleton(properties) }
 }
 export const editCollection = (previousCollections, { collectionId, properties }) => {
@@ -51,7 +50,6 @@ export const removeCollectionQuestion = (previousCollections, { collectionId, qu
 
   delete newCollections[collectionId].questions[questionId]
   const index = newCollections[collectionId].questionsOrder.indexOf(questionId)
-  console.log(index)
   newCollections[collectionId].questionsOrder.splice(index, 1)
 
   return cleanObject(newCollections)

@@ -16,7 +16,6 @@ const EditPropertiesSelectBoxComponent = ({
   question,
 }) => {
   const changeHandler = e => {
-    console.log(e)
     editCollectionQuestion({
       collectionId: match.params.collectionId,
       questionId: question.id,

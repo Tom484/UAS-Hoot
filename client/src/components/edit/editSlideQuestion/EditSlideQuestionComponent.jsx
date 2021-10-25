@@ -15,9 +15,10 @@ import {
 } from "../../../redux/collections/collectionsSelectors"
 import EditQuestionComponent from "../editQuestion/EditQuestionComponent"
 
-const EditSlideQuestionComponent = () => {
+const EditSlideQuestionComponent = ({ collection }) => {
   return (
     <div className="create-question-component">
+      <h2 className="project-name">{collection.name}</h2>
       <EditQuestionComponent />
       <SelectAnswersComponent />
     </div>

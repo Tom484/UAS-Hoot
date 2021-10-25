@@ -1,22 +1,23 @@
+@import "../../../styles//colors.scss";
+
 .select-answer-component {
   display: grid;
   justify-content: center;
   align-items: center;
   width: 100%;
-  padding: 10px 15px;
-  grid-template-columns: 25px 1fr 30px;
+  padding: 25px 15px;
+  grid-template-columns: 40px 1fr 30px;
   background: rgb(255, 255, 255);
-  border-radius: 0 8px 8px 0;
-  border-left: 5px solid rgb(180, 33, 156);
+  border-radius: 8px 8px 8px 8px;
   font-size: 18px;
 
   .textarea-answer {
-    font-size: 18px;
+    font-size: 1em;
   }
 
   .icon {
     opacity: 0.3;
-    fill: rgb(128, 0, 179);
+    fill: var(--color-main-2);
     cursor: pointer;
     width: 35px;
     &.checked {

@@ -20,8 +20,9 @@ const EditQuestionComponent = ({ editQuestion, question, match }) => {
     <div>
       <TextareaAutosize
         onChange={handleChange}
-        value={question.question}
         className="textarea-create textarea-question"
+        placeholder="Start typing your question..."
+        value={question.question === "" ? question.question : null}
       />
     </div>
   )

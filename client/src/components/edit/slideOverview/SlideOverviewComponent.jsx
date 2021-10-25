@@ -26,12 +26,12 @@ const SlideOverviewComponent = ({ question, match, order, history }) => {
         className={`slide-preview ${order + 1 === parseInt(currentQuestion) ? "active-slide" : ""}`}
         onClick={() => history.push(`/edit/${collectionId}/${order + 1}`)}
       >
-        <div className="question-label">{question.question || "Question"}</div>
+        <div className="question-label">{question.question || "Start typing your question..."}</div>
         <div className="time-label">{question.time.value}</div>
         <div className="answers-container">
           {Object.values(question.answers).map((answer, i) => (
             <div key={i} className={`answer-container ${answer.correct ? "active-answer" : ""}`}>
-              <div className="answer-label">{answer.answer || "Answer"}</div>
+              <div className="answer-label">{answer.answer || `Add answer ${i + 1}`}</div>
             </div>
           ))}
         </div>

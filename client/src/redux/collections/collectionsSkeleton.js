@@ -26,28 +26,28 @@ export const collectionSkeleton = ({
       questions: {
         [questionId]: {
           id: questionId,
-          question: "Enter question",
+          question: "",
           time: { value: 30, label: "30 seconds" },
           points: { value: 1, label: "Standard" },
           answers: {
             [answer1Id]: {
               id: answer1Id,
-              answer: "Answer 1",
+              answer: "",
               correct: false,
             },
             [answer2Id]: {
               id: answer2Id,
-              answer: "Answer 2",
+              answer: "",
               correct: false,
             },
             [answer3Id]: {
               id: answer3Id,
-              answer: "Answer 3",
+              answer: "",
               correct: false,
             },
             [answer4Id]: {
               id: answer4Id,
-              answer: "Answer 4",
+              answer: "",
               correct: false,
             },
           },
