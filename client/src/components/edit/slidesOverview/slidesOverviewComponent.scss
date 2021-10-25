@@ -1,6 +1,13 @@
+@import "../../../styles/colors.scss";
 .slides-container {
   display: flex;
-  justify-content: center;
   flex-direction: column;
   gap: 15px;
+  max-height: calc(100vh - 162px);
+  overflow: hidden;
+  overflow-y: auto;
+}
+.add-button {
+  margin: 14px 14px 0px 14px;
+  width: calc(100% - 28px);
 }

@@ -2,6 +2,21 @@
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   background: white;
   .edit-slides-component-container {
-    padding: 15px;
+    padding: 15px 5px;
+  }
+
+  /* width */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    border-radius: 5px;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    border-radius: 5px;
   }
 }
