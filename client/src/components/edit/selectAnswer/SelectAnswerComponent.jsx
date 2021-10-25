@@ -25,7 +25,7 @@ const SelectAnswerComponent = ({ answer, order, editAnswer, questionId, match })
   }
 
   return (
-    <div className="select-answer-component">
+    <div className="select-answer-component textarea-container">
       {order === 1 && <ICONFlashBroken className="svg-icon-default-size svg-icon-default-color" />}
       {order === 2 && <ICONCloudBroken className="svg-icon-default-size svg-icon-default-color" />}
       {order === 3 && <ICONDropBroken className="svg-icon-default-size svg-icon-default-color" />}
@@ -35,7 +35,9 @@ const SelectAnswerComponent = ({ answer, order, editAnswer, questionId, match })
         onChange={e => editAnswerProperties({ answer: e.target.value })}
         placeholder={`Add answer ${order}`}
         value={answer.answer === "" ? answer.answer : null}
+        maxLength={75}
       />
+      <span className="characters-left">{75 - answer.answer.length}</span>
       <ICONTickSquareBold
         className={`svg-icon-default-size icon ${answer.correct ? "checked" : ""}`}
         onClick={() => editAnswerProperties({ correct: !answer.correct })}

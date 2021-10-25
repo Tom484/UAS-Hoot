@@ -15,6 +15,8 @@ export const collectionSkeleton = ({
     [collectionId]: {
       id: collectionId,
       name: name,
+      currentSlide: 1,
+      currentSlideId: 1,
       createdAt: new Date().getTime(),
       lastChangedAt: new Date().getTime(),
       creatorName: creatorName,

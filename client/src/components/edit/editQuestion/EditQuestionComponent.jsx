@@ -17,13 +17,15 @@ const EditQuestionComponent = ({ editQuestion, question, match }) => {
   }
 
   return (
-    <div>
+    <div className="textarea-container">
       <TextareaAutosize
         onChange={handleChange}
-        className="textarea-create textarea-question"
+        className="text-area textarea-question"
         placeholder="Start typing your question..."
         value={question.question === "" ? question.question : null}
+        maxLength={125}
       />
+      <span>{125 - question.question.length}</span>
     </div>
   )
 }

@@ -1,19 +1,20 @@
-.textarea-create {
-  outline: none;
-  border: none;
-  font-family: Nunito;
-  resize: none;
-  display: flex;
-}
-
 .textarea-question {
-  border: 2px solid transparent;
   width: 100%;
   background: none;
-  padding: 25px 15px;
-  font-size: 30px;
+  padding: 25px;
+  font-size: 24px;
   background: white;
-  border-radius: 8px;
+  border-radius: 6px;
   text-align: center;
   margin-bottom: 20px;
+  border: none;
+}
+
+.textarea-container {
+  position: relative;
+  span {
+    position: absolute;
+    top: 6px;
+    right: 8px;
+  }
 }
