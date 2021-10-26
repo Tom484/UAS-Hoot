@@ -1,32 +1,22 @@
 import React from "react"
 import { format } from "date-fns"
-import { useHistory } from "react-router"
 
 import "./previewCollectionComponent.scss"
-import { removeCollection } from "../../redux/collections/collectionsActions"
-import { connect } from "react-redux"
+import EditButtonComponent from "../edit/editButton/EditButtonComponent"
 
-const PreviewCollectionComponent = ({
-  collection: { name, lastChangedAt, creatorName, id },
-  removeCollection,
-}) => {
-  const history = useHistory()
+const PreviewCollectionComponent = ({ collection: { name, changedAt, author, id } }) => {
   return (
     <div className="preview-collection-component">
       <div className="preview-collection-component-container">
         <div className="title">{name}</div>
         <div className="property-container">
           <span className="side-container-1">
-            <span className="createdAt">{creatorName}</span>
+            <span className="author">{author}</span>
           </span>
           <div className="side-container-2">
-            <span className="creator-name">{format(new Date(lastChangedAt), "LLLL dd yyyy")}</span>
-            <button onClick={() => history.push(`/edit/${id}/1`)} className="button">
-              Edit
-            </button>
-            <button className="button" onClick={() => removeCollection({ collectionId: id })}>
-              Delete
-            </button>
+            <span className="created-at">{format(new Date(changedAt), "LLLL dd yyyy")}</span>
+            <EditButtonComponent type="LINK_TO_EDIT" collectionId={id} />
+            <EditButtonComponent type="DELETE_COLLECTION" collectionId={id} />
           </div>
         </div>
       </div>
@@ -34,8 +24,4 @@ const PreviewCollectionComponent = ({
   )
 }
 
-const mapDispatchToProps = dispatch => ({
-  removeCollection: id => dispatch(removeCollection(id)),
-})
-
-export default connect(null, mapDispatchToProps)(PreviewCollectionComponent)
+export default PreviewCollectionComponent

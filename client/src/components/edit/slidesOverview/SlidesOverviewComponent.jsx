@@ -1,25 +1,25 @@
 import React from "react"
 import { connect } from "react-redux"
 import { withRouter } from "react-router-dom"
-import {
-  addCollectionQuestion,
-  editCollection,
-} from "../../../redux/collections/collectionsActions"
-import { selectUserQuestionsArray } from "../../../redux/collections/collectionsSelectors"
+import { editCollection } from "../../../redux/collections/collectionsActions"
+import { selectUserSlidesArray } from "../../../redux/collections/collectionsSelectors"
 import SlideOverviewComponent from "../slideOverview/SlideOverviewComponent"
-import "./slidesOverviewComponent.scss"
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd"
+import { addSlideQuiz } from "../../../redux/collections/collectionsUtils"
+import EditButtonComponent from "../editButton/EditButtonComponent"
 
-const SlidesOverviewComponent = ({ questionsArray, addQuestion, match, editCollection }) => {
+import "./slidesOverviewComponent.scss"
+
+const SlidesOverviewComponent = ({ slidesArray, match, editCollection }) => {
   const { collectionId } = match.params
 
   const handleOnDragEnd = result => {
     if (!result.destination) return
-    const items = [...questionsArray]
+    const items = [...slidesArray]
     const [reorderedItem] = items.splice(result.source.index, 1)
     items.splice(result.destination.index, 0, reorderedItem)
-    const newQuestionsOrder = items.map(item => item.id)
-    editCollection({ collectionId, properties: { questionsOrder: newQuestionsOrder } })
+    const newSlidesOrder = items.map(item => item.id)
+    editCollection({ collectionId, properties: { slidesOrder: newSlidesOrder } })
   }
 
   return (
@@ -28,8 +28,8 @@ const SlidesOverviewComponent = ({ questionsArray, addQuestion, match, editColle
         <Droppable droppableId="slides-container">
           {provided => (
             <div className="slides-container" {...provided.droppableProps} ref={provided.innerRef}>
-              {questionsArray.map((question, i) => (
-                <Draggable key={question.id} draggableId={question.id} index={i}>
+              {slidesArray.map((slide, i) => (
+                <Draggable key={slide.id} draggableId={slide.id} index={i}>
                   {provided => (
                     <div
                       {...provided.draggableProps}
@@ -37,7 +37,7 @@ const SlidesOverviewComponent = ({ questionsArray, addQuestion, match, editColle
                       ref={provided.innerRef}
                       key={i}
                     >
-                      <SlideOverviewComponent question={question} order={i} />
+                      <SlideOverviewComponent slide={slide} order={i + 1} />
                     </div>
                   )}
                 </Draggable>
@@ -47,12 +47,7 @@ const SlidesOverviewComponent = ({ questionsArray, addQuestion, match, editColle
           )}
         </Droppable>
       </DragDropContext>
-      <button
-        className="button button-basic add-button"
-        onClick={() => addQuestion({ collectionId })}
-      >
-        Add question
-      </button>
+      <EditButtonComponent type="ADD_SLIDE_QUIZ" className="add-button" />
     </div>
   )
 }
@@ -60,12 +55,12 @@ const SlidesOverviewComponent = ({ questionsArray, addQuestion, match, editColle
 const mapStateToProps = (state, ownProps) => {
   const { collectionId } = ownProps.match.params
   return {
-    questionsArray: selectUserQuestionsArray(collectionId)(state),
+    slidesArray: selectUserSlidesArray(collectionId)(state),
   }
 }
 
 const mapDispatchToProps = dispatch => ({
-  addQuestion: id => dispatch(addCollectionQuestion(id)),
+  addSlideQuiz: id => dispatch(addSlideQuiz(id)),
   editCollection: idAndProperties => dispatch(editCollection(idAndProperties)),
 })
 

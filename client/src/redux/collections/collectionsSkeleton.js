@@ -1,55 +1,56 @@
 import uuid from "react-uuid"
 
 export const collectionSkeleton = ({
-  name = "Project",
-  creatorName = "anonymous",
   collectionId = uuid(),
+  properties: { name = "Project", author = "Anonymous" },
 }) => {
-  const questionId = uuid()
-  const answer1Id = uuid()
-  const answer2Id = uuid()
-  const answer3Id = uuid()
-  const answer4Id = uuid()
+  const slideId = uuid()
+  const option1Id = uuid()
+  const option2Id = uuid()
+  const option3Id = uuid()
+  const option4Id = uuid()
 
   return {
     [collectionId]: {
-      id: collectionId,
       name: name,
-      currentSlide: 1,
-      currentSlideId: 1,
+      author: author,
+      description: "",
+      id: collectionId,
       createdAt: new Date().getTime(),
-      lastChangedAt: new Date().getTime(),
-      creatorName: creatorName,
-      questionsOrder: [questionId],
+      changedAt: new Date().getTime(),
+      slidesOrder: [slideId],
+      currentSlideId: slideId,
+      currentSlideIndex: 0,
+      collectionSettingShow: true,
       language: { value: "english", label: "English" },
       lobbyMusic: { value: "cold", label: "Neffex - Cold" },
-      description: "",
-      collectionSettingCardVisible: true,
-      questions: {
-        [questionId]: {
-          id: questionId,
+
+      slides: {
+        [slideId]: {
+          id: slideId,
+          type: "quiz",
           question: "",
           time: { value: 30, label: "30 seconds" },
           points: { value: 1, label: "Standard" },
-          answers: {
-            [answer1Id]: {
-              id: answer1Id,
-              answer: "",
+          options: {
+            [option1Id]: {
+              option: "",
+              id: option1Id,
               correct: false,
             },
-            [answer2Id]: {
-              id: answer2Id,
-              answer: "",
+            [option2Id]: {
+              option: "",
+              id: option2Id,
               correct: false,
             },
-            [answer3Id]: {
-              id: answer3Id,
-              answer: "",
+            [option3Id]: {
+              option: "",
+              id: option3Id,
               correct: false,
             },
-            [answer4Id]: {
-              id: answer4Id,
-              answer: "",
+            [option4Id]: {
+              option: "",
+              id: option4Id,
               correct: false,
             },
           },
@@ -58,3 +59,5 @@ export const collectionSkeleton = ({
     },
   }
 }
+
+// quiz trueFalse slide

@@ -11,7 +11,7 @@ const CreateCollectionButtonComponent = ({ createCollection, history, currentUse
   const clickHandler = () => {
     const collectionId = uuid()
     createCollection({ collectionId, creatorName: currentUser.displayName })
-    history.push(`/edit/${collectionId}/1`)
+    history.push(`/edit/${collectionId}`)
   }
 
   if (children) return <span onClick={clickHandler}>{children}</span>

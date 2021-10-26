@@ -7,40 +7,39 @@ export const selectUserCollections = createSelector(
   collections => collections.userCollections
 )
 
+export const selectUserCollectionsArray = createSelector([selectUserCollections], collections =>
+  Object.values(collections)
+)
+
 export const selectUserCollection = collectionId =>
   createSelector([selectUserCollections], userCollections => userCollections[collectionId])
 
-export const selectUserQuestionsOrder = collectionId =>
+export const selectUserSlidesOrder = collectionId =>
   createSelector(
     [selectUserCollection(collectionId)],
-    userCollections => userCollections.questionsOrder
+    userCollections => userCollections.slidesOrder
   )
 
-export const selectUserQuestions = collectionId =>
-  createSelector([selectUserCollection(collectionId)], userCollection => userCollection.questions)
+export const selectUserSlides = collectionId =>
+  createSelector([selectUserCollection(collectionId)], userCollection => userCollection.slides)
 
-export const selectUserQuestionsArray = collectionId =>
+export const selectUserSlidesArray = collectionId =>
   createSelector(
-    [selectUserQuestions(collectionId), selectUserQuestionsOrder(collectionId)],
-    (questions, order) => order.map(value => questions[value])
+    [selectUserSlides(collectionId), selectUserSlidesOrder(collectionId)],
+    (slides, order) => order.map(value => slides[value])
   )
 
-export const selectUserQuestion = (collectionId, questionOrder) =>
+export const selectUserCurrentSlideId = collectionId =>
+  createSelector([selectUserCollection(collectionId)], slide => slide.currentSlideId)
+
+export const selectUserSlide = (collectionId, slideId) =>
   createSelector(
-    [selectUserQuestions(collectionId), selectUserQuestionsOrder(collectionId)],
-    (userQuestions, questionsOrder) => userQuestions[questionsOrder[questionOrder - 1]]
+    [selectUserSlides(collectionId), selectUserCurrentSlideId(collectionId)],
+    (slides, currentSlideId = slideId) => slides[currentSlideId]
   )
 
-export const selectUserQuestionId = (collectionId, questionOrder) =>
-  createSelector([selectUserQuestion(collectionId, questionOrder)], question => question.id)
+export const selectUserOptions = (collectionId, slideId) =>
+  createSelector([selectUserSlide(collectionId, slideId)], slide => slide.options)
 
-export const selectUserAnswers = (collectionId, questionOrder) =>
-  createSelector(
-    [selectUserQuestion(collectionId, questionOrder)],
-    userQuestion => userQuestion.answers
-  )
-
-export const selectUserAnswersArray = (collectionId, questionOrder) =>
-  createSelector([selectUserAnswers(collectionId, questionOrder)], userAnswers =>
-    Object.values(userAnswers)
-  )
+export const selectUserOptionsArray = (collectionId, slideId) =>
+  createSelector([selectUserOptions(collectionId, slideId)], options => Object.values(options))

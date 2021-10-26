@@ -2,59 +2,72 @@ import CollectionActions from "./collectionsTypes"
 import {
   createCollection,
   editCollection,
-  editCollectionAnswer,
-  editCollectionQuestion,
-  removeCollectionQuestion,
-  addCollectionQuestion,
-  removeCollection,
-  duplicateCollectionQuestion,
+  deleteCollection,
+  addSlideQuiz,
+  editSlide,
+  duplicateSlide,
+  deleteSlide,
+  editOption,
 } from "./collectionsUtils"
 
 const INITIAL_STATE = {
   userCollections: {},
+  editCollectionId: "",
 }
 
 const collectionsReducer = (state = INITIAL_STATE, action) => {
+  const userCollections = state.userCollections
+
   switch (action.type) {
     case CollectionActions.CREATE_COLLECTION:
       return {
         ...state,
-        userCollections: createCollection(state.userCollections, action.payload),
+        userCollections: createCollection(userCollections, action.payload),
       }
+
     case CollectionActions.EDIT_COLLECTION:
       return {
         ...state,
-        userCollections: editCollection(state.userCollections, action.payload),
+        userCollections: editCollection(userCollections, action.payload),
       }
-    case CollectionActions.REMOVE_COLLECTION:
+
+    case CollectionActions.DELETE_COLLECTION:
       return {
         ...state,
-        userCollections: removeCollection(state.userCollections, action.payload),
+        userCollections: deleteCollection(userCollections, action.payload),
       }
-    case CollectionActions.EDIT_COLLECTION_QUESTION:
+
+    case CollectionActions.ADD_SLIDE_QUIZ:
       return {
         ...state,
-        userCollections: editCollectionQuestion(state.userCollections, action.payload),
+        userCollections: addSlideQuiz(userCollections, action.payload),
       }
-    case CollectionActions.ADD_COLLECTION_QUESTION:
+
+    case CollectionActions.ADD_SLIDE_TRUE_FALSE:
+      return state
+
+    case CollectionActions.EDIT_SLIDE:
       return {
         ...state,
-        userCollections: addCollectionQuestion(state.userCollections, action.payload),
+        userCollections: editSlide(userCollections, action.payload),
       }
-    case CollectionActions.REMOVE_COLLECTION_QUESTION:
+
+    case CollectionActions.DUPLICATE_SLIDE:
       return {
         ...state,
-        userCollections: removeCollectionQuestion(state.userCollections, action.payload),
+        userCollections: duplicateSlide(userCollections, action.payload),
       }
-    case CollectionActions.DUPLICATE_COLLECTION_QUESTION:
+
+    case CollectionActions.DELETE_SLIDE:
       return {
         ...state,
-        userCollections: duplicateCollectionQuestion(state.userCollections, action.payload),
+        userCollections: deleteSlide(userCollections, action.payload),
       }
-    case CollectionActions.EDIT_COLLECTION_ANSWER:
+
+    case CollectionActions.EDIT_OPTION:
       return {
         ...state,
-        userCollections: editCollectionAnswer(state.userCollections, action.payload),
+        userCollections: editOption(userCollections, action.payload),
       }
 
     default:

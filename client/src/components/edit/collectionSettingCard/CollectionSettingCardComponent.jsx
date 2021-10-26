@@ -1,13 +1,14 @@
 import React from "react"
-
-import "./editCollection.scss"
 import { connect } from "react-redux"
 import { editCollection } from "../../../redux/collections/collectionsActions"
 import { withRouter } from "react-router-dom"
 import { selectUserCollection } from "../../../redux/collections/collectionsSelectors"
 import CustomSelectBoxComponent from "../../customSelectBox/CustomSelectBoxComponent"
+import EditButtonComponent from "../editButton/EditButtonComponent"
 
-const EditCollection = ({ collection, editCollection, collectionId, match }) => {
+import "./collectionSettingCardComponent.scss"
+
+const CollectionSettingCardComponent = ({ collection, editCollection, collectionId, match }) => {
   const { name, description, language, lobbyMusic } = collection
   collectionId = collectionId || match.params.collectionId
 
@@ -15,14 +16,15 @@ const EditCollection = ({ collection, editCollection, collectionId, match }) => 
 
   return (
     <>
-      {collection.collectionSettingCardVisible && (
+      {collection.collectionSettingShow && (
         <div className="edit-collection-layer">
-          <div className="edit-collection">
-            <div className="edit-collection-container">
+          <div className="edit-collection-component">
+            <div className="container">
               <div className="title">
                 <h2>UAS Hoot summary</h2>
               </div>
-              <div className="setting-container">
+
+              <div className="options-container">
                 <div className="box">
                   <div className="label">Title</div>
                   <input
@@ -30,6 +32,7 @@ const EditCollection = ({ collection, editCollection, collectionId, match }) => 
                     className="input-basic input-100"
                     value={name}
                     onChange={e => edit({ name: e.target.value })}
+                    maxLength={50}
                   />
                 </div>
 
@@ -49,6 +52,7 @@ const EditCollection = ({ collection, editCollection, collectionId, match }) => 
                     className="textarea-basic textarea-100"
                     value={description}
                     onChange={e => edit({ description: e.target.value })}
+                    maxLength={400}
                   />
                 </div>
 
@@ -63,12 +67,7 @@ const EditCollection = ({ collection, editCollection, collectionId, match }) => 
               </div>
 
               <div className="buttons">
-                <button
-                  onClick={() => edit({ collectionSettingCardVisible: false })}
-                  className="button-basic button-100"
-                >
-                  Done
-                </button>
+                <EditButtonComponent type="COLLECTION_SETTING_TOGGLE_SHOW" className="w-100" />
               </div>
             </div>
           </div>
@@ -80,7 +79,6 @@ const EditCollection = ({ collection, editCollection, collectionId, match }) => 
 
 const mapStateToProps = (state, ownProps) => {
   const { collectionId } = ownProps.match.params
-
   return {
     collection: selectUserCollection(collectionId)(state),
   }
@@ -90,7 +88,9 @@ const mapDispatchToProps = dispatch => ({
   editCollection: id => dispatch(editCollection(id)),
 })
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(EditCollection))
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(CollectionSettingCardComponent)
+)
 
 const musicOptions = [
   { value: "cold", label: "Neffex - Cold" },

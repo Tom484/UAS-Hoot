@@ -35,6 +35,10 @@ const App = ({ setCurrentUser, createCollection }) => {
         setCurrentUser(userAuth)
       }
     })
+    createCollection({
+      collectionId: "formula",
+      properties: { name: "Formula 1", author: "Tomas Kurka44" },
+    })
     return () => {
       unsubscribe()
     }
@@ -70,7 +74,7 @@ const App = ({ setCurrentUser, createCollection }) => {
           exact
           onlyLogged={true}
           redirect="/"
-          path="/edit/:collectionId/:currentQuestion"
+          path="/edit/:collectionId"
           component={EditPage}
         />
         <PrivateRoute
@@ -91,8 +95,7 @@ const App = ({ setCurrentUser, createCollection }) => {
 
 const mapDispatchToProps = dispatch => ({
   setCurrentUser: user => dispatch(setCurrentUser(user)),
-  createCollection: () =>
-    dispatch(createCollection({ name: "Project", creatorName: "Tomáš Kůrka" })),
+  createCollection: properties => dispatch(createCollection(properties)),
 })
 
 export default connect(null, mapDispatchToProps)(App)

@@ -1,41 +1,47 @@
 import React from "react"
-
-import "./editSlideQuestionComponent.scss"
-import SelectAnswersComponent from "../selectAnswers/SelectAnswersComponent"
 import { connect } from "react-redux"
 import { withRouter } from "react-router-dom"
-import {
-  selectUserAnswers,
-  selectUserAnswersArray,
-  selectUserCollection,
-  selectUserCollections,
-  selectUserQuestion,
-  selectUserQuestions,
-  selectUserQuestionsOrder,
-} from "../../../redux/collections/collectionsSelectors"
-import EditQuestionComponent from "../editQuestion/EditQuestionComponent"
+import TextareaAutosize from "react-textarea-autosize"
+import { editSlide } from "../../../redux/collections/collectionsActions"
+import { selectUserSlide } from "../../../redux/collections/collectionsSelectors"
 
-const EditSlideQuestionComponent = ({ collection }) => {
+import "./editSlideQuestionComponent.scss"
+
+const EditSlideQuestionComponent = ({ editSlide, slide, match, collectionId }) => {
+  collectionId = collectionId || match.params.collectionId
+
+  const handleChange = e => {
+    editSlide({
+      collectionId,
+      properties: { question: e.target.value },
+    })
+  }
+
+  console.log(slide.question)
+
   return (
-    <div className="create-question-component">
-      <h2 className="project-name">{collection.name}</h2>
-      <EditQuestionComponent />
-      <SelectAnswersComponent />
+    <div className="textarea-container">
+      <TextareaAutosize
+        onChange={handleChange}
+        className="text-area textarea-question"
+        placeholder="Start typing your question..."
+        value={slide.question}
+        maxLength={125}
+      />
+      <span>{125 - slide.question.length}</span>
     </div>
   )
 }
 
 const mapStateToProps = (state, ownProps) => {
-  const { collectionId, currentQuestion } = ownProps.match.params
+  const { collectionId } = ownProps.match.params
   return {
-    collections: selectUserCollections(state),
-    collection: selectUserCollection(collectionId)(state),
-    questions: selectUserQuestions(collectionId)(state),
-    questionsOrder: selectUserQuestionsOrder(collectionId)(state),
-    question: selectUserQuestion(collectionId, currentQuestion)(state),
-    answers: selectUserAnswers(collectionId, currentQuestion)(state),
-    answersArray: selectUserAnswersArray(collectionId, currentQuestion)(state),
+    slide: selectUserSlide(collectionId)(state),
   }
 }
 
-export default withRouter(connect(mapStateToProps)(EditSlideQuestionComponent))
+const mapDispatchToProps = dispatch => ({
+  editSlide: idsAndProperties => dispatch(editSlide(idsAndProperties)),
+})
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(EditSlideQuestionComponent))

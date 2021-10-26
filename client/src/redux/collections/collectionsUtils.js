@@ -1,12 +1,16 @@
-import { collectionQuestionDuplicateQuestion } from "./collectionQuestionDuplicateFunction"
+import { duplicateSlideParameters } from "./duplicateSlideParameters"
 import { collectionSkeleton } from "./collectionsSkeleton"
-import { questionSkeleton } from "./questionSkeleton"
+import { slideSkeleton } from "./slideSkeleton"
 
-const cleanObject = object => JSON.parse(JSON.stringify(object))
+const deleteReference = object => JSON.parse(JSON.stringify(object))
 
+// createCollection
 export const createCollection = (previousCollections, properties) => {
-  return { ...previousCollections, ...collectionSkeleton(properties) }
+  console.log("ahoj")
+  return deleteReference({ ...previousCollections, ...collectionSkeleton(properties) })
 }
+
+// editCollection
 export const editCollection = (previousCollections, { collectionId, properties }) => {
   const newCollections = { ...previousCollections }
 
@@ -15,71 +19,85 @@ export const editCollection = (previousCollections, { collectionId, properties }
     ...properties,
   }
 
-  return cleanObject(newCollections)
+  return deleteReference(newCollections)
 }
-export const removeCollection = (previousCollections, { collectionId }) => {
+
+// removeCollection
+export const deleteCollection = (previousCollections, { collectionId }) => {
   const newCollections = { ...previousCollections }
   delete newCollections[collectionId]
 
-  return cleanObject(newCollections)
+  return deleteReference(newCollections)
 }
 
-export const editCollectionQuestion = (
-  previousCollections,
-  { collectionId, questionId, properties }
-) => {
+// editCollectionQuestion
+export const editSlide = (previousCollections, { collectionId, slideId, properties }) => {
   const newCollections = { ...previousCollections }
+  slideId = slideId || newCollections[collectionId].currentSlideId
 
-  newCollections[collectionId].questions[questionId] = {
-    ...newCollections[collectionId].questions[questionId],
+  newCollections[collectionId].slides[slideId] = {
+    ...newCollections[collectionId].slides[slideId],
     ...properties,
   }
 
-  return cleanObject(newCollections)
+  return deleteReference(newCollections)
 }
 
-export const addCollectionQuestion = (previousCollections, { collectionId }) => {
+// addCollectionQuestion
+export const addSlideQuiz = (previousCollections, { collectionId }) => {
   const newCollections = { ...previousCollections }
 
-  newCollections[collectionId] = questionSkeleton(newCollections[collectionId])
-  return cleanObject(newCollections)
+  newCollections[collectionId] = slideSkeleton(newCollections[collectionId])
+  return deleteReference(newCollections)
 }
 
-export const removeCollectionQuestion = (previousCollections, { collectionId, questionId }) => {
+// duplicateCollectionQuestion
+export const duplicateSlide = (previousCollections, { collectionId, slideId }) => {
   const newCollections = { ...previousCollections }
+  slideId = slideId || newCollections[collectionId].currentSlideId
+  const currentSlideIndex = previousCollections[collectionId].slidesOrder.indexOf(slideId)
+  duplicateSlideParameters(previousCollections[collectionId], slideId, currentSlideIndex)
 
-  delete newCollections[collectionId].questions[questionId]
-  const index = newCollections[collectionId].questionsOrder.indexOf(questionId)
-  newCollections[collectionId].questionsOrder.splice(index, 1)
-
-  return cleanObject(newCollections)
+  return deleteReference(newCollections)
 }
 
-export const duplicateCollectionQuestion = (
+// removeCollectionQuestion
+export const deleteSlide = (previousCollections, { collectionId, slideId }) => {
+  if (previousCollections[collectionId].slidesOrder.length === 1) {
+    console.log("There have to be minimal one slide!")
+    return previousCollections
+  }
+
+  const newCollections = { ...previousCollections }
+  slideId = slideId || newCollections[collectionId].currentSlideId
+
+  delete newCollections[collectionId].slides[slideId]
+  const index = newCollections[collectionId].slidesOrder.indexOf(slideId)
+
+  if (index === 0) {
+    newCollections[collectionId].currentSlideId =
+      newCollections[collectionId].slidesOrder[index + 1]
+  } else {
+    newCollections[collectionId].currentSlideId =
+      newCollections[collectionId].slidesOrder[index - 1]
+  }
+  newCollections[collectionId].slidesOrder.splice(index, 1)
+
+  return deleteReference(newCollections)
+}
+
+// editCollectionAnswer
+export const editOption = (
   previousCollections,
-  { collectionId, questionId, currentQuestion }
+  { collectionId, slideId, optionId, properties }
 ) => {
   const newCollections = { ...previousCollections }
+  slideId = slideId || newCollections[collectionId].currentSlideId
 
-  collectionQuestionDuplicateQuestion(
-    previousCollections[collectionId],
-    questionId,
-    currentQuestion
-  )
-
-  return cleanObject(newCollections)
-}
-
-export const editCollectionAnswer = (
-  previousCollections,
-  { collectionId, questionId, answerId, properties }
-) => {
-  const newCollections = { ...previousCollections }
-
-  newCollections[collectionId].questions[questionId].answers[answerId] = {
-    ...newCollections[collectionId].questions[questionId].answers[answerId],
+  newCollections[collectionId].slides[slideId].options[optionId] = {
+    ...newCollections[collectionId].slides[slideId].options[optionId],
     ...properties,
   }
 
-  return cleanObject(newCollections)
+  return deleteReference(newCollections)
 }

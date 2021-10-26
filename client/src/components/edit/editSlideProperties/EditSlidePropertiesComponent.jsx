@@ -1,22 +1,21 @@
 import React from "react"
+import EditButtonComponent from "../editButton/EditButtonComponent"
 import EditPropertiesSelectBoxComponent from "../editPropertiesSelectBox/EditPropertiesSelectBoxComponent"
-import DuplicateQuestionButtonComponent from "../duplicateQuestionButton/DublicateQuestionButtonComponent"
-import RemoveQuestionButtonComponent from "../removeQuestionButton/RemoveQuestionButtonComponent"
+
 import "./editSlidePropertiesComponent.scss"
-import CollectionSettingCartToggleButtonComponent from "../collectionSettingCartToggleButton/CollectionSettingCartToggleButtonComponent"
 
 const EditSlidePropertiesComponent = () => {
   return (
     <div className="edit-slide-properties-component">
-      <div className="edit-slide-properties-component-container">
+      <div className="container">
         <div className="properties">
-          <EditPropertiesSelectBoxComponent title="Time" options={timeValues} name="time" />
-          <EditPropertiesSelectBoxComponent title="Points" options={pointsValues} name="points" />
+          <EditPropertiesSelectBoxComponent label="Time" options={timeValues} name="time" />
+          <EditPropertiesSelectBoxComponent label="Points" options={pointsValues} name="points" />
         </div>
         <div className="buttons">
-          <DuplicateQuestionButtonComponent className="button-100" />
-          <RemoveQuestionButtonComponent className="button-100" />
-          <CollectionSettingCartToggleButtonComponent className="button-100 span-full" />
+          <EditButtonComponent type="DUPLICATE_SLIDE" className="w-100" />
+          <EditButtonComponent type="DELETE_SLIDE" className="w-100" />
+          <EditButtonComponent type="COLLECTION_SETTING_TOGGLE_SHOW" className="w-100 span-full" />
         </div>
       </div>
     </div>

@@ -1,37 +1,50 @@
 import React from "react"
+import { connect } from "react-redux"
 import { withRouter } from "react-router-dom"
 import { ICONCopyOutline, ICONTrashOutline } from "../../../icons/Icons"
-import DuplicateQuestionButtonComponent from "../duplicateQuestionButton/DublicateQuestionButtonComponent"
-import RemoveQuestionButtonComponent from "../removeQuestionButton/RemoveQuestionButtonComponent"
+import { editCollection } from "../../../redux/collections/collectionsActions"
+import { selectUserCollection } from "../../../redux/collections/collectionsSelectors"
+import EditButtonComponent from "../editButton/EditButtonComponent"
 
 import "./slideOverviewComponent.scss"
 
-const SlideOverviewComponent = ({ question, match, order, history }) => {
-  const { collectionId, currentQuestion } = match.params
+const SlideOverviewComponent = ({ slide, match, order, editCollection, collection }) => {
+  const { collectionId } = match.params
+  console.log(collection.currentSlideId)
+
+  const clickHandler = () => {
+    editCollection({
+      collectionId,
+      properties: {
+        currentSlideId: slide.id,
+      },
+    })
+  }
 
   return (
     <div className="overview-slide">
       <div className="slide-label">
-        <div>{order + 1}.</div>
+        <div>{order}.</div>
         <div className="icon-container">
-          <RemoveQuestionButtonComponent questionId={question.id}>
+          <EditButtonComponent type="DELETE_SLIDE" slideId={slide.id}>
             <ICONTrashOutline className="svg-icon-small-size svg-icon-default-color svg-icon-pointer" />
-          </RemoveQuestionButtonComponent>
-          <DuplicateQuestionButtonComponent currentQuestion={order + 1}>
+          </EditButtonComponent>
+          <EditButtonComponent type="DUPLICATE_SLIDE" slideId={slide.id}>
             <ICONCopyOutline className="svg-icon-small-size svg-icon-default-color svg-icon-pointer" />
-          </DuplicateQuestionButtonComponent>
+          </EditButtonComponent>
         </div>
       </div>
+
       <div
-        className={`slide-preview ${order + 1 === parseInt(currentQuestion) ? "active-slide" : ""}`}
-        onClick={() => history.push(`/edit/${collectionId}/${order + 1}`)}
+        className={`slide-preview ${collection.currentSlideId === slide.id ? "active-slide" : ""}`}
+        onClick={clickHandler}
       >
-        <div className="question-label">{question.question || "Start typing your question..."}</div>
-        <div className="time-label">{question.time.value}</div>
+        <div className="question-label">{slide.question || "Start typing your question..."}</div>
+        <div className="time-label">{slide.time.value}</div>
         <div className="answers-container">
-          {Object.values(question.answers).map((answer, i) => (
-            <div key={i} className={`answer-container ${answer.correct ? "active-answer" : ""}`}>
-              <div className="answer-label">{answer.answer || `Add answer ${i + 1}`}</div>
+          {Object.values(slide.options).map((option, i) => (
+            <div key={i} className={`answer-container ${option.correct ? "active-answer" : ""}`}>
+              <div className="answer-label">{option.option || `Add answer ${i + 1}`}</div>
             </div>
           ))}
         </div>
@@ -40,4 +53,14 @@ const SlideOverviewComponent = ({ question, match, order, history }) => {
   )
 }
 
-export default withRouter(SlideOverviewComponent)
+const mapStateToProps = (state, onwProps) => {
+  const { collectionId } = onwProps.match.params
+  return {
+    collection: selectUserCollection(collectionId)(state),
+  }
+}
+const mapDispatchToProps = dispatch => ({
+  editCollection: idAndProperties => dispatch(editCollection(idAndProperties)),
+})
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SlideOverviewComponent))

@@ -6,7 +6,7 @@ import "./editSlidesComponent.scss"
 const EditSlidesComponent = () => {
   return (
     <div className="edit-slides-component">
-      <div className="edit-slides-component-container">
+      <div className="container">
         <SlidesOverviewComponent />
       </div>
     </div>
