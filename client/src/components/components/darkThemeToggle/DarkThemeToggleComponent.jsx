@@ -1,9 +1,9 @@
 import React from "react"
 import { connect } from "react-redux"
-import { toggleDarkTheme } from "../../redux/theme/themeActions"
+import { toggleDarkTheme } from "../../../redux/theme/themeActions"
 
 import "./darkThemeToggleComponent.scss"
-import { ICONMoonOutline, ICONSunOutline } from "../../icons/Icons"
+import { ICONMoonOutline, ICONSunOutline } from "../../../icons/Icons"
 
 const DarkThemeToggleComponent = ({ toggleDarkTheme, darkTheme }) => {
   return (

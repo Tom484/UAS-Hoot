@@ -1,6 +1,6 @@
 import React from "react"
 import { Link } from "react-router-dom"
-import { auth } from "../../firebase/firebaseUtils"
+import { auth } from "../../../firebase/firebaseUtils"
 import { connect } from "react-redux"
 
 import "./headerComponent.scss"

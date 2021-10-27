@@ -3,7 +3,7 @@ import { connect } from "react-redux"
 import { withRouter } from "react-router-dom"
 import { editSlide } from "../../../redux/collections/collectionsActions"
 import { selectUserSlide } from "../../../redux/collections/collectionsSelectors"
-import CustomSelectBoxComponent from "../../customSelectBox/CustomSelectBoxComponent"
+import CustomSelectBoxComponent from "../../components/customSelectBox/CustomSelectBoxComponent"
 
 import "./editPropertiesSelectBoxComponent.scss"
 

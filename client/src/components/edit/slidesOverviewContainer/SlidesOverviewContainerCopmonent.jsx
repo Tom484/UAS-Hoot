@@ -1,7 +1,7 @@
 import React from "react"
 import SlidesOverviewComponent from "../slidesOverview/SlidesOverviewComponent"
 
-import "./editSlidesComponent.scss"
+import "./slidesOverviewContainerComponent.scss"
 
 const EditSlidesComponent = () => {
   return (

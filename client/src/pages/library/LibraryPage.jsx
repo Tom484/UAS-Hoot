@@ -1,5 +1,5 @@
 import React from "react"
-import PreviewCollectionsComponent from "../../components/previewCollections/PreviewCollectionsComponent"
+import PreviewCollectionsComponent from "../../components/library/previewCollections/PreviewCollectionsComponent"
 import "./libraryPage.scss"
 import EditButtonComponent from "../../components/edit/editButton/EditButtonComponent"
 

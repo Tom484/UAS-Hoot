@@ -2,7 +2,7 @@ import React from "react"
 import { format } from "date-fns"
 
 import "./previewCollectionComponent.scss"
-import EditButtonComponent from "../edit/editButton/EditButtonComponent"
+import EditButtonComponent from "../../edit/editButton/EditButtonComponent"
 
 const PreviewCollectionComponent = ({ collection: { name, changedAt, author, id } }) => {
   return (

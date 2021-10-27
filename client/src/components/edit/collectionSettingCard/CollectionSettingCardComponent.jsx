@@ -3,7 +3,7 @@ import { connect } from "react-redux"
 import { editCollection } from "../../../redux/collections/collectionsActions"
 import { withRouter } from "react-router-dom"
 import { selectUserCollection } from "../../../redux/collections/collectionsSelectors"
-import CustomSelectBoxComponent from "../../customSelectBox/CustomSelectBoxComponent"
+import CustomSelectBoxComponent from "../../components/customSelectBox/CustomSelectBoxComponent"
 import EditButtonComponent from "../editButton/EditButtonComponent"
 
 import "./collectionSettingCardComponent.scss"

@@ -2,7 +2,7 @@ import uuid from "react-uuid"
 
 export const collectionSkeleton = ({
   collectionId = uuid(),
-  properties: { name = "Project", author = "Anonymous" },
+  properties: { name = "Project", author = "Anonymous", authorId },
 }) => {
   const slideId = uuid()
   const option1Id = uuid()
@@ -14,6 +14,7 @@ export const collectionSkeleton = ({
     [collectionId]: {
       name: name,
       author: author,
+      authorId: authorId,
       description: "",
       id: collectionId,
       createdAt: new Date().getTime(),

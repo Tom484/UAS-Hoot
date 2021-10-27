@@ -3,15 +3,19 @@ import React, { useEffect } from "react"
 import { Route, Switch, Redirect } from "react-router-dom"
 import { connect } from "react-redux"
 
-import { auth, createUserProfileDocument } from "../firebase/firebaseUtils"
+import {
+  addCollectionAndDocuments,
+  auth,
+  createUserProfileDocument,
+} from "../firebase/firebaseUtils"
 import { setCurrentUser } from "../redux/user/userActions"
-import PrivateRoute from "./privateRoute/PrivateRoute"
+import PrivateRoute from "./components/privateRoute/PrivateRoute"
 
 // Import pages
 import HomePage from "../pages/home/HomePage"
 import NotFoundPage from "../pages/notFound/NotFoundPage"
 import SingIn from "../pages/signInAndSignUp/SignInAndSignUpPage"
-import HeaderComponent from "./header/HeaderComponent"
+import HeaderComponent from "../components/components/header/HeaderComponent"
 
 import EditPage from "../pages/edit/EditPage"
 import DiscoverPage from "../pages/discover/DiscoverPage"
@@ -30,6 +34,50 @@ const App = ({ setCurrentUser, createCollection }) => {
             id: snapShot.id,
             ...snapShot.data(),
           })
+          addCollectionAndDocuments(
+            "collections",
+            {
+              name: "collections",
+              createdAt: 1000,
+              slides: {
+                slide1: {
+                  question: "hello",
+                  options: {
+                    option1: {
+                      correct: true,
+                    },
+                    option2: {
+                      correct: false,
+                    },
+                    option3: {
+                      correct: false,
+                    },
+                    option4: {
+                      correct: true,
+                    },
+                  },
+                },
+                slide2: {
+                  question: "hell222o",
+                  options: {
+                    option1: {
+                      correct: true,
+                    },
+                    option2: {
+                      correct: false,
+                    },
+                    option3: {
+                      correct: false,
+                    },
+                    option4: {
+                      correct: true,
+                    },
+                  },
+                },
+              },
+            },
+            auth.currentUser
+          )
         })
       } else {
         setCurrentUser(userAuth)

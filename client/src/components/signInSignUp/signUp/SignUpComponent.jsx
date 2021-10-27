@@ -1,7 +1,7 @@
 import React, { useState } from "react"
-import { auth, createUserProfileDocument } from "../../firebase/firebaseUtils"
-import ButtonComponent from "../button/ButtonComponent"
-import FormInputComponent from "../formInput/FormInputComponent"
+import { auth, createUserProfileDocument } from "../../../firebase/firebaseUtils"
+import ButtonComponent from "../../components/button/ButtonComponent"
+import FormInputComponent from "../../components/formInput/FormInputComponent"
 
 import "./signUpComponent.scss"
 

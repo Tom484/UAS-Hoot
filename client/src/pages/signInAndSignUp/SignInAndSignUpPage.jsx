@@ -1,7 +1,7 @@
 import React from "react"
 
-import SignInComponent from "../../components/signIn/SignInComponent"
-import SignUpComponent from "../../components/signUp/SignUpComponent"
+import SignInComponent from "../../components/signInSignUp/signIn/SignInComponent"
+import SignUpComponent from "../../components/signInSignUp/signUp/SignUpComponent"
 
 import "./signInAndSignUpPage.scss"
 

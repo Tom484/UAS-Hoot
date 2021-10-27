@@ -1,6 +1,6 @@
 import React from "react"
 import { connect } from "react-redux"
-import { selectUserCollectionsArray } from "../../redux/collections/collectionsSelectors"
+import { selectUserCollectionsArray } from "../../../redux/collections/collectionsSelectors"
 import PreviewCollectionComponent from "../previewCollection/PreviewCollectionComponent"
 
 import "./previewCollectionsComponent.scss"

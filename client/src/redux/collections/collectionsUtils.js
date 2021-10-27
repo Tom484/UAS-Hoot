@@ -6,7 +6,6 @@ const deleteReference = object => JSON.parse(JSON.stringify(object))
 
 // createCollection
 export const createCollection = (previousCollections, properties) => {
-  console.log("ahoj")
   return deleteReference({ ...previousCollections, ...collectionSkeleton(properties) })
 }
 
