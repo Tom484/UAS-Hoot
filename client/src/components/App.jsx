@@ -23,6 +23,7 @@ import LibraryPage from "../pages/library/LibraryPage"
 import ReportsPage from "../pages/reports/ReportsPage"
 import { createCollection } from "../redux/collections/collectionsActions"
 import AccountPage from "../pages/account/AccountPage"
+import { collectionSkeleton } from "../redux/collections/collectionsSkeleton"
 
 const App = ({ setCurrentUser, createCollection }) => {
   useEffect(() => {
@@ -35,47 +36,10 @@ const App = ({ setCurrentUser, createCollection }) => {
             ...snapShot.data(),
           })
           addCollectionAndDocuments(
-            "collections",
-            {
-              name: "collections",
-              createdAt: 1000,
-              slides: {
-                slide1: {
-                  question: "hello",
-                  options: {
-                    option1: {
-                      correct: true,
-                    },
-                    option2: {
-                      correct: false,
-                    },
-                    option3: {
-                      correct: false,
-                    },
-                    option4: {
-                      correct: true,
-                    },
-                  },
-                },
-                slide2: {
-                  question: "hell222o",
-                  options: {
-                    option1: {
-                      correct: true,
-                    },
-                    option2: {
-                      correct: false,
-                    },
-                    option3: {
-                      correct: false,
-                    },
-                    option4: {
-                      correct: true,
-                    },
-                  },
-                },
-              },
-            },
+            collectionSkeleton({
+              collectionId: "col" + Math.round(Math.random() * 10000),
+              properties: { name: "name", author: "author", authorId: "authorId" },
+            }),
             auth.currentUser
           )
         })

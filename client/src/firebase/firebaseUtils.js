@@ -39,13 +39,10 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
   return userRef
 }
 
-export const addCollectionAndDocuments = (collectionKey, objectsToAdd, userAuth) => {
-  // if (!userAuth) return
-  // const userRef = firestore.doc(`collections/${userAuth.uid}/`)
-  // userRef.add(objectsToAdd)
-  // const newDocRef = collectionRef.doc(user.currentUser.uid)
-  // const collectionRef = firestore.collection(collectionKey)
-  // newDocRef.set(objectsToAdd)
+export const addCollectionAndDocuments = (object, userAuth) => {
+  if (!userAuth) return
+  const userRef = firestore.doc(`collections/${userAuth.uid}/`)
+  userRef.update(object)
 }
 
 export const auth = firebase.auth()

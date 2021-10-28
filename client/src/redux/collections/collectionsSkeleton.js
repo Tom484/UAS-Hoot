@@ -1,9 +1,11 @@
 import uuid from "react-uuid"
 
-export const collectionSkeleton = ({
-  collectionId = uuid(),
-  properties: { name = "Project", author = "Anonymous", authorId },
-}) => {
+export const collectionSkeleton = ({ collectionId, properties: { name, author, authorId } }) => {
+  collectionId = collectionId || uuid()
+  name = name || "Project"
+  author = author || "Anonymous"
+  authorId = authorId || uuid()
+
   const slideId = uuid()
   const option1Id = uuid()
   const option2Id = uuid()
