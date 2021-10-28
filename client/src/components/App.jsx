@@ -27,33 +27,33 @@ import { collectionSkeleton } from "../redux/collections/collectionsSkeleton"
 
 const App = ({ setCurrentUser, createCollection }) => {
   useEffect(() => {
-    let unsubscribe = auth.onAuthStateChanged(async userAuth => {
-      if (userAuth) {
-        const userRef = await createUserProfileDocument(userAuth)
-        userRef.onSnapshot(snapShot => {
-          setCurrentUser({
-            id: snapShot.id,
-            ...snapShot.data(),
-          })
-          addCollectionAndDocuments(
-            collectionSkeleton({
-              collectionId: "col" + Math.round(Math.random() * 10000),
-              properties: { name: "name", author: "author", authorId: "authorId" },
-            }),
-            auth.currentUser
-          )
-        })
-      } else {
-        setCurrentUser(userAuth)
-      }
-    })
-    createCollection({
-      collectionId: "formula",
-      properties: { name: "Formula 1", author: "Tomas Kurka44" },
-    })
-    return () => {
-      unsubscribe()
-    }
+    // let unsubscribe = auth.onAuthStateChanged(async userAuth => {
+    //   if (userAuth) {
+    //     const userRef = await createUserProfileDocument(userAuth)
+    //     userRef.onSnapshot(snapShot => {
+    //       setCurrentUser({
+    //         id: snapShot.id,
+    //         ...snapShot.data(),
+    //       })
+    //       addCollectionAndDocuments(
+    //         collectionSkeleton({
+    //           collectionId: "col" + Math.round(Math.random() * 10000),
+    //           properties: { name: "name", author: "author", authorId: "authorId" },
+    //         }),
+    //         auth.currentUser
+    //       )
+    //     })
+    //   } else {
+    //     setCurrentUser(userAuth)
+    //   }
+    // })
+    // createCollection({
+    //   collectionId: "formula",
+    //   properties: { name: "Formula 1", author: "Tomas Kurka44" },
+    // })
+    // return () => {
+    //   unsubscribe()
+    // }
     // eslint-disable-next-line
   }, [])
 

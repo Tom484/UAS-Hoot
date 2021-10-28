@@ -1,5 +1,5 @@
 import React from "react"
-import PreviewCollectionsComponent from "../../components/library/previewCollections/PreviewCollectionsComponent"
+import PreviewCollections from "../../components/library/previewCollections/PreviewCollections"
 import "./libraryPage.scss"
 import EditButtonComponent from "../../components/edit/editButton/EditButtonComponent"
 
@@ -10,7 +10,7 @@ const LibraryPage = () => {
         <h2>Your Library</h2>
         <EditButtonComponent type="CREATE_COLLECTION" />
       </div>
-      <PreviewCollectionsComponent />
+      <PreviewCollections />
     </div>
   )
 }

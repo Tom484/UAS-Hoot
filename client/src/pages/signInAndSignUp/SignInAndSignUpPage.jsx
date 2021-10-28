@@ -1,17 +1,17 @@
 import React from "react"
 
-import SignInComponent from "../../components/signInSignUp/signIn/SignInComponent"
-import SignUpComponent from "../../components/signInSignUp/signUp/SignUpComponent"
+import SignIn from "../../components/signInAndSignUp/signIn/SignIn"
+import SignUp from "../../components/signInAndSignUp/signUp/SignUp"
 
 import "./signInAndSignUpPage.scss"
 
-const SignIn = () => {
+const SignInAndSignUp = () => {
   return (
-    <div className="space-around-development">
-      <SignInComponent />
-      <SignUpComponent />
+    <div className="sign-in-and-sign-up-page">
+      <SignIn />
+      <SignUp />
     </div>
   )
 }
-//
-export default SignIn
+
+export default SignInAndSignUp
