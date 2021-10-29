@@ -19,7 +19,7 @@ export const createCollection = ({ name, author, authorId }) => {
     slidesOrder: [slideId],
     currentSlideId: slideId,
     currentSlideIndex: 0,
-    collectionSettingShow: true,
+    collectionEditorCardShow: true,
     language: { value: "english", label: "English" },
     lobbyMusic: { value: "cold", label: "Neffex - Cold" },
 

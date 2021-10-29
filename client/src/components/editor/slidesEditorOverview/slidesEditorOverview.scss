@@ -1,0 +1,16 @@
+@import "../../../styles/colors.scss";
+
+.slides-editor-overview {
+  .slides-container-component {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    overflow: hidden;
+    overflow-y: auto;
+    max-height: calc(100vh - 120px);
+  }
+  .add-button {
+    margin: 14px 14px 0px 14px;
+    width: calc(100% - 28px);
+  }
+}

@@ -19,11 +19,15 @@ const SlidesEditorOverview = ({ slidesArray, editCollection }) => {
   }
 
   return (
-    <div>
+    <div className="slides-editor-overview">
       <DragDropContext onDragEnd={handleOnDragEnd}>
         <Droppable droppableId="slides-container">
           {provided => (
-            <div className="slides-container" {...provided.droppableProps} ref={provided.innerRef}>
+            <div
+              className="slides-container-component"
+              {...provided.droppableProps}
+              ref={provided.innerRef}
+            >
               {slidesArray.map((slide, i) => (
                 <Draggable key={slide.id} draggableId={slide.id} index={i}>
                   {provided => (
@@ -52,7 +56,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  editCollection: () => dispatch(editorEditCollection()),
+  editCollection: properties => dispatch(editorEditCollection(properties)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(SlidesEditorOverview)
