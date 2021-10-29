@@ -1,12 +1,12 @@
 import React from "react"
 import { Link } from "react-router-dom"
-import { auth } from "../../../firebase/firebaseUtils"
 import { connect } from "react-redux"
+import DarkThemeToggleComponent from "../darkThemeToggle/DarkThemeToggleComponent"
+import { signOutStart } from "../../../redux/user/userActions"
 
 import "./headerComponent.scss"
-import DarkThemeToggleComponent from "../darkThemeToggle/DarkThemeToggleComponent"
 
-const Header = ({ currentUser }) => {
+const Header = ({ currentUser, signOutStart }) => {
   return (
     <div className="header-component">
       <DarkThemeToggleComponent />
@@ -16,13 +16,7 @@ const Header = ({ currentUser }) => {
       {currentUser && <Link to="/reports">Reports</Link>}
       {currentUser && <Link to="/account">Account</Link>}
       {currentUser ? (
-        <div
-          onClick={() => {
-            auth.signOut()
-          }}
-        >
-          Sign Out
-        </div>
+        <div onClick={signOutStart}>Sign Out</div>
       ) : (
         <Link to="/sign-in">Sign In</Link>
       )}
@@ -30,8 +24,12 @@ const Header = ({ currentUser }) => {
   )
 }
 
+const mapDispatchToProps = dispatch => ({
+  signOutStart: () => dispatch(signOutStart()),
+})
+
 const mapStateToProps = ({ user }) => ({
   currentUser: user.currentUser,
 })
 
-export default connect(mapStateToProps)(Header)
+export default connect(mapStateToProps, mapDispatchToProps)(Header)

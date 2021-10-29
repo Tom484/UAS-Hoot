@@ -1,11 +1,12 @@
 import React, { useState } from "react"
-import { auth, createUserProfileDocument } from "../../../firebase/firebaseUtils"
+import { connect } from "react-redux"
+import { emailSignUpStart } from "../../../redux/user/userActions"
 import ButtonComponent from "../../components/button/ButtonComponent"
 import FormInputComponent from "../../components/formInput/FormInputComponent"
 
 import "./signUp.scss"
 
-const SignUpComponent = () => {
+const SignUpComponent = ({ emailSignUpStart }) => {
   const [userCredentials, setUserCredentials] = useState({
     displayName: "",
     email: "",
@@ -27,14 +28,7 @@ const SignUpComponent = () => {
       return
     }
 
-    try {
-      const { user } = await auth.createUserWithEmailAndPassword(email, password)
-      await createUserProfileDocument(user, { displayName })
-
-      setUserCredentials({ displayName: "", email: "", password: "", passwordConfirm: "" })
-    } catch (error) {
-      console.error(error)
-    }
+    emailSignUpStart(email, password, displayName)
   }
 
   return (
@@ -79,4 +73,9 @@ const SignUpComponent = () => {
   )
 }
 
-export default SignUpComponent
+const mapDispatchToPro = dispatch => ({
+  emailSignUpStart: (email, password, displayName) =>
+    dispatch(emailSignUpStart({ user: { email, password }, additionalData: { displayName } })),
+})
+
+export default connect(null, mapDispatchToPro)(SignUpComponent)

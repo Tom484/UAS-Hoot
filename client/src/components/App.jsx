@@ -3,12 +3,8 @@ import React, { useEffect } from "react"
 import { Route, Switch, Redirect } from "react-router-dom"
 import { connect } from "react-redux"
 
-import {
-  addCollectionAndDocuments,
-  auth,
-  createUserProfileDocument,
-} from "../firebase/firebaseUtils"
-import { setCurrentUser } from "../redux/user/userActions"
+// import { addCollectionAndDocuments, auth } from "../firebase/firebaseUtils"
+import { checkUserSession } from "../redux/user/userActions"
 import PrivateRoute from "./components/privateRoute/PrivateRoute"
 
 // Import pages
@@ -23,37 +19,24 @@ import LibraryPage from "../pages/library/LibraryPage"
 import ReportsPage from "../pages/reports/ReportsPage"
 import { createCollection } from "../redux/collections/collectionsActions"
 import AccountPage from "../pages/account/AccountPage"
-import { collectionSkeleton } from "../redux/collections/collectionsSkeleton"
+// import { collectionSkeleton } from "../redux/collections/collectionsSkeleton"
 
-const App = ({ setCurrentUser, createCollection }) => {
+const App = ({ createCollection, checkUserSession }) => {
   useEffect(() => {
-    // let unsubscribe = auth.onAuthStateChanged(async userAuth => {
-    //   if (userAuth) {
-    //     const userRef = await createUserProfileDocument(userAuth)
-    //     userRef.onSnapshot(snapShot => {
-    //       setCurrentUser({
-    //         id: snapShot.id,
-    //         ...snapShot.data(),
-    //       })
-    //       addCollectionAndDocuments(
-    //         collectionSkeleton({
-    //           collectionId: "col" + Math.round(Math.random() * 10000),
-    //           properties: { name: "name", author: "author", authorId: "authorId" },
-    //         }),
-    //         auth.currentUser
-    //       )
-    //     })
-    //   } else {
-    //     setCurrentUser(userAuth)
-    //   }
-    // })
-    // createCollection({
-    //   collectionId: "formula",
-    //   properties: { name: "Formula 1", author: "Tomas Kurka44" },
-    // })
-    // return () => {
-    //   unsubscribe()
-    // }
+    checkUserSession()
+
+    // addCollectionAndDocuments(
+    //   collectionSkeleton({
+    //     collectionId: "col" + Math.round(Math.random() * 10000),
+    //     properties: { name: "name", author: "author", authorId: "authorId" },
+    //   }),
+    //   auth.currentUser
+    // )
+
+    createCollection({
+      collectionId: "formula",
+      properties: { name: "Formula 1", author: "Tomas Kurka44" },
+    })
     // eslint-disable-next-line
   }, [])
 
@@ -106,8 +89,8 @@ const App = ({ setCurrentUser, createCollection }) => {
 }
 
 const mapDispatchToProps = dispatch => ({
-  setCurrentUser: user => dispatch(setCurrentUser(user)),
   createCollection: properties => dispatch(createCollection(properties)),
+  checkUserSession: () => dispatch(checkUserSession()),
 })
 
 export default connect(null, mapDispatchToProps)(App)
