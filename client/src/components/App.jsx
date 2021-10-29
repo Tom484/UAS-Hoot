@@ -19,6 +19,7 @@ import LibraryPage from "../pages/library/LibraryPage"
 import ReportsPage from "../pages/reports/ReportsPage"
 import { createCollection } from "../redux/collections/collectionsActions"
 import AccountPage from "../pages/account/AccountPage"
+import EditorPage from "../pages/editor/EditorPage"
 // import { collectionSkeleton } from "../redux/collections/collectionsSkeleton"
 
 const App = ({ createCollection, checkUserSession }) => {
@@ -79,6 +80,7 @@ const App = ({ createCollection, checkUserSession }) => {
           path="/account"
           component={AccountPage}
         />
+        <Route exact path="/editor" component={EditorPage} />
         <PrivateRoute exact onlyLogged={false} redirect="/" path="/sign-in" component={SingIn} />
         <Route exact path="/" component={HomePage} />
         <Route exact path="/not-found" component={NotFoundPage} />

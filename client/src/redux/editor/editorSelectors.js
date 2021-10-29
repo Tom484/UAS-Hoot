@@ -30,8 +30,8 @@ export const selectEditorSlide = slideId =>
     (slides, currentSlideId = slideId) => slides[currentSlideId]
   )
 
-export const selectEditorSlide = slideId =>
+export const selectEditorOptions = slideId =>
   createSelector([selectEditorSlide(slideId)], slide => slide.options)
 
 export const selectUserOptionsArray = slideId =>
-  createSelector([selectUserOptions(slideId)], options => Object.values(options))
+  createSelector([selectEditorOptions(slideId)], options => Object.values(options))

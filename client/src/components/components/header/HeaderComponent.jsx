@@ -11,6 +11,7 @@ const Header = ({ currentUser, signOutStart }) => {
     <div className="header-component">
       <DarkThemeToggleComponent />
       <Link to="/">Home</Link>
+      <Link to="editor">Editor</Link>
       {currentUser && <Link to="/discover">Discover</Link>}
       {currentUser && <Link to="/library">Library</Link>}
       {currentUser && <Link to="/reports">Reports</Link>}
