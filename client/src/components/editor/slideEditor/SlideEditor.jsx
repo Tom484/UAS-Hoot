@@ -1,9 +1,16 @@
 import React from "react"
+import { connect } from "react-redux"
+import { selectEditorSlideCurrent } from "../../../redux/editor/editorSelectors"
+import SlideEditorQuiz from "../slideEditorQuiz/SlideEditorQuiz"
 
 import "./slideEditor.scss"
 
-const SlideEditor = () => {
-  return <div>Slide Editor</div>
+const SlideEditor = ({ slide }) => {
+  return <div>{slide.type === "quiz" && <SlideEditorQuiz />}</div>
 }
 
-export default SlideEditor
+const mapStateToProps = state => ({
+  slide: selectEditorSlideCurrent(state),
+})
+
+export default connect(mapStateToProps)(SlideEditor)

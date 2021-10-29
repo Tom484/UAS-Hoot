@@ -9,7 +9,7 @@ import SlidePropertiesEditor from "../../components/editor/slidePropertiesEditor
 import "./editorPage.scss"
 
 const EditorPage = ({ collection }) => {
-  console.log(collection)
+  // console.log(collection)
   return (
     <div className="editor-page">
       <div className="editor-page-container">

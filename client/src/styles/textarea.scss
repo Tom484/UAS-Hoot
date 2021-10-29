@@ -18,6 +18,23 @@ textarea {
   }
 }
 
-.textarea-100 {
+.textarea-question {
   width: 100%;
+  background: none;
+  padding: 25px;
+  font-size: 24px;
+  background: white;
+  border-radius: 6px;
+  text-align: center;
+  margin-bottom: 20px;
+  border: none;
+}
+
+.textarea-container {
+  position: relative;
+  span {
+    position: absolute;
+    top: 6px;
+    right: 8px;
+  }
 }
