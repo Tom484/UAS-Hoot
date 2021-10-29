@@ -12,6 +12,8 @@ import "./editPage.scss"
 const EditPage = ({ collection }) => {
   if (!collection) return <div>This collection was not found!</div>
 
+  console.log(collection)
+
   return (
     <div className="create-page">
       <div className="create-page-container">

@@ -17,8 +17,6 @@ const EditSlideQuestionComponent = ({ editSlide, slide, match, collectionId }) =
     })
   }
 
-  console.log(slide.question)
-
   return (
     <div className="textarea-container">
       <TextareaAutosize

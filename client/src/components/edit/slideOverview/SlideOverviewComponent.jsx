@@ -10,7 +10,6 @@ import "./slideOverviewComponent.scss"
 
 const SlideOverviewComponent = ({ slide, match, order, editCollection, collection }) => {
   const { collectionId } = match.params
-  console.log(collection.currentSlideId)
 
   const clickHandler = () => {
     editCollection({
