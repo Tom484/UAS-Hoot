@@ -20,14 +20,14 @@ const SlideEditorQuizOption = ({ editOption, option, order }) => {
     })
   }
   return (
-    <div>
+    <div className="slide-editor-quiz-option">
       {order === 1 && <ICONFlashBroken className="svg-icon-default-size svg-icon-default-color" />}
       {order === 2 && <ICONCloudBroken className="svg-icon-default-size svg-icon-default-color" />}
       {order === 3 && <ICONDropBroken className="svg-icon-default-size svg-icon-default-color" />}
       {order === 4 && <ICONMoonBroken className="svg-icon-default-size svg-icon-default-color" />}
 
       <TextareaAutosize
-        className="textarea-create textarea"
+        className="textarea-create textarea textarea-option"
         onChange={e => editOptionProperties({ option: e.target.value })}
         placeholder={`Add answer ${order}`}
         value={option.option}

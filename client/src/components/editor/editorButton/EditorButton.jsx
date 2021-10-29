@@ -2,9 +2,9 @@ import React from "react"
 import { connect } from "react-redux"
 import {
   editorDeleteSlide,
-  editorEditSlide,
   editorAddSlideQuiz,
   editorDuplicateSlide,
+  editorEditCollection,
 } from "../../../redux/editor/editorActions"
 import { selectEditorCollection } from "../../../redux/editor/editorSelectors"
 
@@ -45,8 +45,9 @@ const EditorButton = ({
   }
 
   const collectionEditorCardToggleShowHandler = () => {
+    console.log("call")
     editCollection({
-      properties: { collectionEditorCardShow: !collection.collectionSettingShow },
+      properties: { collectionEditorCardShow: !collection.collectionEditorCardShow },
     })
   }
 
@@ -80,7 +81,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  editCollection: () => dispatch(editorEditSlide()),
+  editCollection: properties => dispatch(editorEditCollection(properties)),
   addSlideQuiz: () => dispatch(editorAddSlideQuiz()),
   duplicateSlide: id => dispatch(editorDuplicateSlide(id)),
   deleteSlide: id => dispatch(editorDeleteSlide(id)),

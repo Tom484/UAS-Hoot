@@ -31,7 +31,7 @@ const timeValues = [
   { value: 30, label: "30 seconds" },
   { value: 60, label: "1 minute" },
   { value: 120, label: "2 minutes" },
-  { value: 240, label: "5 minutes" },
+  { value: 300, label: "5 minutes" },
 ]
 
 const pointsValues = [

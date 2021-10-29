@@ -4,7 +4,7 @@ import { selectEditorCollection } from "../../redux/editor/editorSelectors"
 import SlideEditor from "../../components/editor/slideEditor/SlideEditor"
 import SlidesEditor from "../../components/editor/slidesEditor/SlidesEditor"
 import SlidePropertiesEditor from "../../components/editor/slidePropertiesEditor/SlidePropertiesEditor"
-// import CollectionEditor from "../../components/editor/collectionEditor/CollectionEditor"
+import CollectionEditorCard from "../../components/editor/collectionEditorCard/CollectionEditorCard"
 
 import "./editorPage.scss"
 
@@ -15,7 +15,7 @@ const EditorPage = () => {
         <SlidesEditor />
         <SlideEditor />
         <SlidePropertiesEditor />
-        {/* <CollectionEditor /> */}
+        <CollectionEditorCard />
       </div>
     </div>
   )

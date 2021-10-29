@@ -7,7 +7,7 @@ import "./slideEditorQuizOptions.scss"
 
 const SlideEditorQuizOptions = ({ optionsArray }) => {
   return (
-    <div>
+    <div className="slide-editor-quiz-options">
       {optionsArray.map((option, i) => (
         <SlideEditorQuizOption key={option.id} option={option} order={i + 1} />
       ))}
