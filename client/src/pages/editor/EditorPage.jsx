@@ -1,14 +1,25 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { connect } from "react-redux"
-import { selectEditorCollection } from "../../redux/editor/editorSelectors"
 import SlideEditor from "../../components/editor/slideEditor/SlideEditor"
 import SlidesEditor from "../../components/editor/slidesEditor/SlidesEditor"
 import SlidePropertiesEditor from "../../components/editor/slidePropertiesEditor/SlidePropertiesEditor"
 import CollectionEditorCard from "../../components/editor/collectionEditorCard/CollectionEditorCard"
 
 import "./editorPage.scss"
+import { withRouter } from "react-router-dom"
+import { selectUserCollection } from "../../redux/collections/collectionsSelectors"
+import { editorCopyCollection } from "../../redux/editor/editorActions"
 
-const EditorPage = () => {
+const EditorPage = ({ collection, copyCollection, history }) => {
+  useEffect(() => {
+    if (collection) {
+      copyCollection(collection)
+    } else {
+      history.push("/library")
+    }
+    // eslint-disable-next-line
+  }, [])
+
   return (
     <div className="editor-page">
       <div className="editor-page-container">
@@ -21,8 +32,12 @@ const EditorPage = () => {
   )
 }
 
-const mapStateToProps = state => ({
-  collection: selectEditorCollection(state),
+const mapStateToProps = (state, ownProps) => ({
+  collection: selectUserCollection(ownProps.match.params.collectionId)(state),
 })
 
-export default connect(mapStateToProps)(EditorPage)
+const mapDispatchToProps = dispatch => ({
+  copyCollection: properties => dispatch(editorCopyCollection(properties)),
+})
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(EditorPage))

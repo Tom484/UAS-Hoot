@@ -21,6 +21,8 @@ const editorReducer = (state = INITIAL_STATE, action) => {
   const collection = state.collection
 
   switch (action.type) {
+    case EditorActions.EDITOR_COPY_COLLECTION:
+      return { ...state, collection: action.payload }
     case EditorActions.EDITOR_EDIT_COLLECTION:
       return {
         ...state,

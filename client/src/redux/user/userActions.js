@@ -1,5 +1,9 @@
 import UserActionTypes from "./userTypes"
 
+export const completedAuthInitialProcess = () => ({
+  type: UserActionTypes.COMPLETED_AUTH_INITIAL_PROCESS,
+})
+
 export const signInSuccess = user => ({
   type: UserActionTypes.SIGN_IN_SUCCESS,
   payload: user,

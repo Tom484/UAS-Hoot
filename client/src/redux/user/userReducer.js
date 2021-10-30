@@ -3,10 +3,16 @@ import UserActionTypes from "./userTypes"
 const INITIAL_STATE = {
   currentUser: null,
   error: null,
+  completedAuthInitialProcess: false,
 }
 
 const userReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
+    case UserActionTypes.COMPLETED_AUTH_INITIAL_PROCESS:
+      return {
+        ...state,
+        completedAuthInitialProcess: true,
+      }
     case UserActionTypes.SIGN_IN_SUCCESS:
       return {
         ...state,

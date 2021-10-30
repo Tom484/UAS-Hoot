@@ -45,7 +45,6 @@ const EditorButton = ({
   }
 
   const collectionEditorCardToggleShowHandler = () => {
-    console.log("call")
     editCollection({
       properties: { collectionEditorCardShow: !collection.collectionEditorCardShow },
     })

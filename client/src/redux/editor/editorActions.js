@@ -1,5 +1,10 @@
 import EditorActions from "./editorTypes"
 
+export const editorCopyCollection = collection => ({
+  type: EditorActions.EDITOR_COPY_COLLECTION,
+  payload: collection,
+})
+
 export const editorEditCollection = properties => ({
   type: EditorActions.EDITOR_EDIT_COLLECTION,
   payload: properties,

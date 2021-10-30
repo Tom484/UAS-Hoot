@@ -3,9 +3,10 @@ import React, { useEffect } from "react"
 import { Route, Switch, Redirect } from "react-router-dom"
 import { connect } from "react-redux"
 
-import { addCollectionAndDocuments, auth } from "../firebase/firebaseUtils"
+// import { addCollectionAndDocuments } from "../firebase/firebaseUtils"
 import { checkUserSession } from "../redux/user/userActions"
 import PrivateRoute from "./components/privateRoute/PrivateRoute"
+import { selectCurrentUser } from "../redux/user/userSelectors"
 
 // Import pages
 import HomePage from "../pages/home/HomePage"
@@ -13,38 +14,31 @@ import NotFoundPage from "../pages/notFound/NotFoundPage"
 import SingIn from "../pages/signInAndSignUp/SignInAndSignUpPage"
 import HeaderComponent from "../components/components/header/HeaderComponent"
 
-import EditPage from "../pages/edit/EditPage"
+// import EditPage from "../pages/edit/EditPage"
 import DiscoverPage from "../pages/discover/DiscoverPage"
 import LibraryPage from "../pages/library/LibraryPage"
 import ReportsPage from "../pages/reports/ReportsPage"
-import { createCollection } from "../redux/collections/collectionsActions"
+import { fetchCollectionsStart } from "../redux/collections/collectionsActions"
 import AccountPage from "../pages/account/AccountPage"
 import EditorPage from "../pages/editor/EditorPage"
-import { collectionSkeleton } from "../redux/collections/collectionsSkeleton"
-import uuid from "react-uuid"
+// import { collectionSkeleton } from "../redux/collections/collectionsSkeleton"
+// import uuid from "react-uuid"
 
-const App = ({ createCollection, checkUserSession }) => {
+const App = ({ checkUserSession, fetchCollectionsStart, currentUser }) => {
   useEffect(() => {
     checkUserSession()
-
+    if (currentUser) {
+      fetchCollectionsStart()
+    }
     // addCollectionAndDocuments(
     //   collectionSkeleton({
     //     collectionId: uuid(),
     //     properties: { name: "Project", author: "Tom", authorId: "afSp6Gd7Y9Sh2HsEAoH6bayZSjx2" },
     //   }),
-    //   "afSp6Gd7Y9Sh2HsEAoH6bayZSjx2"
     // )
 
-    createCollection({
-      collectionId: "formula",
-      properties: {
-        name: "Formula 1",
-        author: "Tomas Kurka44",
-        authorId: "afSp6Gd7Y9Sh2HsEAoH6bayZSjx2",
-      },
-    })
     // eslint-disable-next-line
-  }, [])
+  }, [currentUser])
 
   return (
     <div>
@@ -75,17 +69,10 @@ const App = ({ createCollection, checkUserSession }) => {
           exact
           onlyLogged={true}
           redirect="/"
-          path="/edit/:collectionId"
-          component={EditPage}
-        />
-        <PrivateRoute
-          exact
-          onlyLogged={true}
-          redirect="/"
           path="/account"
           component={AccountPage}
         />
-        <Route exact path="/editor" component={EditorPage} />
+        <Route exact path="/editor/:collectionId" component={EditorPage} />
         <PrivateRoute exact onlyLogged={false} redirect="/" path="/sign-in" component={SingIn} />
         <Route exact path="/" component={HomePage} />
         <Route exact path="/not-found" component={NotFoundPage} />
@@ -95,9 +82,13 @@ const App = ({ createCollection, checkUserSession }) => {
   )
 }
 
-const mapDispatchToProps = dispatch => ({
-  createCollection: properties => dispatch(createCollection(properties)),
-  checkUserSession: () => dispatch(checkUserSession()),
+const mapStateToProps = state => ({
+  currentUser: selectCurrentUser(state),
 })
 
-export default connect(null, mapDispatchToProps)(App)
+const mapDispatchToProps = dispatch => ({
+  checkUserSession: () => dispatch(checkUserSession()),
+  fetchCollectionsStart: () => dispatch(fetchCollectionsStart()),
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)

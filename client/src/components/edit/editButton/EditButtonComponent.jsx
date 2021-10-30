@@ -3,11 +3,8 @@ import { connect } from "react-redux"
 import { withRouter } from "react-router-dom"
 import EDIT_BUTTON_TYPES from "./editButtonTypes"
 import {
-  addSlideQuiz,
   createCollection,
   deleteCollection,
-  deleteSlide,
-  duplicateSlide,
   editCollection,
 } from "../../../redux/collections/collectionsActions"
 import { selectUserCollection } from "../../../redux/collections/collectionsSelectors"
@@ -28,9 +25,6 @@ const EditButtonComponent = ({
   currentUser,
   createCollection,
   deleteCollection,
-  duplicateSlide,
-  deleteSlide,
-  addSlideQuiz,
 }) => {
   collectionId = collectionId || match.params.collectionId
   slideId = slideId || collection?.currentSlideId
@@ -45,15 +39,6 @@ const EditButtonComponent = ({
         break
       case EDIT_BUTTON_TYPES.DELETE_COLLECTION.id:
         deleteCollectionHandler()
-        break
-      case EDIT_BUTTON_TYPES.ADD_SLIDE_QUIZ.id:
-        addSlideQuizHandler()
-        break
-      case EDIT_BUTTON_TYPES.DUPLICATE_SLIDE.id:
-        duplicateSlideHandler()
-        break
-      case EDIT_BUTTON_TYPES.DELETE_SLIDE.id:
-        deleteSlideHandler()
         break
       case EDIT_BUTTON_TYPES.LINK_TO_EDIT.id:
         linkToEditHandler()
@@ -83,20 +68,8 @@ const EditButtonComponent = ({
     deleteCollection({ collectionId })
   }
 
-  const addSlideQuizHandler = () => {
-    addSlideQuiz({ collectionId })
-  }
-
-  const duplicateSlideHandler = () => {
-    duplicateSlide({ collectionId, slideId })
-  }
-
-  const deleteSlideHandler = () => {
-    deleteSlide({ collectionId, slideId })
-  }
-
   const linkToEditHandler = () => {
-    history.push(`/edit/${collectionId}`)
+    history.push(`/editor/${collectionId}`)
   }
 
   if (children) return <span onClick={clickHandler}>{children}</span>
@@ -120,9 +93,6 @@ const mapDispatchToProps = dispatch => ({
   editCollection: idAndProperties => dispatch(editCollection(idAndProperties)),
   createCollection: properties => dispatch(createCollection(properties)),
   deleteCollection: id => dispatch(deleteCollection(id)),
-  addSlideQuiz: id => dispatch(addSlideQuiz(id)),
-  duplicateSlide: ids => dispatch(duplicateSlide(ids)),
-  deleteSlide: ids => dispatch(deleteSlide(ids)),
 })
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(EditButtonComponent))

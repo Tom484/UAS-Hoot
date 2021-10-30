@@ -1,18 +1,10 @@
 import CollectionActions from "./collectionsTypes"
-import {
-  createCollection,
-  editCollection,
-  deleteCollection,
-  addSlideQuiz,
-  editSlide,
-  duplicateSlide,
-  deleteSlide,
-  editOption,
-} from "./collectionsUtils"
+import { createCollection, editCollection, deleteCollection } from "./collectionsUtils"
 
 const INITIAL_STATE = {
   userCollections: {},
-  editCollectionId: "",
+  isFetching: false,
+  errorMessage: undefined,
 }
 
 const collectionsReducer = (state = INITIAL_STATE, action) => {
@@ -36,40 +28,12 @@ const collectionsReducer = (state = INITIAL_STATE, action) => {
         ...state,
         userCollections: deleteCollection(userCollections, action.payload),
       }
-
-    case CollectionActions.ADD_SLIDE_QUIZ:
-      return {
-        ...state,
-        userCollections: addSlideQuiz(userCollections, action.payload),
-      }
-
-    case CollectionActions.ADD_SLIDE_TRUE_FALSE:
-      return state
-
-    case CollectionActions.EDIT_SLIDE:
-      return {
-        ...state,
-        userCollections: editSlide(userCollections, action.payload),
-      }
-
-    case CollectionActions.DUPLICATE_SLIDE:
-      return {
-        ...state,
-        userCollections: duplicateSlide(userCollections, action.payload),
-      }
-
-    case CollectionActions.DELETE_SLIDE:
-      return {
-        ...state,
-        userCollections: deleteSlide(userCollections, action.payload),
-      }
-
-    case CollectionActions.EDIT_OPTION:
-      return {
-        ...state,
-        userCollections: editOption(userCollections, action.payload),
-      }
-
+    case CollectionActions.FETCH_COLLECTIONS_START:
+      return { ...state, isFetching: true }
+    case CollectionActions.FETCH_COLLECTIONS_SUCCESS:
+      return { ...state, userCollections: action.payload, isFetching: false }
+    case CollectionActions.FETCH_COLLECTIONS_FAILURE:
+      return { ...state, errorMessage: action.payload, isFetching: false }
     default:
       return state
   }

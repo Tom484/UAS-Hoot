@@ -10,6 +10,7 @@ import {
 } from "../../firebase/firebaseUtils"
 
 import {
+  completedAuthInitialProcess,
   signInFailure,
   signInSuccess,
   signOutFailure,
@@ -67,8 +68,10 @@ export function* signInAfterSignUp({ payload: { user, additionalData } }) {
 export function* isUserAuthenticated() {
   try {
     const userAuth = yield getCurrentUser()
-    if (!userAuth) return
-    yield getSnapshotFromUserAuth(userAuth)
+    if (userAuth) {
+      yield getSnapshotFromUserAuth(userAuth)
+    }
+    yield put(completedAuthInitialProcess())
   } catch (error) {
     put(signInFailure(error))
   }
