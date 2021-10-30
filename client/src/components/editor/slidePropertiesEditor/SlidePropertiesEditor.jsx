@@ -1,10 +1,11 @@
 import React from "react"
+import { withRouter } from "react-router-dom"
 import EditorButton from "../editorButton/EditorButton"
 import SelectBoxEditorProperties from "../selectBoxEditorProperties/SelectBoxEditorProperties"
 
 import "./slidePropertiesEditor.scss"
 
-const SlidePropertiesEditor = () => {
+const SlidePropertiesEditor = ({ match }) => {
   return (
     <div className="slide-properties-editor">
       <div className="slide-properties-editor-container">
@@ -16,13 +17,18 @@ const SlidePropertiesEditor = () => {
           <EditorButton type="DUPLICATE_SLIDE" className="w-100" />
           <EditorButton type="DELETE_SLIDE" className="w-100" />
           <EditorButton type="COLLECTION_EDITOR_CARD_TOGGLE_SHOW" className="w-100 span-full" />
+          <EditorButton
+            type="SAVE_COLLECTION"
+            className="w-100 span-full"
+            collectionId={match.params.collectionId}
+          />
         </div>
       </div>
     </div>
   )
 }
 
-export default SlidePropertiesEditor
+export default withRouter(SlidePropertiesEditor)
 
 const timeValues = [
   { value: 5, label: "5 seconds" },

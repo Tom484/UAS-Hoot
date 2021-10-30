@@ -9,6 +9,8 @@ const EditButtonTypes = {
 
   DUPLICATE_SLIDE: { id: "DUPLICATE_SLIDE", label: "Duplicate" },
   DELETE_SLIDE: { id: "DELETE_SLIDE", label: "Delete" },
+
+  SAVE_COLLECTION: { id: "SAVE_COLLECTION", label: "Save" },
 }
 
 export default EditButtonTypes

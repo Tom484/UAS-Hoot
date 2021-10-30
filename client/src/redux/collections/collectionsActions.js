@@ -44,3 +44,18 @@ export const fetchCollectionsFailure = errorMessage => ({
   type: CollectionActions.FETCH_COLLECTIONS_FAILURE,
   error: errorMessage,
 })
+
+export const saveCollectionStart = id => ({
+  type: CollectionActions.SAVE_COLLECTION_START,
+  payload: id,
+})
+
+export const saveCollectionSuccess = collections => ({
+  type: CollectionActions.SAVE_COLLECTION_SUCCESS,
+  payload: collections,
+})
+
+export const saveCollectionFailure = error => ({
+  type: CollectionActions.SAVE_COLLECTION_FAILURE,
+  payload: error,
+})

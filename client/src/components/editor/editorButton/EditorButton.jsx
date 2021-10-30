@@ -1,5 +1,6 @@
 import React from "react"
 import { connect } from "react-redux"
+import { saveCollectionStart } from "../../../redux/collections/collectionsActions"
 import {
   editorDeleteSlide,
   editorAddSlideQuiz,
@@ -16,14 +17,19 @@ const EditorButton = ({
   addSlideQuiz,
   duplicateSlide,
   deleteSlide,
+  saveCollection,
   type,
   slideId,
+  collectionId,
   className,
   children,
   label,
 }) => {
   const clickHandler = () => {
     switch (type) {
+      case EditorButtonTypes.SAVE_COLLECTION.id:
+        collectionSaveHandler()
+        break
       case EditorButtonTypes.COLLECTION_EDITOR_CARD_TOGGLE_SHOW.id:
         collectionEditorCardToggleShowHandler()
         break
@@ -42,6 +48,9 @@ const EditorButton = ({
       default:
         console.log("Error! Enter correct type name!")
     }
+  }
+  const collectionSaveHandler = () => {
+    saveCollection({ collectionId })
   }
 
   const collectionEditorCardToggleShowHandler = () => {
@@ -84,6 +93,7 @@ const mapDispatchToProps = dispatch => ({
   addSlideQuiz: () => dispatch(editorAddSlideQuiz()),
   duplicateSlide: id => dispatch(editorDuplicateSlide(id)),
   deleteSlide: id => dispatch(editorDeleteSlide(id)),
+  saveCollection: id => dispatch(saveCollectionStart(id)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditorButton)

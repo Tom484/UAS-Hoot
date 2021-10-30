@@ -7,6 +7,8 @@ import {
   deleteCollectionSuccess,
   fetchCollectionsFailure,
   fetchCollectionsSuccess,
+  saveCollectionFailure,
+  saveCollectionSuccess,
 } from "./collectionsActions"
 import { selectUserCollections } from "./collectionsSelectors"
 import { deleteCollection } from "./collectionsUtils"
@@ -15,6 +17,7 @@ import uuid from "react-uuid"
 
 import CollectionActions from "./collectionsTypes"
 import { selectCurrentUser } from "../user/userSelectors"
+import { selectEditorCollection } from "../editor/editorSelectors"
 
 export function* fetchCollectionAsync({ payload }) {
   try {
@@ -68,6 +71,22 @@ export function* createCollectionAsync({ payload }) {
   }
 }
 
+export function* saveCollectionAsync({ payload: { collectionId } }) {
+  try {
+    const currentUser = yield select(selectCurrentUser)
+    const newCollection = yield select(selectEditorCollection)
+    const collections = yield select(selectUserCollections)
+
+    const collectionRef = yield firestore.collection(`collections`).doc(currentUser.id)
+    yield collectionRef.update({ [collectionId]: newCollection })
+
+    collections[collectionId] = newCollection
+    yield put(saveCollectionSuccess(collections))
+  } catch (error) {
+    yield put(saveCollectionFailure(error.message))
+  }
+}
+
 export function* fetchCollectionsStart() {
   yield takeLatest(CollectionActions.FETCH_COLLECTIONS_START, fetchCollectionAsync)
 }
@@ -80,6 +99,15 @@ export function* createCollectionStart() {
   yield takeLatest(CollectionActions.CREATE_COLLECTION_START, createCollectionAsync)
 }
 
+export function* saveCollectionStart() {
+  yield takeLatest(CollectionActions.SAVE_COLLECTION_START, saveCollectionAsync)
+}
+
 export function* collectionsSagas() {
-  yield all([call(fetchCollectionsStart), call(deleteCollectionStart), call(createCollectionStart)])
+  yield all([
+    call(fetchCollectionsStart),
+    call(deleteCollectionStart),
+    call(createCollectionStart),
+    call(saveCollectionStart),
+  ])
 }

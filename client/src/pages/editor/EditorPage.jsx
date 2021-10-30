@@ -9,8 +9,9 @@ import "./editorPage.scss"
 import { withRouter } from "react-router-dom"
 import { selectUserCollection } from "../../redux/collections/collectionsSelectors"
 import { editorCopyCollection } from "../../redux/editor/editorActions"
+import { selectEditorCollection } from "../../redux/editor/editorSelectors"
 
-const EditorPage = ({ collection, copyCollection, history }) => {
+const EditorPage = ({ editorCollection, collection, copyCollection, history }) => {
   useEffect(() => {
     if (collection) {
       copyCollection(collection)
@@ -19,6 +20,8 @@ const EditorPage = ({ collection, copyCollection, history }) => {
     }
     // eslint-disable-next-line
   }, [])
+
+  if (editorCollection === {}) return <div>Loading</div>
 
   return (
     <div className="editor-page">
@@ -34,6 +37,7 @@ const EditorPage = ({ collection, copyCollection, history }) => {
 
 const mapStateToProps = (state, ownProps) => ({
   collection: selectUserCollection(ownProps.match.params.collectionId)(state),
+  editorCollection: selectEditorCollection(state),
 })
 
 const mapDispatchToProps = dispatch => ({
