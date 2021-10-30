@@ -1,24 +1,38 @@
 import CollectionActions from "./collectionsTypes"
 
-import { firestore } from "../../firebase/firebaseUtils"
-
-export const createCollection = properties => ({
-  type: CollectionActions.CREATE_COLLECTION,
-  payload: properties,
-})
-
-export const editCollection = idAndProperties => ({
-  type: CollectionActions.EDIT_COLLECTION,
-  payload: idAndProperties,
-})
-
-export const deleteCollection = id => ({
-  type: CollectionActions.DELETE_COLLECTION,
+export const deleteCollectionStart = id => ({
+  type: CollectionActions.DELETE_COLLECTION_START,
   payload: id,
 })
 
-export const fetchCollectionsStart = () => ({
+export const deleteCollectionSuccess = collections => ({
+  type: CollectionActions.DELETE_COLLECTION_SUCCESS,
+  payload: collections,
+})
+
+export const deleteCollectionFailure = errorMessage => ({
+  type: CollectionActions.DELETE_COLLECTION_FAILURE,
+  payload: errorMessage,
+})
+
+export const createCollectionStart = properties => ({
+  type: CollectionActions.CREATE_COLLECTION_START,
+  payload: properties,
+})
+
+export const createCollectionSuccess = collections => ({
+  type: CollectionActions.CREATE_COLLECTION_SUCCESS,
+  payload: collections,
+})
+
+export const createCollectionFailure = errorMessage => ({
+  type: CollectionActions.CREATE_COLLECTION_FAILURE,
+  payload: errorMessage,
+})
+
+export const fetchCollectionsStart = currentUser => ({
   type: CollectionActions.FETCH_COLLECTIONS_START,
+  payload: currentUser,
 })
 
 export const fetchCollectionsSuccess = collections => ({

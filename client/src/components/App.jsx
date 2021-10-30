@@ -3,7 +3,6 @@ import React, { useEffect } from "react"
 import { Route, Switch, Redirect } from "react-router-dom"
 import { connect } from "react-redux"
 
-// import { addCollectionAndDocuments } from "../firebase/firebaseUtils"
 import { checkUserSession } from "../redux/user/userActions"
 import PrivateRoute from "./components/privateRoute/PrivateRoute"
 import { selectCurrentUser } from "../redux/user/userSelectors"
@@ -14,13 +13,13 @@ import NotFoundPage from "../pages/notFound/NotFoundPage"
 import SingIn from "../pages/signInAndSignUp/SignInAndSignUpPage"
 import HeaderComponent from "../components/components/header/HeaderComponent"
 
-// import EditPage from "../pages/edit/EditPage"
 import DiscoverPage from "../pages/discover/DiscoverPage"
 import LibraryPage from "../pages/library/LibraryPage"
 import ReportsPage from "../pages/reports/ReportsPage"
 import { fetchCollectionsStart } from "../redux/collections/collectionsActions"
 import AccountPage from "../pages/account/AccountPage"
 import EditorPage from "../pages/editor/EditorPage"
+// import { addCollectionAndDocuments } from "../firebase/firebaseUtils"
 // import { collectionSkeleton } from "../redux/collections/collectionsSkeleton"
 // import uuid from "react-uuid"
 
@@ -28,14 +27,20 @@ const App = ({ checkUserSession, fetchCollectionsStart, currentUser }) => {
   useEffect(() => {
     checkUserSession()
     if (currentUser) {
-      fetchCollectionsStart()
+      fetchCollectionsStart(currentUser)
     }
-    // addCollectionAndDocuments(
-    //   collectionSkeleton({
-    //     collectionId: uuid(),
-    //     properties: { name: "Project", author: "Tom", authorId: "afSp6Gd7Y9Sh2HsEAoH6bayZSjx2" },
-    //   }),
-    // )
+    // for (let i = 0; i < 20; i++) {
+    //   addCollectionAndDocuments(
+    //     collectionSkeleton({
+    //       collectionId: uuid(),
+    //       properties: {
+    //         name: "Project" + Math.round(Math.random() * 1000),
+    //         author: "Tom",
+    //         authorId: "afSp6Gd7Y9Sh2HsEAoH6bayZSjx2",
+    //       },
+    //     })
+    //   )
+    // }
 
     // eslint-disable-next-line
   }, [currentUser])
@@ -88,7 +93,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   checkUserSession: () => dispatch(checkUserSession()),
-  fetchCollectionsStart: () => dispatch(fetchCollectionsStart()),
+  fetchCollectionsStart: currentUser => dispatch(fetchCollectionsStart(currentUser)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)
