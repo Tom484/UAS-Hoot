@@ -3,7 +3,7 @@ import React, { useEffect } from "react"
 import { Route, Switch, Redirect } from "react-router-dom"
 import { connect } from "react-redux"
 
-// import { addCollectionAndDocuments, auth } from "../firebase/firebaseUtils"
+import { addCollectionAndDocuments, auth } from "../firebase/firebaseUtils"
 import { checkUserSession } from "../redux/user/userActions"
 import PrivateRoute from "./components/privateRoute/PrivateRoute"
 
@@ -20,7 +20,8 @@ import ReportsPage from "../pages/reports/ReportsPage"
 import { createCollection } from "../redux/collections/collectionsActions"
 import AccountPage from "../pages/account/AccountPage"
 import EditorPage from "../pages/editor/EditorPage"
-// import { collectionSkeleton } from "../redux/collections/collectionsSkeleton"
+import { collectionSkeleton } from "../redux/collections/collectionsSkeleton"
+import uuid from "react-uuid"
 
 const App = ({ createCollection, checkUserSession }) => {
   useEffect(() => {
@@ -28,15 +29,19 @@ const App = ({ createCollection, checkUserSession }) => {
 
     // addCollectionAndDocuments(
     //   collectionSkeleton({
-    //     collectionId: "col" + Math.round(Math.random() * 10000),
-    //     properties: { name: "name", author: "author", authorId: "authorId" },
+    //     collectionId: uuid(),
+    //     properties: { name: "Project", author: "Tom", authorId: "afSp6Gd7Y9Sh2HsEAoH6bayZSjx2" },
     //   }),
-    //   auth.currentUser
+    //   "afSp6Gd7Y9Sh2HsEAoH6bayZSjx2"
     // )
 
     createCollection({
       collectionId: "formula",
-      properties: { name: "Formula 1", author: "Tomas Kurka44" },
+      properties: {
+        name: "Formula 1",
+        author: "Tomas Kurka44",
+        authorId: "afSp6Gd7Y9Sh2HsEAoH6bayZSjx2",
+      },
     })
     // eslint-disable-next-line
   }, [])
