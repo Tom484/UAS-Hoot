@@ -1,8 +1,8 @@
 import React from "react"
 
-import "./formInputComponent.scss"
+import "./formInput.scss"
 
-const FormInputComponent = ({ handleChange, label, ...props }) => {
+const FormInput = ({ handleChange, label, ...props }) => {
   return (
     <div>
       <span>{label}</span>
@@ -11,4 +11,4 @@ const FormInputComponent = ({ handleChange, label, ...props }) => {
   )
 }
 
-export default FormInputComponent
+export default FormInput

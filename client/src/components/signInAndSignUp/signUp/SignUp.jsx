@@ -1,8 +1,8 @@
 import React, { useState } from "react"
 import { connect } from "react-redux"
 import { emailSignUpStart } from "../../../redux/user/userActions"
-import ButtonComponent from "../../components/button/ButtonComponent"
-import FormInputComponent from "../../components/formInput/FormInputComponent"
+import Button from "../../components/button/Button"
+import FormInput from "../../components/formInput/FormInput"
 
 import "./signUp.scss"
 
@@ -35,7 +35,7 @@ const SignUpComponent = ({ emailSignUpStart }) => {
     <div className="sign-up-component">
       <div>Sign up with email and password</div>
       <form className="container" onSubmit={handleSubmit}>
-        <FormInputComponent
+        <FormInput
           name="displayName"
           type="text"
           handleChange={handleChange}
@@ -43,7 +43,7 @@ const SignUpComponent = ({ emailSignUpStart }) => {
           label="Nickname"
           required
         />
-        <FormInputComponent
+        <FormInput
           name="email"
           type="email"
           handleChange={handleChange}
@@ -51,7 +51,7 @@ const SignUpComponent = ({ emailSignUpStart }) => {
           label="Email"
           required
         />
-        <FormInputComponent
+        <FormInput
           name="password"
           type="password"
           value={userCredentials.password}
@@ -59,7 +59,7 @@ const SignUpComponent = ({ emailSignUpStart }) => {
           label="Password"
           required
         />
-        <FormInputComponent
+        <FormInput
           name="passwordConfirm"
           type="password"
           value={userCredentials.passwordConfirm}
@@ -67,7 +67,7 @@ const SignUpComponent = ({ emailSignUpStart }) => {
           label="Password Confirmation"
           required
         />
-        <ButtonComponent type="submit">Sign Up</ButtonComponent>
+        <Button type="submit">Sign Up</Button>
       </form>
     </div>
   )

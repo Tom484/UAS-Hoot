@@ -1,7 +1,7 @@
 import React from "react"
 import PreviewCollectionsContainer from "../../components/library/previewCollectionsContainer/PreviewCollectionsContainer"
 import "./libraryPage.scss"
-import EditButtonComponent from "../../components/components/editButton/EditButtonComponent"
+import EditButton from "../../components/components/editButton/EditButton"
 
 const LibraryPage = () => {
   return (
@@ -9,7 +9,7 @@ const LibraryPage = () => {
       <div className="library-page-container">
         <div className="library-page-header">
           <h2>Your Library</h2>
-          <EditButtonComponent type="CREATE_COLLECTION" />
+          <EditButton type="CREATE_COLLECTION" />
         </div>
         <PreviewCollectionsContainer />
       </div>

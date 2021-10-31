@@ -34,16 +34,11 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
         ...additionalData,
       })
     } catch (e) {
-      console.log("error creating user", e.message)
+      console.log("Error creating user", e.message)
     }
   }
 
   return userRef
-}
-
-export const addCollectionAndDocuments = (object, authorId) => {
-  const userRef = firestore.doc(`collections/afSp6Gd7Y9Sh2HsEAoH6bayZSjx2/`)
-  userRef.update(object)
 }
 
 export const getCurrentUser = () => {

@@ -3,7 +3,6 @@ import { Route, Redirect } from "react-router-dom"
 import { connect } from "react-redux"
 
 const PrivateRoute = ({ currentUser, onlyLogged, redirect, ...rest }) => {
-  // return <Route {...rest} />
   return onlyLogged === !!currentUser ? <Route {...rest} /> : <Redirect to={redirect} />
 }
 

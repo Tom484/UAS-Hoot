@@ -7,14 +7,9 @@ import {
   editorDeleteSlide,
   editorEditOption,
 } from "./editorUtils"
-import { createCollection } from "./functions/editCollection"
 
 const INITIAL_STATE = {
-  collection: createCollection({
-    name: "Project 1",
-    author: "Tomáš Kůrka",
-    authorId: "authorID123",
-  }),
+  collection: undefined,
 }
 
 const editorReducer = (state = INITIAL_STATE, action) => {

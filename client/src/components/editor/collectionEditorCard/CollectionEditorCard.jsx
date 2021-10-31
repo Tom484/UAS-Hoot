@@ -2,7 +2,7 @@ import React from "react"
 import { connect } from "react-redux"
 import { editorEditCollection } from "../../../redux/editor/editorActions"
 import { selectEditorCollection } from "../../../redux/editor/editorSelectors"
-import CustomSelectBoxComponent from "../../components/customSelectBox/CustomSelectBoxComponent"
+import CustomSelectBox from "../../components/customSelectBox/CustomSelectBox"
 import EditorButton from "../editorButton/EditorButton"
 
 import "./collectionEditorCard.scss"
@@ -35,7 +35,7 @@ const CollectionEditorCard = ({ collection, editCollection }) => {
 
                 <div className="box">
                   <div className="label">Language</div>
-                  <CustomSelectBoxComponent
+                  <CustomSelectBox
                     options={languageOptions}
                     value={language}
                     onChange={e => edit({ language: e })}
@@ -55,7 +55,7 @@ const CollectionEditorCard = ({ collection, editCollection }) => {
 
                 <div className="box">
                   <div className="label">Lobby Music</div>
-                  <CustomSelectBoxComponent
+                  <CustomSelectBox
                     options={musicOptions}
                     value={lobbyMusic}
                     onChange={e => edit({ lobbyMusic: e })}

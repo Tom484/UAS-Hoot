@@ -21,7 +21,7 @@ const EditorPage = ({ editorCollection, collection, copyCollection, history }) =
     // eslint-disable-next-line
   }, [])
 
-  if (editorCollection === {}) return <div>Loading</div>
+  if (!editorCollection) return <div>Loading</div>
 
   return (
     <div className="editor-page">

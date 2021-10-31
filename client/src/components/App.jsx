@@ -11,7 +11,7 @@ import { selectCurrentUser } from "../redux/user/userSelectors"
 import HomePage from "../pages/home/HomePage"
 import NotFoundPage from "../pages/notFound/NotFoundPage"
 import SingIn from "../pages/signInAndSignUp/SignInAndSignUpPage"
-import HeaderComponent from "../components/components/header/HeaderComponent"
+import Header from "../components/components/header/Header"
 
 import DiscoverPage from "../pages/discover/DiscoverPage"
 import LibraryPage from "../pages/library/LibraryPage"
@@ -19,9 +19,6 @@ import ReportsPage from "../pages/reports/ReportsPage"
 import { fetchCollectionsStart } from "../redux/collections/collectionsActions"
 import AccountPage from "../pages/account/AccountPage"
 import EditorPage from "../pages/editor/EditorPage"
-// import { addCollectionAndDocuments } from "../firebase/firebaseUtils"
-// import { collectionSkeleton } from "../redux/collections/collectionsSkeleton"
-// import uuid from "react-uuid"
 
 const App = ({ checkUserSession, fetchCollectionsStart, currentUser }) => {
   useEffect(() => {
@@ -29,25 +26,12 @@ const App = ({ checkUserSession, fetchCollectionsStart, currentUser }) => {
     if (currentUser) {
       fetchCollectionsStart(currentUser)
     }
-    // for (let i = 0; i < 20; i++) {
-    //   addCollectionAndDocuments(
-    //     collectionSkeleton({
-    //       collectionId: uuid(),
-    //       properties: {
-    //         name: "Project" + Math.round(Math.random() * 1000),
-    //         author: "Tom",
-    //         authorId: "afSp6Gd7Y9Sh2HsEAoH6bayZSjx2",
-    //       },
-    //     })
-    //   )
-    // }
-
     // eslint-disable-next-line
   }, [currentUser])
 
   return (
     <div>
-      <HeaderComponent />
+      <Header />
       <Switch>
         <PrivateRoute
           exact

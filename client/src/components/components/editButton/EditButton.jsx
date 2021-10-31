@@ -8,7 +8,7 @@ import {
 } from "../../../redux/collections/collectionsActions"
 import { toggleFavoriteCollectionStart } from "../../../redux/user/userActions"
 
-const EditButtonComponent = ({
+const EditButton = ({
   type,
   collectionId,
   history,
@@ -71,4 +71,4 @@ const mapDispatchToProps = dispatch => ({
   toggleFavoriteCollection: id => dispatch(toggleFavoriteCollectionStart(id)),
 })
 
-export default withRouter(connect(null, mapDispatchToProps)(EditButtonComponent))
+export default withRouter(connect(null, mapDispatchToProps)(EditButton))

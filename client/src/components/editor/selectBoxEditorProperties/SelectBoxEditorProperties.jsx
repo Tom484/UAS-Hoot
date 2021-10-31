@@ -2,7 +2,7 @@ import React from "react"
 import { connect } from "react-redux"
 import { editorEditSlide } from "../../../redux/editor/editorActions"
 import { selectEditorSlideCurrent } from "../../../redux/editor/editorSelectors"
-import CustomSelectBoxComponent from "../../components/customSelectBox/CustomSelectBoxComponent"
+import CustomSelectBox from "../../components/customSelectBox/CustomSelectBox"
 
 import "./selectBoxEditorProperties.scss"
 
@@ -17,11 +17,11 @@ const SelectBoxEditorProperties = ({ slide, editSlide, label, options, name }) =
   return (
     <div className="select-box-container">
       <div className="label">{label}</div>
-      <CustomSelectBoxComponent
+      <CustomSelectBox
         options={options}
         onChange={changeHandler}
         value={slide[name]}
-      ></CustomSelectBoxComponent>
+      ></CustomSelectBox>
     </div>
   )
 }

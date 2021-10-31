@@ -1,7 +1,9 @@
 import React from "react"
 import Select from "react-select"
 
-const CustomSelectBoxComponent = ({ ...props }) => {
+import "./customSelectBox.scss"
+
+const CustomSelectBox = ({ ...props }) => {
   return <Select theme={theme} {...props} />
 }
 
@@ -17,4 +19,4 @@ const theme = theme => ({
   },
 })
 
-export default CustomSelectBoxComponent
+export default CustomSelectBox

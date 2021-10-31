@@ -1,6 +1,6 @@
 import React, { useState } from "react"
-import ButtonComponent from "../../components/button/ButtonComponent"
-import FormInputComponent from "../../components/formInput/FormInputComponent"
+import Button from "../../components/button/Button"
+import FormInput from "../../components/formInput/FormInput"
 import { googleSignInStart, emailSignInStart } from "../../../redux/user/userActions"
 
 import "./signIn.scss"
@@ -21,22 +21,13 @@ const SignIn = ({ googleSignInStart, emailSignInStart }) => {
     e.preventDefault()
     const { email, password } = userCredentials
     emailSignInStart(email, password)
-
-    // try {
-    //   const { user } = await auth.signInWithEmailAndPassword(email, password)
-    //   await createUserProfileDocument(user)
-
-    //   setUserCredentials({ email: "", password: "" })
-    // } catch (error) {
-    //   console.error(error)
-    // }
   }
 
   return (
     <div className="sign-in-component">
       <div>Sign in or Sign Up</div>
       <form className="container" onSubmit={handleSubmit}>
-        <FormInputComponent
+        <FormInput
           name="email"
           type="email"
           handleChange={handleChange}
@@ -44,7 +35,7 @@ const SignIn = ({ googleSignInStart, emailSignInStart }) => {
           label="email"
           required
         />
-        <FormInputComponent
+        <FormInput
           name="password"
           type="password"
           value={userCredentials.password}
@@ -52,10 +43,10 @@ const SignIn = ({ googleSignInStart, emailSignInStart }) => {
           label="password"
           required
         />
-        <ButtonComponent type="submit">Sign In</ButtonComponent>
-        <ButtonComponent type="button" onClick={googleSignInStart}>
+        <Button type="submit">Sign In</Button>
+        <Button type="button" onClick={googleSignInStart}>
           Sign In with Google
-        </ButtonComponent>
+        </Button>
       </form>
     </div>
   )

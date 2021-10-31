@@ -1,15 +1,15 @@
 import React from "react"
 import { Link } from "react-router-dom"
 import { connect } from "react-redux"
-import DarkThemeToggleComponent from "../darkThemeToggle/DarkThemeToggleComponent"
+import DarkThemeToggle from "../darkThemeToggle/DarkThemeToggle"
 import { signOutStart } from "../../../redux/user/userActions"
 
-import "./headerComponent.scss"
+import "./header.scss"
 
 const Header = ({ currentUser, signOutStart }) => {
   return (
     <div className="header-component">
-      <DarkThemeToggleComponent />
+      <DarkThemeToggle />
       <Link to="/">Home</Link>
       {currentUser && <Link to="/discover">Discover</Link>}
       {currentUser && <Link to="/library/recent">Library</Link>}
