@@ -15,7 +15,11 @@ button {
   padding: 0.4em 1.2em;
   &:hover {
     background: var(--color-main-2);
-    color: white;
+    color: var(--color-white);
+  }
+  &.active {
+    background: var(--color-main-2);
+    color: var(--color-white);
   }
 }
 

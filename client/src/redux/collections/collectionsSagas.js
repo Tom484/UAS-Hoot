@@ -19,6 +19,8 @@ import CollectionActions from "./collectionsTypes"
 import { selectCurrentUser } from "../user/userSelectors"
 import { selectEditorCollection } from "../editor/editorSelectors"
 
+const deleteReference = object => JSON.parse(JSON.stringify(object))
+
 export function* fetchCollectionAsync({ payload }) {
   try {
     const collectionRef = yield firestore.collection(`collections`).doc(payload.id)
@@ -42,7 +44,7 @@ export function* deleteCollectionAsync({ payload }) {
       collectionId: payload.collectionId,
     })
 
-    yield put(deleteCollectionSuccess(newCollections))
+    yield put(deleteCollectionSuccess(deleteReference(newCollections)))
   } catch (error) {
     yield put(deleteCollectionFailure(error.message))
   }
@@ -64,7 +66,7 @@ export function* createCollectionAsync({ payload }) {
     const collectionRef = yield firestore.collection(`collections`).doc(currentUser.id)
     yield collectionRef.update({ ...newCollection })
 
-    yield put(createCollectionSuccess({ ...collections, ...newCollection }))
+    yield put(createCollectionSuccess(deleteReference({ ...collections, ...newCollection })))
     history.push(`/editor/${collectionId}`)
   } catch (error) {
     yield put(createCollectionFailure(error.message))
@@ -75,13 +77,14 @@ export function* saveCollectionAsync({ payload: { collectionId } }) {
   try {
     const currentUser = yield select(selectCurrentUser)
     const newCollection = yield select(selectEditorCollection)
+    yield (newCollection.changedAt = new Date().getTime())
     const collections = yield select(selectUserCollections)
 
     const collectionRef = yield firestore.collection(`collections`).doc(currentUser.id)
     yield collectionRef.update({ [collectionId]: newCollection })
 
     collections[collectionId] = newCollection
-    yield put(saveCollectionSuccess(collections))
+    yield put(saveCollectionSuccess(deleteReference(collections)))
   } catch (error) {
     yield put(saveCollectionFailure(error.message))
   }

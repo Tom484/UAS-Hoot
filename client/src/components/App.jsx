@@ -60,7 +60,7 @@ const App = ({ checkUserSession, fetchCollectionsStart, currentUser }) => {
           exact
           onlyLogged={true}
           redirect="/"
-          path="/library"
+          path="/library/:sortId"
           component={LibraryPage}
         />
         <PrivateRoute

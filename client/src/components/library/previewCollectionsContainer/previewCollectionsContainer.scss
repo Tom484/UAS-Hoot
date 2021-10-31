@@ -1,0 +1,13 @@
+@import "../../../styles/colors.scss";
+
+.preview-collections-container {
+  .buttons-sort-bar {
+    display: flex;
+    gap: 10px;
+    button {
+      .active-sort {
+        background: black;
+      }
+    }
+  }
+}

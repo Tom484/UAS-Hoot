@@ -37,3 +37,18 @@ export { ReactComponent as ICONTrashOutline } from "./icons/trash/trash-outline.
 export { ReactComponent as ICONCopyBold } from "./icons/copy/copy-bold.svg"
 export { ReactComponent as ICONCopyBroken } from "./icons/copy/copy-broken.svg"
 export { ReactComponent as ICONCopyOutline } from "./icons/copy/copy-outline.svg"
+
+// Edit
+export { ReactComponent as ICONEditBold } from "./icons/edit/edit-bold.svg"
+export { ReactComponent as ICONEditBroken } from "./icons/edit/edit-broken.svg"
+export { ReactComponent as ICONEditOutline } from "./icons/edit/edit-outline.svg"
+
+// Heart
+export { ReactComponent as ICONHeartBold } from "./icons/heart/heart-bold.svg"
+export { ReactComponent as ICONHeartBroken } from "./icons/heart/heart-broken.svg"
+export { ReactComponent as ICONHeartOutline } from "./icons/heart/heart-outline.svg"
+
+// Star
+export { ReactComponent as ICONStarBold } from "./icons/star/star-bold.svg"
+export { ReactComponent as ICONStarBroken } from "./icons/star/star-broken.svg"
+export { ReactComponent as ICONStarOutline } from "./icons/star/star-outline.svg"

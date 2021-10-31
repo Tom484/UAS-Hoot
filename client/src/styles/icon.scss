@@ -1,8 +1,10 @@
 .svg-icon-default-size {
   width: 24px;
+  height: 24px;
 }
 
 .svg-icon-small-size {
+  width: 16px;
   width: 16px;
 }
 
@@ -12,4 +14,10 @@
 
 .svg-icon-default-color {
   fill: rgb(40, 42, 46);
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

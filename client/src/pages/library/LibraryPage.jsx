@@ -1,16 +1,18 @@
 import React from "react"
-import PreviewCollections from "../../components/library/previewCollections/PreviewCollections"
+import PreviewCollectionsContainer from "../../components/library/previewCollectionsContainer/PreviewCollectionsContainer"
 import "./libraryPage.scss"
-import EditButtonComponent from "../../components/edit/editButton/EditButtonComponent"
+import EditButtonComponent from "../../components/components/editButton/EditButtonComponent"
 
 const LibraryPage = () => {
   return (
     <div className="library-page">
-      <div className="library-page-header">
-        <h2>Your Library</h2>
-        <EditButtonComponent type="CREATE_COLLECTION" />
+      <div className="library-page-container">
+        <div className="library-page-header">
+          <h2>Your Library</h2>
+          <EditButtonComponent type="CREATE_COLLECTION" />
+        </div>
+        <PreviewCollectionsContainer />
       </div>
-      <PreviewCollections />
     </div>
   )
 }

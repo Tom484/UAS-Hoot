@@ -1,11 +1,14 @@
 import React from "react"
 import { connect } from "react-redux"
-import { selectUserCollectionsArray } from "../../../redux/collections/collectionsSelectors"
+import { withRouter } from "react-router-dom"
+import { selectUserCollectionsArraySorted } from "../../../redux/collections/collectionsSelectors"
 import PreviewCollection from "../previewCollection/PreviewCollection"
 
 import "./previewCollections.scss"
 
 const PreviewCollections = ({ collectionArray }) => {
+  if (!collectionArray) return <div>Something went wrong</div>
+
   return (
     <div className="preview-collections">
       {collectionArray.map(collection => (
@@ -15,8 +18,11 @@ const PreviewCollections = ({ collectionArray }) => {
   )
 }
 
-const mapStateToProps = state => ({
-  collectionArray: selectUserCollectionsArray(state),
-})
+const mapStateToProps = (state, ownProps) => {
+  const { sortId } = ownProps.match.params
+  return {
+    collectionArray: selectUserCollectionsArraySorted(sortId)(state),
+  }
+}
 
-export default connect(mapStateToProps)(PreviewCollections)
+export default withRouter(connect(mapStateToProps)(PreviewCollections))
