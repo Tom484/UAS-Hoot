@@ -1,4 +1,5 @@
 import { createSelector } from "reselect"
+import { selectCurrentUser } from "../user/userSelectors"
 
 const selectCollections = state => state.collections
 
@@ -12,19 +13,23 @@ export const selectUserCollectionsArray = createSelector([selectUserCollections]
 )
 
 export const selectUserCollectionsArraySorted = sortedId =>
-  createSelector([selectUserCollectionsArray], collectionsArray => {
-    console.log(sortedId)
-    switch (sortedId) {
-      case "recent":
-        return collectionsArray.sort((a, b) => b.changedAt - a.changedAt) || []
-      case "created":
-        return collectionsArray.sort((a, b) => b.createdAt - a.createdAt) || []
-      case "favorites":
-        return collectionsArray || []
-      default:
-        return null
+  createSelector(
+    [selectUserCollectionsArray, selectCurrentUser],
+    (collectionsArray, currentUser) => {
+      const favorites = currentUser?.favorites || []
+
+      switch (sortedId) {
+        case "recent":
+          return collectionsArray.sort((a, b) => b.changedAt - a.changedAt) || []
+        case "created":
+          return collectionsArray.sort((a, b) => b.createdAt - a.createdAt) || []
+        case "favorites":
+          return collectionsArray.filter(collection => favorites.includes(collection.id)) || []
+        default:
+          return null
+      }
     }
-  })
+  )
 
 export const selectUserCollection = collectionId =>
   createSelector([selectUserCollections], userCollections => userCollections[collectionId])

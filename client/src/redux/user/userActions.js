@@ -53,3 +53,18 @@ export const signOutSuccess = () => ({
 export const signOutFailure = () => ({
   type: UserActionTypes.SIGN_OUT_FAILURE,
 })
+
+export const toggleFavoriteCollectionStart = collectionId => ({
+  type: UserActionTypes.TOGGLE_FAVORITE_COLLECTION_START,
+  payload: collectionId,
+})
+
+export const toggleFavoriteCollectionSuccess = currentUser => ({
+  type: UserActionTypes.TOGGLE_FAVORITE_COLLECTION_SUCCESS,
+  payload: currentUser,
+})
+
+export const toggleFavoriteCollectionFailure = errorMessage => ({
+  type: UserActionTypes.TOGGLE_FAVORITE_COLLECTION_FAILURE,
+  payload: errorMessage,
+})

@@ -32,7 +32,12 @@ const userReducer = (state = INITIAL_STATE, action) => {
         ...state,
         error: action.payload,
       }
-
+    case UserActionTypes.TOGGLE_FAVORITE_COLLECT_START:
+      return state
+    case UserActionTypes.TOGGLE_FAVORITE_COLLECTION_SUCCESS:
+      return { ...state, currentUser: action.payload }
+    case UserActionTypes.TOGGLE_FAVORITE_COLLECTION_FAILURE:
+      return { ...state, error: action.payload }
     default:
       return state
   }

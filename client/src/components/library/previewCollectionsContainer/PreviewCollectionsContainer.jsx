@@ -7,8 +7,6 @@ import "./previewCollectionsContainer.scss"
 const PreviewCollectionsContainer = ({ history, match }) => {
   const { sortId } = match.params
 
-  console.log(sortId)
-
   return (
     <div className="preview-collections-container">
       <div className="buttons-sort-bar">

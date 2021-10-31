@@ -1,4 +1,4 @@
-import { takeLatest, put, all, call } from "redux-saga/effects"
+import { takeLatest, put, all, call, takeEvery, select } from "redux-saga/effects"
 
 import UserActionTypes from "./userTypes"
 
@@ -7,6 +7,7 @@ import {
   googleProvider,
   createUserProfileDocument,
   getCurrentUser,
+  firestore,
 } from "../../firebase/firebaseUtils"
 
 import {
@@ -17,7 +18,12 @@ import {
   signOutSuccess,
   signUpFailure,
   signUpSuccess,
+  toggleFavoriteCollectionFailure,
+  toggleFavoriteCollectionSuccess,
 } from "./userActions"
+import { selectCurrentUser } from "./userSelectors"
+
+const deleteReference = object => JSON.parse(JSON.stringify(object))
 
 export function* getSnapshotFromUserAuth(userAuth, additionalData) {
   try {
@@ -86,6 +92,26 @@ export function* signOut() {
   }
 }
 
+export function* toggleFavoriteCollection({ payload: { collectionId } }) {
+  try {
+    const currentUser = yield select(selectCurrentUser)
+    const favoritesArray = yield currentUser?.favorites || []
+    const favoriteIndex = yield favoritesArray.indexOf(collectionId)
+
+    favoriteIndex !== -1
+      ? favoritesArray.splice(favoriteIndex, 1)
+      : favoritesArray.push(collectionId)
+
+    const collectionRef = yield firestore.collection(`users`).doc(currentUser.id)
+    yield collectionRef.update({ favorites: favoritesArray })
+    currentUser.favoritesArray = favoritesArray
+
+    yield put(toggleFavoriteCollectionSuccess(deleteReference(currentUser)))
+  } catch (error) {
+    yield put(toggleFavoriteCollectionFailure(error.message))
+  }
+}
+
 export function* onGoogleSignInStart() {
   yield takeLatest(UserActionTypes.GOOGLE_SIGN_IN_START, signInWithGoogle)
 }
@@ -110,6 +136,10 @@ export function* onSignOut() {
   yield takeLatest(UserActionTypes.SIGN_OUT_START, signOut)
 }
 
+export function* onToggleFavoriteCollection() {
+  yield takeEvery(UserActionTypes.TOGGLE_FAVORITE_COLLECTION_START, toggleFavoriteCollection)
+}
+
 export function* userSagas() {
   yield all([
     call(onGoogleSignInStart),
@@ -118,5 +148,6 @@ export function* userSagas() {
     call(onSignUpSuccess),
     call(isUserAuthenticated),
     call(onSignOut),
+    call(onToggleFavoriteCollection),
   ])
 }

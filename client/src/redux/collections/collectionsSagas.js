@@ -25,7 +25,7 @@ export function* fetchCollectionAsync({ payload }) {
   try {
     const collectionRef = yield firestore.collection(`collections`).doc(payload.id)
     const snapshot = yield collectionRef.get()
-    const collections = yield snapshot.data()
+    const collections = yield snapshot.data() || {}
     yield put(fetchCollectionsSuccess(collections))
   } catch (error) {
     yield put(fetchCollectionsFailure(error.message))

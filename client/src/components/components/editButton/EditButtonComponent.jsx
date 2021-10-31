@@ -6,6 +6,7 @@ import {
   createCollectionStart,
   deleteCollectionStart,
 } from "../../../redux/collections/collectionsActions"
+import { toggleFavoriteCollectionStart } from "../../../redux/user/userActions"
 
 const EditButtonComponent = ({
   type,
@@ -17,6 +18,7 @@ const EditButtonComponent = ({
   className,
   deleteCollection,
   createCollection,
+  toggleFavoriteCollection,
 }) => {
   collectionId = collectionId || match.params.collectionId
 
@@ -30,6 +32,9 @@ const EditButtonComponent = ({
         break
       case EditButtonTypes.LINK_TO_EDIT.id:
         linkToEditHandler()
+        break
+      case EditButtonTypes.TOGGLE_FAVORITE_COLLECTION.id:
+        toggleFavoriteCollectionHandler()
         break
       default:
         console.log("Error! Enter correct type name!")
@@ -48,6 +53,10 @@ const EditButtonComponent = ({
     history.push(`/editor/${collectionId}`)
   }
 
+  const toggleFavoriteCollectionHandler = () => {
+    toggleFavoriteCollection({ collectionId })
+  }
+
   if (children) return <span onClick={clickHandler}>{children}</span>
   return (
     <button className={"button button-basic " + className} onClick={clickHandler}>
@@ -59,6 +68,7 @@ const EditButtonComponent = ({
 const mapDispatchToProps = dispatch => ({
   deleteCollection: id => dispatch(deleteCollectionStart(id)),
   createCollection: id => dispatch(createCollectionStart(id)),
+  toggleFavoriteCollection: id => dispatch(toggleFavoriteCollectionStart(id)),
 })
 
 export default withRouter(connect(null, mapDispatchToProps)(EditButtonComponent))
