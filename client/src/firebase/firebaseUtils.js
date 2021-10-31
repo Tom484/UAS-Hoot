@@ -25,6 +25,7 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
     const createdAt = new Date()
 
     try {
+      firestore.collection(`collections`).doc(userAuth.uid).set({})
       await userRef.set({
         displayName,
         email,
