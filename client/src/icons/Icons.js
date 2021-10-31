@@ -52,3 +52,18 @@ export { ReactComponent as ICONHeartOutline } from "./icons/heart/heart-outline.
 export { ReactComponent as ICONStarBold } from "./icons/star/star-bold.svg"
 export { ReactComponent as ICONStarBroken } from "./icons/star/star-broken.svg"
 export { ReactComponent as ICONStarOutline } from "./icons/star/star-outline.svg"
+
+// Play
+export { ReactComponent as ICONPlayBold } from "./icons/play/play-bold.svg"
+export { ReactComponent as ICONPlayBroken } from "./icons/play/play-broken.svg"
+export { ReactComponent as ICONPlayOutline } from "./icons/play/play-outline.svg"
+
+// Warning
+export { ReactComponent as ICONWarningBold } from "./icons/warning/warning-bold.svg"
+export { ReactComponent as ICONWarningBroken } from "./icons/warning/warning-broken.svg"
+export { ReactComponent as ICONWarningOutline } from "./icons/warning/warning-outline.svg"
+
+// Warning
+export { ReactComponent as ICONUserBold } from "./icons/user/user-bold.svg"
+export { ReactComponent as ICONUserBroken } from "./icons/user/user-broken.svg"
+export { ReactComponent as ICONUserOutline } from "./icons/user/user-outline.svg"
