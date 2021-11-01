@@ -19,9 +19,9 @@ import ReportsPage from "../pages/reports/ReportsPage"
 import { fetchCollectionsStart } from "../redux/collections/collectionsActions"
 import AccountPage from "../pages/account/AccountPage"
 import EditorPage from "../pages/editor/EditorPage"
-import GameClientPage from "../pages/gameClient/GameClientPage"
-import GameCreatePage from "../pages/gameCreate/GameCreatePage"
-import GameHostPage from "../pages/gameHost/GameHostPage"
+import EventClientPage from "../pages/eventClient/EventClientPage"
+import EventCreatePage from "../pages/eventCreate/EventCreatePage"
+import EventHostPage from "../pages/eventHost/EventHostPage"
 
 const App = ({ checkUserSession, fetchCollectionsStart, currentUser }) => {
   useEffect(() => {
@@ -68,17 +68,17 @@ const App = ({ checkUserSession, fetchCollectionsStart, currentUser }) => {
           exact
           onlyLogged={true}
           redirect="/"
-          path="/create-game"
-          component={GameCreatePage}
+          path="/create-event/:collectionId"
+          component={EventCreatePage}
         />
         <PrivateRoute
           exact
           onlyLogged={true}
           redirect="/"
-          path="/game-block"
-          component={GameHostPage}
+          path="/event-block"
+          component={EventHostPage}
         />
-        <Route exact path="/game" component={GameClientPage} />
+        <Route exact path="/event" component={EventClientPage} />
         <Route exact path="/editor/:collectionId" component={EditorPage} />
         <PrivateRoute exact onlyLogged={false} redirect="/" path="/sign-in" component={SingIn} />
         <Route exact path="/" component={HomePage} />

@@ -15,7 +15,6 @@ const Header = ({ currentUser, signOutStart }) => {
       {currentUser && <Link to="/library/recent">Library</Link>}
       {currentUser && <Link to="/reports">Reports</Link>}
       {currentUser && <Link to="/account">Account</Link>}
-      {currentUser && <Link to="/create-game">Create Game</Link>}
       {currentUser ? (
         <div onClick={signOutStart}>Sign Out</div>
       ) : (

@@ -1,7 +1,13 @@
 import React from "react"
 import { format } from "date-fns"
 import EditButton from "../../components/editButton/EditButton"
-import { ICONEditBroken, ICONStarBold, ICONStarBroken, ICONTrashBroken } from "../../../icons/Icons"
+import {
+  ICONEditBroken,
+  ICONPlayBroken,
+  ICONStarBold,
+  ICONStarBroken,
+  ICONTrashBroken,
+} from "../../../icons/Icons"
 import "./previewCollection.scss"
 import { selectCurrentUser } from "../../../redux/user/userSelectors"
 import { connect } from "react-redux"
@@ -35,6 +41,9 @@ const PreviewCollection = ({ collection: { name, changedAt, author, id }, curren
             </EditButton>
             <EditButton type="DELETE_COLLECTION" collectionId={id}>
               <ICONTrashBroken className="icon svg-icon-default-color svg-icon-pointer" />
+            </EditButton>
+            <EditButton type="LINK_TO_CREATE_EVENT" collectionId={id}>
+              <ICONPlayBroken className="icon svg-icon-default-color svg-icon-pointer" />
             </EditButton>
           </div>
         </div>

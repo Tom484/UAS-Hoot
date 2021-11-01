@@ -36,6 +36,9 @@ const EditButton = ({
       case EditButtonTypes.TOGGLE_FAVORITE_COLLECTION.id:
         toggleFavoriteCollectionHandler()
         break
+      case EditButtonTypes.LINK_TO_CREATE_EVENT.id:
+        linkToCreateEventHandler()
+        break
       default:
         console.log("Error! Enter correct type name!")
     }
@@ -51,6 +54,10 @@ const EditButton = ({
 
   const linkToEditHandler = () => {
     history.push(`/editor/${collectionId}`)
+  }
+
+  const linkToCreateEventHandler = () => {
+    history.push(`/create-event/${collectionId}`)
   }
 
   const toggleFavoriteCollectionHandler = () => {
