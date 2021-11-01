@@ -1,10 +1,28 @@
-import { all, call, takeLatest } from "redux-saga/effects"
+import { all, call, put, select, takeLatest } from "redux-saga/effects"
+import { firestore } from "../../firebase/firebaseUtils"
+import { selectUserCollection } from "../collections/collectionsSelectors"
+import { selectCurrentUser } from "../user/userSelectors"
+import { createEventFailure, createEventSuccess } from "./eventHostActions"
 import EventHostActions from "./eventHostTypes"
 
-export function* createEventAsync() {
+export function* createEventAsync({ payload }) {
   try {
-    yield console.log("create event")
-  } catch (error) {}
+    const currentUser = yield select(selectCurrentUser)
+    const collection = yield select(selectUserCollection(payload.collectionId))
+    const event = {
+      collection,
+      players: [],
+      gameEnterCode: Math.round(Math.random() * 1000000),
+      host: currentUser,
+      isOpen: true,
+    }
+    console.log(event)
+    const collectionRef = yield firestore.collection(`events`).doc(currentUser.id)
+    yield collectionRef.set({ ...event })
+    yield put(createEventSuccess(event))
+  } catch (error) {
+    yield put(createEventFailure(error.message))
+  }
 }
 
 export function* createEventStart() {

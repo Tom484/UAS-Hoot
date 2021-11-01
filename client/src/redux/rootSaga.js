@@ -6,5 +6,5 @@ import { eventClientSagas } from "./eventClient/eventClientSagas"
 import { eventHostSagas } from "./eventHost/eventHostSagas"
 
 export default function* rootSaga() {
-  yield all([call(userSagas), call(collectionsSagas), call(eventClientSagas), all(eventHostSagas)])
+  yield all([call(userSagas), call(collectionsSagas), call(eventClientSagas), call(eventHostSagas)])
 }

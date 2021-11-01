@@ -2,12 +2,11 @@ import React from "react"
 import { connect } from "react-redux"
 import { withRouter } from "react-router-dom"
 import { selectUserCollection } from "../../redux/collections/collectionsSelectors"
+import EventHostButton from "../../components/eventHost/eventHostButton/EventHostButton"
 
 import "./eventCreatePage.scss"
 
 const EventCreatePage = ({ collection }) => {
-  console.log(collection)
-
   if (!collection) return <div>This collection was not found</div>
 
   return (
@@ -16,6 +15,7 @@ const EventCreatePage = ({ collection }) => {
         <h2>Create Event</h2>
         <h4>Name {collection.name}</h4>
         <button>Start Game</button>
+        <EventHostButton type="CREATE_EVENT" collectionId={collection.id} />
       </div>
     </div>
   )
