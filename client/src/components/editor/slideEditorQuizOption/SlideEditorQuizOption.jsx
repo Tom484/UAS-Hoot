@@ -21,10 +21,10 @@ const SlideEditorQuizOption = ({ editOption, option, order }) => {
   }
   return (
     <div className="slide-editor-quiz-option">
-      {order === 1 && <ICONFlashBroken className="svg-icon-default-size svg-icon-default-color" />}
-      {order === 2 && <ICONCloudBroken className="svg-icon-default-size svg-icon-default-color" />}
-      {order === 3 && <ICONDropBroken className="svg-icon-default-size svg-icon-default-color" />}
-      {order === 4 && <ICONMoonBroken className="svg-icon-default-size svg-icon-default-color" />}
+      {order === 1 && <ICONFlashBroken className="icon-df-size icon-df-color" />}
+      {order === 2 && <ICONCloudBroken className="icon-df-size icon-df-color" />}
+      {order === 3 && <ICONDropBroken className="icon-df-size icon-df-color" />}
+      {order === 4 && <ICONMoonBroken className="icon-df-size icon-df-color" />}
 
       <TextareaAutosize
         className="textarea-create textarea textarea-option"
@@ -35,7 +35,7 @@ const SlideEditorQuizOption = ({ editOption, option, order }) => {
       />
 
       <ICONTickSquareBold
-        className={`svg-icon-default-size icon ${option.correct ? "checked" : ""}`}
+        className={`icon-df-size icon ${option.correct ? "checked" : ""}`}
         onClick={() => editOptionProperties({ correct: !option.correct })}
       />
     </div>

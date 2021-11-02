@@ -2,45 +2,26 @@
 @import "./textarea.scss";
 @import "./button.scss";
 @import "./icon.scss";
+@import "./colors.scss";
 
 *,
 *::before,
 *::after {
-  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
-  -moz-box-sizing: border-box; /* Firefox, other Gecko */
-  box-sizing: border-box; /* Opera/IE 8+ */
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
-  font-family: "Nunito", sans-serif;
+  font-family: Nunito, Poppins, Lato, sans-serif;
   margin: 0;
   padding: 0;
 }
 
-button {
-  outline: none;
-}
-
-/* width */
-::-webkit-scrollbar {
-  width: 10px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-  background: var(--scrollbar-color-track);
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: var(--scrollbar-color-thumb);
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: var(--scrollbar-color-thumb-hover);
-}
-
 .w-100 {
   width: 100%;
+}
+
+.cursor-pointer {
+  cursor: pointer;
 }

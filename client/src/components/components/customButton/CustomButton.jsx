@@ -1,6 +1,6 @@
 import React from "react"
 
-import "./button.scss"
+import "./customButton.scss"
 
 const Button = ({ children, ...props }) => {
   return <button {...props}>{children}</button>

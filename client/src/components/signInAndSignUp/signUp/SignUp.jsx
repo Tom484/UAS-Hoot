@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { connect } from "react-redux"
 import { emailSignUpStart } from "../../../redux/user/userActions"
-import Button from "../../components/button/Button"
+import CustomButton from "../../components/customButton/CustomButton"
 import FormInput from "../../components/formInput/FormInput"
 
 import "./signUp.scss"
@@ -67,7 +67,7 @@ const SignUpComponent = ({ emailSignUpStart }) => {
           label="Password Confirmation"
           required
         />
-        <Button type="submit">Sign Up</Button>
+        <CustomButton type="submit">Sign Up</CustomButton>
       </form>
     </div>
   )

@@ -1,15 +1,18 @@
 import uuid from "react-uuid"
+import { deleteReference } from "../../../functions/redux/reduxFunctions"
 
 export const addSlideQuiz = collection => {
+  const newCollection = deleteReference(collection)
+
   const slideId = uuid()
   const option1Id = uuid()
   const option2Id = uuid()
   const option3Id = uuid()
   const option4Id = uuid()
 
-  collection.slidesOrder.push(slideId)
+  newCollection.slidesOrder.push(slideId)
 
-  collection.slides[slideId] = {
+  newCollection.slides[slideId] = {
     id: slideId,
     type: "quiz",
     question: "",
@@ -38,6 +41,7 @@ export const addSlideQuiz = collection => {
       },
     },
   }
+  return newCollection
 }
 
 function insertAt(array, index, ...elementsArray) {
@@ -45,21 +49,23 @@ function insertAt(array, index, ...elementsArray) {
 }
 
 export const duplicateSlide = (collection, slideId, currentSlideIndex) => {
+  const newCollection = deleteReference(collection)
   const newSlideId = uuid()
   const option1Id = uuid()
   const option2Id = uuid()
   const option3Id = uuid()
   const option4Id = uuid()
 
-  insertAt(collection.slidesOrder, currentSlideIndex + 1, newSlideId)
-  const copySlide = collection.slides[slideId]
+  insertAt(newCollection.slidesOrder, currentSlideIndex + 1, newSlideId)
+  const copySlide = newCollection.slides[slideId]
   const copyOptionsArray = Object.values(copySlide.options)
 
-  collection.slides[newSlideId] = {
+  newCollection.slides[newSlideId] = {
     id: newSlideId,
     question: copySlide.question,
     time: copySlide.time,
     points: copySlide.points,
+    type: copySlide.type,
 
     options: {
       [option1Id]: {
@@ -84,4 +90,6 @@ export const duplicateSlide = (collection, slideId, currentSlideIndex) => {
       },
     },
   }
+
+  return newCollection
 }

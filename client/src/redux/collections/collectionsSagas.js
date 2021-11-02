@@ -18,8 +18,7 @@ import uuid from "react-uuid"
 import CollectionActions from "./collectionsTypes"
 import { selectCurrentUser } from "../user/userSelectors"
 import { selectEditorCollection } from "../editor/editorSelectors"
-
-const deleteReference = object => JSON.parse(JSON.stringify(object))
+import { deleteReference } from "../../functions/redux/reduxFunctions"
 
 export function* fetchCollectionAsync({ payload }) {
   try {

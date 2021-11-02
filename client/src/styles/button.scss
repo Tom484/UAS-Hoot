@@ -6,7 +6,7 @@ button {
   cursor: pointer;
 }
 
-.button-basic {
+.btn-basic {
   color: var(--color-text-2);
   font-size: 16px;
   border: none;
@@ -21,15 +21,6 @@ button {
     background: var(--color-main-2);
     color: var(--color-white);
   }
-}
-
-.button-mt-10 {
-  margin-top: 10px;
-}
-
-button-mtb-5 {
-  margin-top: 5px;
-  margin-bottom: 5px;
 }
 
 .button-100 {

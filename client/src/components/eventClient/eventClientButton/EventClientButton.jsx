@@ -29,7 +29,7 @@ const EventClientButton = ({
   if (children) return <span onClick={clickHandler}>{children}</span>
 
   return (
-    <button className={"button button-basic " + className} onClick={clickHandler}>
+    <button className={"button btn-basic " + className} onClick={clickHandler}>
       {label ? label : EventClientButtonTypes[type]?.label || "Enter correct type"}
     </button>
   )

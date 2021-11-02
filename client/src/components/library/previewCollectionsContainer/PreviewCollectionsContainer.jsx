@@ -11,19 +11,19 @@ const PreviewCollectionsContainer = ({ history, match }) => {
     <div className="preview-collections-container">
       <div className="buttons-sort-bar">
         <button
-          className={`button-basic ${sortId === "recent" ? "active" : ""}`}
+          className={`btn-basic ${sortId === "recent" ? "active" : ""}`}
           onClick={() => history.push("/library/recent")}
         >
           Recent
         </button>
         <button
-          className={`button-basic ${sortId === "created" ? "active" : ""}`}
+          className={`btn-basic ${sortId === "created" ? "active" : ""}`}
           onClick={() => history.push("/library/created")}
         >
           Created
         </button>
         <button
-          className={`button-basic ${sortId === "favorites" ? "active" : ""}`}
+          className={`btn-basic ${sortId === "favorites" ? "active" : ""}`}
           onClick={() => history.push("/library/favorites")}
         >
           Favorites

@@ -24,9 +24,9 @@ const PreviewCollection = ({ collection: { name, changedAt, author, id }, curren
           <h2>{name}</h2>
           <EditButton type="TOGGLE_FAVORITE_COLLECTION" collectionId={id}>
             {isFavorite ? (
-              <ICONStarBold className="icon-star svg-icon-medium-size svg-icon-default-size svg-icon-pointer" />
+              <ICONStarBold className="icon-star svg-icon-medium-size icon-df-size cursor-pointer" />
             ) : (
-              <ICONStarBroken className="icon-star svg-icon-medium-size svg-icon-default-size svg-icon-pointer" />
+              <ICONStarBroken className="icon-star svg-icon-medium-size icon-df-size cursor-pointer" />
             )}
           </EditButton>
         </div>
@@ -37,13 +37,13 @@ const PreviewCollection = ({ collection: { name, changedAt, author, id }, curren
           <div className="side-container-2">
             <div className="created-at">{format(new Date(changedAt), "LLLL dd yyyy")}</div>
             <EditButton type="LINK_TO_EDIT" collectionId={id}>
-              <ICONEditBroken className="icon svg-icon-default-color svg-icon-pointer" />
+              <ICONEditBroken className="icon icon-df-color cursor-pointer" />
             </EditButton>
             <EditButton type="DELETE_COLLECTION" collectionId={id}>
-              <ICONTrashBroken className="icon svg-icon-default-color svg-icon-pointer" />
+              <ICONTrashBroken className="icon icon-df-color cursor-pointer" />
             </EditButton>
             <EditButton type="LINK_TO_CREATE_EVENT" collectionId={id}>
-              <ICONPlayBroken className="icon svg-icon-default-color svg-icon-pointer" />
+              <ICONPlayBroken className="icon icon-df-color cursor-pointer" />
             </EditButton>
           </div>
         </div>

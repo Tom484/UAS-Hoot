@@ -1,4 +1,4 @@
-const deleteReference = object => JSON.parse(JSON.stringify(object))
+import { deleteReference } from "../../functions/redux/reduxFunctions"
 
 export const deleteCollection = (previousCollections, { collectionId }) => {
   const newCollections = { ...previousCollections }

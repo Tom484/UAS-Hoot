@@ -1,10 +1,10 @@
 import React, { useState } from "react"
-import Button from "../../components/button/Button"
+import CustomButton from "../../components/customButton/CustomButton"
 import FormInput from "../../components/formInput/FormInput"
 import { googleSignInStart, emailSignInStart } from "../../../redux/user/userActions"
+import { connect } from "react-redux"
 
 import "./signIn.scss"
-import { connect } from "react-redux"
 
 const SignIn = ({ googleSignInStart, emailSignInStart }) => {
   const [userCredentials, setUserCredentials] = useState({
@@ -43,10 +43,10 @@ const SignIn = ({ googleSignInStart, emailSignInStart }) => {
           label="password"
           required
         />
-        <Button type="submit">Sign In</Button>
-        <Button type="button" onClick={googleSignInStart}>
+        <CustomButton type="submit">Sign In</CustomButton>
+        <CustomButton type="button" onClick={googleSignInStart}>
           Sign In with Google
-        </Button>
+        </CustomButton>
       </form>
     </div>
   )

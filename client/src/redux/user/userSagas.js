@@ -22,8 +22,7 @@ import {
   toggleFavoriteCollectionSuccess,
 } from "./userActions"
 import { selectCurrentUser } from "./userSelectors"
-
-const deleteReference = object => JSON.parse(JSON.stringify(object))
+import { deleteReference } from "../../functions/redux/reduxFunctions"
 
 export function* getSnapshotFromUserAuth(userAuth, additionalData) {
   try {

@@ -1,16 +1,9 @@
 import { addSlideQuiz, duplicateSlide } from "./functions/editSlide"
 
-const deleteReference = object => JSON.parse(JSON.stringify(object))
+import { deleteReference } from "../../functions/redux/reduxFunctions"
 
 export const editorEditCollection = (previousCollection, { properties }) => {
-  let newCollection = deleteReference(previousCollection)
-
-  newCollection = {
-    ...newCollection,
-    ...properties,
-  }
-
-  return newCollection
+  return deleteReference({ ...previousCollection, ...properties })
 }
 
 export const editorEditSlide = (previousCollection, { slideId, properties }) => {
@@ -27,21 +20,13 @@ export const editorEditSlide = (previousCollection, { slideId, properties }) => 
 }
 
 export const editorAddSlideQuiz = previousCollection => {
-  let newCollection = deleteReference(previousCollection)
-
-  addSlideQuiz(newCollection)
-
-  return newCollection
+  return addSlideQuiz(previousCollection)
 }
 
 export const editorDuplicateSlide = (previousCollection, { slideId }) => {
-  let newCollection = deleteReference(previousCollection)
-
-  slideId = slideId || newCollection.currentSlideId
-  const currentSlideIndex = newCollection.slidesOrder.indexOf(slideId)
-  duplicateSlide(newCollection, slideId, currentSlideIndex)
-
-  return newCollection
+  slideId = slideId || previousCollection.currentSlideId
+  const currentSlideIndex = previousCollection.slidesOrder.indexOf(slideId)
+  return duplicateSlide(previousCollection, slideId, currentSlideIndex)
 }
 
 export const editorDeleteSlide = (previousCollection, { slideId }) => {

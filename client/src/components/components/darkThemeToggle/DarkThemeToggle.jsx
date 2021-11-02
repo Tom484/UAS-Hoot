@@ -7,9 +7,9 @@ const DarkThemeToggle = () => {
   return (
     <div>
       {false ? (
-        <ICONMoonOutline className="svg-icon-default-size svg-icon-default-color" />
+        <ICONMoonOutline className="icon-df-size icon-df-color" />
       ) : (
-        <ICONSunOutline className="svg-icon-default-size svg-icon-default-color" />
+        <ICONSunOutline className="icon-df-size icon-df-color" />
       )}
     </div>
   )

@@ -1,0 +1,17 @@
+@import "./colors.scss";
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-color-track);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-color-thumb);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-color-thumb-hover);
+}
