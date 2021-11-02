@@ -10,7 +10,7 @@ export const joinEventSuccess = data => ({
   payload: data,
 })
 
-export const jointEventFailure = errorMessage => ({
+export const joinEventFailure = errorMessage => ({
   type: EventClientActions.JOIN_EVENT_FAILURE,
   payload: errorMessage,
 })

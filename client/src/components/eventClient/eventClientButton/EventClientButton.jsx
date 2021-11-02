@@ -3,7 +3,15 @@ import { connect } from "react-redux"
 import { joinEventStart } from "../../../redux/eventClient/eventClientActions"
 import EventClientButtonTypes from "./eventClientButtonTypes"
 
-const EventClientButton = ({ children, label, className, type, collectionId, joinEvent }) => {
+const EventClientButton = ({
+  children,
+  label,
+  className,
+  type,
+  joinEvent,
+  eventId,
+  displayName,
+}) => {
   const clickHandler = () => {
     switch (type) {
       case EventClientButtonTypes.JOIN_EVENT.id:
@@ -15,7 +23,7 @@ const EventClientButton = ({ children, label, className, type, collectionId, joi
   }
 
   const joinEventHandler = () => {
-    joinEvent("4564")
+    joinEvent({ eventId, displayName })
   }
 
   if (children) return <span onClick={clickHandler}>{children}</span>

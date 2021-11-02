@@ -2,8 +2,17 @@ import React from "react"
 import { connect } from "react-redux"
 import { createEventStart } from "../../../redux/eventHost/eventHostActions"
 import EventHostButtonTypes from "./eventHostButtonTypes"
+import { withRouter } from "react-router-dom"
 
-const EventClientButton = ({ children, label, className, type, collectionId, createEvent }) => {
+const EventClientButton = ({
+  children,
+  label,
+  className,
+  type,
+  collectionId,
+  createEvent,
+  history,
+}) => {
   const clickHandler = () => {
     switch (type) {
       case EventHostButtonTypes.CREATE_EVENT.id:
@@ -15,7 +24,7 @@ const EventClientButton = ({ children, label, className, type, collectionId, cre
   }
 
   const createEventHandler = () => {
-    createEvent({ collectionId })
+    createEvent({ collectionId, history })
   }
 
   if (children) return <span onClick={clickHandler}>{children}</span>
@@ -31,4 +40,4 @@ const mapDispatchToProps = dispatch => ({
   createEvent: id => dispatch(createEventStart(id)),
 })
 
-export default connect(null, mapDispatchToProps)(EventClientButton)
+export default withRouter(connect(null, mapDispatchToProps)(EventClientButton))

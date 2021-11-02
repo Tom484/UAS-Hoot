@@ -5,21 +5,25 @@ import { selectCurrentUser } from "../user/userSelectors"
 import { createEventFailure, createEventSuccess } from "./eventHostActions"
 import EventHostActions from "./eventHostTypes"
 
-export function* createEventAsync({ payload }) {
+export function* createEventAsync({ payload: { collectionId, history } }) {
   try {
     const currentUser = yield select(selectCurrentUser)
-    const collection = yield select(selectUserCollection(payload.collectionId))
+    const collection = yield select(selectUserCollection(collectionId))
+    const gameEnterCode = Math.round(Math.random() * 1000000).toString()
     const event = {
       collection,
       players: [],
-      gameEnterCode: Math.round(Math.random() * 1000000),
-      host: currentUser,
+      answers: [],
+      currentSlide: { id: "lobby" },
+      gameEnterCode,
+      host: { id: currentUser.id, displayName: currentUser.displayName },
       isOpen: true,
     }
     console.log(event)
-    const collectionRef = yield firestore.collection(`events`).doc(currentUser.id)
+    const collectionRef = yield firestore.collection(`events`).doc(gameEnterCode)
     yield collectionRef.set({ ...event })
     yield put(createEventSuccess(event))
+    yield history.push("/event-block")
   } catch (error) {
     yield put(createEventFailure(error.message))
   }
