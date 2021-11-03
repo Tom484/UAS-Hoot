@@ -14,3 +14,8 @@ export const createEventFailure = errorMessage => ({
   type: EventHostActions.CREATE_EVENT_FAILURE,
   payload: errorMessage,
 })
+
+export const onPlayersChange = properties => ({
+  type: EventHostActions.ON_PLAYERS_CHANGE,
+  payload: properties,
+})

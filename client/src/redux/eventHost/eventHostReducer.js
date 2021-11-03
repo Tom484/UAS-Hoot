@@ -14,6 +14,9 @@ const eventHostReducer = (state = initialState, action) => {
       return { ...state, isCreatingEvent: false, errorMessage: undefined, event: action.payload }
     case EventHostActions.CREATE_EVENT_FAILURE:
       return { ...state, isCreatingEvent: false, errorMessage: action.payload }
+    case EventHostActions.ON_PLAYERS_CHANGE: {
+      return { ...state }
+    }
     default:
       return state
   }

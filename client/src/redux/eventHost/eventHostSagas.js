@@ -5,6 +5,19 @@ import { selectCurrentUser } from "../user/userSelectors"
 import { createEventFailure, createEventSuccess } from "./eventHostActions"
 import EventHostActions from "./eventHostTypes"
 
+function playersListener(enterCode) {
+  firestore
+    .collection(`events`)
+    .doc(enterCode)
+    .collection("players")
+    .onSnapshot(snapshot => {
+      const players = snapshot.docs.map(doc => doc.data())
+
+      // put(createEventFailure("no failure"))
+      console.log(players)
+    })
+}
+
 export function* createEventAsync({ payload: { collectionId, history } }) {
   try {
     const currentUser = yield select(selectCurrentUser)
@@ -54,6 +67,7 @@ export function* createEventAsync({ payload: { collectionId, history } }) {
     yield batch.set(hostRef, { ...properties.host })
     yield batch.commit()
 
+    playersListener()
     yield put(createEventSuccess({ properties, answer: {}, players: {} }))
     yield history.push("/event-block")
   } catch (error) {

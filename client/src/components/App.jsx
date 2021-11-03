@@ -29,6 +29,7 @@ const App = ({ checkUserSession, fetchCollectionsStart, currentUser }) => {
     if (currentUser) {
       fetchCollectionsStart(currentUser)
     }
+
     // eslint-disable-next-line
   }, [currentUser])
 
