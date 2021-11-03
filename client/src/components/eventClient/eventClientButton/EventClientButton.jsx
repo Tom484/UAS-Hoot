@@ -2,6 +2,7 @@ import React from "react"
 import { connect } from "react-redux"
 import { joinEventStart } from "../../../redux/eventClient/eventClientActions"
 import EventClientButtonTypes from "./eventClientButtonTypes"
+import { withRouter } from "react-router-dom"
 
 const EventClientButton = ({
   children,
@@ -11,6 +12,7 @@ const EventClientButton = ({
   joinEvent,
   eventId,
   displayName,
+  history,
 }) => {
   const clickHandler = () => {
     switch (type) {
@@ -23,7 +25,7 @@ const EventClientButton = ({
   }
 
   const joinEventHandler = () => {
-    joinEvent({ eventId, displayName })
+    joinEvent({ eventId, displayName, history })
   }
 
   if (children) return <span onClick={clickHandler}>{children}</span>
@@ -39,4 +41,4 @@ const mapDispatchToProps = dispatch => ({
   joinEvent: id => dispatch(joinEventStart(id)),
 })
 
-export default connect(null, mapDispatchToProps)(EventClientButton)
+export default withRouter(connect(null, mapDispatchToProps)(EventClientButton))

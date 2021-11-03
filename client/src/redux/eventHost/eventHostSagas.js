@@ -9,20 +9,52 @@ export function* createEventAsync({ payload: { collectionId, history } }) {
   try {
     const currentUser = yield select(selectCurrentUser)
     const collection = yield select(selectUserCollection(collectionId))
-    const gameEnterCode = Math.round(Math.random() * 1000000).toString()
-    const event = {
-      collection,
-      players: [],
-      answers: [],
-      currentSlide: { id: "lobby" },
-      gameEnterCode,
-      host: { id: currentUser.id, displayName: currentUser.displayName },
-      isOpen: true,
+    const enterCode = Math.round(Math.random() * 1000000).toString()
+    const properties = {
+      collection: {
+        collection,
+      },
+      connect: {
+        enterCode,
+        isOpen: true,
+      },
+      event: {
+        currentSlide: { id: "lobby" },
+      },
+      host: {
+        id: currentUser.id,
+        displayName: currentUser.displayName,
+      },
     }
-    console.log(event)
-    const collectionRef = yield firestore.collection(`events`).doc(gameEnterCode)
-    yield collectionRef.set({ ...event })
-    yield put(createEventSuccess(event))
+    const batch = firestore.batch()
+    const collectionRef = yield firestore
+      .collection(`events`)
+      .doc(enterCode)
+      .collection("properties")
+      .doc("collection")
+    const connectRef = yield firestore
+      .collection(`events`)
+      .doc(enterCode)
+      .collection("properties")
+      .doc("connect")
+    const eventRef = yield firestore
+      .collection(`events`)
+      .doc(enterCode)
+      .collection("properties")
+      .doc("event")
+    const hostRef = yield firestore
+      .collection(`events`)
+      .doc(enterCode)
+      .collection("properties")
+      .doc("host")
+
+    yield batch.set(collectionRef, { ...properties.collection })
+    yield batch.set(connectRef, { ...properties.connect })
+    yield batch.set(eventRef, { ...properties.event })
+    yield batch.set(hostRef, { ...properties.host })
+    yield batch.commit()
+
+    yield put(createEventSuccess({ properties, answer: {}, players: {} }))
     yield history.push("/event-block")
   } catch (error) {
     yield put(createEventFailure(error.message))

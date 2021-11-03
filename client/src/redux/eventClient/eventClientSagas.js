@@ -3,20 +3,32 @@ import { firestore } from "../../firebase/firebaseUtils"
 import { joinEventFailure, joinEventSuccess } from "./eventClientActions"
 import EventClientActions from "./eventClientTypes"
 
-export function* joinEventAsync({ payload: { displayName, eventId } }) {
+import uuid from "react-uuid"
+
+export function* joinEventAsync({ payload: { displayName, eventId, history } }) {
   try {
-    console.log(displayName, eventId)
-
-    const collectionRef = yield firestore.collection(`events`).doc(eventId)
+    const collectionRef = yield firestore
+      .collection(`events`)
+      .doc(eventId)
+      .collection("properties")
+      .doc("connect")
     const snapshot = yield collectionRef.get()
-    const event = yield snapshot.data()
-    if (!event) {
-      return put(joinEventSuccess())
-    }
+    const connect = yield snapshot.data()
 
-    event.players.push({ displayName, id: 9, joinAt: new Date().getTime(), answers: [] })
-    console.log(event)
+    const playerId = uuid()
+    if (!connect) return put(joinEventFailure("Enter correct eventId"))
+    if (!connect.isOpen) return put(joinEventFailure("Event is closed"))
+
+    const playersRef = yield firestore
+      .collection(`events`)
+      .doc(eventId)
+      .collection("players")
+      .doc(playerId)
+
+    yield playersRef.set({ id: playerId, displayName, joinAt: new Date().getTime() })
+
     yield put(joinEventSuccess())
+    yield history.push("/event")
   } catch (error) {
     yield put(joinEventFailure(error.message))
   }
