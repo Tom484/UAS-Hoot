@@ -14,7 +14,7 @@ const eventHostPropertiesReducer = (state = initialState, action) => {
         ...state,
         isCreatingEvent: false,
         errorMessage: undefined,
-        properties: action.payload,
+        properties: { ...action.payload },
       }
     case EventHostPropertiesActions.CREATE_EVENT_FAILURE:
       return { ...state, isCreatingEvent: false, errorMessage: action.payload }

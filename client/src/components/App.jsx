@@ -22,7 +22,7 @@ import EditorPage from "../pages/editor/EditorPage"
 import EventClientPage from "../pages/eventClient/EventClientPage"
 import EventCreatePage from "../pages/eventCreate/EventCreatePage"
 import EventHostPage from "../pages/eventHost/EventHostPage"
-import { firestore } from "../firebase/firebaseUtils"
+// import { firestore } from "../firebase/firebaseUtils"
 import { updatePlayers } from "../redux/eventHost/eventHostActions"
 
 const App = ({ checkUserSession, fetchCollectionsStart, currentUser, updatePlayers }) => {
@@ -35,19 +35,18 @@ const App = ({ checkUserSession, fetchCollectionsStart, currentUser, updatePlaye
   }, [currentUser])
 
   useEffect(() => {
-    console.log("eventHost: ")
-    if (!currentUser) return
-
-    const unsubscribe = firestore
-      .collection(`events`)
-      .doc("1000")
-      .collection("players")
-      .onSnapshot(snapshot => {
-        const players = snapshot.docs.map(doc => doc.data())
-        console.log(players)
-        updatePlayers(players)
-      })
-    return () => unsubscribe()
+    // console.log("eventHost: ")
+    // if (!currentUser) return
+    // const unsubscribe = firestore
+    //   .collection(`events`)
+    //   .doc("1000")
+    //   .collection("players")
+    //   .onSnapshot(snapshot => {
+    //     const players = snapshot.docs.map(doc => doc.data())
+    //     console.log(players)
+    //     updatePlayers(players)
+    //   })
+    // return () => unsubscribe()
     // eslint-disable-next-line
   }, [])
 

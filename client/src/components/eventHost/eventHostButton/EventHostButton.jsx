@@ -1,8 +1,8 @@
 import React from "react"
 import { connect } from "react-redux"
-import { createEventStart } from "../../../redux/eventHost/eventHostActions"
 import EventHostButtonTypes from "./eventHostButtonTypes"
 import { withRouter } from "react-router-dom"
+import { createEventStart } from "../../../redux/eventHostProperties/eventHostPropertiesActions"
 
 const EventClientButton = ({
   children,
