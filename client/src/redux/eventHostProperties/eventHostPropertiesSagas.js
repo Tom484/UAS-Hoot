@@ -2,8 +2,15 @@ import { all, call, put, select, takeLatest } from "redux-saga/effects"
 import { firestore } from "../../firebase/firebaseUtils"
 import { selectUserCollection } from "../collections/collectionsSelectors"
 import { selectCurrentUser } from "../user/userSelectors"
-import { createEventFailure, createEventSuccess } from "./eventHostActions"
-import EventHostActions from "./eventHostTypes"
+import { createEventFailure, createEventSuccess } from "./eventHostPropertiesActions"
+import {
+  createCollectionRef,
+  createEventRef,
+  createHostRef,
+  eventPropertiesTemplate,
+} from "./eventHostPropertiesTemplates"
+
+import EventHostPropertiesActions from "./eventHostPropertiesTypes"
 
 // function playersListener(enterCode) {
 //   firestore
@@ -22,52 +29,22 @@ export function* createEventAsync({ payload: { collectionId, history } }) {
     const collection = yield select(selectUserCollection(collectionId))
     // const enterCode = Math.round(Math.random() * 1000000).toString()
     const enterCode = "1000"
-    const properties = {
-      collection: {
-        collection,
-      },
-      connect: {
-        enterCode,
-        isOpen: true,
-      },
-      event: {
-        currentSlide: { id: "lobby" },
-      },
-      host: {
-        id: currentUser.id,
-        displayName: currentUser.displayName,
-      },
-    }
-    const batch = firestore.batch()
-    const collectionRef = yield firestore
-      .collection(`events`)
-      .doc(enterCode)
-      .collection("properties")
-      .doc("collection")
-    const connectRef = yield firestore
-      .collection(`events`)
-      .doc(enterCode)
-      .collection("properties")
-      .doc("connect")
-    const eventRef = yield firestore
-      .collection(`events`)
-      .doc(enterCode)
-      .collection("properties")
-      .doc("event")
-    const hostRef = yield firestore
-      .collection(`events`)
-      .doc(enterCode)
-      .collection("properties")
-      .doc("host")
 
+    const properties = yield eventPropertiesTemplate(collection, enterCode, currentUser)
+
+    const collectionRef = yield createCollectionRef()
+    const connectRef = yield createCollectionRef()
+    const eventRef = yield createEventRef()
+    const hostRef = yield createHostRef()
+
+    const batch = firestore.batch()
     yield batch.set(collectionRef, { ...properties.collection })
     yield batch.set(connectRef, { ...properties.connect })
     yield batch.set(eventRef, { ...properties.event })
     yield batch.set(hostRef, { ...properties.host })
     yield batch.commit()
 
-    // playersListener()
-    yield put(createEventSuccess({ properties, answer: {}, players: {} }))
+    yield put(createEventSuccess(properties))
     yield history.push("/event-block")
   } catch (error) {
     yield put(createEventFailure(error.message))
@@ -75,7 +52,7 @@ export function* createEventAsync({ payload: { collectionId, history } }) {
 }
 
 export function* createEventStart() {
-  yield takeLatest(EventHostActions.CREATE_EVENT_START, createEventAsync)
+  yield takeLatest(EventHostPropertiesActions.CREATE_EVENT_START, createEventAsync)
 }
 
 export function* eventHostSagas() {

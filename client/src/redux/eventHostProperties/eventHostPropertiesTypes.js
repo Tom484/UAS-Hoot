@@ -1,9 +1,7 @@
-const EventHostActions = {
+const EventHostPropertiesActions = {
   CREATE_EVENT_START: "CREATE_EVENT_START",
   CREATE_EVENT_SUCCESS: "CREATE_EVENT_SUCCESS",
   CREATE_EVENT_FAILURE: "CREATE_EVENT_FAILURE",
-
-  UPDATE_PLAYERS: "UPDATE_PLAYERS",
 }
 
-export default EventHostActions
+export default EventHostPropertiesActions

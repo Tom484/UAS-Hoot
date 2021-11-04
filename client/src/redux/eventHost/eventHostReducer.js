@@ -1,4 +1,5 @@
 import EventHostActions from "./eventHostTypes"
+import { updatePlayers } from "./eventHostUtils"
 
 const initialState = {
   event: undefined,
@@ -14,8 +15,8 @@ const eventHostReducer = (state = initialState, action) => {
       return { ...state, isCreatingEvent: false, errorMessage: undefined, event: action.payload }
     case EventHostActions.CREATE_EVENT_FAILURE:
       return { ...state, isCreatingEvent: false, errorMessage: action.payload }
-    case EventHostActions.ON_PLAYERS_CHANGE: {
-      return { ...state }
+    case EventHostActions.UPDATE_PLAYERS: {
+      return { ...state, event: updatePlayers(state.event, action.payload) }
     }
     default:
       return state

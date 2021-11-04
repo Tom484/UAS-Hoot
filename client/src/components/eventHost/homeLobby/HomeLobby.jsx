@@ -15,9 +15,9 @@ const HomeLobby = ({ eventProperties, players }) => {
         <button>Start</button>
         <div>Number of Players</div>
         <div className="players-container">
-          <div className="player">Tom</div>
-          <div className="player">John</div>
-          <div className="player">Hattie</div>
+          {players.map(player => (
+            <div key={player.id}>{player.displayName}</div>
+          ))}
         </div>
       </div>
     </div>
