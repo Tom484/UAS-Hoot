@@ -54,6 +54,7 @@ export function* createEventAsync({ payload: { collectionId, history } }) {
   }
 }
 
+// lobby, slideStart, slideVote, slideResults ,overallResults
 export function* startEventAsync({ payload }) {
   try {
     console.log("eventStart")
@@ -77,6 +78,7 @@ export function* eventHostPropertiesEventAsync({ payload }) {
 
 export function* eventHostPropertiesConnectAsync({ payload: { properties } }) {
   try {
+    console.log(properties)
     const eventPropertiesConnect = yield select(selectEventPropertiesConnect)
     if (properties?.isOpen === "toggle") {
       properties.isOpen = !eventPropertiesConnect.isOpen

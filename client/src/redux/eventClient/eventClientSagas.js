@@ -6,9 +6,6 @@ import EventClientActions from "./eventClientTypes"
 import uuid from "react-uuid"
 
 export function* joinEventAsync({ payload: { displayName, eventId, history } }) {
-  console.log(eventId)
-  console.log(typeof eventId)
-  console.log("start")
   try {
     const collectionRef = yield firestore
       .collection(`events`)
@@ -17,8 +14,6 @@ export function* joinEventAsync({ payload: { displayName, eventId, history } }) 
       .doc("connect")
     const snapshot = yield collectionRef.get()
     const connect = yield snapshot.data()
-
-    console.log(connect)
 
     const playerId = uuid()
     if (!connect) return put(joinEventFailure("Enter correct eventId"))
@@ -31,6 +26,16 @@ export function* joinEventAsync({ payload: { displayName, eventId, history } }) 
       .doc(playerId)
 
     yield playersRef.set({ id: playerId, displayName, joinAt: new Date().getTime() })
+
+    const eventPropertiesEventRef = yield firestore
+      .collection(`events`)
+      .doc(eventId)
+      .collection("players")
+      .doc(playerId)
+
+    const snapShot = yield eventPropertiesEventRef.get()
+    const eventPropertiesEvent = yield snapShot.data() || {}
+    console.log(eventPropertiesEvent)
 
     yield put(joinEventSuccess())
     yield history.push("/event")

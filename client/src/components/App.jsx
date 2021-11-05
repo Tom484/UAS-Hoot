@@ -57,6 +57,21 @@ const App = ({
     // eslint-disable-next-line
   }, [currentUser, eventPropertiesConnect])
 
+  // useEffect(() => {
+  //   if (!eventPropertiesConnect?.isOpen) return
+  //   const unsubscribe = firestore
+  //     .collection(`events`)
+  //     .doc(eventPropertiesConnect.enterCode)
+  //     .collection("players")
+  //     .onSnapshot(snapshot => {
+  //       const players = snapshot.docs.map(doc => doc.data())
+  //       console.log(players)
+  //       updatePlayers(players)
+  //     })
+  //   return () => unsubscribe()
+  //   // eslint-disable-next-line
+  // }, [eventPropertiesConnect])
+
   return (
     <div>
       <Header />

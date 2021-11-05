@@ -1,13 +1,14 @@
 import React from "react"
 import { connect } from "react-redux"
 import { selectEventPlayersArray } from "../../../redux/eventHostPlayers/eventHostPlayersSelectors"
-import { selectEventProperties } from "../../../redux/eventHostProperties/eventHostPropertiesSelectors"
+import {
+  selectEventProperties,
+  selectEventPropertiesHost,
+} from "../../../redux/eventHostProperties/eventHostPropertiesSelectors"
 import EventHostButton from "../eventHostButton/EventHostButton"
 import "./homeLobby.scss"
 
-const HomeLobby = ({ eventProperties, players }) => {
-  console.log(eventProperties)
-  console.log(eventProperties?.connect.isOpen)
+const HomeLobby = ({ eventProperties, players, host }) => {
   return (
     <div className="home-lobby">
       <div className="home-lobby-container">
@@ -22,6 +23,7 @@ const HomeLobby = ({ eventProperties, players }) => {
         <EventHostButton type="UPDATE_HOST_PROPERTIES_CONNECT" properties={{ isOpen: "toggle" }}>
           Open ({eventProperties?.connect.isOpen ? "Yes" : "No"})
         </EventHostButton>
+        <div>Hosted by {host.displayName}</div>
       </div>
     </div>
   )
@@ -30,6 +32,7 @@ const HomeLobby = ({ eventProperties, players }) => {
 const mapStateToProps = state => ({
   eventProperties: selectEventProperties(state),
   players: selectEventPlayersArray(state),
+  host: selectEventPropertiesHost(state),
 })
 
 export default connect(mapStateToProps)(HomeLobby)
