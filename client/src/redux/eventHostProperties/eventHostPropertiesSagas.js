@@ -5,23 +5,13 @@ import { selectCurrentUser } from "../user/userSelectors"
 import { createEventFailure, createEventSuccess } from "./eventHostPropertiesActions"
 import {
   createCollectionRef,
+  createConnectRef,
   createEventRef,
   createHostRef,
   eventPropertiesTemplate,
 } from "./eventHostPropertiesTemplates"
 
 import EventHostPropertiesActions from "./eventHostPropertiesTypes"
-
-// function playersListener(enterCode) {
-//   firestore
-//     .collection(`events`)
-//     .doc(enterCode)
-//     .collection("players")
-//     .onSnapshot(snapshot => {
-//       const players = snapshot.docs.map(doc => doc.data())
-//       console.log(players)
-//     })
-// }
 
 export function* createEventAsync({ payload: { collectionId, history } }) {
   try {
@@ -32,10 +22,10 @@ export function* createEventAsync({ payload: { collectionId, history } }) {
 
     const properties = yield eventPropertiesTemplate(collection, enterCode, currentUser)
 
-    const collectionRef = yield createCollectionRef()
-    const connectRef = yield createCollectionRef()
-    const eventRef = yield createEventRef()
-    const hostRef = yield createHostRef()
+    const collectionRef = yield createCollectionRef(enterCode)
+    const connectRef = yield createConnectRef(enterCode)
+    const eventRef = yield createEventRef(enterCode)
+    const hostRef = yield createHostRef(enterCode)
 
     const batch = firestore.batch()
     yield batch.set(collectionRef, { ...properties.collection })
@@ -51,10 +41,39 @@ export function* createEventAsync({ payload: { collectionId, history } }) {
   }
 }
 
+export function* eventHostPropertiesEventAsync({ payload }) {
+  try {
+  } catch (error) {}
+}
+
+export function* eventHostPropertiesConnectAsync({ payload }) {
+  try {
+    yield console.log(payload)
+  } catch (error) {}
+}
+
 export function* createEventStart() {
   yield takeLatest(EventHostPropertiesActions.CREATE_EVENT_START, createEventAsync)
 }
 
+export function* eventHostPropertiesEventStart() {
+  yield takeLatest(
+    EventHostPropertiesActions.UPDATE_HOST_PROPERTIES_EVENT_START,
+    eventHostPropertiesEventAsync
+  )
+}
+
+export function* eventHostPropertiesConnectStart() {
+  yield takeLatest(
+    EventHostPropertiesActions.UPDATE_HOST_PROPERTIES_CONNECT_START,
+    eventHostPropertiesConnectAsync
+  )
+}
+
 export function* eventHostPropertiesSagas() {
-  yield all([call(createEventStart)])
+  yield all([
+    call(createEventStart),
+    call(eventHostPropertiesEventStart),
+    call(eventHostPropertiesConnectStart),
+  ])
 }

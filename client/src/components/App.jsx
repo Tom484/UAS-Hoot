@@ -46,7 +46,7 @@ const App = ({
     if (!eventPropertiesConnect?.isOpen) return
     const unsubscribe = firestore
       .collection(`events`)
-      .doc("1000")
+      .doc(eventPropertiesConnect.enterCode)
       .collection("players")
       .onSnapshot(snapshot => {
         const players = snapshot.docs.map(doc => doc.data())

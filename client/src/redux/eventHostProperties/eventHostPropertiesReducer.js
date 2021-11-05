@@ -1,8 +1,11 @@
 import EventHostPropertiesActions from "./eventHostPropertiesTypes"
+import { updatePropertiesConnect, updatePropertiesEvent } from "./eventHostPropertiesUtils"
 
 const initialState = {
   properties: undefined,
   isCreatingEvent: false,
+  isUpdatingConnect: false,
+  isUpdatingEvent: false,
   errorMessage: undefined,
 }
 const eventHostPropertiesReducer = (state = initialState, action) => {
@@ -18,6 +21,30 @@ const eventHostPropertiesReducer = (state = initialState, action) => {
       }
     case EventHostPropertiesActions.CREATE_EVENT_FAILURE:
       return { ...state, isCreatingEvent: false, errorMessage: action.payload }
+
+    case EventHostPropertiesActions.UPDATE_HOST_PROPERTIES_CONNECT_START:
+      return { ...state, isUpdatingConnect: true, errorMessage: undefined }
+    case EventHostPropertiesActions.UPDATE_HOST_PROPERTIES_CONNECT_SUCCESS:
+      return {
+        ...state,
+        properties: updatePropertiesConnect(state.properties, action.payload),
+        isUpdatingConnect: false,
+        errorMessage: undefined,
+      }
+    case EventHostPropertiesActions.UPDATE_HOST_PROPERTIES_CONNECT_FAILURE:
+      return { ...state, isUpdatingConnect: false, errorMessage: action.payload }
+
+    case EventHostPropertiesActions.UPDATE_HOST_PROPERTIES_EVENT_START:
+      return { ...state, isUpdatingEvent: true, errorMessage: undefined }
+    case EventHostPropertiesActions.UPDATE_HOST_PROPERTIES_EVENT_SUCCESS:
+      return {
+        ...state,
+        properties: updatePropertiesEvent(state.properties, action.payload),
+        isUpdatingEvent: false,
+        errorMessage: undefined,
+      }
+    case EventHostPropertiesActions.UPDATE_HOST_PROPERTIES_EVENT_FAILURE:
+      return { ...state, isUpdatingEvent: false, errorMessage: action.payload }
     default:
       return state
   }
