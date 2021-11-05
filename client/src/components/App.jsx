@@ -22,10 +22,17 @@ import EditorPage from "../pages/editor/EditorPage"
 import EventClientPage from "../pages/eventClient/EventClientPage"
 import EventCreatePage from "../pages/eventCreate/EventCreatePage"
 import EventHostPage from "../pages/eventHost/EventHostPage"
-// import { firestore } from "../firebase/firebaseUtils"
-import { updatePlayers } from "../redux/eventHost/eventHostActions"
+import { firestore } from "../firebase/firebaseUtils"
+import { updatePlayers } from "../redux/eventHostPlayers/eventHostPlayersActions"
+import { selectEventPropertiesConnect } from "../redux/eventHostProperties/eventHostPropertiesSelectors"
 
-const App = ({ checkUserSession, fetchCollectionsStart, currentUser, updatePlayers }) => {
+const App = ({
+  checkUserSession,
+  fetchCollectionsStart,
+  currentUser,
+  updatePlayers,
+  eventPropertiesConnect,
+}) => {
   useEffect(() => {
     checkUserSession()
     if (currentUser) {
@@ -35,20 +42,20 @@ const App = ({ checkUserSession, fetchCollectionsStart, currentUser, updatePlaye
   }, [currentUser])
 
   useEffect(() => {
-    // console.log("eventHost: ")
-    // if (!currentUser) return
-    // const unsubscribe = firestore
-    //   .collection(`events`)
-    //   .doc("1000")
-    //   .collection("players")
-    //   .onSnapshot(snapshot => {
-    //     const players = snapshot.docs.map(doc => doc.data())
-    //     console.log(players)
-    //     updatePlayers(players)
-    //   })
-    // return () => unsubscribe()
+    if (!currentUser) return
+    if (!eventPropertiesConnect?.isOpen) return
+    const unsubscribe = firestore
+      .collection(`events`)
+      .doc("1000")
+      .collection("players")
+      .onSnapshot(snapshot => {
+        const players = snapshot.docs.map(doc => doc.data())
+        console.log(players)
+        updatePlayers(players)
+      })
+    return () => unsubscribe()
     // eslint-disable-next-line
-  }, [])
+  }, [currentUser, eventPropertiesConnect])
 
   return (
     <div>
@@ -109,6 +116,7 @@ const App = ({ checkUserSession, fetchCollectionsStart, currentUser, updatePlaye
 
 const mapStateToProps = state => ({
   currentUser: selectCurrentUser(state),
+  eventPropertiesConnect: selectEventPropertiesConnect(state),
 })
 
 const mapDispatchToProps = dispatch => ({

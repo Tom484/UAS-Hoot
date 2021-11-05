@@ -55,6 +55,6 @@ export function* createEventStart() {
   yield takeLatest(EventHostPropertiesActions.CREATE_EVENT_START, createEventAsync)
 }
 
-export function* eventHostSagas() {
+export function* eventHostPropertiesSagas() {
   yield all([call(createEventStart)])
 }
