@@ -12,15 +12,14 @@ const HomeLobby = ({ eventProperties, players }) => {
     <div className="home-lobby">
       <div className="home-lobby-container">
         <h1>Game Pin: {eventProperties?.connect?.enterCode}</h1>
-        <button>Start</button>
         <div>Number of Players: {players.length}</div>
         <div className="players-container">
           {players.map(player => (
             <div key={player.id}>{player.displayName}</div>
           ))}
         </div>
-        <button>Start</button>
-        <EventHostButton type="UPDATE_HOST_PROPERTIES_CONNECT" properties={{ isOpen: false }}>
+        <EventHostButton type="START_EVENT" />
+        <EventHostButton type="UPDATE_HOST_PROPERTIES_CONNECT" properties={{ isOpen: "toggle" }}>
           Open ({eventProperties?.connect.isOpen ? "Yes" : "No"})
         </EventHostButton>
       </div>

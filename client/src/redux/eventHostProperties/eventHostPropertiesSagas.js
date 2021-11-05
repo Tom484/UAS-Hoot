@@ -2,7 +2,20 @@ import { all, call, put, select, takeLatest } from "redux-saga/effects"
 import { firestore } from "../../firebase/firebaseUtils"
 import { selectUserCollection } from "../collections/collectionsSelectors"
 import { selectCurrentUser } from "../user/userSelectors"
-import { createEventFailure, createEventSuccess } from "./eventHostPropertiesActions"
+import {
+  createEventFailure,
+  createEventSuccess,
+  startEventFailure,
+  startEventSuccess,
+  updateHostPropertiesConnectFailure,
+  updateHostPropertiesConnectSuccess,
+  updateHostPropertiesEventFailure,
+  updateHostPropertiesEventSuccess,
+} from "./eventHostPropertiesActions"
+import {
+  selectEventPropertiesConnect,
+  selectEventPropertiesEvent,
+} from "./eventHostPropertiesSelectors"
 import {
   createCollectionRef,
   createConnectRef,
@@ -41,19 +54,48 @@ export function* createEventAsync({ payload: { collectionId, history } }) {
   }
 }
 
-export function* eventHostPropertiesEventAsync({ payload }) {
+export function* startEventAsync({ payload }) {
   try {
-  } catch (error) {}
+    console.log("eventStart")
+    yield put(startEventSuccess())
+  } catch (error) {
+    yield put(startEventFailure(error.message))
+  }
 }
 
-export function* eventHostPropertiesConnectAsync({ payload }) {
+export function* eventHostPropertiesEventAsync({ payload }) {
   try {
-    yield console.log(payload)
-  } catch (error) {}
+    const eventPropertiesEvent = yield select(selectEventPropertiesEvent)
+    const newProperties = yield { ...eventPropertiesEvent, ...payload }
+    const connectRef = yield createConnectRef(newProperties.enterCode)
+    yield connectRef.update({ ...newProperties })
+    yield put(updateHostPropertiesEventSuccess(newProperties))
+  } catch (error) {
+    yield put(updateHostPropertiesEventFailure(error.message))
+  }
+}
+
+export function* eventHostPropertiesConnectAsync({ payload: { properties } }) {
+  try {
+    const eventPropertiesConnect = yield select(selectEventPropertiesConnect)
+    if (properties?.isOpen === "toggle") {
+      properties.isOpen = !eventPropertiesConnect.isOpen
+    }
+    const newProperties = yield { ...eventPropertiesConnect, ...properties }
+    const connectRef = yield createConnectRef(newProperties.enterCode)
+    yield connectRef.update({ ...newProperties })
+    yield put(updateHostPropertiesConnectSuccess(newProperties))
+  } catch (error) {
+    yield put(updateHostPropertiesConnectFailure(error.message))
+  }
 }
 
 export function* createEventStart() {
   yield takeLatest(EventHostPropertiesActions.CREATE_EVENT_START, createEventAsync)
+}
+
+export function* startEventStart() {
+  yield takeLatest(EventHostPropertiesActions.START_EVENT_START, startEventAsync)
 }
 
 export function* eventHostPropertiesEventStart() {
@@ -73,6 +115,7 @@ export function* eventHostPropertiesConnectStart() {
 export function* eventHostPropertiesSagas() {
   yield all([
     call(createEventStart),
+    call(startEventStart),
     call(eventHostPropertiesEventStart),
     call(eventHostPropertiesConnectStart),
   ])

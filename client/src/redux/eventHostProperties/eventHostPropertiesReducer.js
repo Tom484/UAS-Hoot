@@ -4,6 +4,7 @@ import { updatePropertiesConnect, updatePropertiesEvent } from "./eventHostPrope
 const initialState = {
   properties: undefined,
   isCreatingEvent: false,
+  isStartingEvent: false,
   isUpdatingConnect: false,
   isUpdatingEvent: false,
   errorMessage: undefined,
@@ -21,6 +22,13 @@ const eventHostPropertiesReducer = (state = initialState, action) => {
       }
     case EventHostPropertiesActions.CREATE_EVENT_FAILURE:
       return { ...state, isCreatingEvent: false, errorMessage: action.payload }
+
+    case EventHostPropertiesActions.START_EVENT_START:
+      return { ...state, isStartingEvent: true, errorMessage: undefined }
+    case EventHostPropertiesActions.START_EVENT_SUCCESS:
+      return { ...state }
+    case EventHostPropertiesActions.START_EVENT_FAILURE:
+      return { ...state, isStartingEvent: false, errorMessage: action.payload }
 
     case EventHostPropertiesActions.UPDATE_HOST_PROPERTIES_CONNECT_START:
       return { ...state, isUpdatingConnect: true, errorMessage: undefined }

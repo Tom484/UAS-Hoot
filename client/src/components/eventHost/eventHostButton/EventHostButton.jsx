@@ -4,6 +4,7 @@ import EventHostButtonTypes from "./eventHostButtonTypes"
 import { withRouter } from "react-router-dom"
 import {
   createEventStart,
+  startEventStart,
   updateHostPropertiesConnectStart,
   updateHostPropertiesEventStart,
 } from "../../../redux/eventHostProperties/eventHostPropertiesActions"
@@ -19,11 +20,15 @@ const EventClientButton = ({
   updateHostPropertiesConnect,
   updateHostPropertiesEvent,
   properties,
+  startEvent,
 }) => {
   const clickHandler = () => {
     switch (type) {
       case EventHostButtonTypes.CREATE_EVENT.id:
         createEventHandler()
+        break
+      case EventHostButtonTypes.START_EVENT.id:
+        startEventHandler()
         break
       case EventHostButtonTypes.UPDATE_HOST_PROPERTIES_CONNECT.id:
         updateHostPropertiesConnectHandler()
@@ -39,12 +44,17 @@ const EventClientButton = ({
   const createEventHandler = () => {
     createEvent({ collectionId, history })
   }
+
+  const startEventHandler = () => {
+    startEvent()
+  }
+
   const updateHostPropertiesConnectHandler = () => {
-    updateHostPropertiesConnect({ ...properties })
+    updateHostPropertiesConnect({ properties })
   }
 
   const updateHostPropertiesEventHandler = () => {
-    updateHostPropertiesEvent({ ...properties })
+    updateHostPropertiesEvent({ properties })
   }
 
   if (children) return <span onClick={clickHandler}>{children}</span>
@@ -58,6 +68,7 @@ const EventClientButton = ({
 
 const mapDispatchToProps = dispatch => ({
   createEvent: id => dispatch(createEventStart(id)),
+  startEvent: () => dispatch(startEventStart()),
   updateHostPropertiesConnect: properties => dispatch(updateHostPropertiesConnectStart(properties)),
   updateHostPropertiesEvent: properties => dispatch(updateHostPropertiesEventStart(properties)),
 })
