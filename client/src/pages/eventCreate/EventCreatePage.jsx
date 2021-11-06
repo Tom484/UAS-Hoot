@@ -2,7 +2,7 @@ import React from "react"
 import { connect } from "react-redux"
 import { withRouter } from "react-router-dom"
 import { selectUserCollection } from "../../redux/collections/collectionsSelectors"
-import EventHostButton from "../../components/eventHost/eventHostButton/EventHostButton"
+import HostButton from "../../components/event/eventButton/EventButton"
 
 import "./eventCreatePage.scss"
 
@@ -15,7 +15,7 @@ const EventCreatePage = ({ collection }) => {
         <h2>Create Event</h2>
         <h4>Name {collection.name}</h4>
         <button>Start Game</button>
-        <EventHostButton type="CREATE_EVENT" collectionId={collection.id} />
+        <HostButton type="CREATE_EVENT" collectionId={collection.id} />
       </div>
     </div>
   )

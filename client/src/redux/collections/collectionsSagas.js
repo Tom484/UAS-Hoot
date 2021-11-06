@@ -105,7 +105,7 @@ export function* saveCollectionStart() {
   yield takeLatest(CollectionActions.SAVE_COLLECTION_START, saveCollectionAsync)
 }
 
-export function* collectionsSagas() {
+export default function* collectionsSagas() {
   yield all([
     call(fetchCollectionsStart),
     call(deleteCollectionStart),

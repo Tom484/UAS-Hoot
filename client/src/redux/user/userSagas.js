@@ -139,7 +139,7 @@ export function* onToggleFavoriteCollection() {
   yield takeEvery(UserActionTypes.TOGGLE_FAVORITE_COLLECTION_START, toggleFavoriteCollection)
 }
 
-export function* userSagas() {
+export default function* userSagas() {
   yield all([
     call(onGoogleSignInStart),
     call(onEmailSignInStart),

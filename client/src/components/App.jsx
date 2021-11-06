@@ -19,12 +19,11 @@ import ReportsPage from "../pages/reports/ReportsPage"
 import { fetchCollectionsStart } from "../redux/collections/collectionsActions"
 import AccountPage from "../pages/account/AccountPage"
 import EditorPage from "../pages/editor/EditorPage"
-import EventClientPage from "../pages/eventClient/EventClientPage"
 import EventCreatePage from "../pages/eventCreate/EventCreatePage"
-import EventHostPage from "../pages/eventHost/EventHostPage"
+import EventPage from "../pages/event/EventPage"
 import { firestore } from "../firebase/firebaseUtils"
-import { updatePlayers } from "../redux/eventHostPlayers/eventHostPlayersActions"
-import { selectEventPropertiesConnect } from "../redux/eventHostProperties/eventHostPropertiesSelectors"
+import { updatePlayers } from "../redux/eventPlayers/eventPlayersActions"
+import { selectEventPropertiesConnect } from "../redux/eventProperties/eventPropertiesSelectors"
 
 const App = ({
   checkUserSession,
@@ -56,21 +55,6 @@ const App = ({
     return () => unsubscribe()
     // eslint-disable-next-line
   }, [currentUser, eventPropertiesConnect])
-
-  // useEffect(() => {
-  //   if (!eventPropertiesConnect?.isOpen) return
-  //   const unsubscribe = firestore
-  //     .collection(`events`)
-  //     .doc(eventPropertiesConnect.enterCode)
-  //     .collection("players")
-  //     .onSnapshot(snapshot => {
-  //       const players = snapshot.docs.map(doc => doc.data())
-  //       console.log(players)
-  //       updatePlayers(players)
-  //     })
-  //   return () => unsubscribe()
-  //   // eslint-disable-next-line
-  // }, [eventPropertiesConnect])
 
   return (
     <div>
@@ -111,15 +95,14 @@ const App = ({
           path="/create-event/:collectionId"
           component={EventCreatePage}
         />
+        <PrivateRoute exact onlyLogged={true} redirect="/" path="/event" component={EventPage} />
         <PrivateRoute
           exact
           onlyLogged={true}
           redirect="/"
-          path="/event-block"
-          component={EventHostPage}
+          path="/editor/:collectionId"
+          component={EditorPage}
         />
-        <Route exact path="/event" component={EventClientPage} />
-        <Route exact path="/editor/:collectionId" component={EditorPage} />
         <PrivateRoute exact onlyLogged={false} redirect="/" path="/sign-in" component={SingIn} />
         <Route exact path="/" component={HomePage} />
         <Route exact path="/not-found" component={NotFoundPage} />
