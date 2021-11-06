@@ -5,9 +5,9 @@ import { withRouter } from "react-router-dom"
 import {
   createEventStart,
   startEventStart,
-  updatePropertiesConnectStart,
-  updatePropertiesEventStart,
-} from "../../../redux/eventProperties/eventPropertiesActions"
+  updateDataConnectStart,
+  updateDataEventStart,
+} from "../../../redux/eventData/eventDataActions"
 
 const EventButton = ({
   children,
@@ -17,9 +17,9 @@ const EventButton = ({
   collectionId,
   createEvent,
   history,
-  updatePropertiesConnect,
-  updatePropertiesEvent,
-  properties,
+  updateDataConnect,
+  updateDataEvent,
+  data,
   startEvent,
 }) => {
   const clickHandler = () => {
@@ -30,11 +30,11 @@ const EventButton = ({
       case EventButtonTypes.START_EVENT.id:
         startEventHandler()
         break
-      case EventButtonTypes.UPDATE_PROPERTIES_CONNECT.id:
-        updatePropertiesConnectHandler()
+      case EventButtonTypes.UPDATE_DATA_CONNECT.id:
+        updateDataConnectHandler()
         break
-      case EventButtonTypes.UPDATE_PROPERTIES_EVENT.id:
-        updatePropertiesEventHandler()
+      case EventButtonTypes.UPDATE_DATA_EVENT.id:
+        updateDataEventHandler()
         break
       default:
         console.log("Error! Enter correct type name!")
@@ -49,12 +49,12 @@ const EventButton = ({
     startEvent()
   }
 
-  const updatePropertiesConnectHandler = () => {
-    updatePropertiesConnect({ properties })
+  const updateDataConnectHandler = () => {
+    updateDataConnect({ data })
   }
 
-  const updatePropertiesEventHandler = () => {
-    updatePropertiesEvent({ properties })
+  const updateDataEventHandler = () => {
+    updateDataEvent({ data })
   }
 
   if (children) return <span onClick={clickHandler}>{children}</span>
@@ -69,8 +69,8 @@ const EventButton = ({
 const mapDispatchToProps = dispatch => ({
   createEvent: id => dispatch(createEventStart(id)),
   startEvent: () => dispatch(startEventStart()),
-  updatePropertiesConnect: properties => dispatch(updatePropertiesConnectStart(properties)),
-  updatePropertiesEvent: properties => dispatch(updatePropertiesEventStart(properties)),
+  updateDataConnect: data => dispatch(updateDataConnectStart(data)),
+  updateDataEvent: data => dispatch(updateDataEventStart(data)),
 })
 
 export default withRouter(connect(null, mapDispatchToProps)(EventButton))

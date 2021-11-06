@@ -23,14 +23,14 @@ import EventCreatePage from "../pages/eventCreate/EventCreatePage"
 import EventPage from "../pages/event/EventPage"
 import { firestore } from "../firebase/firebaseUtils"
 import { updatePlayers } from "../redux/eventPlayers/eventPlayersActions"
-import { selectEventPropertiesConnect } from "../redux/eventProperties/eventPropertiesSelectors"
+import { selectEventDataConnect } from "../redux/eventData/eventDataSelectors"
 
 const App = ({
   checkUserSession,
   fetchCollectionsStart,
   currentUser,
   updatePlayers,
-  eventPropertiesConnect,
+  eventDataConnect,
 }) => {
   useEffect(() => {
     checkUserSession()
@@ -42,10 +42,10 @@ const App = ({
 
   useEffect(() => {
     if (!currentUser) return
-    if (!eventPropertiesConnect?.isOpen) return
+    if (!eventDataConnect?.isOpen) return
     const unsubscribe = firestore
       .collection(`events`)
-      .doc(eventPropertiesConnect.enterCode)
+      .doc(eventDataConnect.enterCode)
       .collection("players")
       .onSnapshot(snapshot => {
         const players = snapshot.docs.map(doc => doc.data())
@@ -54,7 +54,7 @@ const App = ({
       })
     return () => unsubscribe()
     // eslint-disable-next-line
-  }, [currentUser, eventPropertiesConnect])
+  }, [currentUser, eventDataConnect])
 
   return (
     <div>
@@ -114,7 +114,7 @@ const App = ({
 
 const mapStateToProps = state => ({
   currentUser: selectCurrentUser(state),
-  eventPropertiesConnect: selectEventPropertiesConnect(state),
+  eventDataConnect: selectEventDataConnect(state),
 })
 
 const mapDispatchToProps = dispatch => ({

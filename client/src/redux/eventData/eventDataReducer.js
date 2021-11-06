@@ -1,61 +1,61 @@
-import EventPropertiesActions from "./eventPropertiesTypes"
-import { updatePropertiesConnect, updatePropertiesEvent } from "./eventPropertiesUtils"
+import EventDataActions from "./eventDataTypes"
+import { updateDataConnect, updateDataEvent } from "./eventDataUtils"
 
 const initialState = {
-  properties: undefined,
+  data: undefined,
   isCreatingEvent: false,
   isStartingEvent: false,
   isUpdatingConnect: false,
   isUpdatingEvent: false,
   errorMessage: undefined,
 }
-const eventPropertiesReducer = (state = initialState, action) => {
+const eventDataReducer = (state = initialState, action) => {
   switch (action.type) {
-    case EventPropertiesActions.CREATE_EVENT_START:
+    case EventDataActions.CREATE_EVENT_START:
       return { ...state, isCreatingEvent: true, errorMessage: undefined }
-    case EventPropertiesActions.CREATE_EVENT_SUCCESS:
+    case EventDataActions.CREATE_EVENT_SUCCESS:
       return {
         ...state,
         isCreatingEvent: false,
         errorMessage: undefined,
-        properties: { ...action.payload },
+        data: { ...action.payload },
       }
-    case EventPropertiesActions.CREATE_EVENT_FAILURE:
+    case EventDataActions.CREATE_EVENT_FAILURE:
       return { ...state, isCreatingEvent: false, errorMessage: action.payload }
 
-    case EventPropertiesActions.START_EVENT_START:
+    case EventDataActions.START_EVENT_START:
       return { ...state, isStartingEvent: true, errorMessage: undefined }
-    case EventPropertiesActions.START_EVENT_SUCCESS:
+    case EventDataActions.START_EVENT_SUCCESS:
       return { ...state }
-    case EventPropertiesActions.START_EVENT_FAILURE:
+    case EventDataActions.START_EVENT_FAILURE:
       return { ...state, isStartingEvent: false, errorMessage: action.payload }
 
-    case EventPropertiesActions.UPDATE_PROPERTIES_CONNECT_START:
+    case EventDataActions.UPDATE_DATA_CONNECT_START:
       return { ...state, isUpdatingConnect: true, errorMessage: undefined }
-    case EventPropertiesActions.UPDATE_PROPERTIES_CONNECT_SUCCESS:
+    case EventDataActions.UPDATE_DATA_CONNECT_SUCCESS:
       return {
         ...state,
-        properties: updatePropertiesConnect(state.properties, action.payload),
+        data: updateDataConnect(state.data, action.payload),
         isUpdatingConnect: false,
         errorMessage: undefined,
       }
-    case EventPropertiesActions.UPDATE_PROPERTIES_CONNECT_FAILURE:
+    case EventDataActions.UPDATE_DATA_CONNECT_FAILURE:
       return { ...state, isUpdatingConnect: false, errorMessage: action.payload }
 
-    case EventPropertiesActions.UPDATE_PROPERTIES_EVENT_START:
+    case EventDataActions.UPDATE_DATA_EVENT_START:
       return { ...state, isUpdatingEvent: true, errorMessage: undefined }
-    case EventPropertiesActions.UPDATE_PROPERTIES_EVENT_SUCCESS:
+    case EventDataActions.UPDATE_DATA_EVENT_SUCCESS:
       return {
         ...state,
-        properties: updatePropertiesEvent(state.properties, action.payload),
+        data: updateDataEvent(state.data, action.payload),
         isUpdatingEvent: false,
         errorMessage: undefined,
       }
-    case EventPropertiesActions.UPDATE_PROPERTIES_EVENT_FAILURE:
+    case EventDataActions.UPDATE_DATA_EVENT_FAILURE:
       return { ...state, isUpdatingEvent: false, errorMessage: action.payload }
     default:
       return state
   }
 }
 
-export default eventPropertiesReducer
+export default eventDataReducer
