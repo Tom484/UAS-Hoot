@@ -7,6 +7,7 @@ import {
 } from "../../../redux/eventHostProperties/eventHostPropertiesSelectors"
 import EventHostButton from "../eventHostButton/EventHostButton"
 import "./homeLobby.scss"
+import QRCode from "react-qr-code"
 
 const HomeLobby = ({ eventProperties, players, host }) => {
   return (
@@ -24,6 +25,11 @@ const HomeLobby = ({ eventProperties, players, host }) => {
           Open ({eventProperties?.connect.isOpen ? "Yes" : "No"})
         </EventHostButton>
         <div>Hosted by {host.displayName}</div>
+        {eventProperties?.connect?.enterCode && (
+          <QRCode
+            value={`https://uas-hoot.netlify.app/join/${eventProperties?.connect?.enterCode}`}
+          />
+        )}
       </div>
     </div>
   )

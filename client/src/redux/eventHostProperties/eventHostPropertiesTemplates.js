@@ -8,7 +8,7 @@ export const eventPropertiesTemplate = (collection, enterCode, currentUser) => {
       isOpen: true,
     },
     event: {
-      eventSlide: { type: "lobby", id: "" },
+      currentSlide: { type: "lobby", id: "" },
     },
     host: {
       id: currentUser.id,

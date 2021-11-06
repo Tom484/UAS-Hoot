@@ -6,12 +6,12 @@ import OverallResults from "../../components/eventClient/overallResults/OverallR
 import "./eventClientPage.scss"
 
 const EventClientPage = ({ eventPropertiesEvent }) => {
-  if (!eventPropertiesEvent?.eventSlide) return <div>Loading</div>
+  if (!eventPropertiesEvent?.currentSlide) return <div>Loading</div>
   console.log(eventPropertiesEvent)
   return (
     <div>
-      {eventPropertiesEvent?.eventSlide?.type === "lobby" && <HomeLobby />}
-      {eventPropertiesEvent?.eventSlide?.type === "overallResults" && <OverallResults />}
+      {eventPropertiesEvent?.currentSlide?.type === "lobby" && <HomeLobby />}
+      {eventPropertiesEvent?.currentSlide?.type === "overallResults" && <OverallResults />}
     </div>
   )
 }
