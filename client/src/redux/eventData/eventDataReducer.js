@@ -26,7 +26,12 @@ const eventDataReducer = (state = initialState, action) => {
     case EventDataActions.START_EVENT_START:
       return { ...state, isStartingEvent: true, errorMessage: undefined }
     case EventDataActions.START_EVENT_SUCCESS:
-      return { ...state }
+      return {
+        ...state,
+        data: updateDataEvent(state.data, action.payload),
+        errorMessage: undefined,
+        isStartingEvent: false,
+      }
     case EventDataActions.START_EVENT_FAILURE:
       return { ...state, isStartingEvent: false, errorMessage: action.payload }
 

@@ -49,12 +49,27 @@ const App = ({
       .collection("players")
       .onSnapshot(snapshot => {
         const players = snapshot.docs.map(doc => doc.data())
-        console.log(players)
+        // console.log(players)
         updatePlayers(players)
       })
     return () => unsubscribe()
     // eslint-disable-next-line
   }, [currentUser, eventDataConnect])
+
+  useEffect(() => {
+    if (!currentUser) return
+    const unsubscribe = firestore
+      .collection(`events`)
+      .doc(eventDataConnect.enterCode)
+      .collection("answers")
+      .onSnapshot(snapshot => {
+        const answers = snapshot.docs.map(doc => doc.data())
+        console.log(answers)
+        // updatePlayers(answers)
+      })
+    return () => unsubscribe()
+    // eslint-disable-next-line
+  }, [])
 
   return (
     <div>

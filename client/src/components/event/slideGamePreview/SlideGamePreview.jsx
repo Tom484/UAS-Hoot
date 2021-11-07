@@ -1,9 +1,16 @@
 import React from "react"
+import { connect } from "react-redux"
+import { selectEventDataEvent } from "../../../redux/eventData/eventDataSelectors"
 
 import "./slideGamePreview.scss"
 
-const SlideGamePreview = () => {
-  return <div>Slide Game Preview</div>
+const SlideGamePreview = ({ eventDataEvent }) => {
+  const { question } = eventDataEvent.currentSlideData
+  return <div>{question}</div>
 }
 
-export default SlideGamePreview
+const mapStateToProps = state => ({
+  eventDataEvent: selectEventDataEvent(state),
+})
+
+export default connect(mapStateToProps)(SlideGamePreview)

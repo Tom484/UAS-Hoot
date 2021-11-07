@@ -12,7 +12,11 @@ import {
   updateDataEventFailure,
   updateDataEventSuccess,
 } from "./eventDataActions"
-import { selectEventDataConnect, selectEventDataEvent } from "./eventDataSelectors"
+import {
+  selectEventDataCollection,
+  selectEventDataConnect,
+  selectEventDataEvent,
+} from "./eventDataSelectors"
 import {
   createCollectionRef,
   createConnectRef,
@@ -29,7 +33,6 @@ export function* createEventAsync({ payload: { collectionId, history } }) {
     const collection = yield select(selectUserCollection(collectionId))
     // const enterCode = Math.round(Math.random() * 1000000).toString()
     const enterCode = "1000"
-
     const data = yield eventDataTemplate(collection, enterCode, currentUser)
 
     const collectionRef = yield createCollectionRef(enterCode)
@@ -54,8 +57,27 @@ export function* createEventAsync({ payload: { collectionId, history } }) {
 // lobby, slideStart, slideVote, slideResults ,overallResults
 export function* startEventAsync({ payload }) {
   try {
-    console.log("eventStart")
-    yield put(startEventSuccess())
+    const collection = yield select(selectEventDataCollection)
+    const eventDataConnect = yield select(selectEventDataConnect)
+    const event = yield select(selectEventDataEvent)
+    const id = event.slidesOrder[0]
+    const date = new Date().getTime()
+    const slide = collection.slides[id]
+
+    const eventRef = yield createEventRef(eventDataConnect.enterCode)
+
+    event.currentSlide = {
+      id,
+      index: 0,
+      type: "game",
+      gameType: slide.type,
+      openVoteAt: date + 5000,
+      closeVoteAt: date + 5000 + slide.time.value * 1000,
+    }
+    event.currentSlideData = slide
+
+    yield eventRef.set({ ...event })
+    yield put(startEventSuccess(event))
   } catch (error) {
     yield put(startEventFailure(error.message))
   }

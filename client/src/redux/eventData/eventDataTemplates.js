@@ -2,14 +2,15 @@ import { firestore } from "../../firebase/firebaseUtils"
 
 export const eventDataTemplate = (collection, enterCode, currentUser) => {
   return {
-    collection: { collection },
+    collection: { ...collection },
     connect: {
       enterCode,
       isOpen: true,
     },
     event: {
-      currentSlide: { type: "lobby", id: "", openVoteAt: 100, closeVoteAt: 140 },
+      currentSlide: { type: "lobby", id: "", index: "", openVoteAt: 100, closeVoteAt: 140 },
       slidesOrder: collection.slidesOrder,
+      currentSlideData: {},
     },
     admin: {
       id: currentUser.id,

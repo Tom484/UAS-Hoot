@@ -9,7 +9,6 @@ import "./eventSlide.scss"
 
 const EventSlide = ({ eventDataEvent }) => {
   if (!eventDataEvent?.currentSlide) return <div>Loading</div>
-  console.log(eventDataEvent)
   return (
     <div>
       {eventDataEvent?.currentSlide?.type === "lobby" && <Lobby />}
