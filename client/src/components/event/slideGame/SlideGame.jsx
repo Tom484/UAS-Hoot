@@ -6,8 +6,9 @@ import SlideGameResults from "../slideGameResults/SlideGameResults"
 import "./slideGame.scss"
 import { selectEventDataEvent } from "../../../redux/eventData/eventDataSelectors"
 import { connect } from "react-redux"
+import { analyzeAnswersStart } from "../../../redux/eventResults/eventResultsActions"
 
-const SlideGame = ({ eventDataEvent }) => {
+const SlideGame = ({ eventDataEvent, analyzeAnswers }) => {
   const { openVoteAt, closeVoteAt } = eventDataEvent.currentSlide
 
   const [time, setTime] = useState(Date.now())
@@ -23,6 +24,7 @@ const SlideGame = ({ eventDataEvent }) => {
 
   if (new Date().getTime() > closeVoteAt) {
     clearInterval(timeInterval)
+    analyzeAnswers()
   }
 
   return (
@@ -38,4 +40,8 @@ const mapStateToProps = state => ({
   eventDataEvent: selectEventDataEvent(state),
 })
 
-export default connect(mapStateToProps)(SlideGame)
+const mapDispatchToProps = dispatch => ({
+  analyzeAnswers: data => dispatch(analyzeAnswersStart(data)),
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(SlideGame)

@@ -23,7 +23,8 @@ import EventCreatePage from "../pages/eventCreate/EventCreatePage"
 import EventPage from "../pages/event/EventPage"
 import { firestore } from "../firebase/firebaseUtils"
 import { updatePlayers } from "../redux/eventPlayers/eventPlayersActions"
-import { selectEventDataConnect } from "../redux/eventData/eventDataSelectors"
+import { selectEventDataConnect, selectEventDataEvent } from "../redux/eventData/eventDataSelectors"
+import { updateAnswers } from "../redux/eventAnswers/eventAnswersActions"
 
 const App = ({
   checkUserSession,
@@ -31,6 +32,7 @@ const App = ({
   currentUser,
   updatePlayers,
   eventDataConnect,
+  updateAnswers,
 }) => {
   useEffect(() => {
     checkUserSession()
@@ -49,7 +51,6 @@ const App = ({
       .collection("players")
       .onSnapshot(snapshot => {
         const players = snapshot.docs.map(doc => doc.data())
-        // console.log(players)
         updatePlayers(players)
       })
     return () => unsubscribe()
@@ -64,12 +65,11 @@ const App = ({
       .collection("answers")
       .onSnapshot(snapshot => {
         const answers = snapshot.docs.map(doc => doc.data())
-        console.log(answers)
-        // updatePlayers(answers)
+        updateAnswers(answers)
       })
     return () => unsubscribe()
     // eslint-disable-next-line
-  }, [])
+  }, [currentUser, eventDataConnect])
 
   return (
     <div>
@@ -130,12 +130,14 @@ const App = ({
 const mapStateToProps = state => ({
   currentUser: selectCurrentUser(state),
   eventDataConnect: selectEventDataConnect(state),
+  eventDataEvent: selectEventDataEvent(state),
 })
 
 const mapDispatchToProps = dispatch => ({
   checkUserSession: () => dispatch(checkUserSession()),
   fetchCollectionsStart: currentUser => dispatch(fetchCollectionsStart(currentUser)),
   updatePlayers: players => dispatch(updatePlayers(players)),
+  updateAnswers: answers => dispatch(updateAnswers(answers)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)
