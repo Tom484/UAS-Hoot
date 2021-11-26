@@ -10,8 +10,6 @@ import { ICONLogoOutline } from "../../../icons/Icons"
 const Header = ({ currentUser, signOutStart, history, location }) => {
   const path = location.pathname
 
-  if (!currentUser) return <></>
-
   return (
     <div className="navbar">
       <div className="theme-toggle-container">
@@ -25,35 +23,46 @@ const Header = ({ currentUser, signOutStart, history, location }) => {
             UAS <span className="app-name-bold">Hoot Creator</span>
           </div>
         </div>
-        <div className="side-links">
-          <div
-            onClick={() => history.push("/library/recent")}
-            className={`link ${path.includes("library") ? "active" : ""}`}
-          >
-            Library
+        {currentUser ? (
+          <div className="side-links">
+            <div
+              onClick={() => history.push("/library/recent")}
+              className={`link ${path.includes("library") ? "active" : ""}`}
+            >
+              Library
+            </div>
+            <div
+              onClick={() => history.push("/discover")}
+              className={`link ${path === "/discover" ? "active" : ""}`}
+            >
+              Discover
+            </div>
+            <div
+              onClick={() => history.push("/reports")}
+              className={`link ${path === "/reports" ? "active" : ""}`}
+            >
+              Reports
+            </div>
+            <div
+              onClick={() => history.push("/account")}
+              className={`link ${path === "/account" ? "active" : ""}`}
+            >
+              Account
+            </div>
+            <div className="link" onClick={signOutStart}>
+              Sign Out
+            </div>
           </div>
-          <div
-            onClick={() => history.push("/discover")}
-            className={`link ${path === "/discover" ? "active" : ""}`}
-          >
-            Discover
+        ) : (
+          <div className="side-links">
+            <div
+              onClick={() => history.push("/sign-in")}
+              className={`link ${path.includes("sign-in") ? "active" : ""}`}
+            >
+              Sign In
+            </div>
           </div>
-          <div
-            onClick={() => history.push("/reports")}
-            className={`link ${path === "/reports" ? "active" : ""}`}
-          >
-            Reports
-          </div>
-          <div
-            onClick={() => history.push("/account")}
-            className={`link ${path === "/account" ? "active" : ""}`}
-          >
-            Account
-          </div>
-          <div className="link" onClick={signOutStart}>
-            Sign Out
-          </div>
-        </div>
+        )}
       </div>
     </div>
   )

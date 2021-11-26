@@ -32,43 +32,47 @@ const SignUpComponent = ({ emailSignUpStart }) => {
   }
 
   return (
-    <div className="sign-up-component">
-      <div>Sign up with email and password</div>
-      <form className="container" onSubmit={handleSubmit}>
-        <FormInput
-          name="displayName"
-          type="text"
-          handleChange={handleChange}
-          value={userCredentials.displayName}
-          label="Nickname"
-          required
-        />
-        <FormInput
-          name="email"
-          type="email"
-          handleChange={handleChange}
-          value={userCredentials.email}
-          label="Email"
-          required
-        />
-        <FormInput
-          name="password"
-          type="password"
-          value={userCredentials.password}
-          handleChange={handleChange}
-          label="Password"
-          required
-        />
-        <FormInput
-          name="passwordConfirm"
-          type="password"
-          value={userCredentials.passwordConfirm}
-          handleChange={handleChange}
-          label="Password Confirmation"
-          required
-        />
-        <CustomButton type="submit">Sign Up</CustomButton>
-      </form>
+    <div className="sign-in">
+      <div className="sign-in-container">
+        <div className="form-name">Sign up</div>
+        <form className="container" onSubmit={handleSubmit}>
+          <FormInput
+            name="displayName"
+            type="text"
+            handleChange={handleChange}
+            value={userCredentials.displayName}
+            label="Nickname"
+            required
+          />
+          <FormInput
+            name="email"
+            type="email"
+            handleChange={handleChange}
+            value={userCredentials.email}
+            label="Email"
+            required
+          />
+          <FormInput
+            name="password"
+            type="password"
+            value={userCredentials.password}
+            handleChange={handleChange}
+            label="Password"
+            required
+          />
+          <FormInput
+            name="passwordConfirm"
+            type="password"
+            value={userCredentials.passwordConfirm}
+            handleChange={handleChange}
+            label="Password Confirmation"
+            required
+          />
+          <button type="submit" className="btn btn-sign-in">
+            Sign Up
+          </button>
+        </form>
+      </div>
     </div>
   )
 }

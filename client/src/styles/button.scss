@@ -2,7 +2,7 @@
 
 button {
   outline: none;
-  font-family: Nunito, Poppins, sans-serif;
+  font-family: Poppins, Nunito, sans-serif;
   cursor: pointer;
 }
 
@@ -14,11 +14,11 @@ button {
   outline: none;
   cursor: pointer;
   &:hover {
-    background: var(--color-main-1);
+    background: var(--color-main-2);
     color: var(--color-white);
   }
   &.active {
-    background: var(--color-main-1);
+    background: var(--color-main-2);
     color: var(--color-white);
   }
 }

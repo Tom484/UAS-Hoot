@@ -4,9 +4,9 @@ import "./formInput.scss"
 
 const FormInput = ({ handleChange, label, ...props }) => {
   return (
-    <div>
-      <span>{label}</span>
-      <input onChange={handleChange} {...props} />
+    <div className="form-input-container">
+      <span className="label">{label}</span>
+      <input className="form-input" onChange={handleChange} {...props} />
     </div>
   )
 }

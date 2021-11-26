@@ -1,5 +1,5 @@
 import React from "react"
-import { Link } from "react-router-dom"
+import { ICONLogoOutline } from "../../icons/Icons"
 
 import "./homePage.scss"
 
@@ -7,8 +7,14 @@ const HomePage = () => {
   return (
     <div className="home-page">
       <div className="home-page-container">
-        <h1 className="title">UAS Hoot</h1>
-        <Link to="/sign-in">Sign In</Link>
+        <div className="title-container">
+          <div className="icon">
+            <ICONLogoOutline className="app-icon" />
+          </div>
+          <h1 className="title">
+            UAS <span className="bold">Hoot Creator</span>
+          </h1>
+        </div>
       </div>
     </div>
   )

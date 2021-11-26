@@ -8,8 +8,20 @@ import "./signInAndSignUpPage.scss"
 const SignInAndSignUp = () => {
   return (
     <div className="sign-in-and-sign-up-page">
-      <SignIn />
-      <SignUp />
+      <div className="sign-in-and-sign-up-page-container">
+        <div className="background-lines">
+          <span className="line"></span>
+          <span className="line"></span>
+          <span className="line"></span>
+          <span className="line"></span>
+          <span className="line center"></span>
+          <span className="line"></span>
+          <span className="line"></span>
+          <span className="line"></span>
+        </div>
+        <SignIn />
+        <SignUp />
+      </div>
     </div>
   )
 }

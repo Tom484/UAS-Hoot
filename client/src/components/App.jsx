@@ -73,7 +73,7 @@ const App = ({
 
   return (
     <div>
-      {currentUser && <div className="div" style={{ paddingTop: "80px" }}></div>}
+      <div className="div" style={{ paddingTop: "80px" }}></div>
       <Navbar />
       <Switch>
         <PrivateRoute

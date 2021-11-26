@@ -1,17 +1,33 @@
 .home-page {
   width: 100%;
   .home-page-container {
-    min-height: 100vh;
+    min-height: calc(100vh - 80px);
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     position: relative;
-    .title {
-      // color: var(--color-white);
-      font-size: 10vw;
-      margin: 0;
+    .title-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 25px;
+      .app-icon {
+        width: 18vw;
+        height: 18vw;
+        color: var(--color-main-2);
+      }
+      .title {
+        font-size: 5vw;
+        margin: 0;
+        color: var(--color-text-1);
+        font-weight: 300;
+        .bold {
+          font-weight: 500;
+        }
+      }
     }
     width: 100%;
   }
