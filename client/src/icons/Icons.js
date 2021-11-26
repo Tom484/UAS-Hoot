@@ -67,3 +67,8 @@ export { ReactComponent as ICONWarningOutline } from "./icons/warning/warning-ou
 export { ReactComponent as ICONUserBold } from "./icons/user/user-bold.svg"
 export { ReactComponent as ICONUserBroken } from "./icons/user/user-broken.svg"
 export { ReactComponent as ICONUserOutline } from "./icons/user/user-outline.svg"
+
+// Warning
+export { ReactComponent as ICONLogoBold } from "./icons/logo/logo-bold.svg"
+export { ReactComponent as ICONLogoBroken } from "./icons/logo/logo-broken.svg"
+export { ReactComponent as ICONLogoOutline } from "./icons/logo/logo-outline.svg"

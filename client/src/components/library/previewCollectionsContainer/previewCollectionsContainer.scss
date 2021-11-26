@@ -3,11 +3,9 @@
 .preview-collections-container {
   .buttons-sort-bar {
     display: flex;
-    gap: 10px;
-    button {
-      .active-sort {
-        background: black;
-      }
+    gap: 15px;
+    .button-sort {
+      font-size: 16px;
     }
   }
 }

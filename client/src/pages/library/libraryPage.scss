@@ -1,6 +1,6 @@
 .library-page {
   width: 100%;
-  min-height: calc(100vh - 50px);
+  min-height: calc(100vh - 80px);
   padding: 20px;
   margin: 0 auto;
   background: var(--color-background-2);
@@ -14,9 +14,17 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-
-      .title {
+      padding: 20px 0 40px 0;
+      .library-page-name {
+        font-weight: 500;
+        padding: 0;
+        margin: 0;
         font-size: 28px;
+        color: var(--color-text-2);
+      }
+      .button-create {
+        border-radius: 6px;
+        font-size: 16px;
       }
     }
   }

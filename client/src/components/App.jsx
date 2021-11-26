@@ -11,7 +11,7 @@ import { selectCurrentUser } from "../redux/user/userSelectors"
 import HomePage from "../pages/home/HomePage"
 import NotFoundPage from "../pages/notFound/NotFoundPage"
 import SingIn from "../pages/signInAndSignUp/SignInAndSignUpPage"
-import Header from "../components/components/header/Header"
+import Navbar from "./components/Navbar/Navbar"
 
 import DiscoverPage from "../pages/discover/DiscoverPage"
 import LibraryPage from "../pages/library/LibraryPage"
@@ -73,40 +73,41 @@ const App = ({
 
   return (
     <div>
-      <Header />
+      {currentUser && <div className="div" style={{ paddingTop: "80px" }}></div>}
+      <Navbar />
       <Switch>
         <PrivateRoute
           exact
           onlyLogged={true}
-          redirect="/"
+          redirect="/sign-in"
           path="/reports"
           component={ReportsPage}
         />
         <PrivateRoute
           exact
           onlyLogged={true}
-          redirect="/"
+          redirect="/sign-in"
           path="/library/:sortId"
           component={LibraryPage}
         />
         <PrivateRoute
           exact
           onlyLogged={true}
-          redirect="/"
+          redirect="/sign-in"
           path="/discover"
           component={DiscoverPage}
         />
         <PrivateRoute
           exact
           onlyLogged={true}
-          redirect="/"
+          redirect="/sign-in"
           path="/account"
           component={AccountPage}
         />
         <PrivateRoute
           exact
           onlyLogged={true}
-          redirect="/"
+          redirect="/sign-in"
           path="/create-event/:collectionId"
           component={EventCreatePage}
         />
