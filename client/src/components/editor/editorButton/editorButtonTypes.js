@@ -11,6 +11,8 @@ const EditButtonTypes = {
   DELETE_SLIDE: { id: "DELETE_SLIDE", label: "Delete" },
 
   SAVE_COLLECTION: { id: "SAVE_COLLECTION", label: "Save" },
+
+  EXIT: { id: "EXIT", label: "Exit" },
 }
 
 export default EditButtonTypes

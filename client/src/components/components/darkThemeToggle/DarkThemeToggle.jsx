@@ -1,11 +1,39 @@
-import React from "react"
-import { ICONSunOutline } from "../../../icons/Icons"
+import React, { useEffect } from "react"
+import { connect } from "react-redux"
+import { ICONMoonOutline, ICONSunOutline } from "../../../icons/Icons"
+import { toggleTheme } from "../../../redux/localSetting/localSettingActions"
+import { selectLocalSettingTheme } from "../../../redux/localSetting/localSettingSelectors"
 
-import "./darkThemeToggle.scss"
+const DarkThemeToggle = ({ className, toggleTheme, theme }) => {
+  const changeTheme = () => {
+    toggleTheme()
+  }
 
-const DarkThemeToggle = () => {
-  return <ICONSunOutline className="icon-df-size icon-df-color  theme-icon" />
-  // return <ICONMoonOutline className="icon-df-size icon-df-color theme-icon" />
+  useEffect(() => {
+    if (theme === "light") {
+      document.body.classList.remove("dark-theme")
+    } else {
+      document.body.classList.add("dark-theme")
+    }
+  }, [theme])
+
+  return (
+    <div className={className} onClick={changeTheme}>
+      {theme === "light" ? (
+        <ICONSunOutline className="theme-icon" />
+      ) : (
+        <ICONMoonOutline className="theme-icon" />
+      )}
+    </div>
+  )
 }
 
-export default DarkThemeToggle
+const mapStateToProps = state => ({
+  theme: selectLocalSettingTheme(state),
+})
+
+const mapDispatchToProps = dispatch => ({
+  toggleTheme: () => dispatch(toggleTheme()),
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(DarkThemeToggle)

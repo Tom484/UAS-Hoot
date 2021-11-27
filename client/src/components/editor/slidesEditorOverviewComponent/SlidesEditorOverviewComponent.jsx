@@ -26,10 +26,10 @@ const SlidesEditorOverviewComponent = ({ slide, order, collection, editCollectio
         <div className="label">{order}.</div>
         <div className="icon-container">
           <EditorButton type="DELETE_SLIDE" slideId={slide.id}>
-            <ICONTrashOutline className="icon-sm-size icon-df-color cursor-pointer" />
+            <ICONTrashOutline className="overview-container-icon" />
           </EditorButton>
           <EditorButton type="DUPLICATE_SLIDE" slideId={slide.id}>
-            <ICONCopyOutline className="icon-sm-size icon-df-color cursor-pointer" />
+            <ICONCopyOutline className="overview-container-icon" />
           </EditorButton>
         </div>
       </div>

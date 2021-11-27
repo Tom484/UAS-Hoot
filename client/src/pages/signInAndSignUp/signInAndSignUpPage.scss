@@ -76,6 +76,7 @@
             align-items: flex-start;
             justify-content: center;
             flex-direction: column;
+
             gap: 5px;
             .label {
               color: var(--color-text-2);
@@ -84,6 +85,8 @@
             .form-input {
               border-radius: 4px;
               background: var(--color-background-2);
+              color: var(--color-text-3);
+
               border: none;
               padding: 8px 10px;
               font-size: 18px;

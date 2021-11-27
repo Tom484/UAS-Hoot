@@ -12,9 +12,8 @@ const EventCreatePage = ({ collection }) => {
   return (
     <div className="event-create-page">
       <div className="event-create-page-container">
-        <h2>Create Event</h2>
-        <h4>Name {collection.name}</h4>
-        <button>Start Game</button>
+        <h2 className="title">Create Event</h2>
+        <h4 className="collection-name">{collection.name}</h4>
         <HostButton type="CREATE_EVENT" collectionId={collection.id} />
       </div>
     </div>

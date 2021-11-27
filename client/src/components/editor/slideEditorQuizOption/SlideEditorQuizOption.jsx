@@ -21,10 +21,10 @@ const SlideEditorQuizOption = ({ editOption, option, order }) => {
   }
   return (
     <div className="slide-editor-quiz-option">
-      {order === 1 && <ICONFlashOutline className="icon-df-size icon-df-color" />}
-      {order === 2 && <ICONCloudOutline className="icon-df-size icon-df-color" />}
-      {order === 3 && <ICONDropOutline className="icon-df-size icon-df-color" />}
-      {order === 4 && <ICONMoonOutline className="icon-df-size icon-df-color" />}
+      {order === 1 && <ICONFlashOutline className="select-icon" />}
+      {order === 2 && <ICONCloudOutline className="select-icon" />}
+      {order === 3 && <ICONDropOutline className="select-icon" />}
+      {order === 4 && <ICONMoonOutline className="select-icon" />}
 
       <TextareaAutosize
         className="textarea-create textarea textarea-option"

@@ -19,12 +19,18 @@
   border-radius: 8px;
   grid-template-columns: 40px 1fr 35px;
   background: var(--color-background-2);
+  .select-icon {
+    width: 24px;
+    height: 24px;
+    fill: var(--color-icon-1);
+  }
 
   .textarea-option {
     width: 100%;
     background: none;
     font-size: 16px;
     background: var(--color-background-2);
+    color: var(--color-text-3);
     border-radius: 6px;
     border: none;
   }

@@ -28,12 +28,6 @@
   --color-background-6: #d4d4e0;
   --color-background-7: #c2c2ce;
 
-  --color-border-1: #f8f9fc;
-  --color-border-2: #f8f8f8;
-  --color-border-3: #e9e9e9;
-  --color-border-4: #d9dae6;
-  --color-border-5: #cacbd6;
-
   --box-shadow-medium: #959da533 0px 8px 24px;
   --box-shadow-medium-color: #959da533;
 
@@ -45,42 +39,42 @@
 }
 
 body.dark-theme {
-  --color-text-1: #ffffff;
-  --color-text-2: #f1f1f1;
-  --color-text-3: #ececec;
+  --color-text-1: #e6e7eb;
+  --color-text-2: #dddfe6;
+  --color-text-3: #cdd0d3;
   --color-text-4: #cccccc;
   --color-text-5: #bebebe;
+  --color-text-6: #a2a0a7;
+  --color-text-7: #a4a1ac;
 
-  --color-main-1: #3e51fc;
-  --color-main-2: #6070ff;
-  --color-main-3: #7c8df7;
-  --color-main-4: #282c44;
+  --color-main-1: #631ffe;
+  --color-main-2: #7134ff;
+  --color-main-3: #814bff;
+  --color-main-4: #9162ff;
+  --color-main-5: #a27aff;
+  --color-main-6: #ab88ff;
+  --color-main-7: #bfa3ff;
+  --color-main-8: #d6c4ff;
+  --color-main-9: #e1d4ff;
+  --color-main-10: #eee6ff;
+  --color-main-11: #f5f1ff;
 
-  --color-background-1: #0e0e0e;
-  --color-background-2: #131313;
+  --color-background-1: #060606;
+  --color-background-2: #0a0a0a;
   --color-background-3: #181818;
   --color-background-4: #2b2b2b;
   --color-background-5: #333333;
+  --color-background-6: #34343a;
+  --color-background-7: #44444d;
 
-  --color-transparent-90: rgba(0, 0, 0, 0.9);
-  --color-transparent-85: rgba(0, 0, 0, 0.85);
+  --box-shadow-medium: #00000033 0px 8px 24px;
+  --box-shadow-medium-color: #00000033;
 
-  --color-border-1: #1b1b1d;
-  --color-border-2: #111010;
-  --color-border-3: #242323;
+  --color-icon-1: #f3f3f3;
+  --color-icon-2: #cfd3d6;
 
-  --box-shadow-medium: #30313333 0px 8px 24px;
-  --box-shadow-color: #30313333;
-
-  --color-thumb: #222222;
   --color-white: #ffffff;
 
-  --color-red: #ff0040;
-  --color-icon-1: #ffffff;
-
-  --scrollbar-color-track: #1a1a1a;
-  --scrollbar-color-thumb: #111111;
-  --scrollbar-color-thumb-hover: #111111;
-
-  --body-background: #0a0a0a;
+  --color-ripple-1: #160f0f;
+  --color-transparent-background-1: rgba(0, 0, 0, 0.6);
 }

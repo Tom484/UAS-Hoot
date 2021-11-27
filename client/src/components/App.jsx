@@ -1,6 +1,6 @@
 import React, { useEffect } from "react"
 
-import { Route, Switch, Redirect } from "react-router-dom"
+import { Route, Switch, Redirect, withRouter } from "react-router-dom"
 import { connect } from "react-redux"
 
 import { checkUserSession } from "../redux/user/userActions"
@@ -35,7 +35,10 @@ const App = ({
   eventDataConnect,
   updateAnswers,
   completedAuthInitialProcess,
+  location,
 }) => {
+  const path = location.pathname
+
   useEffect(() => {
     checkUserSession()
     if (currentUser) {
@@ -77,8 +80,11 @@ const App = ({
 
   return (
     <div>
-      <div className="div" style={{ paddingTop: "80px" }}></div>
-      <Navbar />
+      {!(path.includes("editor") || path.includes("event")) && (
+        <div className="div" style={{ paddingTop: "80px" }}></div>
+      )}
+      {!(path.includes("editor") || path.includes("event")) && <Navbar />}
+
       <Switch>
         <PrivateRoute
           exact
@@ -146,4 +152,4 @@ const mapDispatchToProps = dispatch => ({
   updateAnswers: answers => dispatch(updateAnswers(answers)),
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(App)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App))

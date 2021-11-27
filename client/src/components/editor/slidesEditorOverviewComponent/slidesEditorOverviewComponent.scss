@@ -23,6 +23,11 @@
     .icon-container {
       display: flex;
       gap: 5px;
+      .overview-container-icon {
+        width: 16px;
+        height: 16px;
+        fill: var(--color-icon-2);
+      }
     }
   }
   &.active-slide {
@@ -66,7 +71,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      border: 1px solid var(--color-border-3);
+      border: 1px solid var(--color-background-3);
     }
 
     .container-options {

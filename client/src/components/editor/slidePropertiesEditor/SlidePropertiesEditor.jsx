@@ -17,6 +17,7 @@ const SlidePropertiesEditor = ({ match }) => {
           <EditorButton type="DUPLICATE_SLIDE" className="w-100" />
           <EditorButton type="DELETE_SLIDE" className="w-100" />
           <EditorButton type="COLLECTION_EDITOR_CARD_TOGGLE_SHOW" className="w-100 span-full" />
+          <EditorButton type="EXIT" className="w-100 span-full" />
           <EditorButton
             type="SAVE_COLLECTION"
             className="w-100 span-full"

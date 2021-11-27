@@ -1,5 +1,6 @@
 import React from "react"
 import { connect } from "react-redux"
+import { withRouter } from "react-router-dom"
 import { saveCollectionStart } from "../../../redux/collections/collectionsActions"
 import {
   editorDeleteSlide,
@@ -24,6 +25,7 @@ const EditorButton = ({
   className,
   children,
   label,
+  history,
 }) => {
   const clickHandler = () => {
     switch (type) {
@@ -44,6 +46,9 @@ const EditorButton = ({
         break
       case EditorButtonTypes.DELETE_SLIDE.id:
         deleteSlideHandler()
+        break
+      case EditorButtonTypes.EXIT.id:
+        history.push("/library/recent")
         break
       default:
         console.log("Error! Enter correct type name!")
@@ -96,4 +101,4 @@ const mapDispatchToProps = dispatch => ({
   saveCollection: id => dispatch(saveCollectionStart(id)),
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(EditorButton)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(EditorButton))
