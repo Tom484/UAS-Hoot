@@ -15,7 +15,7 @@ const theme = theme => ({
     primary75: "#e9e9e9",
     primary50: "#e9e9e9",
     primary25: "#e9e9e9",
-    primary: "#6070ff",
+    primary: "#7134ff",
   },
 })
 

@@ -2,10 +2,10 @@ import React from "react"
 import { connect } from "react-redux"
 import TextareaAutosize from "react-textarea-autosize"
 import {
-  ICONCloudBroken,
-  ICONDropBroken,
-  ICONFlashBroken,
-  ICONMoonBroken,
+  ICONCloudOutline,
+  ICONDropOutline,
+  ICONFlashOutline,
+  ICONMoonOutline,
   ICONTickSquareBold,
 } from "../../../icons/Icons"
 import { editorEditOption } from "../../../redux/editor/editorActions"
@@ -21,10 +21,10 @@ const SlideEditorQuizOption = ({ editOption, option, order }) => {
   }
   return (
     <div className="slide-editor-quiz-option">
-      {order === 1 && <ICONFlashBroken className="icon-df-size icon-df-color" />}
-      {order === 2 && <ICONCloudBroken className="icon-df-size icon-df-color" />}
-      {order === 3 && <ICONDropBroken className="icon-df-size icon-df-color" />}
-      {order === 4 && <ICONMoonBroken className="icon-df-size icon-df-color" />}
+      {order === 1 && <ICONFlashOutline className="icon-df-size icon-df-color" />}
+      {order === 2 && <ICONCloudOutline className="icon-df-size icon-df-color" />}
+      {order === 3 && <ICONDropOutline className="icon-df-size icon-df-color" />}
+      {order === 4 && <ICONMoonOutline className="icon-df-size icon-df-color" />}
 
       <TextareaAutosize
         className="textarea-create textarea textarea-option"

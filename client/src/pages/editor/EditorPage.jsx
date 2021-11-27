@@ -3,13 +3,13 @@ import { connect } from "react-redux"
 import SlideEditor from "../../components/editor/slideEditor/SlideEditor"
 import SlidesEditor from "../../components/editor/slidesEditor/SlidesEditor"
 import SlidePropertiesEditor from "../../components/editor/slidePropertiesEditor/SlidePropertiesEditor"
-import CollectionEditorCard from "../../components/editor/collectionEditorCard/CollectionEditorCard"
-
-import "./editorPage.scss"
-import { withRouter } from "react-router-dom"
 import { selectUserCollection } from "../../redux/collections/collectionsSelectors"
 import { editorCopyCollection } from "../../redux/editor/editorActions"
 import { selectEditorCollection } from "../../redux/editor/editorSelectors"
+import CollectionEditorCard from "../../components/editor/collectionEditorCard/CollectionEditorCard"
+import { withRouter } from "react-router-dom"
+
+import "./editorPage.scss"
 
 const EditorPage = ({ editorCollection, collection, copyCollection, history }) => {
   useEffect(() => {

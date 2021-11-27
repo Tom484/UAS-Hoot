@@ -1,10 +1,9 @@
 .slide-properties-editor {
-  // box-shadow: rgba(117, 127, 138, 0.3) 0px 8px 24px;
-  background: white;
+  background: var(--color-background-2);
   height: 100%;
+  padding: 15px;
 
   .slide-properties-editor-container {
-    padding: 20px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;

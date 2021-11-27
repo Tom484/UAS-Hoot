@@ -1,0 +1,20 @@
+.account-page {
+  .account-page-container {
+    .background-lines {
+      display: grid;
+      height: 100%;
+      width: 100%;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+      overflow: hidden;
+
+      .line {
+        z-index: -2;
+        border-left: 2px dashed var(--color-background-3);
+        &:first-child {
+          border: none;
+        }
+      }
+      position: absolute;
+    }
+  }
+}

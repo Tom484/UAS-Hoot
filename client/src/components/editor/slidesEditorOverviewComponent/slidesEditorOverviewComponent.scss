@@ -2,54 +2,59 @@
 
 .slides-editor-overview-component {
   background: var(--color-background-1);
-  border-radius: 4px;
-  padding: 15px;
-  &:first-child {
-    padding-top: 5px;
-  }
-  &:last-child {
-    padding-bottom: 5px;
-  }
+  border-radius: 6px;
+  padding: 10px;
   transition: box-shadow 0.3s;
   user-select: none;
   color: var(color-text-2);
+  position: relative;
 
   &:active {
     transition-delay: 200ms;
     box-shadow: var(--box-shadow-medium), var(--box-shadow-medium), var(--box-shadow-medium);
   }
-
   .label-container {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    border-bottom: 2px solid var(--color-background-2);
+    padding-bottom: 5px;
+    padding: 3px;
     .icon-container {
       display: flex;
       gap: 5px;
     }
-    padding-bottom: 5px;
-    padding: 3px;
+  }
+  &.active-slide {
+    &:after {
+      content: " ";
+      position: absolute;
+      left: 0px;
+      top: 0px;
+      height: 15px;
+      width: 15px;
+      border-bottom-right-radius: 15px;
+      border-top-left-radius: 6px;
+      background: var(--color-main-1);
+    }
   }
 
   .preview-container {
-    border: 2px solid var(--color-border-2);
-    border-radius: 4px;
+    border-radius: 8px;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    padding: 4px;
-    gap: 8px;
-    &.active-slide {
-      border: 2px solid var(--color-border-4);
-    }
+    gap: 10px;
+    padding-top: 5px;
 
     .label-question {
       overflow: hidden;
       white-space: nowrap;
       width: 92%;
       text-align: center;
+      font-size: 12px;
     }
 
     .label-time {
@@ -67,25 +72,23 @@
     .container-options {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      font-size: 10px;
+      font-size: 8px;
       width: 100%;
-      gap: 4px;
-      margin-top: 4px;
+      gap: 6px;
       .container-option {
-        border: 1px solid var(--color-border-3);
-        padding: 1px 4px;
+        background: var(--color-background-2);
+        padding: 2px 4px;
         overflow: hidden;
         border-radius: 3px;
         color: var(color-text-4);
         &.option-active {
-          border: 1px solid var(--color-main-2);
-          background: var(--color-main-2);
+          background: var(--color-main-3);
           color: var(--color-white);
         }
         .label-option {
           overflow: hidden;
           white-space: nowrap;
-          width: 98%;
+          width: 100%;
         }
       }
     }

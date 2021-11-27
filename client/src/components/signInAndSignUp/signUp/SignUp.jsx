@@ -1,7 +1,6 @@
 import React, { useState } from "react"
 import { connect } from "react-redux"
 import { emailSignUpStart } from "../../../redux/user/userActions"
-import CustomButton from "../../components/customButton/CustomButton"
 import FormInput from "../../components/formInput/FormInput"
 
 import "./signUp.scss"

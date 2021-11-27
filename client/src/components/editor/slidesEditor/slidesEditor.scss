@@ -1,24 +1,27 @@
 .slides-editor {
-  // box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-  background: white;
+  background: var(--color-background-2);
+  height: 100%;
+  padding: 15px;
 
   .slides-editor-container {
-    padding: 15px 5px;
-    max-height: calc(100vh - 50px);
+    background: var(--color-background-2);
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    height: 100%;
+    gap: 20px;
   }
 
-  /* width */
   ::-webkit-scrollbar {
-    width: 8px;
+    display: none;
+    background: var(--color-background-2);
+    width: 0px;
   }
-
-  /* Track */
   ::-webkit-scrollbar-track {
-    border-radius: 5px;
+    background: var(--color-background-2);
+    border-radius: 10px;
   }
-
-  /* Handle */
   ::-webkit-scrollbar-thumb {
-    border-radius: 5px;
+    border-radius: 10px;
   }
 }

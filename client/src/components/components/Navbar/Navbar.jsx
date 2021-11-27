@@ -3,9 +3,9 @@ import { withRouter } from "react-router-dom"
 import { connect } from "react-redux"
 import DarkThemeToggle from "../darkThemeToggle/DarkThemeToggle"
 import { signOutStart } from "../../../redux/user/userActions"
+import { ICONLogoBold, ICONLogoOutline } from "../../../icons/Icons"
 
 import "./navbar.scss"
-import { ICONLogoOutline } from "../../../icons/Icons"
 
 const Header = ({ currentUser, signOutStart, history, location }) => {
   const path = location.pathname
@@ -18,7 +18,11 @@ const Header = ({ currentUser, signOutStart, history, location }) => {
 
       <div className="navbar-container-desktop">
         <div className="side-logo" onClick={() => history.push("/")}>
-          <ICONLogoOutline className="app-icon" />
+          {path === "/" ? (
+            <ICONLogoBold className="app-icon active" />
+          ) : (
+            <ICONLogoOutline className="app-icon" />
+          )}
           <div className="app-name">
             UAS <span className="app-name-bold">Hoot Creator</span>
           </div>

@@ -3,9 +3,9 @@ import { connect } from "react-redux"
 import { selectEditorSlidesArray } from "../../../redux/editor/editorSelectors"
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd"
 import SlidesEditorOverviewComponent from "../slidesEditorOverviewComponent/SlidesEditorOverviewComponent"
+import { editorEditCollection } from "../../../redux/editor/editorActions"
 
 import "./slidesEditorOverview.scss"
-import { editorEditCollection } from "../../../redux/editor/editorActions"
 
 const SlidesEditorOverview = ({ slidesArray, editCollection }) => {
   const handleOnDragEnd = result => {

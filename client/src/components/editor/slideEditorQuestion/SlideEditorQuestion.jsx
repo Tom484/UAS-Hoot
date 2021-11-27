@@ -2,9 +2,9 @@ import React from "react"
 import { connect } from "react-redux"
 import { selectEditorSlideCurrent } from "../../../redux/editor/editorSelectors"
 import TextareaAutosize from "react-textarea-autosize"
+import { editorEditSlide } from "../../../redux/editor/editorActions"
 
 import "./slideEditorQuestion.scss"
-import { editorEditSlide } from "../../../redux/editor/editorActions"
 
 const SlideEditorQuestion = ({ slide, editSlide }) => {
   const handleChange = e => {

@@ -53,6 +53,9 @@
         width: 40px;
         height: 40px;
         fill: var(--color-icon-1);
+        &.active {
+          fill: var(--color-main-2);
+        }
       }
     }
     .side-links {

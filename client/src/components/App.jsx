@@ -5,7 +5,7 @@ import { connect } from "react-redux"
 
 import { checkUserSession } from "../redux/user/userActions"
 import PrivateRoute from "./components/privateRoute/PrivateRoute"
-import { selectCurrentUser } from "../redux/user/userSelectors"
+import { selectCompletedAuthInitialProcess, selectCurrentUser } from "../redux/user/userSelectors"
 
 // Import pages
 import HomePage from "../pages/home/HomePage"
@@ -25,6 +25,7 @@ import { firestore } from "../firebase/firebaseUtils"
 import { updatePlayers } from "../redux/eventPlayers/eventPlayersActions"
 import { selectEventDataConnect, selectEventDataEvent } from "../redux/eventData/eventDataSelectors"
 import { updateAnswers } from "../redux/eventAnswers/eventAnswersActions"
+import LoadAnimation from "../components/components/loadAnimation/LoadAnimation"
 
 const App = ({
   checkUserSession,
@@ -33,6 +34,7 @@ const App = ({
   updatePlayers,
   eventDataConnect,
   updateAnswers,
+  completedAuthInitialProcess,
 }) => {
   useEffect(() => {
     checkUserSession()
@@ -70,6 +72,8 @@ const App = ({
     return () => unsubscribe()
     // eslint-disable-next-line
   }, [currentUser, eventDataConnect])
+
+  if (!completedAuthInitialProcess) return <LoadAnimation />
 
   return (
     <div>
@@ -132,6 +136,7 @@ const mapStateToProps = state => ({
   currentUser: selectCurrentUser(state),
   eventDataConnect: selectEventDataConnect(state),
   eventDataEvent: selectEventDataEvent(state),
+  completedAuthInitialProcess: selectCompletedAuthInitialProcess(state),
 })
 
 const mapDispatchToProps = dispatch => ({

@@ -6,7 +6,7 @@ import SlideEditorQuiz from "../slideEditorQuiz/SlideEditorQuiz"
 import "./slideEditor.scss"
 
 const SlideEditor = ({ slide }) => {
-  return <div>{slide.type === "quiz" && <SlideEditorQuiz />}</div>
+  return <div className="slide-editor">{slide.type === "quiz" && <SlideEditorQuiz />}</div>
 }
 
 const mapStateToProps = state => ({

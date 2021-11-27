@@ -17,7 +17,11 @@ const SlidesEditorOverviewComponent = ({ slide, order, collection, editCollectio
   }
 
   return (
-    <div className="slides-editor-overview-component">
+    <div
+      className={`slides-editor-overview-component ${
+        collection.currentSlideId === slide.id ? "active-slide" : ""
+      }`}
+    >
       <div className="label-container">
         <div className="label">{order}.</div>
         <div className="icon-container">
@@ -30,12 +34,7 @@ const SlidesEditorOverviewComponent = ({ slide, order, collection, editCollectio
         </div>
       </div>
 
-      <div
-        className={`preview-container ${
-          collection.currentSlideId === slide.id ? "active-slide" : ""
-        }`}
-        onClick={clickHandler}
-      >
+      <div className="preview-container" onClick={clickHandler}>
         <div className="label-question">{slide.question || "Start typing your question..."}</div>
         <div className="label-time">{slide.time.value}</div>
         <div className="container-options">
