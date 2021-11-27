@@ -20,6 +20,7 @@
     "react-select": "^5.1.0",
     "react-textarea-autosize": "^8.3.3",
     "react-uuid": "^1.0.2",
+    "recharts": "^2.1.6",
     "redux-devtools-extension": "^2.13.9",
     "redux-logger": "^3.0.6",
     "redux-persist": "^6.0.0",

@@ -1,9 +1,23 @@
 import React from "react"
+import { selectEventResults } from "../../../redux/eventResults/eventResultsSelectors"
+import { connect } from "react-redux"
+import SlideGameResultsChart from "../slideGameResultsChart/SlideGameResultsChart"
 
 import "./slideGameResults.scss"
 
-const SlideGameResults = () => {
-  return <div>Slide Game Results</div>
+const SlideGameResults = ({ eventResults }) => {
+  return (
+    <div className="slide-game-results">
+      <div className="slide-game-results-container">
+        Slide Game Results
+        <SlideGameResultsChart />
+      </div>
+    </div>
+  )
 }
 
-export default SlideGameResults
+const mapStateToProps = state => ({
+  eventResults: selectEventResults(state),
+})
+
+export default connect(mapStateToProps)(SlideGameResults)

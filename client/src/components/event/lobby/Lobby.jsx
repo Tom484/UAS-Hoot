@@ -3,8 +3,9 @@ import { connect } from "react-redux"
 import { selectEventPlayersArray } from "../../../redux/eventPlayers/eventPlayersSelectors"
 import { selectEventData, selectEventDataAdmin } from "../../../redux/eventData/eventDataSelectors"
 import EventButton from "../eventButton/EventButton"
-import "./lobby.scss"
 import QRCode from "react-qr-code"
+
+import "./lobby.scss"
 
 const HomeLobby = ({ eventData, players, admin }) => {
   return (
