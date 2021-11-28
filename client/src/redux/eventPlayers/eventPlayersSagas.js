@@ -8,7 +8,6 @@ export function* updatePlayersAsync({ payload }) {
   try {
     const event = yield select(selectEventDataConnect)
     const players = Object.entries(payload)
-    console.log(event)
 
     const batch = firestore.batch()
     yield players.forEach(player => {

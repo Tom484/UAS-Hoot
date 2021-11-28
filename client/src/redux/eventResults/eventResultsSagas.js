@@ -7,7 +7,7 @@ import { selectEventPlayersArray } from "../eventPlayers/eventPlayersSelectors"
 import { analyzeAnswersFailure, analyzeAnswersSuccess } from "./eventResultsActions"
 import EventResultsActions from "./eventResultsTypes"
 
-export function* analyzeAnswersAsync({ payload }) {
+export function* analyzeAnswersAsync() {
   try {
     const answers = yield select(selectEventAnswers)
     const event = yield select(selectEventDataEvent)
@@ -25,19 +25,25 @@ export function* analyzeAnswersAsync({ payload }) {
       data => (answersData[data.option].count = answersData[data.option].count + 1)
     )
 
-    answersArray.forEach((answer, i) => {
+    const countScore = answer => {
+      const score = optionsArray[answer.option].correct
+        ? Math.round(
+            Math.abs(
+              answer.submitTime -
+                event.currentSlide.openVoteAt -
+                event.currentSlideData.time.value * 1000
+            ) *
+              (500 / (event.currentSlideData.time.value * 1000))
+          ) + 500
+        : 0
+      if (score <= 1000) return score
+      return 0
+    }
+
+    answersArray.forEach(answer => {
       results[answer.id] = {
         correct: optionsArray[answer.option].correct,
-        score: optionsArray[answer.option].correct
-          ? Math.round(
-              Math.abs(
-                answer.submitTime -
-                  event.currentSlide.openVoteAt -
-                  event.currentSlideData.time.value * 1000
-              ) *
-                (500 / (event.currentSlideData.time.value * 1000))
-            ) + 500
-          : 0,
+        score: countScore(answer),
       }
     })
 
@@ -45,14 +51,10 @@ export function* analyzeAnswersAsync({ payload }) {
       updatedPlayers[player.id] = {
         ...player,
         lastAnswer: results[player.id]?.correct || false,
-        overallScore: (player?.overallScore || 0) + results[player.id]?.score || 0,
+        score: (player?.score || 0) + results[player.id]?.score || 0,
         lastScore: results[player.id]?.score || 0,
       }
     })
-
-    console.log(updatedPlayers)
-    console.log(playersArray)
-    console.log(results)
 
     yield put(analyzeAnswersSuccess(answersData))
     yield put(updatePlayersStart(updatedPlayers))

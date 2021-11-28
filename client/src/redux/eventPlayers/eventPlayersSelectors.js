@@ -8,3 +8,7 @@ export const selectEventPlayersArray = createSelector(
   [selectEventPlayers],
   players => Object?.values(players) || []
 )
+
+export const selectEventPlayersArraySorted = createSelector([selectEventPlayersArray], players =>
+  players.sort((a, b) => (b?.score || 0) - (a?.score || 0))
+)

@@ -2,6 +2,7 @@ import React from "react"
 import { selectEventResults } from "../../../redux/eventResults/eventResultsSelectors"
 import { connect } from "react-redux"
 import SlideGameResultsChart from "../slideGameResultsChart/SlideGameResultsChart"
+import InterimResults from "../interimResults/InterimResults"
 
 import "./slideGameResults.scss"
 
@@ -11,6 +12,7 @@ const SlideGameResults = ({ eventResults }) => {
       <div className="slide-game-results-container">
         Slide Game Results
         <SlideGameResultsChart />
+        <InterimResults />
       </div>
     </div>
   )
