@@ -22,7 +22,7 @@ import EditorPage from "../pages/editor/EditorPage"
 import EventCreatePage from "../pages/eventCreate/EventCreatePage"
 import EventPage from "../pages/event/EventPage"
 import { firestore } from "../firebase/firebaseUtils"
-import { updatePlayers } from "../redux/eventPlayers/eventPlayersActions"
+import { updatePlayersLocal } from "../redux/eventPlayers/eventPlayersActions"
 import { selectEventDataConnect, selectEventDataEvent } from "../redux/eventData/eventDataSelectors"
 import { updateAnswers } from "../redux/eventAnswers/eventAnswersActions"
 import LoadAnimation from "../components/components/loadAnimation/LoadAnimation"
@@ -148,7 +148,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   checkUserSession: () => dispatch(checkUserSession()),
   fetchCollectionsStart: currentUser => dispatch(fetchCollectionsStart(currentUser)),
-  updatePlayers: players => dispatch(updatePlayers(players)),
+  updatePlayers: players => dispatch(updatePlayersLocal(players)),
   updateAnswers: answers => dispatch(updateAnswers(answers)),
 })
 
