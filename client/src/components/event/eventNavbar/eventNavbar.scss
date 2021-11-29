@@ -17,6 +17,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+
     .name-container {
       display: flex;
       align-items: center;
@@ -36,43 +37,32 @@
       align-items: center;
       justify-content: center;
       gap: 15px;
-      .full-screen {
-        padding: 6px;
-        background: var(--color-background-2);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        .icon-full-screen {
-          width: 24px;
-          height: 24px;
-          cursor: pointer;
-        }
-      }
-      .user-container {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 15px;
-        background: var(--color-background-2);
+      .container-setting {
+        padding: 6px 12px;
         border-radius: 6px;
-        padding: 6px 15px;
-        .icon-user {
-          width: 24px;
-          height: 24px;
-        }
-      }
-      .enter-code-container {
+        background: var(--color-background-2);
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 15px;
-        background: var(--color-background-2);
-        border-radius: 6px;
-        padding: 6px 15px;
-        .icon-lock {
+        gap: 10px;
+        &.highlight {
+          background: var(--color-main-2);
+          font-weight: 500;
+          color: var(--color-white);
+          cursor: pointer;
+          .icon-setting {
+            fill: var(--color-white);
+          }
+        }
+        .icon-setting {
+          width: 22px;
+          height: 22px;
+          cursor: pointer;
+          fill: var(--icon-color-2);
+        }
+        span {
           width: 24px;
           height: 24px;
-          cursor: pointer;
         }
       }
     }

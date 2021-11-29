@@ -1,31 +1,48 @@
 import React from "react"
 import { connect } from "react-redux"
 import { selectEventPlayersArray } from "../../../redux/eventPlayers/eventPlayersSelectors"
-import { selectEventData, selectEventDataAdmin } from "../../../redux/eventData/eventDataSelectors"
-import EventButton from "../eventButton/EventButton"
+import { selectEventData } from "../../../redux/eventData/eventDataSelectors"
 import QRCode from "react-qr-code"
+import useWindowSize from "../../../functions/hooks/useWindowSize"
 
 import "./lobby.scss"
 
-const HomeLobby = ({ eventData, players, admin }) => {
+const HomeLobby = ({ eventData, players }) => {
+  const { width, height } = useWindowSize()
+  const qrSize = Math.round(Math.min(width, height) / 2)
+
   return (
     <div className="home-lobby">
       <div className="home-lobby-container">
-        <h1>Game Pin: {eventData?.connect?.enterCode}</h1>
-        <div>Number of Players: {players.length}</div>
-        <div className="players-container">
-          {players.map(player => (
-            <div key={player.id}>{player.displayName}</div>
-          ))}
+        <div className="container-title">
+          <h2>
+            Enter game on <span className="link fw-600">https://uas-hoot.netlify.app</span> with
+            enter code&nbsp;
+            <span className="code fw-600">{eventData?.connect?.enterCode}</span>
+          </h2>
         </div>
-        <EventButton type="START_EVENT" />
-        <EventButton type="UPDATE_DATA_CONNECT" data={{ isOpen: "toggle" }}>
-          Open ({eventData?.connect.isOpen ? "Yes" : "No"})
-        </EventButton>
-        <div>Hosted by {admin.displayName}</div>
-        {eventData?.connect?.enterCode && (
-          <QRCode value={`https://uas-hoot.netlify.app/join/${eventData?.connect?.enterCode}`} />
-        )}
+        <div className="container-players">
+          {/* <div className="label">Players</div> */}
+          <div className="players-container">
+            {players.map(player => (
+              <div className="player" key={player.id}>
+                {player.displayName}
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="container-qr-code">
+          {eventData?.connect?.enterCode && (
+            <span className="box-qr-code">
+              <QRCode
+                size={qrSize}
+                value={`https://uas-hoot.netlify.app/join/${eventData?.connect?.enterCode}`}
+              />
+              {/* <div className="label">Scan QR Code</div> */}
+            </span>
+          )}
+        </div>
+        {/* <EventButton type="START_EVENT" /> */}
       </div>
     </div>
   )
@@ -34,7 +51,6 @@ const HomeLobby = ({ eventData, players, admin }) => {
 const mapStateToProps = state => ({
   eventData: selectEventData(state),
   players: selectEventPlayersArray(state),
-  admin: selectEventDataAdmin(state),
 })
 
 export default connect(mapStateToProps)(HomeLobby)

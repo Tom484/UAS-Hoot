@@ -2,19 +2,26 @@ import React, { useEffect } from "react"
 import { useState } from "react"
 import { connect } from "react-redux"
 import {
+  ICONFlagBold,
   ICONLockOutline,
   ICONLockSlashOutline,
   ICONLogoOutline,
+  ICONMainComponentOutline,
   ICONSizeBold,
   ICONSizeOutline,
   ICONUserOutline,
 } from "../../../icons/Icons"
-import { selectEventDataConnect } from "../../../redux/eventData/eventDataSelectors"
+import {
+  selectEventDataAdmin,
+  selectEventDataConnect,
+  selectEventDataEvent,
+} from "../../../redux/eventData/eventDataSelectors"
 import { selectEventPlayersCount } from "../../../redux/eventPlayers/eventPlayersSelectors"
+import EventButton from "../eventButton/EventButton"
 
 import "./eventNavbar.scss"
 
-const EventNavbar = ({ eventDataConnect, eventPlayersCount }) => {
+const EventNavbar = ({ eventDataConnect, eventPlayersCount, eventDataAdmin, eventDataEvent }) => {
   const [fullScreen, setFullScreen] = useState(false)
 
   useEffect(() => {
@@ -22,9 +29,8 @@ const EventNavbar = ({ eventDataConnect, eventPlayersCount }) => {
     return () => document.removeEventListener("fullscreenchange", handleScreenChange)
   })
 
-  const handleScreenChange = e => {
-    console.log(e)
-    // console.log(document.fullScreen)
+  const handleScreenChange = () => {
+    setFullScreen(document.fullscreenElement)
   }
 
   function toggleFullScreen() {
@@ -43,28 +49,57 @@ const EventNavbar = ({ eventDataConnect, eventPlayersCount }) => {
         <div className="name-container">
           <ICONLogoOutline className="icon-logo" />
           <div className="name">
-            UAS <span className="bold">Hoot</span>
+            UAS <span className="fw-600">Hoot</span>
           </div>
         </div>
         <div className="event-setting">
-          <div className="full-screen">
-            {fullScreen ? (
-              <ICONSizeBold className="icon-full-screen" onClick={toggleFullScreen} />
-            ) : (
-              <ICONSizeOutline className="icon-full-screen" onClick={toggleFullScreen} />
-            )}
-          </div>
-          <div className="user-container">
-            <ICONUserOutline className="icon-user" />
-            <span className="number-of-users">Users: {eventPlayersCount}</span>
-          </div>
-          <div className="enter-code-container">
+          {eventDataEvent?.currentSlide?.type === "lobby" && (
+            <EventButton type="START_EVENT">
+              <div className="container-setting highlight">
+                <ICONFlagBold className="icon-setting" /> <div className="label">Start Event</div>
+              </div>
+            </EventButton>
+          )}
+
+          <div className="container-setting">
             {eventDataConnect?.isOpen ? (
-              <ICONLockSlashOutline className="icon-lock" />
+              <EventButton type="UPDATE_DATA_CONNECT" data={{ isOpen: "toggle" }}>
+                <ICONLockSlashOutline className="icon-setting" />
+              </EventButton>
             ) : (
-              <ICONLockOutline className="icon-lock" />
+              <EventButton type="UPDATE_DATA_CONNECT" data={{ isOpen: "toggle" }}>
+                <ICONLockOutline className="icon-setting" />
+              </EventButton>
             )}
-            <div className="label">Enter Code: {eventDataConnect?.enterCode || "--||--"}</div>
+            <div className="label">
+              Enter Code: <span className="fw-500">{eventDataConnect?.enterCode || "--||--"}</span>
+            </div>
+          </div>
+
+          <div className="container-setting">
+            <span>
+              <ICONUserOutline className="icon-user" />
+            </span>
+            <div className="label">
+              Players: <span className="fw-500">{eventPlayersCount}</span>
+            </div>
+          </div>
+
+          <div className="container-setting">
+            <span>
+              <ICONMainComponentOutline className="icon-user" />
+            </span>
+            <div className="label">
+              Admin: <span className="fw-500">{eventDataAdmin?.displayName}</span>
+            </div>
+          </div>
+
+          <div className="container-setting">
+            {fullScreen ? (
+              <ICONSizeBold className="icon-setting" onClick={toggleFullScreen} />
+            ) : (
+              <ICONSizeOutline className="icon-setting" onClick={toggleFullScreen} />
+            )}
           </div>
         </div>
       </div>
@@ -75,6 +110,8 @@ const EventNavbar = ({ eventDataConnect, eventPlayersCount }) => {
 const mapStateToProps = state => ({
   eventDataConnect: selectEventDataConnect(state),
   eventPlayersCount: selectEventPlayersCount(state),
+  eventDataAdmin: selectEventDataAdmin(state),
+  eventDataEvent: selectEventDataEvent(state),
 })
 
 export default connect(mapStateToProps)(EventNavbar)

@@ -87,3 +87,13 @@ export { ReactComponent as ICONLockSlashOutline } from "./icons/lockSlash/lock-s
 export { ReactComponent as ICONSizeBold } from "./icons/size/size-bold.svg"
 export { ReactComponent as ICONSizeBroken } from "./icons/size/size-broken.svg"
 export { ReactComponent as ICONSizeOutline } from "./icons/size/size-outline.svg"
+
+// MainComponent
+export { ReactComponent as ICONMainComponentBold } from "./icons/mainComponent/main-component-bold.svg"
+export { ReactComponent as ICONMainComponentBroken } from "./icons/mainComponent/main-component-broken.svg"
+export { ReactComponent as ICONMainComponentOutline } from "./icons/mainComponent/main-component-outline.svg"
+
+// Flag
+export { ReactComponent as ICONFlagBold } from "./icons/flag/flag-bold.svg"
+export { ReactComponent as ICONFlagBroken } from "./icons/flag/flag-broken.svg"
+export { ReactComponent as ICONFlagOutline } from "./icons/flag/flag-outline.svg"
