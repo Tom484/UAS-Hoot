@@ -63,12 +63,27 @@ export { ReactComponent as ICONWarningBold } from "./icons/warning/warning-bold.
 export { ReactComponent as ICONWarningBroken } from "./icons/warning/warning-broken.svg"
 export { ReactComponent as ICONWarningOutline } from "./icons/warning/warning-outline.svg"
 
-// Warning
+// User
 export { ReactComponent as ICONUserBold } from "./icons/user/user-bold.svg"
 export { ReactComponent as ICONUserBroken } from "./icons/user/user-broken.svg"
 export { ReactComponent as ICONUserOutline } from "./icons/user/user-outline.svg"
 
-// Warning
+// Logo
 export { ReactComponent as ICONLogoBold } from "./icons/logo/logo-bold.svg"
 export { ReactComponent as ICONLogoBroken } from "./icons/logo/logo-broken.svg"
 export { ReactComponent as ICONLogoOutline } from "./icons/logo/logo-outline.svg"
+
+// Lock
+export { ReactComponent as ICONLockBold } from "./icons/lock/lock-bold.svg"
+export { ReactComponent as ICONLockBroken } from "./icons/lock/lock-broken.svg"
+export { ReactComponent as ICONLockOutline } from "./icons/lock/lock-outline.svg"
+
+// LockSlash
+export { ReactComponent as ICONLockSlashBold } from "./icons/lockSlash/lock-slash-bold.svg"
+export { ReactComponent as ICONLockSlashBroken } from "./icons/lockSlash/lock-slash-broken.svg"
+export { ReactComponent as ICONLockSlashOutline } from "./icons/lockSlash/lock-slash-outline.svg"
+
+// Size
+export { ReactComponent as ICONSizeBold } from "./icons/size/size-bold.svg"
+export { ReactComponent as ICONSizeBroken } from "./icons/size/size-broken.svg"
+export { ReactComponent as ICONSizeOutline } from "./icons/size/size-outline.svg"

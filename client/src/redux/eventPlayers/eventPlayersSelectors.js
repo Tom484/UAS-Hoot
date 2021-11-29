@@ -10,5 +10,10 @@ export const selectEventPlayersArray = createSelector(
 )
 
 export const selectEventPlayersArraySorted = createSelector([selectEventPlayersArray], players =>
-  players.sort((a, b) => (b?.score || 0) - (a?.score || 0))
+  players?.sort((a, b) => (b?.score || 0) - (a?.score || 0))
+)
+
+export const selectEventPlayersCount = createSelector(
+  [selectEventPlayersArray],
+  players => players?.length || 0
 )

@@ -1,0 +1,80 @@
+@import "../../../styles/colors.scss";
+
+.event-navbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 54px;
+  width: 100%;
+  top: 0;
+  position: fixed;
+  background: var(--color-background-1);
+  box-shadow: var(--box-shadow-medium);
+  z-index: 100000;
+  .event-navbar-container {
+    width: 100%;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .name-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      .icon-logo {
+        width: 30px;
+        width: 30px;
+      }
+      font-size: 20px;
+      .bold {
+        font-weight: 500;
+      }
+    }
+    .event-setting {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      .full-screen {
+        padding: 6px;
+        background: var(--color-background-2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .icon-full-screen {
+          width: 24px;
+          height: 24px;
+          cursor: pointer;
+        }
+      }
+      .user-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+        background: var(--color-background-2);
+        border-radius: 6px;
+        padding: 6px 15px;
+        .icon-user {
+          width: 24px;
+          height: 24px;
+        }
+      }
+      .enter-code-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+        background: var(--color-background-2);
+        border-radius: 6px;
+        padding: 6px 15px;
+        .icon-lock {
+          width: 24px;
+          height: 24px;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
