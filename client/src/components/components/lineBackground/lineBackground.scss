@@ -1,0 +1,16 @@
+.line-background {
+  display: grid;
+  position: absolute;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  background: var(--background-color-1);
+  z-index: -101;
+  .line {
+    border-left: 2px dashed var(--color-background-3);
+    &:first-child {
+      border: none;
+    }
+  }
+}

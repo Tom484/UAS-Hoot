@@ -52,7 +52,7 @@
       .app-icon {
         width: 40px;
         height: 40px;
-        fill: var(--color-icon-1);
+        fill: var(--color-icon-3);
         &.active {
           fill: var(--color-main-2);
         }
@@ -61,18 +61,20 @@
     .side-links {
       display: flex;
       align-items: center;
-      gap: 25px;
       cursor: pointer;
+      gap: 25px;
+
       .link {
         padding: 6px 12px;
         color: var(--color-text-6);
         border-radius: 6px;
+
         &:hover {
           color: var(--color-text-2);
         }
         &.active {
           color: var(--color-white);
-          background: var(--color-main-1);
+          background: var(--color-main-2);
         }
       }
     }

@@ -1,5 +1,7 @@
 .home-page {
   width: 100%;
+  min-height: calc(100vh - 80px);
+  position: relative;
   .home-page-container {
     min-height: calc(100vh - 80px);
     height: 100%;

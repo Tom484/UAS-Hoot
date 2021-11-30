@@ -5,56 +5,19 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 100px;
     position: relative;
     overflow: hidden;
-    &::after {
-      content: "";
-      top: 0;
-      left: 0;
-      width: 200px;
-      height: 200px;
-      border-bottom-right-radius: 100%;
-      background: var(--color-main-3);
-      z-index: -1;
-      position: absolute;
-    }
-    &::before {
-      content: "";
-      bottom: 0px;
-      right: 0;
-      width: 200px;
-      height: 200px;
-      border-top-left-radius: 100%;
-      background: var(--color-main-3);
-      z-index: -1;
-      position: absolute;
-    }
-    .background-lines {
-      display: grid;
-      height: 100%;
-      width: 100%;
-      grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-      overflow: hidden;
+    flex-wrap: wrap;
 
-      .line {
-        z-index: -2;
-        border-left: 2px dashed var(--color-background-4);
-        &:first-child {
-          border: none;
-        }
-      }
-      position: absolute;
-    }
     .sign-in {
-      backdrop-filter: blur(4px);
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: var(--box-shadow-medium);
+      z-index: 2;
       background: var(--color-background-1);
+      box-shadow: var(--box-shadow-medium);
+      border-radius: 10px;
+      padding: 20px;
+      margin: 50px;
       .sign-in-container {
         display: flex;
-
         align-items: center;
         justify-content: center;
         flex-direction: column;
