@@ -15,9 +15,9 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      // color: var(--color-white);
-      // background: var(--color-main-3);
-      background: var(--color-background-2);
+      color: var(--color-white);
+      background: var(--color-main-2);
+      // background: var(--color-background-2);
 
       border-radius: 8px;
       h2 {
@@ -34,22 +34,20 @@
       height: 100%;
       width: 100%;
       padding: 20px;
-      gap: 25px;
       .players-container {
         display: flex;
         align-items: center;
         justify-content: center;
         flex-wrap: wrap;
-        padding: 10px;
-        border-radius: 8px;
-        gap: 25px;
+        font-size: 1.4vw;
+        padding: 0.5em;
+        gap: 1em;
         width: 100%;
         .player {
           box-shadow: var(--box-shadow-medium);
           // background: var(--color-background-2);
-          font-size: 24px;
-          padding: 10px 20px;
-          border-radius: 6px;
+          padding: 0.5em 1em;
+          border-radius: 0.2em;
         }
       }
     }

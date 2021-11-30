@@ -16,15 +16,15 @@ const HomeLobby = ({ eventData, players }) => {
       <div className="home-lobby-container">
         <div className="container-title">
           <h2>
-            Enter game on <span className="link fw-600">https://uas-hoot.netlify.app</span> with
-            enter code&nbsp;
+            Enter the game at <span className="link fw-600">https://uas-hoot.netlify.app</span> by
+            entering the code&nbsp;
             <span className="code fw-600">{eventData?.connect?.enterCode}</span>
           </h2>
         </div>
         <div className="container-players">
-          {/* <div className="label">Players</div> */}
           <div className="players-container">
-            {players.map(player => (
+            {players?.length === 0 && <div className="player">Waiting for players</div>}
+            {players?.map(player => (
               <div className="player" key={player.id}>
                 {player.displayName}
               </div>
@@ -38,11 +38,9 @@ const HomeLobby = ({ eventData, players }) => {
                 size={qrSize}
                 value={`https://uas-hoot.netlify.app/join/${eventData?.connect?.enterCode}`}
               />
-              {/* <div className="label">Scan QR Code</div> */}
             </span>
           )}
         </div>
-        {/* <EventButton type="START_EVENT" /> */}
       </div>
     </div>
   )
