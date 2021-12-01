@@ -3,16 +3,12 @@
   position: relative;
   .account-page-container {
     min-height: calc(100vh - 80px);
-    width: 100%;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    .profile-container {
-      padding: 20px;
-      background: var(--color-background-1);
-      box-shadow: var(--box-shadow-medium);
-    }
+    gap: 50px;
+    padding: 50px 0;
   }
 }

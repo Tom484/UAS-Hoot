@@ -11,6 +11,8 @@ import {
 } from "../../firebase/firebaseUtils"
 
 import {
+  changePasswordFailure,
+  changePasswordSuccess,
   completedAuthInitialProcess,
   signInFailure,
   signInSuccess,
@@ -20,6 +22,8 @@ import {
   signUpSuccess,
   toggleFavoriteCollectionFailure,
   toggleFavoriteCollectionSuccess,
+  updateProfileFailure,
+  updateProfileSuccess,
 } from "./userActions"
 import { selectCurrentUser } from "./userSelectors"
 import { deleteReference } from "../../functions/redux/reduxFunctions"
@@ -111,6 +115,27 @@ export function* toggleFavoriteCollection({ payload: { collectionId } }) {
   }
 }
 
+export function* updateProfile({ payload }) {
+  try {
+    const currentUser = yield select(selectCurrentUser)
+    const collectionRef = yield firestore.collection(`users`).doc(currentUser.id)
+    yield collectionRef.update({ ...payload })
+
+    yield put(updateProfileSuccess({ ...currentUser, ...payload }))
+  } catch (error) {
+    yield put(updateProfileFailure(error.message))
+  }
+}
+
+export function* changePassword({ payload }) {
+  try {
+    yield auth.currentUser.updatePassword(payload.password)
+    yield put(changePasswordSuccess())
+  } catch (error) {
+    yield put(changePasswordFailure(error.message))
+  }
+}
+
 export function* onGoogleSignInStart() {
   yield takeLatest(UserActionTypes.GOOGLE_SIGN_IN_START, signInWithGoogle)
 }
@@ -139,6 +164,13 @@ export function* onToggleFavoriteCollection() {
   yield takeEvery(UserActionTypes.TOGGLE_FAVORITE_COLLECTION_START, toggleFavoriteCollection)
 }
 
+export function* onUpdateProfile() {
+  yield takeLatest(UserActionTypes.UPDATE_PROFILE_START, updateProfile)
+}
+export function* onChangePassword() {
+  yield takeLatest(UserActionTypes.CHANGE_PASSWORD_START, changePassword)
+}
+
 export default function* userSagas() {
   yield all([
     call(onGoogleSignInStart),
@@ -148,5 +180,7 @@ export default function* userSagas() {
     call(isUserAuthenticated),
     call(onSignOut),
     call(onToggleFavoriteCollection),
+    call(onUpdateProfile),
+    call(onChangePassword),
   ])
 }

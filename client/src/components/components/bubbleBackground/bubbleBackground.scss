@@ -6,6 +6,15 @@
     height: 200px;
     background: var(--color-main-3);
 
+    @media (max-width: 500px) {
+      width: 125px;
+      height: 125px;
+    }
+    @media (max-height: 500px) {
+      width: 125px;
+      height: 125px;
+    }
+
     &.bubble-top {
       top: 0;
       left: 0;

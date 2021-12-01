@@ -68,3 +68,31 @@ export const toggleFavoriteCollectionFailure = errorMessage => ({
   type: UserActionTypes.TOGGLE_FAVORITE_COLLECTION_FAILURE,
   payload: errorMessage,
 })
+
+export const updateProfileStart = profileInformation => ({
+  type: UserActionTypes.UPDATE_PROFILE_START,
+  payload: profileInformation,
+})
+export const updateProfileSuccess = profileInformation => ({
+  type: UserActionTypes.UPDATE_PROFILE_SUCCESS,
+  payload: profileInformation,
+})
+
+export const updateProfileFailure = errorMessage => ({
+  type: UserActionTypes.UPDATE_PROFILE_FAILURE,
+  payload: errorMessage,
+})
+
+export const changePasswordStart = profileInformation => ({
+  type: UserActionTypes.CHANGE_PASSWORD_START,
+  payload: profileInformation,
+})
+export const changePasswordSuccess = profileInformation => ({
+  type: UserActionTypes.CHANGE_PASSWORD_SUCCESS,
+  payload: profileInformation,
+})
+
+export const changePasswordFailure = errorMessage => ({
+  type: UserActionTypes.CHANGE_PASSWORD_FAILURE,
+  payload: errorMessage,
+})

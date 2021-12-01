@@ -1,8 +1,11 @@
 import React from "react"
 import BubbleBackground from "../../components/components/bubbleBackground/BubbleBackground"
 import LineBackground from "../../components/components/lineBackground/LineBackground"
+import UpdateAccountPassword from "../../components/components/updateAccount/UpdateAccountPassword"
+import UpdateAccountInformation from "../../components/components/updateAccount/UpdateAccountInformation"
 
 import "./accountPage.scss"
+import ChangeThemeSetting from "../../components/components/changeThemeSetting/ChangeThemeSetting"
 
 const AccountPage = () => {
   return (
@@ -10,24 +13,9 @@ const AccountPage = () => {
       <LineBackground />
       <BubbleBackground />
       <div className="account-page-container">
-        <div className="profile-container">
-          <div className="input-container">
-            <div className="label">Display Name</div>
-            <input className="input" />
-          </div>
-          <div className="input-container">
-            <div className="label">Password</div>
-            <input className="input" />
-          </div>
-          <div className="input-container">
-            <div className="label">Confirm Passowrd</div>
-            <input className="input" />
-          </div>
-          <div className="input-container">
-            <div className="label">About</div>
-            <input className="input" />
-          </div>
-        </div>
+        <UpdateAccountInformation />
+        <UpdateAccountPassword />
+        <ChangeThemeSetting />
       </div>
     </div>
   )
