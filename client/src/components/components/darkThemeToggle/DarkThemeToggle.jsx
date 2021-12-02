@@ -2,9 +2,12 @@ import React, { useEffect } from "react"
 import { connect } from "react-redux"
 import { ICONMoonOutline, ICONSunOutline } from "../../../icons/Icons"
 import { toggleTheme } from "../../../redux/localSetting/localSettingActions"
-import { selectLocalSettingTheme } from "../../../redux/localSetting/localSettingSelectors"
+import {
+  selectLocalSettingSystemTheme,
+  selectLocalSettingTheme,
+} from "../../../redux/localSetting/localSettingSelectors"
 
-const DarkThemeToggle = ({ className, toggleTheme, theme }) => {
+const DarkThemeToggle = ({ className, toggleTheme, theme, systemTheme }) => {
   const changeTheme = () => {
     toggleTheme()
   }
@@ -30,6 +33,7 @@ const DarkThemeToggle = ({ className, toggleTheme, theme }) => {
 
 const mapStateToProps = state => ({
   theme: selectLocalSettingTheme(state),
+  systemTheme: selectLocalSettingSystemTheme(state),
 })
 
 const mapDispatchToProps = dispatch => ({

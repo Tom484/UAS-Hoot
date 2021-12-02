@@ -6,5 +6,10 @@ export const selectLocalSettingTheme = createSelector([selectLocalSetting], stat
 
 export const selectLocalSettingThemeSetting = createSelector(
   [selectLocalSetting],
-  state => state.settingTheme
+  state => state.themeSetting
+)
+
+export const selectLocalSettingSystemTheme = createSelector(
+  [selectLocalSetting],
+  state => state.systemTheme
 )

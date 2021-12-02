@@ -26,6 +26,7 @@ import { updatePlayersLocal } from "../redux/eventPlayers/eventPlayersActions"
 import { selectEventDataConnect, selectEventDataEvent } from "../redux/eventData/eventDataSelectors"
 import { updateAnswers } from "../redux/eventAnswers/eventAnswersActions"
 import LoadAnimation from "../components/components/loadAnimation/LoadAnimation"
+import { updateSystemTheme } from "../redux/localSetting/localSettingActions"
 
 const App = ({
   checkUserSession,
@@ -36,6 +37,7 @@ const App = ({
   updateAnswers,
   completedAuthInitialProcess,
   location,
+  updateSystemTheme,
 }) => {
   const path = location.pathname
 
@@ -75,6 +77,18 @@ const App = ({
     return () => unsubscribe()
     // eslint-disable-next-line
   }, [currentUser, eventDataConnect])
+
+  const mqListener = e => {
+    e.matches ? updateSystemTheme("dark") : updateSystemTheme("light")
+  }
+
+  useEffect(() => {
+    const darkThemeMq = window.matchMedia("(prefers-color-scheme: dark)")
+    darkThemeMq.addListener(mqListener)
+    darkThemeMq.matches ? updateSystemTheme("dark") : updateSystemTheme("light")
+    return () => darkThemeMq.removeListener(mqListener)
+    // eslint-disable-next-line
+  }, [])
 
   if (!completedAuthInitialProcess) return <LoadAnimation />
 
@@ -150,6 +164,7 @@ const mapDispatchToProps = dispatch => ({
   fetchCollectionsStart: currentUser => dispatch(fetchCollectionsStart(currentUser)),
   updatePlayers: players => dispatch(updatePlayersLocal(players)),
   updateAnswers: answers => dispatch(updateAnswers(answers)),
+  updateSystemTheme: theme => dispatch(updateSystemTheme(theme)),
 })
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App))

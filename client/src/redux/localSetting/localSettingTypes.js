@@ -1,6 +1,12 @@
 const LocalSettingActionTypes = {
   TOGGLE_THEME: "TOGGLE_THEME",
   CHANGE_THEME_SETTING: "CHANGE_THEME_SETTING",
+  UPDATE_SYSTEM_THEME: "UPDATE_SYSTEM_THEME",
+}
+
+export const THEME_SETTING_VALUES = {
+  SYSTEM_THEME: "SYSTEM_THEME",
+  SELECT_THEME: "SELECT_THEME",
 }
 
 export default LocalSettingActionTypes
