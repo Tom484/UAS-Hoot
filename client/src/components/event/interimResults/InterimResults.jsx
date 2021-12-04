@@ -1,11 +1,8 @@
 import React from "react"
-import { connect } from "react-redux"
-import { selectEventPlayersArraySorted } from "../../../redux/eventPlayers/eventPlayersSelectors"
 import PlayersResult from "../playersResult/PlayersResult"
 import "./interimResults.scss"
 
-const InterimResults = ({ players }) => {
-  console.log(players)
+const InterimResults = () => {
   return (
     <div className="interim-results">
       <div className="interim-results-container">
@@ -15,8 +12,4 @@ const InterimResults = ({ players }) => {
   )
 }
 
-const mapStateToProps = state => ({
-  players: selectEventPlayersArraySorted(state),
-})
-
-export default connect(mapStateToProps)(InterimResults)
+export default InterimResults

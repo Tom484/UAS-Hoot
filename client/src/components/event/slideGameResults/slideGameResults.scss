@@ -1,10 +1,19 @@
 .slide-game-results {
+  height: calc(100vh - 55px);
   .slide-game-results-container {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     flex-direction: column;
-    min-height: 100vh;
     width: 100%;
+    .slide-name {
+      font-size: 48px;
+      color: var(--color-text-3);
+      background: var(--color-background-2);
+      padding: 10px 40px;
+      border-radius: 8px;
+      margin: 30px;
+      cursor: pointer;
+    }
   }
 }

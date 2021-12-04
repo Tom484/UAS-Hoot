@@ -13,6 +13,7 @@ const EventSlide = ({ eventDataEvent }) => {
     <div>
       {eventDataEvent?.currentSlide?.type === "lobby" && <Lobby />}
       {eventDataEvent?.currentSlide?.type === "game" && <SlideGame />}
+      {eventDataEvent?.currentSlide?.type === "game-results" && <SlideGame />}
       {eventDataEvent?.currentSlide?.type === "overallResults" && <OverallResults />}
     </div>
   )
