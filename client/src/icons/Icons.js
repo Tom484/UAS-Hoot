@@ -102,3 +102,8 @@ export { ReactComponent as ICONFlagOutline } from "./icons/flag/flag-outline.svg
 export { ReactComponent as ICONSettingBold } from "./icons/setting/setting-bold.svg"
 export { ReactComponent as ICONSettingBroken } from "./icons/setting/setting-broken.svg"
 export { ReactComponent as ICONSettingOutline } from "./icons/setting/setting-outline.svg"
+
+// Slider
+export { ReactComponent as ICONSliderBold } from "./icons/slider/slider-bold.svg"
+export { ReactComponent as ICONSliderBroken } from "./icons/slider/slider-broken.svg"
+export { ReactComponent as ICONSliderOutline } from "./icons/slider/slider-outline.svg"

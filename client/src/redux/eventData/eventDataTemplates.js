@@ -1,46 +1,6 @@
 import { firestore } from "../../firebase/firebaseUtils"
 
 export const eventDataTemplate = (collection, enterCode, currentUser) => {
-  console.log({
-    collection: { ...collection },
-    connect: {
-      enterCode,
-      isOpen: true,
-    },
-    event: {
-      slideType: "lobby",
-      slideId: "",
-      closeVoteAt: 0,
-      slideIndex: 0,
-      openVoteAt: 0,
-      status: "", //LOBBY GAME GAME_RESULTS OVERALL_RESULTS
-      slidesId: [...collection.slidesOrder],
-    },
-    currentSlideData: {},
-    slidesOrder: [...collection.slidesOrder],
-    host: {
-      id: currentUser.id,
-      displayName: currentUser.displayName,
-    },
-  })
-
-  // return {
-  //   collection: { ...collection },
-  //   connect: {
-  //     enterCode,
-  //     isOpen: true,
-  //   },
-  //   event: {
-  //     currentSlide: { type: "lobby", id: "", index: "", openVoteAt: 100, closeVoteAt: 140 },
-  //     slidesOrder: collection.slidesOrder,
-  //     currentSlideData: {},
-  //   },
-  //   admin: {
-  //     id: currentUser.id,
-  //     displayName: currentUser.displayName,
-  //   },
-  // }
-
   return {
     collection: { ...collection },
     connect: {

@@ -7,8 +7,10 @@ import {
   ICONLockSlashOutline,
   ICONLogoOutline,
   ICONMainComponentOutline,
+  ICONPlayBold,
   ICONSizeBold,
   ICONSizeOutline,
+  ICONSliderOutline,
   ICONUserOutline,
 } from "../../../icons/Icons"
 import {
@@ -22,7 +24,7 @@ import EventButton from "../eventButton/EventButton"
 
 import "./eventNavbar.scss"
 
-const EventNavbar = ({ eventDataConnect, eventPlayersCount, eventDataAdmin, eventDataEvent }) => {
+const EventNavbar = ({ eventDataConnect, eventPlayersCount, eventDataHost, eventDataEvent }) => {
   const [fullScreen, setFullScreen] = useState(false)
 
   useEffect(() => {
@@ -61,6 +63,14 @@ const EventNavbar = ({ eventDataConnect, eventPlayersCount, eventDataAdmin, even
               </div>
             </EventButton>
           )}
+          {eventDataEvent?.status === STATUS_TYPES.GAME &&
+            eventDataEvent.closeVoteAt < new Date().getTime() && (
+              <EventButton type="START_EVENT">
+                <div className="container-setting highlight">
+                  <ICONPlayBold className="icon-setting" /> <div className="label">Next Slide</div>
+                </div>
+              </EventButton>
+            )}
           <div className="container-setting">
             {eventDataConnect?.isOpen ? (
               <EventButton type="UPDATE_DATA_CONNECT" data={{ isOpen: "toggle" }}>
@@ -90,7 +100,20 @@ const EventNavbar = ({ eventDataConnect, eventPlayersCount, eventDataAdmin, even
               <ICONMainComponentOutline className="icon-user" />
             </span>
             <div className="label">
-              Admin: <span className="fw-500">{eventDataAdmin?.displayName}</span>
+              Host: <span className="fw-500">{eventDataHost?.displayName}</span>
+            </div>
+          </div>
+
+          <div className="container-setting">
+            <span>
+              <ICONSliderOutline className="icon-user" />
+            </span>
+            <div className="label">
+              Slides:{" "}
+              <span className="fw-500">
+                {eventDataEvent.status === "LOBBY" ? 0 : eventDataEvent.slideIndex + 1}/
+                {eventDataEvent.numberOfSlides}
+              </span>
             </div>
           </div>
 
