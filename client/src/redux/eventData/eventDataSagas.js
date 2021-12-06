@@ -21,33 +21,34 @@ import {
   createCollectionRef,
   createConnectRef,
   createEventRef,
-  createAdminRef,
+  createHostRef,
   eventDataTemplate,
 } from "./eventDataTemplates"
 
-import EventDataActions from "./eventDataTypes"
+import EventDataActions, { STATUS_TYPES } from "./eventDataTypes"
 
 export function* createEventAsync({ payload: { collectionId, history } }) {
   try {
     const currentUser = yield select(selectCurrentUser)
     const collection = yield select(selectUserCollection(collectionId))
+
     // const enterCode = Math.round(Math.random() * 1000000).toString()
     const enterCode = "1000"
-    const data = yield eventDataTemplate(collection, enterCode, currentUser)
+    const event = yield eventDataTemplate(collection, enterCode, currentUser)
 
     const collectionRef = yield createCollectionRef(enterCode)
     const connectRef = yield createConnectRef(enterCode)
     const eventRef = yield createEventRef(enterCode)
-    const adminRef = yield createAdminRef(enterCode)
+    const adminRef = yield createHostRef(enterCode)
 
     const batch = firestore.batch()
-    yield batch.set(collectionRef, { ...data.collection })
-    yield batch.set(connectRef, { ...data.connect })
-    yield batch.set(eventRef, { ...data.event })
-    yield batch.set(adminRef, { ...data.admin })
+    yield batch.set(collectionRef, event.collection)
+    yield batch.set(connectRef, event.connect)
+    yield batch.set(eventRef, event.event)
+    yield batch.set(adminRef, event.host)
     yield batch.commit()
 
-    yield put(createEventSuccess(data))
+    yield put(createEventSuccess(event))
     yield history.push("/event")
   } catch (error) {
     yield put(createEventFailure(error.message))
@@ -55,27 +56,27 @@ export function* createEventAsync({ payload: { collectionId, history } }) {
 }
 
 // lobby, slideStart, slideVote, slideResults ,overallResults
-export function* startEventAsync({ payload }) {
+export function* startEventAsync() {
   try {
     const collection = yield select(selectEventDataCollection)
     const eventDataConnect = yield select(selectEventDataConnect)
-    const event = yield select(selectEventDataEvent)
-    const id = event.slidesOrder[0]
+    let event = yield select(selectEventDataEvent)
+
+    const id = collection.slidesOrder[0]
     const date = new Date().getTime()
     const slide = collection.slides[id]
 
-    const eventRef = yield createEventRef(eventDataConnect.enterCode)
-
-    event.currentSlide = {
-      id,
-      index: 0,
-      type: "game",
-      gameType: slide.type,
-      openVoteAt: date + 5000,
-      closeVoteAt: date + 5000 + slide.time.value * 1000,
+    event = {
+      ...event,
+      slideId: id,
+      slideIndex: 0,
+      status: STATUS_TYPES.GAME,
+      slideType: slide.type,
+      openVoteAt: date + 8000,
+      closeVoteAt: date + 8000 + slide.time.value * 1000,
     }
-    event.currentSlideData = slide
 
+    const eventRef = yield createEventRef(eventDataConnect.enterCode)
     yield eventRef.set({ ...event })
     yield put(startEventSuccess(event))
   } catch (error) {

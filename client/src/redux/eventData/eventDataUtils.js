@@ -6,8 +6,8 @@ export const updateDataConnect = (previousData, connect) => {
   return newData
 }
 
-export const updateDataEvent = (previousData, connect) => {
+export const updateDataEvent = (previousData, event) => {
   const newData = deleteReference(previousData)
-  newData.event = { ...newData.event, ...connect }
+  newData.event = { ...newData.event, ...event }
   return newData
 }

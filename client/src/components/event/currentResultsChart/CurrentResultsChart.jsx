@@ -2,7 +2,7 @@ import React from "react"
 import { connect } from "react-redux"
 import { selectEventResultsArray } from "../../../redux/eventResults/eventResultsSelectors"
 
-import { XAxis, Bar, BarChart, LabelList } from "recharts"
+import { XAxis, Bar, BarChart } from "recharts"
 
 const CurrentResultsChart = ({ eventResults }) => {
   console.log(eventResults)

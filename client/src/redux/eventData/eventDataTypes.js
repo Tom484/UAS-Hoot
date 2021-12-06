@@ -19,5 +19,15 @@ const EventDataActions = {
   UPDATE_DATA_EVENT_SUCCESS: "UPDATE_DATA_EVENT_SUCCESS",
   UPDATE_DATA_EVENT_FAILURE: "UPDATE_DATA_EVENT_FAILURE",
 }
-
 export default EventDataActions
+
+export const STATUS_TYPES = {
+  LOBBY: "LOBBY",
+  GAME: "GAME",
+  GAME_RESULTS: "GAME_RESULTS",
+  OVERALL_RESULTS: "OVERALL_RESULTS",
+}
+
+export const SLIDE_TYPES = {
+  QUIZ: "quiz",
+}

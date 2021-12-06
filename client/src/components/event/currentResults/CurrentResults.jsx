@@ -1,20 +1,19 @@
 import React from "react"
 import { connect } from "react-redux"
 import { ICONCloudBold, ICONDropBold, ICONFlashBold, ICONMoonBold } from "../../../icons/Icons"
-import { selectEventDataEvent } from "../../../redux/eventData/eventDataSelectors"
+import { selectEventCurrentSlide } from "../../../redux/eventData/eventDataSelectors"
 import CurrentResultsChart from "../currentResultsChart/CurrentResultsChart"
 
 import "./currentResults.scss"
 
-const CurrentResults = ({ eventData }) => {
-  const currentSlideData = eventData?.currentSlideData
+const CurrentResults = ({ eventCurrentSlide }) => {
   return (
     <div className="current-results">
       <div className="current-results-container">
-        <div className="question">{currentSlideData.question}</div>
+        <div className="question">{eventCurrentSlide.question}</div>
         <CurrentResultsChart />
         <div className="options-container">
-          {Object.values(currentSlideData.options)?.map((option, i) => (
+          {Object.values(eventCurrentSlide.options)?.map((option, i) => (
             <div
               className={`option-container option-${i + 1} ${option.correct ? "correct" : ""}`}
               key={option.id}
@@ -35,7 +34,7 @@ const CurrentResults = ({ eventData }) => {
 }
 
 const mapStateToProps = state => ({
-  eventData: selectEventDataEvent(state),
+  eventCurrentSlide: selectEventCurrentSlide(state),
 })
 
 export default connect(mapStateToProps)(CurrentResults)

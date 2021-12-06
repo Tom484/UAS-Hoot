@@ -2,15 +2,18 @@ import React, { useEffect } from "react"
 import { useState } from "react"
 import { connect } from "react-redux"
 import { ICONCloudBold, ICONDropBold, ICONFlashBold, ICONMoonBold } from "../../../icons/Icons"
-import { selectEventDataEvent } from "../../../redux/eventData/eventDataSelectors"
+import {
+  selectEventCurrentSlide,
+  selectEventDataEvent,
+} from "../../../redux/eventData/eventDataSelectors"
 import { selectEventAnswersLength } from "../../../redux/eventAnswers/eventAnswersSelectors"
 
 import "./slideGameVote.scss"
 import { selectEventPlayersCount } from "../../../redux/eventPlayers/eventPlayersSelectors"
 
-const SlideGameVote = ({ eventDataEvent, numberOfAnswers, playersCount }) => {
-  const { closeVoteAt } = eventDataEvent.currentSlide
-  const { question, options, time } = eventDataEvent.currentSlideData
+const SlideGameVote = ({ eventDataEvent, eventCurrentSlide, numberOfAnswers, playersCount }) => {
+  const { closeVoteAt } = eventDataEvent
+  const { question, options, time } = eventCurrentSlide
 
   const [timeInterval, setTimeInterval] = useState()
   const [timeToEnd, setTimeToEnd] = useState(closeVoteAt - new Date().getTime())
@@ -22,8 +25,6 @@ const SlideGameVote = ({ eventDataEvent, numberOfAnswers, playersCount }) => {
     }
     // eslint-disable-next-line
   }, [])
-
-  console.log((playersCount / numberOfAnswers) * 100)
 
   return (
     <div className="slide-game-vote">
@@ -81,6 +82,7 @@ const SlideGameVote = ({ eventDataEvent, numberOfAnswers, playersCount }) => {
 
 const mapStateToProps = state => ({
   eventDataEvent: selectEventDataEvent(state),
+  eventCurrentSlide: selectEventCurrentSlide(state),
   numberOfAnswers: selectEventAnswersLength(state),
   playersCount: selectEventPlayersCount(state),
 })

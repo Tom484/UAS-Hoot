@@ -1,13 +1,15 @@
 import React from "react"
 import { connect } from "react-redux"
 import { selectEventPlayersArray } from "../../../redux/eventPlayers/eventPlayersSelectors"
-import { selectEventData } from "../../../redux/eventData/eventDataSelectors"
+import { selectEventDataConnect } from "../../../redux/eventData/eventDataSelectors"
 import QRCode from "react-qr-code"
 import useWindowSize from "../../../functions/hooks/useWindowSize"
 
 import "./lobby.scss"
 
-const HomeLobby = ({ eventData, players }) => {
+const HomeLobby = ({ players, eventDataConnect }) => {
+  const { enterCode } = eventDataConnect
+
   const { width, height } = useWindowSize()
   const qrSize = Math.round(Math.min(width, height) / 2)
 
@@ -18,7 +20,7 @@ const HomeLobby = ({ eventData, players }) => {
           <h2>
             Enter the game at <span className="link fw-600">https://uas-hoot.netlify.app</span> by
             entering the code&nbsp;
-            <span className="code fw-600">{eventData?.connect?.enterCode}</span>
+            <span className="code fw-600">{enterCode}</span>
           </h2>
         </div>
         <div className="container-players">
@@ -32,12 +34,9 @@ const HomeLobby = ({ eventData, players }) => {
           </div>
         </div>
         <div className="container-qr-code">
-          {eventData?.connect?.enterCode && (
+          {enterCode && (
             <span className="box-qr-code">
-              <QRCode
-                size={qrSize}
-                value={`https://uas-hoot.netlify.app/join/${eventData?.connect?.enterCode}`}
-              />
+              <QRCode size={qrSize} value={`https://uas-hoot.netlify.app/join/${enterCode}`} />
             </span>
           )}
         </div>
@@ -47,8 +46,8 @@ const HomeLobby = ({ eventData, players }) => {
 }
 
 const mapStateToProps = state => ({
-  eventData: selectEventData(state),
   players: selectEventPlayersArray(state),
+  eventDataConnect: selectEventDataConnect(state),
 })
 
 export default connect(mapStateToProps)(HomeLobby)

@@ -12,10 +12,11 @@ import {
   ICONUserOutline,
 } from "../../../icons/Icons"
 import {
-  selectEventDataAdmin,
+  selectEventDataHost,
   selectEventDataConnect,
   selectEventDataEvent,
 } from "../../../redux/eventData/eventDataSelectors"
+import { STATUS_TYPES } from "../../../redux/eventData/eventDataTypes"
 import { selectEventPlayersCount } from "../../../redux/eventPlayers/eventPlayersSelectors"
 import EventButton from "../eventButton/EventButton"
 
@@ -53,14 +54,13 @@ const EventNavbar = ({ eventDataConnect, eventPlayersCount, eventDataAdmin, even
           </div>
         </div>
         <div className="event-setting">
-          {eventDataEvent?.currentSlide?.type === "lobby" && (
+          {eventDataEvent?.status === STATUS_TYPES.LOBBY && (
             <EventButton type="START_EVENT">
               <div className="container-setting highlight">
                 <ICONFlagBold className="icon-setting" /> <div className="label">Start Event</div>
               </div>
             </EventButton>
           )}
-
           <div className="container-setting">
             {eventDataConnect?.isOpen ? (
               <EventButton type="UPDATE_DATA_CONNECT" data={{ isOpen: "toggle" }}>
@@ -110,7 +110,7 @@ const EventNavbar = ({ eventDataConnect, eventPlayersCount, eventDataAdmin, even
 const mapStateToProps = state => ({
   eventDataConnect: selectEventDataConnect(state),
   eventPlayersCount: selectEventPlayersCount(state),
-  eventDataAdmin: selectEventDataAdmin(state),
+  eventDataHost: selectEventDataHost(state),
   eventDataEvent: selectEventDataEvent(state),
 })
 

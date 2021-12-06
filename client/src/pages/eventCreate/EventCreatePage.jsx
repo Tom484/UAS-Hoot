@@ -8,7 +8,6 @@ import "./eventCreatePage.scss"
 
 const EventCreatePage = ({ collection }) => {
   if (!collection) return <div>This collection was not found</div>
-
   return (
     <div className="event-create-page">
       <div className="event-create-page-container">

@@ -1,8 +1,8 @@
 import React, { useState } from "react"
 import InterimResults from "../interimResults/InterimResults"
 
-import BubbleBackground from "../../components/bubbleBackground/BubbleBackground"
-import LineBackground from "../../components/lineBackground/LineBackground"
+// import BubbleBackground from "../../components/bubbleBackground/BubbleBackground"
+// import LineBackground from "../../components/lineBackground/LineBackground"
 
 import "./slideGameResults.scss"
 import CurrentResults from "../currentResults/CurrentResults"

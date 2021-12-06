@@ -10,4 +10,9 @@ export const selectEventDataCollection = createSelector(
 )
 export const selectEventDataConnect = createSelector([selectEventData], data => data?.connect || {})
 export const selectEventDataEvent = createSelector([selectEventData], data => data?.event || {})
-export const selectEventDataAdmin = createSelector([selectEventData], data => data?.admin || {})
+export const selectEventDataHost = createSelector([selectEventData], data => data?.host || {})
+
+export const selectEventCurrentSlide = createSelector(
+  [selectEventDataCollection, selectEventDataEvent],
+  (collection, event) => collection?.slides?.[event.slideId] || {}
+)

@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from "react"
+import { connect } from "react-redux"
+import { selectEventDataEvent } from "../../../redux/eventData/eventDataSelectors"
+import { analyzeAnswersStart } from "../../../redux/eventResults/eventResultsActions"
 import SlideGamePreview from "../slideGamePreview/SlideGamePreview"
 import SlideGameVote from "../slideGameVote/SlideGameVote"
 import SlideGameResults from "../slideGameResults/SlideGameResults"
 
 import "./slideGame.scss"
-import { selectEventDataEvent } from "../../../redux/eventData/eventDataSelectors"
-import { connect } from "react-redux"
-import { analyzeAnswersStart } from "../../../redux/eventResults/eventResultsActions"
 
 const SlideGame = ({ eventDataEvent, analyzeAnswers }) => {
-  const { openVoteAt, closeVoteAt } = eventDataEvent.currentSlide
+  const { openVoteAt, closeVoteAt } = eventDataEvent
 
   const [time, setTime] = useState(Date.now())
-  const [timeInterval, setTimeInterval] = useState("")
+  const [timeInterval, setTimeInterval] = useState()
 
   useEffect(() => {
     setTimeInterval(setInterval(() => setTime(Date.now()), 10))
