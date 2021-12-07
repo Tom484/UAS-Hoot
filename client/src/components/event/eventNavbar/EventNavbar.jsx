@@ -25,13 +25,7 @@ import EventButton from "../eventButton/EventButton"
 
 import "./eventNavbar.scss"
 
-const EventNavbar = ({
-  eventDataConnect,
-  eventPlayersCount,
-  eventDataHost,
-  eventDataEvent,
-  eventResults,
-}) => {
+const EventNavbar = ({ eventDataConnect, eventPlayersCount, eventDataHost, eventDataEvent }) => {
   const [fullScreen, setFullScreen] = useState(false)
 
   useEffect(() => {
@@ -74,7 +68,12 @@ const EventNavbar = ({
             eventDataEvent.closeVoteAt < new Date().getTime() && (
               <EventButton type="EVENT_NEXT_SLIDE">
                 <div className="container-setting highlight">
-                  <ICONPlayBold className="icon-setting" /> <div className="label">Next Slide</div>
+                  <ICONPlayBold className="icon-setting" />{" "}
+                  <div className="label">
+                    {eventDataEvent.numberOfSlides === eventDataEvent.slideIndex + 1
+                      ? "Overall Results"
+                      : "Next Slide"}
+                  </div>
                 </div>
               </EventButton>
             )}
@@ -142,7 +141,6 @@ const mapStateToProps = state => ({
   eventPlayersCount: selectEventPlayersCount(state),
   eventDataHost: selectEventDataHost(state),
   eventDataEvent: selectEventDataEvent(state),
-  eventResults: selectEventResults(state),
 })
 
 export default connect(mapStateToProps)(EventNavbar)

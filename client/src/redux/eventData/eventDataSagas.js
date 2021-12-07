@@ -119,18 +119,25 @@ export function* eventNextSlideAsync() {
     const eventDataConnect = yield select(selectEventDataConnect)
     let event = yield select(selectEventDataEvent)
 
-    const id = collection.slidesOrder[event.slideIndex + 1]
+    const id = collection?.slidesOrder[event?.slideIndex + 1]
     const date = new Date().getTime()
     const slide = collection.slides[id]
 
-    event = {
-      ...event,
-      slideId: id,
-      slideIndex: event.slideIndex + 1,
-      status: STATUS_TYPES.GAME,
-      slideType: slide.type,
-      openVoteAt: date + 8000,
-      closeVoteAt: date + 8000 + slide.time.value * 1000,
+    if (id) {
+      event = {
+        ...event,
+        slideId: id,
+        lastDataUpdateSlideIndex: event.lastDataUpdateSlideIndex + 1,
+        status: STATUS_TYPES.GAME,
+        slideType: slide.type,
+        openVoteAt: date + 8000,
+        closeVoteAt: date + 8000 + slide.time.value * 1000,
+      }
+    } else {
+      event = {
+        ...event,
+        status: STATUS_TYPES.OVERALL_RESULTS,
+      }
     }
 
     const eventRef = yield createEventRef(eventDataConnect.enterCode)
