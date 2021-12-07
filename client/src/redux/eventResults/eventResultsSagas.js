@@ -1,6 +1,7 @@
 import { all, call, put, select, takeLatest } from "redux-saga/effects"
 import { selectEventAnswersArray } from "../eventAnswers/eventAnswersSelectors"
 import {
+  selectEventCurrentSlide,
   selectEventCurrentSlideOptionsArray,
   selectEventDataEvent,
 } from "../eventData/eventDataSelectors"
@@ -16,6 +17,7 @@ export function* analyzeAnswersAsync() {
     const answersArray = yield select(selectEventAnswersArray)
     const optionsArray = yield select(selectEventCurrentSlideOptionsArray)
     const event = yield select(selectEventDataEvent)
+    const slide = yield select(selectEventCurrentSlide)
 
     const updatedPlayers = {}
     const answersData = {}
@@ -29,12 +31,8 @@ export function* analyzeAnswersAsync() {
     const countScore = answer => {
       const score = optionsArray[answer.option].correct
         ? Math.round(
-            Math.abs(
-              answer.submitTime -
-                event.currentSlide.openVoteAt -
-                event.currentSlideData.time.value * 1000
-            ) *
-              (500 / (event.currentSlideData.time.value * 1000))
+            Math.abs(answer.submitTime - event.openVoteAt - slide.time.value * 1000) *
+              (500 / (slide.time.value * 1000))
           ) + 500
         : 0
       if (score <= 1000) return score
@@ -55,11 +53,11 @@ export function* analyzeAnswersAsync() {
         score: (player?.score || 0) + results[player.id]?.score || 0,
         lastScore: results[player.id]?.score || 0,
         lastDataUpdateSlideIndex: event.slideIndex,
+        consecutiveCorrectAnswers: results[player.id].correct
+          ? player.consecutiveCorrectAnswers + 1
+          : 0,
       }
     })
-
-    console.log(results)
-    console.log(updatedPlayers)
 
     yield put(analyzeAnswersSuccess(answersData))
     yield put(updatePlayersStart(updatedPlayers))

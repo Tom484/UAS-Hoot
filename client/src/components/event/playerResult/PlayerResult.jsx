@@ -13,7 +13,7 @@ const PlayerResult = ({ player, order }) => {
         <span>{order}.</span>
         <span>{player?.displayName}</span>
         <span className="right">{player?.score}</span>
-        <span className="right">5</span>
+        <span className="right">{player?.consecutiveCorrectAnswers || 0}</span>
       </div>
     </div>
   )

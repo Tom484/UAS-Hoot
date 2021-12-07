@@ -20,11 +20,18 @@ import {
 } from "../../../redux/eventData/eventDataSelectors"
 import { STATUS_TYPES } from "../../../redux/eventData/eventDataTypes"
 import { selectEventPlayersCount } from "../../../redux/eventPlayers/eventPlayersSelectors"
+import { selectEventResults } from "../../../redux/eventResults/eventResultsSelectors"
 import EventButton from "../eventButton/EventButton"
 
 import "./eventNavbar.scss"
 
-const EventNavbar = ({ eventDataConnect, eventPlayersCount, eventDataHost, eventDataEvent }) => {
+const EventNavbar = ({
+  eventDataConnect,
+  eventPlayersCount,
+  eventDataHost,
+  eventDataEvent,
+  eventResults,
+}) => {
   const [fullScreen, setFullScreen] = useState(false)
 
   useEffect(() => {
@@ -135,6 +142,7 @@ const mapStateToProps = state => ({
   eventPlayersCount: selectEventPlayersCount(state),
   eventDataHost: selectEventDataHost(state),
   eventDataEvent: selectEventDataEvent(state),
+  eventResults: selectEventResults(state),
 })
 
 export default connect(mapStateToProps)(EventNavbar)

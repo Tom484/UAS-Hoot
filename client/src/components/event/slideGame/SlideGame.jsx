@@ -11,27 +11,41 @@ import "./slideGame.scss"
 const SlideGame = ({ eventDataEvent, analyzeAnswers }) => {
   const { openVoteAt, closeVoteAt } = eventDataEvent
 
-  const [time, setTime] = useState(Date.now())
-  const [timeInterval, setTimeInterval] = useState()
+  const RENDER_SLIDE_TYPES = {
+    SLIDE_GAME_PREVIEW: "SLIDE_GAME_PREVIEW",
+    SLIDE_GAME_VOTE: "SLIDE_GAME_VOTE",
+    SLIDE_GAME_RESULTS: "SLIDE_GAME_RESULTS",
+  }
+
+  const [renderSlide, setRenderSlide] = useState(RENDER_SLIDE_TYPES.SLIDE_GAME_PREVIEW)
 
   useEffect(() => {
-    setTimeInterval(setInterval(() => setTime(Date.now()), 20))
-    return () => {
-      clearInterval(timeInterval)
-    }
+    setRenderSlide(RENDER_SLIDE_TYPES.SLIDE_GAME_PREVIEW)
     // eslint-disable-next-line
-  }, [])
+  }, [eventDataEvent])
 
-  if (new Date().getTime() > closeVoteAt) {
-    clearInterval(timeInterval)
-    analyzeAnswers()
-  }
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setRenderSlide(RENDER_SLIDE_TYPES.SLIDE_GAME_VOTE)
+    }, openVoteAt - new Date().getTime())
+    return () => clearTimeout(timer)
+    // eslint-disable-next-line
+  }, [eventDataEvent])
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      analyzeAnswers()
+      setRenderSlide(RENDER_SLIDE_TYPES.SLIDE_GAME_RESULTS)
+    }, closeVoteAt - new Date().getTime())
+    return () => clearTimeout(timer)
+    // eslint-disable-next-line
+  }, [eventDataEvent])
 
   return (
     <div>
-      {time < openVoteAt && <SlideGamePreview />}
-      {time >= openVoteAt && time < closeVoteAt && <SlideGameVote />}
-      {time >= closeVoteAt && <SlideGameResults />}
+      {renderSlide === RENDER_SLIDE_TYPES.SLIDE_GAME_PREVIEW && <SlideGamePreview />}
+      {renderSlide === RENDER_SLIDE_TYPES.SLIDE_GAME_VOTE && <SlideGameVote />}
+      {renderSlide === RENDER_SLIDE_TYPES.SLIDE_GAME_RESULTS && <SlideGameResults />}
     </div>
   )
 }
