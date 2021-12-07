@@ -5,14 +5,12 @@ import { selectEventResultsArray } from "../../../redux/eventResults/eventResult
 import { XAxis, Bar, BarChart } from "recharts"
 
 const CurrentResultsChart = ({ eventResults }) => {
-  console.log(eventResults)
   const newEventResults = eventResults?.map(result => {
     return {
       ...result,
       label: `Answers ${result?.count || 0} ${result?.correct ? "(correct)" : ""}`,
     }
   })
-
   return (
     <div>
       <BarChart width={730} height={280} data={newEventResults}>

@@ -15,7 +15,7 @@ const SlideGame = ({ eventDataEvent, analyzeAnswers }) => {
   const [timeInterval, setTimeInterval] = useState()
 
   useEffect(() => {
-    setTimeInterval(setInterval(() => setTime(Date.now()), 10))
+    setTimeInterval(setInterval(() => setTime(Date.now()), 20))
     return () => {
       clearInterval(timeInterval)
     }

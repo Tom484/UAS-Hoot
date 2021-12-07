@@ -65,7 +65,7 @@ const EventNavbar = ({ eventDataConnect, eventPlayersCount, eventDataHost, event
           )}
           {eventDataEvent?.status === STATUS_TYPES.GAME &&
             eventDataEvent.closeVoteAt < new Date().getTime() && (
-              <EventButton type="START_EVENT">
+              <EventButton type="EVENT_NEXT_SLIDE">
                 <div className="container-setting highlight">
                   <ICONPlayBold className="icon-setting" /> <div className="label">Next Slide</div>
                 </div>

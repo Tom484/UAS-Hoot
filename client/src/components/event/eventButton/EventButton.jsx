@@ -4,6 +4,7 @@ import EventButtonTypes from "./eventButtonTypes"
 import { withRouter } from "react-router-dom"
 import {
   createEventStart,
+  eventNextSlideStart,
   startEventStart,
   updateDataConnectStart,
   updateDataEventStart,
@@ -21,6 +22,7 @@ const EventButton = ({
   updateDataEvent,
   data,
   startEvent,
+  eventNextSlide,
 }) => {
   const clickHandler = () => {
     switch (type) {
@@ -35,6 +37,9 @@ const EventButton = ({
         break
       case EventButtonTypes.UPDATE_DATA_EVENT.id:
         updateDataEventHandler()
+        break
+      case EventButtonTypes.EVENT_NEXT_SLIDE.id:
+        eventNextSlideHandler()
         break
       default:
         console.log("Error! Enter correct type name!")
@@ -57,6 +62,10 @@ const EventButton = ({
     updateDataEvent({ data })
   }
 
+  const eventNextSlideHandler = () => {
+    eventNextSlide()
+  }
+
   if (children) return <span onClick={clickHandler}>{children}</span>
 
   return (
@@ -71,6 +80,7 @@ const mapDispatchToProps = dispatch => ({
   startEvent: () => dispatch(startEventStart()),
   updateDataConnect: data => dispatch(updateDataConnectStart(data)),
   updateDataEvent: data => dispatch(updateDataEventStart(data)),
+  eventNextSlide: () => dispatch(eventNextSlideStart()),
 })
 
 export default withRouter(connect(null, mapDispatchToProps)(EventButton))

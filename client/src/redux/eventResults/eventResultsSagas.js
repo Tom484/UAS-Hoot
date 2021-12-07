@@ -1,6 +1,9 @@
 import { all, call, put, select, takeLatest } from "redux-saga/effects"
-import { selectEventAnswers } from "../eventAnswers/eventAnswersSelectors"
-import { selectEventDataEvent } from "../eventData/eventDataSelectors"
+import { selectEventAnswersArray } from "../eventAnswers/eventAnswersSelectors"
+import {
+  selectEventCurrentSlideOptionsArray,
+  selectEventDataEvent,
+} from "../eventData/eventDataSelectors"
 import { updatePlayersStart } from "../eventPlayers/eventPlayersActions"
 import { selectEventPlayersArray } from "../eventPlayers/eventPlayersSelectors"
 
@@ -9,12 +12,10 @@ import EventResultsActions from "./eventResultsTypes"
 
 export function* analyzeAnswersAsync() {
   try {
-    const answers = yield select(selectEventAnswers)
-    const event = yield select(selectEventDataEvent)
     const playersArray = yield select(selectEventPlayersArray)
-
-    const answersArray = Object.values(answers)
-    const optionsArray = Object.values(event.currentSlideData.options)
+    const answersArray = yield select(selectEventAnswersArray)
+    const optionsArray = yield select(selectEventCurrentSlideOptionsArray)
+    const event = yield select(selectEventDataEvent)
 
     const updatedPlayers = {}
     const answersData = {}
@@ -53,8 +54,12 @@ export function* analyzeAnswersAsync() {
         lastAnswer: results[player.id]?.correct || false,
         score: (player?.score || 0) + results[player.id]?.score || 0,
         lastScore: results[player.id]?.score || 0,
+        lastDataUpdateSlideIndex: event.slideIndex,
       }
     })
+
+    console.log(results)
+    console.log(updatedPlayers)
 
     yield put(analyzeAnswersSuccess(answersData))
     yield put(updatePlayersStart(updatedPlayers))

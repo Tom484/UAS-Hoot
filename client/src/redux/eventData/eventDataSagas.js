@@ -5,6 +5,8 @@ import { selectCurrentUser } from "../user/userSelectors"
 import {
   createEventFailure,
   createEventSuccess,
+  eventNextSlideFailure,
+  eventNextSlideSuccess,
   startEventFailure,
   startEventSuccess,
   updateDataConnectFailure,
@@ -98,7 +100,6 @@ export function* eventDataEventAsync({ payload }) {
 
 export function* eventDataConnectAsync({ payload: { data } }) {
   try {
-    console.log(data)
     const eventDataConnect = yield select(selectEventDataConnect)
     if (data?.isOpen === "toggle") {
       data.isOpen = !eventDataConnect.isOpen
@@ -109,6 +110,48 @@ export function* eventDataConnectAsync({ payload: { data } }) {
     yield put(updateDataConnectSuccess(newData))
   } catch (error) {
     yield put(updateDataConnectFailure(error.message))
+  }
+}
+
+export function* eventNextSlideAsync() {
+  try {
+    const collection = yield select(selectEventDataCollection)
+    const eventDataConnect = yield select(selectEventDataConnect)
+    let event = yield select(selectEventDataEvent)
+
+    const id = collection.slidesOrder[event.slideIndex + 1]
+    const date = new Date().getTime()
+    const slide = collection.slides[id]
+
+    event = {
+      ...event,
+      slideId: id,
+      slideIndex: event.slideIndex + 1,
+      status: STATUS_TYPES.GAME,
+      slideType: slide.type,
+      openVoteAt: date + 8000,
+      closeVoteAt: date + 8000 + slide.time.value * 1000,
+    }
+
+    const eventRef = yield createEventRef(eventDataConnect.enterCode)
+
+    const answersRef = yield firestore
+      .collection(`events`)
+      .doc(eventDataConnect.enterCode)
+      .collection("answers")
+    const snapshot = yield answersRef.get()
+    const batch = firestore.batch()
+    if (snapshot.size !== 0) {
+      snapshot.docs.forEach(doc => {
+        batch.delete(doc.ref)
+      })
+      yield batch.commit()
+    }
+
+    yield eventRef.set({ ...event })
+    yield put(eventNextSlideSuccess(event))
+  } catch (error) {
+    yield put(eventNextSlideFailure(error.message))
   }
 }
 
@@ -128,11 +171,16 @@ export function* eventDataConnectStart() {
   yield takeLatest(EventDataActions.UPDATE_DATA_CONNECT_START, eventDataConnectAsync)
 }
 
+export function* eventNextSlideStart() {
+  yield takeLatest(EventDataActions.EVENT_NEXT_SLIDE_START, eventNextSlideAsync)
+}
+
 export default function* eventDataSagas() {
   yield all([
     call(createEventStart),
     call(startEventStart),
     call(eventDataEventStart),
     call(eventDataConnectStart),
+    call(eventNextSlideStart),
   ])
 }

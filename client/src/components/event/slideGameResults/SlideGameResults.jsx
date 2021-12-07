@@ -1,9 +1,6 @@
 import React, { useState } from "react"
 import InterimResults from "../interimResults/InterimResults"
 
-// import BubbleBackground from "../../components/bubbleBackground/BubbleBackground"
-// import LineBackground from "../../components/lineBackground/LineBackground"
-
 import "./slideGameResults.scss"
 import CurrentResults from "../currentResults/CurrentResults"
 
@@ -24,8 +21,6 @@ const SlideGameResults = () => {
 
   return (
     <div className="slide-game-results">
-      {/* <LineBackground /> */}
-      {/* <BubbleBackground /> */}
       <div className="slide-game-results-container">
         <h2 className="slide-name" onClick={toggleSlideHandler}>
           {resultSlide === SLIDE_TYPES.CURRENT_GAME_RESULTS ? "Game Results" : "Interim Results"}

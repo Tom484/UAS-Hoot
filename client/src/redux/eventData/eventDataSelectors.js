@@ -16,3 +16,12 @@ export const selectEventCurrentSlide = createSelector(
   [selectEventDataCollection, selectEventDataEvent],
   (collection, event) => collection?.slides?.[event.slideId] || {}
 )
+export const selectEventCurrentSlideOptions = createSelector(
+  [selectEventCurrentSlide],
+  slides => slides?.options || {}
+)
+
+export const selectEventCurrentSlideOptionsArray = createSelector(
+  [selectEventCurrentSlideOptions],
+  options => Object.values(options)
+)

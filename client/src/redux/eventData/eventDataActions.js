@@ -29,18 +29,18 @@ export const startEventFailure = errorMessage => ({
   payload: errorMessage,
 })
 
-export const nextSlideStart = properties => ({
-  type: EventDataActions.NEXT_SLIDE_START,
+export const eventNextSlideStart = properties => ({
+  type: EventDataActions.EVENT_NEXT_SLIDE_START,
   payload: properties,
 })
 
-export const nextSlideSuccess = data => ({
-  type: EventDataActions.NEXT_SLIDE_SUCCESS,
+export const eventNextSlideSuccess = data => ({
+  type: EventDataActions.EVENT_NEXT_SLIDE_SUCCESS,
   payload: data,
 })
 
-export const nextSlideFailure = errorMessage => ({
-  type: EventDataActions.NEXT_SLIDE_FAILURE,
+export const eventNextSlideFailure = errorMessage => ({
+  type: EventDataActions.EVENT_NEXT_SLIDE_FAILURE,
   payload: errorMessage,
 })
 
