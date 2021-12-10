@@ -1,6 +1,10 @@
 @import "../../../styles/colors.scss";
 
 .preview-collections-container {
+  border-radius: 8px;
+  background: var(--color-background-1);
+  box-shadow: var(--box-shadow-medium);
+  padding: 20px;
   .buttons-sort-bar {
     display: flex;
     gap: 15px;

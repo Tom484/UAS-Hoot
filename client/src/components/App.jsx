@@ -10,7 +10,6 @@ import { selectCompletedAuthInitialProcess, selectCurrentUser } from "../redux/u
 // Import pages
 import HomePage from "../pages/home/HomePage"
 import NotFoundPage from "../pages/notFound/NotFoundPage"
-import SingIn from "../pages/signInAndSignUp/SignInAndSignUpPage"
 import Navbar from "./components/Navbar/Navbar"
 
 import DiscoverPage from "../pages/discover/DiscoverPage"
@@ -94,23 +93,33 @@ const App = ({
 
   return (
     <div>
-      {!(path.includes("editor") || path.includes("event")) && (
-        <div className="div" style={{ paddingTop: "80px" }}></div>
-      )}
-      {!(path.includes("editor") || path.includes("event")) && <Navbar />}
+      {!(
+        path.includes("editor") ||
+        path.includes("event") ||
+        path === "/" ||
+        path === "" ||
+        path === "/not-found"
+      ) && <div className="div" style={{ paddingTop: "80px" }}></div>}
+      {!(
+        path.includes("editor") ||
+        path.includes("event") ||
+        path === "/" ||
+        path === "" ||
+        path === "/not-found"
+      ) && <Navbar />}
 
       <Switch>
         <PrivateRoute
           exact
           onlyLogged={true}
-          redirect="/sign-in"
+          redirect="/"
           path="/reports"
           component={ReportsPage}
         />
         <PrivateRoute
           exact
           onlyLogged={true}
-          redirect="/sign-in"
+          redirect="/"
           path="/library/:sortId"
           component={LibraryPage}
         />
@@ -124,14 +133,14 @@ const App = ({
         <PrivateRoute
           exact
           onlyLogged={true}
-          redirect="/sign-in"
+          redirect="/"
           path="/account"
           component={AccountPage}
         />
         <PrivateRoute
           exact
           onlyLogged={true}
-          redirect="/sign-in"
+          redirect="/"
           path="/create-event/:collectionId"
           component={EventCreatePage}
         />
@@ -143,8 +152,13 @@ const App = ({
           path="/editor/:collectionId"
           component={EditorPage}
         />
-        <PrivateRoute exact onlyLogged={false} redirect="/" path="/sign-in" component={SingIn} />
-        <Route exact path="/" component={HomePage} />
+        <PrivateRoute
+          exact
+          onlyLogged={false}
+          redirect="/library/recent"
+          path="/"
+          component={HomePage}
+        />
         <Route exact path="/not-found" component={NotFoundPage} />
         <Redirect to="/not-found" />
       </Switch>

@@ -13,7 +13,7 @@
     height: 30px;
     width: 30px;
     padding: 4px;
-    border-radius: 6px;
+    border-radius: 8px;
     background: var(--color-background-1);
     fill: var(--color-icon-2);
     &.active {
@@ -25,10 +25,10 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
-    background: var(--color-background-1);
+    background: var(--color-background-2);
     width: 100%;
     padding: 20px 20px 20px 25px;
-    border-radius: 6px;
+    border-radius: 8px;
 
     .title-container {
       width: 100%;

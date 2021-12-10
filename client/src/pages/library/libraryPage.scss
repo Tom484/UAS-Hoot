@@ -1,20 +1,25 @@
 .library-page {
   width: 100%;
   min-height: calc(100vh - 80px);
-  padding: 20px;
   margin: 0 auto;
-  background: var(--color-background-2);
   display: flex;
   align-items: center;
   flex-direction: column;
+  position: relative;
 
   .library-page-container {
+    padding: 20px;
     width: 1000px;
     .library-page-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 20px 0 40px 0;
+      border-radius: 8px;
+      background: var(--color-background-1);
+      box-shadow: var(--box-shadow-medium);
+      padding: 20px;
+      margin-bottom: 20px;
+
       .library-page-name {
         font-weight: 500;
         padding: 0;
