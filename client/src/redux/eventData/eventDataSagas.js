@@ -57,7 +57,6 @@ export function* createEventAsync({ payload: { collectionId, history } }) {
   }
 }
 
-// lobby, slideStart, slideVote, slideResults ,overallResults
 export function* startEventAsync() {
   try {
     const collection = yield select(selectEventDataCollection)
@@ -74,8 +73,8 @@ export function* startEventAsync() {
       slideIndex: 0,
       status: STATUS_TYPES.GAME,
       slideType: slide.type,
-      openVoteAt: date + 8000,
-      closeVoteAt: date + 8000 + slide.time.value * 1000,
+      openVoteAt: date + 7000,
+      closeVoteAt: date + 7000 + slide.time.value * 1000,
     }
 
     const eventRef = yield createEventRef(eventDataConnect.enterCode)
@@ -123,11 +122,13 @@ export function* eventNextSlideAsync() {
     const date = new Date().getTime()
     const slide = collection.slides[id]
 
+    console.log(event)
+
     if (id) {
       event = {
         ...event,
         slideId: id,
-        lastDataUpdateSlideIndex: event.lastDataUpdateSlideIndex + 1,
+        slideIndex: event.slideIndex + 1,
         status: STATUS_TYPES.GAME,
         slideType: slide.type,
         openVoteAt: date + 8000,

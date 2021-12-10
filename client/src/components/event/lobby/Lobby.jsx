@@ -6,6 +6,7 @@ import QRCode from "react-qr-code"
 import useWindowSize from "../../../functions/hooks/useWindowSize"
 
 import "./lobby.scss"
+import LineBackground from "../../components/lineBackground/LineBackground"
 
 const HomeLobby = ({ players, eventDataConnect }) => {
   const { enterCode } = eventDataConnect
@@ -15,6 +16,7 @@ const HomeLobby = ({ players, eventDataConnect }) => {
 
   return (
     <div className="home-lobby">
+      <LineBackground />
       <div className="home-lobby-container">
         <div className="container-title">
           <h2>

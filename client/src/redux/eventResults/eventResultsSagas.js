@@ -41,7 +41,7 @@ export function* analyzeAnswersAsync() {
 
     answersArray.forEach(answer => {
       results[answer.id] = {
-        correct: optionsArray[answer.option].correct,
+        correct: optionsArray[answer.option]?.correct || false,
         score: countScore(answer),
       }
     })

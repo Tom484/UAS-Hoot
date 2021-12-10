@@ -18,13 +18,18 @@ const SlideGame = ({ eventDataEvent, analyzeAnswers }) => {
   }
 
   const [renderSlide, setRenderSlide] = useState(RENDER_SLIDE_TYPES.SLIDE_GAME_PREVIEW)
+  const [previousDataEvent, setPreviousDataEvent] = useState()
 
   useEffect(() => {
+    if (previousDataEvent?.closeVoteAt === eventDataEvent?.closeVoteAt) return
+    setPreviousDataEvent(eventDataEvent)
     setRenderSlide(RENDER_SLIDE_TYPES.SLIDE_GAME_PREVIEW)
     // eslint-disable-next-line
   }, [eventDataEvent])
 
   useEffect(() => {
+    if (previousDataEvent?.closeVoteAt === eventDataEvent?.closeVoteAt) return
+    setPreviousDataEvent(eventDataEvent)
     const timer = setTimeout(() => {
       setRenderSlide(RENDER_SLIDE_TYPES.SLIDE_GAME_VOTE)
     }, openVoteAt - new Date().getTime())
@@ -33,6 +38,8 @@ const SlideGame = ({ eventDataEvent, analyzeAnswers }) => {
   }, [eventDataEvent])
 
   useEffect(() => {
+    if (previousDataEvent?.closeVoteAt === eventDataEvent?.closeVoteAt) return
+    setPreviousDataEvent(eventDataEvent)
     const timer = setTimeout(() => {
       analyzeAnswers()
       setRenderSlide(RENDER_SLIDE_TYPES.SLIDE_GAME_RESULTS)

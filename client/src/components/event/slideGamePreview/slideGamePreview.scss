@@ -1,0 +1,52 @@
+.slide-game-preview {
+  position: relative;
+  min-height: calc(100vh - 55px);
+  .slide-game-preview-container {
+    min-height: calc(100vh - 55px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 70px;
+
+    .question {
+      font-size: 3.5vw;
+      width: 90%;
+      text-align: center;
+      background: var(--color-main-2);
+      color: var(--color-white);
+      font-weight: 500;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: var(--box-shadow-medium), var(--box-shadow-medium);
+    }
+
+    .time-line-container {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      right: 20px;
+      height: 50px;
+      background: var(--color-background-4);
+      border-radius: 25px;
+      overflow: hidden;
+      .time-line {
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: var(--color-main-2);
+        bottom: 0;
+        border-radius: 25px;
+        animation: timeLineAnimation 6.7s linear;
+      }
+    }
+  }
+}
+
+@keyframes timeLineAnimation {
+  0% {
+    width: 100%;
+  }
+  100% {
+    width: 0%;
+  }
+}

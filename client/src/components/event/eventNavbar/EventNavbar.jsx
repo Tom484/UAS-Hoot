@@ -25,7 +25,13 @@ import EventButton from "../eventButton/EventButton"
 
 import "./eventNavbar.scss"
 
-const EventNavbar = ({ eventDataConnect, eventPlayersCount, eventDataHost, eventDataEvent }) => {
+const EventNavbar = ({
+  eventDataConnect,
+  eventPlayersCount,
+  eventDataHost,
+  eventDataEvent,
+  eventResults,
+}) => {
   const [fullScreen, setFullScreen] = useState(false)
 
   useEffect(() => {
@@ -64,7 +70,8 @@ const EventNavbar = ({ eventDataConnect, eventPlayersCount, eventDataHost, event
               </div>
             </EventButton>
           )}
-          {eventDataEvent?.status === STATUS_TYPES.GAME &&
+          {(!eventResults || eventResults) &&
+            eventDataEvent?.status === STATUS_TYPES.GAME &&
             eventDataEvent.closeVoteAt < new Date().getTime() && (
               <EventButton type="EVENT_NEXT_SLIDE">
                 <div className="container-setting highlight">
@@ -141,6 +148,7 @@ const mapStateToProps = state => ({
   eventPlayersCount: selectEventPlayersCount(state),
   eventDataHost: selectEventDataHost(state),
   eventDataEvent: selectEventDataEvent(state),
+  eventResults: selectEventResults(state),
 })
 
 export default connect(mapStateToProps)(EventNavbar)

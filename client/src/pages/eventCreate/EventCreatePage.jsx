@@ -5,11 +5,13 @@ import { selectUserCollection } from "../../redux/collections/collectionsSelecto
 import HostButton from "../../components/event/eventButton/EventButton"
 
 import "./eventCreatePage.scss"
+import LineBackground from "../../components/components/lineBackground/LineBackground"
 
 const EventCreatePage = ({ collection }) => {
   if (!collection) return <div>This collection was not found</div>
   return (
     <div className="event-create-page">
+      <LineBackground />
       <div className="event-create-page-container">
         <h2 className="title">Create Event</h2>
         <h4 className="collection-name">{collection.name}</h4>
