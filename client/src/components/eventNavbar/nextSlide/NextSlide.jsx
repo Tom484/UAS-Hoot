@@ -20,6 +20,7 @@ const NextSlide = ({ eventDataEvent }) => {
     setShowButton(false)
     setPreviousDataEvent(eventDataEvent)
     return () => clearTimeout(timer)
+    // eslint-disable-next-line
   }, [eventDataEvent])
 
   if (!showButton) return <></>

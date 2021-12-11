@@ -33,7 +33,6 @@ export function* createEventAsync({ payload: { collectionId, history } }) {
   try {
     const currentUser = yield select(selectCurrentUser)
     const collection = yield select(selectUserCollection(collectionId))
-
     // const enterCode = Math.round(Math.random() * 1000000).toString()
     const enterCode = "1000"
     const event = yield eventDataTemplate(collection, enterCode, currentUser)
