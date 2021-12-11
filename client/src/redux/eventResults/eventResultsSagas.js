@@ -56,6 +56,21 @@ export function* analyzeAnswersAsync() {
         consecutiveCorrectAnswers: results[player.id].correct
           ? player.consecutiveCorrectAnswers + 1
           : 0,
+        order: 0,
+      }
+    })
+
+    const playersScore = Object.values(updatedPlayers)
+      .map(player => ({
+        id: player.id,
+        score: player.score,
+      }))
+      .sort((a, b) => b.score - a.score)
+
+    playersScore.forEach((player, i) => {
+      updatedPlayers[player.id] = {
+        ...updatedPlayers[player.id],
+        order: i + 1,
       }
     })
 

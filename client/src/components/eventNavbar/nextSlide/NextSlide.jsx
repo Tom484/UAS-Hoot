@@ -4,6 +4,7 @@ import { ICONPlayBold } from "../../../icons/Icons"
 import { selectEventDataEvent } from "../../../redux/eventData/eventDataSelectors"
 import EventButton from "../../event/eventButton/EventButton"
 import EventButtonTypes from "../../event/eventButton/eventButtonTypes"
+import { STATUS_TYPES } from "../../../redux/eventData/eventDataTypes"
 
 const NextSlide = ({ eventDataEvent }) => {
   const [previousDataEvent, setPreviousDataEvent] = useState()
@@ -24,6 +25,8 @@ const NextSlide = ({ eventDataEvent }) => {
   }, [eventDataEvent])
 
   if (!showButton) return <></>
+
+  if (eventDataEvent.status === STATUS_TYPES.OVERALL_RESULTS) return <></>
 
   return (
     <EventButton type={EventButtonTypes.EVENT_NEXT_SLIDE.id}>

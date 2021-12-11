@@ -50,18 +50,21 @@ export const getCurrentUser = () => {
   })
 }
 
-export const getCurrentTime = () => {
-  fetch("http://worldtimeapi.org/api/timezone/Europe/Prague")
-    .then(response => response.text())
-    .then(data =>
-      console.log(
-        "Time different:",
-        new Date(JSON.parse(data).datetime).getTime() - new Date().getTime()
-      )
-    )
-}
+// export const getCurrentTime = () => {
+//   fetch("http://worldtimeapi.org/api/timezone/Europe/Prague", {
+//     mode: "no-cors",
+//   })
+//     .then(response => response.text())
+//     .then(data =>
+//       console.log(
+//         "Time different:",
+//         new Date(JSON.parse(data).datetime).getTime() - new Date().getTime()
+//       )
+//     )
+//     .catch(err => console.error(err))
+// }
 
-getCurrentTime()
+// getCurrentTime()
 
 export const auth = firebase.auth()
 export const firestore = firebase.firestore()
