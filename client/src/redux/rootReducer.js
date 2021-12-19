@@ -10,6 +10,7 @@ import eventResultsReducer from "./eventResults/eventResultsReducer"
 import localSettingReducer from "./localSetting/localSettingReducer"
 import { persistReducer } from "redux-persist"
 import storage from "redux-persist/lib/storage"
+import notificationsReducer from "./notifications/notificationsReducer"
 
 const persistConfig = {
   key: "root",
@@ -35,6 +36,7 @@ const rootReducer = combineReducers({
   eventPlayers: eventPlayersReducer,
   eventAnswers: eventAnswersReducer,
   eventResults: eventResultsReducer,
+  notifications: notificationsReducer,
 })
 
 export default persistReducer(persistConfig, rootReducer)

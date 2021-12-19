@@ -7,11 +7,8 @@ import { checkUserSession } from "../redux/user/userActions"
 import PrivateRoute from "./components/privateRoute/PrivateRoute"
 import { selectCompletedAuthInitialProcess, selectCurrentUser } from "../redux/user/userSelectors"
 
-// Import pages
-import HomePage from "../pages/home/HomePage"
 import NotFoundPage from "../pages/notFound/NotFoundPage"
 import Navbar from "./components/Navbar/Navbar"
-
 import DiscoverPage from "../pages/discover/DiscoverPage"
 import LibraryPage from "../pages/library/LibraryPage"
 import ReportsPage from "../pages/reports/ReportsPage"
@@ -26,6 +23,9 @@ import { selectEventDataConnect, selectEventDataEvent } from "../redux/eventData
 import { updateAnswers } from "../redux/eventAnswers/eventAnswersActions"
 import LoadAnimation from "../components/components/loadAnimation/LoadAnimation"
 import { updateSystemTheme } from "../redux/localSetting/localSettingActions"
+import SignInPage from "../pages/signIn/SignInPage"
+import SignUpPage from "../pages/signUp/SignUpPage"
+import HomePage from "../pages/home/HomePage"
 
 const App = ({
   checkUserSession,
@@ -96,6 +96,8 @@ const App = ({
       {!(
         path.includes("editor") ||
         path.includes("event") ||
+        path === "/sign-in" ||
+        path === "/sign-up" ||
         path === "/" ||
         path === "" ||
         path === "/not-found"
@@ -103,6 +105,9 @@ const App = ({
       {!(
         path.includes("editor") ||
         path.includes("event") ||
+        path.includes("event") ||
+        path === "/sign-in" ||
+        path === "/sign-up" ||
         path === "/" ||
         path === "" ||
         path === "/not-found"
@@ -112,14 +117,14 @@ const App = ({
         <PrivateRoute
           exact
           onlyLogged={true}
-          redirect="/"
+          redirect="/sign-in"
           path="/reports"
           component={ReportsPage}
         />
         <PrivateRoute
           exact
           onlyLogged={true}
-          redirect="/"
+          redirect="/sign-in"
           path="/library/:sortId"
           component={LibraryPage}
         />
@@ -133,14 +138,14 @@ const App = ({
         <PrivateRoute
           exact
           onlyLogged={true}
-          redirect="/"
+          redirect="/sign-in"
           path="/account"
           component={AccountPage}
         />
         <PrivateRoute
           exact
           onlyLogged={true}
-          redirect="/"
+          redirect="/sign-in"
           path="/create-event/:collectionId"
           component={EventCreatePage}
         />
@@ -148,9 +153,23 @@ const App = ({
         <PrivateRoute
           exact
           onlyLogged={true}
-          redirect="/"
+          redirect="/sign-in"
           path="/editor/:collectionId"
           component={EditorPage}
+        />
+        <PrivateRoute
+          exact
+          onlyLogged={false}
+          redirect="/library/recent"
+          path="/sign-in"
+          component={SignInPage}
+        />
+        <PrivateRoute
+          exact
+          onlyLogged={false}
+          redirect="/library/recent"
+          path="/sign-up"
+          component={SignUpPage}
         />
         <PrivateRoute
           exact

@@ -1,14 +1,8 @@
-.account-page {
-  min-height: calc(100vh - 80px);
-  position: relative;
-  .account-page-container {
-    min-height: calc(100vh - 80px);
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    gap: 50px;
-    padding: 50px 0;
-  }
+@import "../../styles/mixins.scss";
+.account-page-container {
+  @include flex-center-center-column();
+  flex-wrap: wrap;
+  padding: 50px 0;
+  height: 100%;
+  gap: 50px;
 }

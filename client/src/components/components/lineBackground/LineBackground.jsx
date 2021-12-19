@@ -13,6 +13,7 @@ const LineBackground = () => {
   else if (width > 600) countOfLines = 6
   else if (width > 450) countOfLines = 5
   else if (width > 350) countOfLines = 4
+  else countOfLines = 3
 
   return (
     <div className="line-background">

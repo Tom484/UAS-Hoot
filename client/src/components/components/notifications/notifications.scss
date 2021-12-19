@@ -1,0 +1,21 @@
+.notifications {
+  display: flex;
+  justify-content: flex-end;
+  position: absolute;
+  z-index: 100000;
+  padding: 15px;
+  width: 100%;
+  right: 0px;
+  top: 0px;
+
+  .notifications-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 15px;
+    width: 350px;
+    @media screen and (max-width: 600px) {
+      width: 100%;
+    }
+  }
+}

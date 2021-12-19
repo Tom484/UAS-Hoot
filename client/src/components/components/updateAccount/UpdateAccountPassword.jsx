@@ -3,6 +3,10 @@ import { changePasswordStart } from "../../../redux/user/userActions"
 import { connect } from "react-redux"
 
 import "./updateAccount.scss"
+import CustomInputCard from "../customInputCard/CustomInputCard"
+import { CustomInputWithLabel } from "../customInput/CustomInput"
+import { CustomTextLarge } from "../customText/CustomText"
+import CustomButton from "../customButton/CustomButton"
 
 const UpdateAccountPassword = ({ changePassword }) => {
   const [userPassword, setUserPassword] = useState({ password: "", passwordConfirmation: "" })
@@ -18,32 +22,24 @@ const UpdateAccountPassword = ({ changePassword }) => {
   }
 
   return (
-    <div className="profile-container">
-      <div className="input-container">
-        <div className="profile-title">Change Password</div>
-        <div className="label">Password</div>
-        <input
-          name="password"
-          type="password"
-          value={userPassword.password}
-          onChange={inputHandler}
-          className="input-information input"
-        />
-      </div>
-      <div className="input-container">
-        <div className="label">Confirm Password</div>
-        <input
-          name="passwordConfirmation"
-          type="password"
-          onChange={inputHandler}
-          value={userPassword.passwordConfirmation}
-          className="input-information input"
-        />
-      </div>
-      <button onClick={changePasswordHandler} className="btn-save btn">
-        Update
-      </button>
-    </div>
+    <CustomInputCard>
+      <CustomTextLarge style={{ marginBottom: "25px" }}>Change Password</CustomTextLarge>
+      <CustomInputWithLabel
+        label="Password"
+        name="password"
+        type="password"
+        value={userPassword.password}
+        onChange={inputHandler}
+      />
+      <CustomInputWithLabel
+        label="Confirm Password"
+        name="passwordConfirmation"
+        type="password"
+        onChange={inputHandler}
+        value={userPassword.passwordConfirmation}
+      />
+      <CustomButton onClick={changePasswordHandler}>Update</CustomButton>
+    </CustomInputCard>
   )
 }
 

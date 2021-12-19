@@ -1,54 +1,32 @@
-.change-theme-setting {
-  .change-theme-setting-container {
-    width: 550px;
-    padding: 20px;
-    background: var(--color-background-1);
-    box-shadow: var(--box-shadow-medium);
-    gap: 15px;
-    display: flex;
-    border-radius: 8px;
-    flex-direction: column;
-    .theme-title {
-      font-size: 28px;
-      text-align: center;
-      font-weight: 500;
-      color: var(--color-text-2);
-      padding-bottom: 20px;
-    }
-    .settings-container {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 20px;
-      border-radius: 20px;
-      .setting-container {
-        display: flex;
-        width: 100%;
-        gap: 10px;
-        padding: 10px;
-        padding-top: 20px;
-        border-radius: 8px;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        background: var(--color-background-2);
-        color: var(--color-text-2);
-        cursor: pointer;
-        &.active {
-          background: var(--color-main-3);
-          color: var(--color-white);
-          .icon-theme {
-            fill: var(--color-white);
-          }
-        }
-        .icon-theme {
-          width: 120px;
-          height: 120px;
-          padding: 10px;
-          fill: var(--color-icon-1);
-        }
-        font-size: 20px;
+@import "../../../styles/mixins.scss";
+.settings-container {
+  @include flex-center-center();
+  gap: 20px;
+  width: 100%;
+  .setting-container {
+    @include flex-center-center-column();
+    width: 100%;
+    gap: 10px;
+    padding: 10px;
+    font-size: 18px;
+    border-radius: 12px;
+    background: var(--color-background-2);
+    color: var(--color-text-2);
+    cursor: pointer;
+    font-weight: 600;
+    &.active {
+      letter-spacing: 1px;
+      background: var(--color-main-2);
+      color: var(--color-white);
+      .icon-theme {
+        fill: var(--color-white);
       }
+    }
+    .icon-theme {
+      width: 120px;
+      height: 120px;
+      padding: 10px;
+      fill: var(--color-icon-1);
     }
   }
 }

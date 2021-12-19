@@ -1,24 +1,27 @@
 import React from "react"
-import BubbleBackground from "../../components/components/bubbleBackground/BubbleBackground"
-import LineBackground from "../../components/components/lineBackground/LineBackground"
 import { withRouter } from "react-router-dom"
+import CustomBackground from "../../components/components/customBackground/CustomBackground"
+import CustomButton from "../../components/components/customButton/CustomButton"
+import CustomCard from "../../components/components/customCard/CustomCard"
+import {
+  CustomTextInfoBgMedium,
+  CustomTextLarge,
+} from "../../components/components/customText/CustomText"
 
 import "./notFoundPage.scss"
 
 const NotFoundPage = ({ history }) => {
   return (
-    <div className="not-found-page">
-      <BubbleBackground />
-      <LineBackground />
-      <div className="not-found-page-container">
-        <div className="container">
-          <div className="label">Not Found Page</div>
-          <div className="btn-home btn" onClick={() => history.push("/")}>
-            Return Home
-          </div>
-        </div>
-      </div>
-    </div>
+    <CustomBackground>
+      <CustomCard>
+        <CustomTextLarge center>Page was not found!</CustomTextLarge>
+        <CustomTextInfoBgMedium>
+          Sorry, this page was not found! There may be some connection issues or the event did not
+          exist.
+        </CustomTextInfoBgMedium>
+        <CustomButton onClick={() => history.push("/")}>HOME</CustomButton>
+      </CustomCard>
+    </CustomBackground>
   )
 }
 

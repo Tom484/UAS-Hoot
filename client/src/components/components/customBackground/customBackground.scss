@@ -1,0 +1,7 @@
+@import "../../../styles/mixins.scss";
+.custom-background {
+  @include flex-center-center();
+  height: 100%;
+  width: 100%;
+  position: relative;
+}

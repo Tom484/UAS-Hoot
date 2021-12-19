@@ -50,8 +50,8 @@ export function* analyzeAnswersAsync() {
       updatedPlayers[player.id] = {
         ...player,
         lastAnswer: results[player.id]?.correct || false,
-        score: (player?.score || 0) + results[player.id]?.score || 0,
-        lastScore: results[player.id]?.score || 0,
+        score: (player?.score || 0) + (results[player.id]?.score * slide.points?.value || 1) || 0,
+        lastScore: results[player.id]?.score * slide.points?.value || 1 || 0,
         lastDataUpdateSlideIndex: event.slideIndex,
         consecutiveCorrectAnswers: results[player.id].correct
           ? player.consecutiveCorrectAnswers + 1

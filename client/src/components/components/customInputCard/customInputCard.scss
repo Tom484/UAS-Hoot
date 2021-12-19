@@ -1,0 +1,14 @@
+@import "../../../styles/mixins.scss";
+
+.custom-input-card {
+  padding: 15px;
+  .custom-input-card-container {
+    @include flex-center-center-column;
+    gap: 10px;
+    background: var(--color-background-1);
+    box-shadow: var(--box-shadow-medium), var(--box-shadow-medium);
+    padding: 35px 20px 20px 20px;
+    border-radius: 20px;
+    width: 500px;
+  }
+}
