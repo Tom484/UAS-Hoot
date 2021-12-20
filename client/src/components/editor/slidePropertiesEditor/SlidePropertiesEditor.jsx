@@ -1,5 +1,6 @@
 import React from "react"
 import { withRouter } from "react-router-dom"
+import { CustomTextLarge } from "../../components/customText/CustomText"
 import EditorButton from "../editorButton/EditorButton"
 import SelectBoxEditorProperties from "../selectBoxEditorProperties/SelectBoxEditorProperties"
 
@@ -9,20 +10,33 @@ const SlidePropertiesEditor = ({ match }) => {
   return (
     <div className="slide-properties-editor">
       <div className="slide-properties-editor-container">
-        <div className="properties">
-          <SelectBoxEditorProperties label="Time" options={timeValues} name="time" />
-          <SelectBoxEditorProperties label="Points" options={pointsValues} name="points" />
+        <div>
+          <CustomTextLarge
+            style={{
+              marginBottom: "10px",
+              paddingBottom: "8px",
+              color: "var(--color-text-2)",
+              borderBottom: "2px dashed var(--color-background-3)",
+            }}
+            center
+          >
+            Properties
+          </CustomTextLarge>
+          <div className="properties">
+            <SelectBoxEditorProperties label="Time" options={timeValues} name="time" />
+            <SelectBoxEditorProperties label="Points" options={pointsValues} name="points" />
+          </div>
         </div>
         <div className="buttons">
           <EditorButton type="DUPLICATE_SLIDE" className="w-100" />
           <EditorButton type="DELETE_SLIDE" className="w-100" />
-          <EditorButton type="COLLECTION_EDITOR_CARD_TOGGLE_SHOW" className="w-100 span-full" />
-          <EditorButton type="EXIT" className="w-100 span-full" />
+          <EditorButton type="EXIT" className="w-100 " />
           <EditorButton
             type="SAVE_COLLECTION"
-            className="w-100 span-full"
+            className="w-100"
             collectionId={match.params.collectionId}
           />
+          <EditorButton type="COLLECTION_EDITOR_CARD_TOGGLE_SHOW" className="w-100 span-full" />
         </div>
       </div>
     </div>

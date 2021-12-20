@@ -9,8 +9,9 @@ import {
   editorEditCollection,
 } from "../../../redux/editor/editorActions"
 import { selectEditorCollection } from "../../../redux/editor/editorSelectors"
-
 import EditorButtonTypes from "./editorButtonTypes"
+
+import "./editorButton.scss"
 
 const EditorButton = ({
   collection,
@@ -83,7 +84,7 @@ const EditorButton = ({
   if (children) return <span onClick={clickHandler}>{children}</span>
 
   return (
-    <button className={"button btn-basic " + className} onClick={clickHandler}>
+    <button className={"btn editor-button " + className} onClick={clickHandler}>
       {label ? label : EditorButtonTypes[type]?.label || "Enter correct type"}
     </button>
   )

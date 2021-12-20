@@ -3,6 +3,7 @@ import { connect } from "react-redux"
 import { editorEditSlide } from "../../../redux/editor/editorActions"
 import { selectEditorSlideCurrent } from "../../../redux/editor/editorSelectors"
 import CustomSelectBox from "../../components/customSelectBox/CustomSelectBox"
+import { CustomTextInfoMedium } from "../../components/customText/CustomText"
 
 import "./selectBoxEditorProperties.scss"
 
@@ -16,7 +17,9 @@ const SelectBoxEditorProperties = ({ slide, editSlide, label, options, name }) =
 
   return (
     <div className="select-box-container">
-      <div className="label">{label}</div>
+      <CustomTextInfoMedium style={{ marginBottom: "3px", fontSize: "14px" }}>
+        {label}
+      </CustomTextInfoMedium>
       <CustomSelectBox
         options={options}
         onChange={changeHandler}

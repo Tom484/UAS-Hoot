@@ -8,6 +8,11 @@ export const selectUserCollections = createSelector(
   collections => collections.userCollections
 )
 
+export const selectUserCollectionsIsLoading = createSelector(
+  [selectCollections],
+  collections => collections.isLoading
+)
+
 export const selectUserCollectionsArray = createSelector([selectUserCollections], collections =>
   Object.values(collections)
 )

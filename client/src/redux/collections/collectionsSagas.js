@@ -22,7 +22,7 @@ import { deleteReference } from "../../functions/redux/reduxFunctions"
 
 export function* fetchCollectionAsync({ payload }) {
   try {
-    const collectionRef = yield firestore.collection(`collections`).doc(payload.id)
+    const collectionRef = yield firestore.doc(`collections/${payload.id}`)
     const snapshot = yield collectionRef.get()
     const collections = yield snapshot.data() || {}
     yield put(fetchCollectionsSuccess(collections))
@@ -37,7 +37,7 @@ export function* deleteCollectionAsync({ payload }) {
     const collections = yield select(selectUserCollections)
     const currentUser = yield select(selectCurrentUser)
 
-    const collectionRef = yield firestore.collection(`collections`).doc(currentUser.id)
+    const collectionRef = yield firestore.collection(`collections/${currentUser.id}`)
     yield collectionRef.update({ [collectionId]: firebase.firestore.FieldValue.delete() })
     const newCollections = yield deleteCollection(collections, {
       collectionId: payload.collectionId,
@@ -62,7 +62,7 @@ export function* createCollectionAsync({ payload }) {
       author: currentUser.displayName,
       authorId: currentUser.id,
     })
-    const collectionRef = yield firestore.collection(`collections`).doc(currentUser.id)
+    const collectionRef = yield firestore.doc(`collections/${currentUser.id}`)
     yield collectionRef.update({ ...newCollection })
 
     yield put(createCollectionSuccess(deleteReference({ ...collections, ...newCollection })))
@@ -76,10 +76,10 @@ export function* saveCollectionAsync({ payload: { collectionId } }) {
   try {
     const currentUser = yield select(selectCurrentUser)
     const newCollection = yield select(selectEditorCollection)
-    yield (newCollection.changedAt = new Date().getTime())
+    newCollection.changedAt = new Date().getTime()
     const collections = yield select(selectUserCollections)
 
-    const collectionRef = yield firestore.collection(`collections`).doc(currentUser.id)
+    const collectionRef = yield firestore.doc(`collections/${currentUser.id}`)
     yield collectionRef.update({ [collectionId]: newCollection })
 
     collections[collectionId] = newCollection

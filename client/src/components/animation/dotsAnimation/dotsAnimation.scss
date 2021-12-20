@@ -1,0 +1,62 @@
+@keyframes scaling {
+  0%,
+  100% {
+    transform: scale(0.2);
+    background-color: var(--color-main-2);
+  }
+  40% {
+    transform: scale(1);
+    background-color: var(--color-main-2);
+  }
+  50% {
+    transform: scale(1);
+    background-color: var(--color-main-2);
+  }
+}
+
+.dot {
+  height: 18px;
+  width: 18px;
+  border-radius: 50%;
+  transform: scale(0);
+  animation: scaling 2.5s ease-in-out infinite;
+  display: inline-block;
+  margin: 0.5rem;
+}
+
+.dot-1 {
+  animation-delay: 0s;
+}
+.dot-2 {
+  animation-delay: 0.1s;
+}
+.dot-3 {
+  animation-delay: 0.2s;
+}
+.dot-4 {
+  animation-delay: 0.3s;
+}
+.dot-5 {
+  animation-delay: 0.4s;
+}
+.dot-6 {
+  animation-delay: 0.5s;
+}
+.dot-7 {
+  animation-delay: 0.6s;
+  @media (max-width: 260px) {
+    display: none;
+  }
+}
+.dot-8 {
+  animation-delay: 0.7s;
+  @media (max-width: 300px) {
+    display: none;
+  }
+}
+.dot-9 {
+  animation-delay: 0.8s;
+  @media (max-width: 350px) {
+    display: none;
+  }
+}

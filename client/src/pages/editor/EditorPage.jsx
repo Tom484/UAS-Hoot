@@ -16,7 +16,7 @@ const EditorPage = ({ editorCollection, collection, copyCollection, history }) =
     if (collection) {
       copyCollection(collection)
     } else {
-      history.push("/library")
+      history.push("/library/recent")
     }
     // eslint-disable-next-line
   }, [])

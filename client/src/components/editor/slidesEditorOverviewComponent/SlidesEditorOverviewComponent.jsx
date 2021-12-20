@@ -3,6 +3,7 @@ import { connect } from "react-redux"
 import { ICONCopyOutline, ICONTrashOutline } from "../../../icons/Icons"
 import { editorEditCollection } from "../../../redux/editor/editorActions"
 import { selectEditorCollection } from "../../../redux/editor/editorSelectors"
+import { CustomTextSmall } from "../../components/customText/CustomText"
 import EditorButton from "../editorButton/EditorButton"
 
 import "./slidesEditorOverviewComponent.scss"
@@ -23,7 +24,7 @@ const SlidesEditorOverviewComponent = ({ slide, order, collection, editCollectio
       }`}
     >
       <div className="label-container">
-        <div className="label">{order}.</div>
+        <CustomTextSmall>{order}.</CustomTextSmall>
         <div className="icon-container">
           <EditorButton type="DELETE_SLIDE" slideId={slide.id}>
             <ICONTrashOutline className="overview-container-icon" />
@@ -35,12 +36,12 @@ const SlidesEditorOverviewComponent = ({ slide, order, collection, editCollectio
       </div>
 
       <div className="preview-container" onClick={clickHandler}>
-        <div className="label-question">{slide.question || "Start typing your question..."}</div>
+        <div className="label-question">{slide.question || "Start typing your question"}</div>
         <div className="label-time">{slide.time.value}</div>
         <div className="container-options">
           {Object.values(slide.options).map((option, i) => (
             <div key={i} className={`container-option ${option.correct ? "option-active" : ""}`}>
-              <div className="label-option">{option.option || `Add answer ${i + 1}`}</div>
+              <div className="label-option">{option.option || `-----`}</div>
             </div>
           ))}
         </div>

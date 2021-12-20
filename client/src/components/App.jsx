@@ -26,6 +26,7 @@ import { updateSystemTheme } from "../redux/localSetting/localSettingActions"
 import SignInPage from "../pages/signIn/SignInPage"
 import SignUpPage from "../pages/signUp/SignUpPage"
 import HomePage from "../pages/home/HomePage"
+import LoadingAnimationDatabase from "./components/loadingAnimation/LoadingAnimationDatabase"
 
 const App = ({
   checkUserSession,
@@ -93,6 +94,7 @@ const App = ({
 
   return (
     <div>
+      <LoadingAnimationDatabase />
       {!(
         path.includes("editor") ||
         path.includes("event") ||

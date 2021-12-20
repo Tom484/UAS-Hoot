@@ -1,12 +1,12 @@
 import React from "react"
 import { connect } from "react-redux"
-import { selectIsEventLoading } from "../../../redux/event/eventSelectors"
+import { selectUserCollectionsIsLoading } from "../../../redux/collections/collectionsSelectors"
 import RollerAnimation from "../../animation/rollerAnimation/RollerAnimation"
 
 import "./loadingAnimation.scss"
 
-const LoadingAnimationDatabase = ({ isEventLoading }) => {
-  if (!isEventLoading) return <></>
+const LoadingAnimationDatabase = ({ collectionsIsLoading }) => {
+  if (!collectionsIsLoading) return <></>
 
   return (
     <div className="loading-animation">
@@ -21,7 +21,7 @@ const LoadingAnimationDatabase = ({ isEventLoading }) => {
 }
 
 const mapStateToProps = state => ({
-  isEventLoading: selectIsEventLoading(state),
+  collectionsIsLoading: selectUserCollectionsIsLoading(state),
 })
 
 export default connect(mapStateToProps)(LoadingAnimationDatabase)

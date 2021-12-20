@@ -30,8 +30,9 @@
     border-radius: 12px;
 
     .property-container {
-      @include flex-spaceBetween-column();
-
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       padding-top: 20px;
 
       .side-container-1 {
@@ -41,14 +42,14 @@
       .side-container-2 {
         @include flex-center-center();
         background: var(--color-background-3);
-        border-radius: 8px;
-        padding: 5px;
         gap: 10px;
+        padding: 5px;
+        border-radius: 8px;
         .icon {
           height: 30px;
           width: 30px;
           padding: 5px;
-          border-radius: 8px;
+          border-radius: 5px;
           color: var(--color-text-2);
           fill: var(--color-icon-2);
           &:hover {
