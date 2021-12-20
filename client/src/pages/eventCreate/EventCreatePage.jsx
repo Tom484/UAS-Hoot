@@ -5,19 +5,30 @@ import { selectUserCollection } from "../../redux/collections/collectionsSelecto
 import HostButton from "../../components/event/eventButton/EventButton"
 
 import "./eventCreatePage.scss"
-import LineBackground from "../../components/components/lineBackground/LineBackground"
+import CustomBackground from "../../components/components/customBackground/CustomBackground"
+import CustomCard from "../../components/components/customCard/CustomCard"
+import {
+  CustomTextInfoBgMedium,
+  CustomTextLarge,
+  CustomTextMedium,
+} from "../../components/components/customText/CustomText"
 
 const EventCreatePage = ({ collection }) => {
   if (!collection) return <div>This collection was not found</div>
   return (
-    <div className="event-create-page">
-      <LineBackground />
-      <div className="event-create-page-container">
-        <h2 className="title">Create Event</h2>
-        <h4 className="collection-name">{collection.name}</h4>
+    <CustomBackground>
+      <CustomCard>
+        <CustomTextLarge>Create Event</CustomTextLarge>
+        <CustomTextMedium>
+          Event name: <span className="fw-600">{collection.name}</span>
+        </CustomTextMedium>
+        <CustomTextInfoBgMedium>
+          Create an event, share the code with your friends and get started. Enjoy the game and find
+          out a lot of new information.
+        </CustomTextInfoBgMedium>
         <HostButton type="CREATE_EVENT" collectionId={collection.id} />
-      </div>
-    </div>
+      </CustomCard>
+    </CustomBackground>
   )
 }
 

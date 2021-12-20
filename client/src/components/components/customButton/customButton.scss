@@ -15,3 +15,26 @@
     box-shadow: var(--box-shadow-medium), var(--box-shadow-medium);
   }
 }
+
+.btn-custom-activation {
+  width: 100%;
+  font-weight: 600;
+  padding: 0.7em 1em;
+  border: none;
+  border-radius: 8px;
+  letter-spacing: 1px;
+  background: var(--color-background-2);
+  color: var(--color-text-5);
+  transition: box-shadow 0.3s;
+  text-align: center;
+  cursor: pointer;
+  font-size: 18px;
+  &.activate {
+    background: var(--color-main-2);
+    color: var(--color-white);
+    &:hover {
+      background: var(--color-main-2);
+      box-shadow: var(--box-shadow-medium), var(--box-shadow-medium);
+    }
+  }
+}

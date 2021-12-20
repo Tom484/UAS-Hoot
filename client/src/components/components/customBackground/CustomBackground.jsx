@@ -8,7 +8,7 @@ const CustomBackground = ({ children, className = "", navbar = false }) => {
   return (
     <div
       className="custom-background"
-      style={{ minHeight: navbar ? "calc(100vh - 60px)" : "100vh" }}
+      style={{ minHeight: navbar ? "calc(100vh - 80px)" : "100vh" }}
     >
       <BubbleBackground />
       <LineBackground />

@@ -7,6 +7,7 @@ import {
   deleteCollectionStart,
 } from "../../../redux/collections/collectionsActions"
 import { toggleFavoriteCollectionStart } from "../../../redux/user/userActions"
+import CustomButton from "../customButton/CustomButton"
 
 const EditButton = ({
   type,
@@ -66,9 +67,9 @@ const EditButton = ({
 
   if (children) return <span onClick={clickHandler}>{children}</span>
   return (
-    <button className={"button btn-basic " + className} onClick={clickHandler}>
+    <CustomButton style={{ fontSize: "16px", width: "auto" }} onClick={clickHandler}>
       {label ? label : EditButtonTypes[type]?.label || "Enter correct type"}
-    </button>
+    </CustomButton>
   )
 }
 

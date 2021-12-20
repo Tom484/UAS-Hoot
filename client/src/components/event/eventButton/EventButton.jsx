@@ -9,6 +9,7 @@ import {
   updateDataConnectStart,
   updateDataEventStart,
 } from "../../../redux/eventData/eventDataActions"
+import CustomButton from "../../components/customButton/CustomButton"
 
 const EventButton = ({
   children,
@@ -69,9 +70,9 @@ const EventButton = ({
   if (children) return <span onClick={clickHandler}>{children}</span>
 
   return (
-    <button className={"button btn-basic " + className} onClick={clickHandler}>
+    <CustomButton onClick={clickHandler}>
       {label ? label : EventButtonTypes[type]?.label || "Enter correct type"}
-    </button>
+    </CustomButton>
   )
 }
 

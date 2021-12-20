@@ -1,5 +1,6 @@
 import React from "react"
 import { withRouter } from "react-router-dom"
+import { CustomButtonActivation } from "../../components/customButton/CustomButton"
 import PreviewCollections from "../previewCollections/PreviewCollections"
 
 import "./previewCollectionsContainer.scss"
@@ -10,24 +11,24 @@ const PreviewCollectionsContainer = ({ history, match }) => {
   return (
     <div className="preview-collections-container">
       <div className="buttons-sort-bar">
-        <button
-          className={`btn-basic button-sort ${sortId === "recent" ? "active" : ""}`}
+        <CustomButtonActivation
+          activate={sortId === "recent"}
           onClick={() => history.push("/library/recent")}
         >
           Recent
-        </button>
-        <button
-          className={`btn-basic button-sort ${sortId === "created" ? "active" : ""}`}
+        </CustomButtonActivation>
+        <CustomButtonActivation
+          activate={sortId === "created"}
           onClick={() => history.push("/library/created")}
         >
           Created
-        </button>
-        <button
-          className={`btn-basic button-sort ${sortId === "favorites" ? "active" : ""}`}
+        </CustomButtonActivation>
+        <CustomButtonActivation
+          activate={sortId === "favorites"}
           onClick={() => history.push("/library/favorites")}
         >
           Favorites
-        </button>
+        </CustomButtonActivation>
       </div>
       <PreviewCollections />
     </div>

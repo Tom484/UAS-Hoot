@@ -10,6 +10,7 @@ import {
 } from "../../../icons/Icons"
 import { selectCurrentUser } from "../../../redux/user/userSelectors"
 import { connect } from "react-redux"
+import { CustomTextMedium } from "../../components/customText/CustomText"
 
 import "./previewCollection.scss"
 
@@ -28,28 +29,23 @@ const PreviewCollection = ({ collection: { name, changedAt, author, id }, curren
         )}
       </EditButton>
       <div className="preview-collection-container">
-        <div className="title-container">
-          <h2>{name}</h2>
-        </div>
+        <CustomTextMedium>
+          <div className="fw-600">{name}</div>
+        </CustomTextMedium>
         <div className="property-container">
           <span className="side-container-1">
-            <span className="author">{author}</span>
+            {author} | {format(new Date(changedAt), "LLLL dd yyyy")}
           </span>
           <div className="side-container-2">
-            <div className="date-side">
-              <div className="created-at">{format(new Date(changedAt), "LLLL dd yyyy")}</div>
-            </div>
-            <div className="icon-side">
-              <EditButton type="LINK_TO_EDIT" collectionId={id}>
-                <ICONEditOutline className="icon icon-df-color cursor-pointer" />
-              </EditButton>
-              <EditButton type="DELETE_COLLECTION" collectionId={id}>
-                <ICONTrashOutline className="icon icon-df-color cursor-pointer" />
-              </EditButton>
-              <EditButton type="LINK_TO_CREATE_EVENT" collectionId={id}>
-                <ICONPlayOutline className="icon icon-df-color cursor-pointer" />
-              </EditButton>
-            </div>
+            <EditButton type="LINK_TO_EDIT" collectionId={id}>
+              <ICONEditOutline className="icon icon-df-color cursor-pointer" />
+            </EditButton>
+            <EditButton type="DELETE_COLLECTION" collectionId={id}>
+              <ICONTrashOutline className="icon icon-df-color cursor-pointer" />
+            </EditButton>
+            <EditButton type="LINK_TO_CREATE_EVENT" collectionId={id}>
+              <ICONPlayOutline className="icon icon-df-color cursor-pointer" />
+            </EditButton>
           </div>
         </div>
       </div>

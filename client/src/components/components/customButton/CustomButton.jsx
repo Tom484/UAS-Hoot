@@ -11,3 +11,14 @@ const CustomButton = ({ children, className, ...rest }) => {
 }
 
 export default CustomButton
+
+export const CustomButtonActivation = ({ children, activate, className, ...rest }) => {
+  return (
+    <button
+      {...rest}
+      className={`btn-custom-activation ${activate ? "activate" : " false"}  ${className}`}
+    >
+      {children}
+    </button>
+  )
+}
