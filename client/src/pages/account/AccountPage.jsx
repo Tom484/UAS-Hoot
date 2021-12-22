@@ -3,7 +3,7 @@ import UpdateAccountPassword from "../../components/components/updateAccount/Upd
 import UpdateAccountInformation from "../../components/components/updateAccount/UpdateAccountInformation"
 import ChangeThemeSetting from "../../components/components/changeThemeSetting/ChangeThemeSetting"
 import CustomBackground from "../../components/components/customBackground/CustomBackground"
-import Navbar from "../../components/components/Navbar/Navbar"
+import Navbar from "../../components/components/navbar/Navbar"
 
 import "./accountPage.scss"
 

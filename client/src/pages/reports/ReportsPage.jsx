@@ -1,5 +1,5 @@
 import React from "react"
-import Navbar from "../../components/components/Navbar/Navbar"
+import Navbar from "../../components/components/navbar/Navbar"
 
 import "./reportsPage.scss"
 

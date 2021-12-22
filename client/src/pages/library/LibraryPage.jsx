@@ -3,7 +3,7 @@ import PreviewCollectionsContainer from "../../components/library/previewCollect
 import EditButton from "../../components/components/editButton/EditButton"
 import CustomBackground from "../../components/components/customBackground/CustomBackground"
 import { CustomTextLarge } from "../../components/components/customText/CustomText"
-import Navbar from "../../components/components/Navbar/Navbar"
+import Navbar from "../../components/components/navbar/Navbar"
 
 import "./libraryPage.scss"
 

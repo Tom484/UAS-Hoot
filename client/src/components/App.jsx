@@ -6,22 +6,22 @@ import { connect } from "react-redux"
 import { checkUserSession } from "../redux/user/userActions"
 import PrivateRoute from "./components/privateRoute/PrivateRoute"
 import { selectCompletedAuthInitialProcess, selectCurrentUser } from "../redux/user/userSelectors"
+import { fetchCollectionsStart } from "../redux/collections/collectionsActions"
 
 import NotFoundPage from "../pages/notFound/NotFoundPage"
 import DiscoverPage from "../pages/discover/DiscoverPage"
 import LibraryPage from "../pages/library/LibraryPage"
 import ReportsPage from "../pages/reports/ReportsPage"
-import { fetchCollectionsStart } from "../redux/collections/collectionsActions"
 import AccountPage from "../pages/account/AccountPage"
 import EditorPage from "../pages/editor/EditorPage"
 import EventCreatePage from "../pages/eventCreate/EventCreatePage"
 import EventPage from "../pages/event/EventPage"
-import LoadAnimation from "../components/components/loadAnimation/LoadAnimation"
 import SignInPage from "../pages/signIn/SignInPage"
 import SignUpPage from "../pages/signUp/SignUpPage"
 import HomePage from "../pages/home/HomePage"
 import LoadingAnimationDatabase from "./components/loadingAnimation/LoadingAnimationDatabase"
 import DarkThemeListener from "./components/darkThemeListener/DarkThemeListener"
+import LoadingAnimation from "./components/loadingAnimation/LoadingAnimation"
 
 const App = ({
   currentUser,
@@ -35,7 +35,7 @@ const App = ({
     // eslint-disable-next-line
   }, [currentUser])
 
-  if (!completedAuthInitialProcess) return <LoadAnimation />
+  if (!completedAuthInitialProcess) return <LoadingAnimation />
 
   return (
     <div>
