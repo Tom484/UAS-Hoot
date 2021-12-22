@@ -1,6 +1,6 @@
 import React, { useEffect } from "react"
 
-import { Route, Switch, Redirect, withRouter } from "react-router-dom"
+import { Route, Switch, Redirect } from "react-router-dom"
 import { connect } from "react-redux"
 
 import { checkUserSession } from "../redux/user/userActions"
@@ -8,7 +8,6 @@ import PrivateRoute from "./components/privateRoute/PrivateRoute"
 import { selectCompletedAuthInitialProcess, selectCurrentUser } from "../redux/user/userSelectors"
 
 import NotFoundPage from "../pages/notFound/NotFoundPage"
-import Navbar from "./components/Navbar/Navbar"
 import DiscoverPage from "../pages/discover/DiscoverPage"
 import LibraryPage from "../pages/library/LibraryPage"
 import ReportsPage from "../pages/reports/ReportsPage"
@@ -22,11 +21,12 @@ import { updatePlayersLocal } from "../redux/eventPlayers/eventPlayersActions"
 import { selectEventDataConnect, selectEventDataEvent } from "../redux/eventData/eventDataSelectors"
 import { updateAnswers } from "../redux/eventAnswers/eventAnswersActions"
 import LoadAnimation from "../components/components/loadAnimation/LoadAnimation"
-import { updateSystemTheme } from "../redux/localSetting/localSettingActions"
 import SignInPage from "../pages/signIn/SignInPage"
 import SignUpPage from "../pages/signUp/SignUpPage"
 import HomePage from "../pages/home/HomePage"
 import LoadingAnimationDatabase from "./components/loadingAnimation/LoadingAnimationDatabase"
+import DarkThemeListener from "./components/darkThemeListener/DarkThemeListener"
+import NavbarRender from "./components/navbarRender/NavbarRender"
 
 const App = ({
   checkUserSession,
@@ -36,26 +36,17 @@ const App = ({
   eventDataConnect,
   updateAnswers,
   completedAuthInitialProcess,
-  location,
-  updateSystemTheme,
 }) => {
-  const path = location.pathname
-
   useEffect(() => {
     checkUserSession()
-    if (currentUser) {
-      fetchCollectionsStart(currentUser)
-    }
+    if (currentUser) fetchCollectionsStart(currentUser)
     // eslint-disable-next-line
   }, [currentUser])
 
   useEffect(() => {
-    if (!currentUser) return
-    if (!eventDataConnect?.isOpen) return
+    if (!currentUser || !eventDataConnect) return
     const unsubscribe = firestore
-      .collection(`events`)
-      .doc(eventDataConnect.enterCode)
-      .collection("players")
+      .collection(`events/${eventDataConnect.enterCode}/players`)
       .onSnapshot(snapshot => {
         const players = snapshot.docs.map(doc => doc.data())
         updatePlayers(players)
@@ -67,9 +58,7 @@ const App = ({
   useEffect(() => {
     if (!currentUser) return
     const unsubscribe = firestore
-      .collection(`events`)
-      .doc(eventDataConnect.enterCode)
-      .collection("answers")
+      .collection(`events/${eventDataConnect.enterCode}/answers`)
       .onSnapshot(snapshot => {
         const answers = snapshot.docs.map(doc => doc.data())
         updateAnswers(answers)
@@ -78,42 +67,13 @@ const App = ({
     // eslint-disable-next-line
   }, [currentUser, eventDataConnect])
 
-  const mqListener = e => {
-    e.matches ? updateSystemTheme("dark") : updateSystemTheme("light")
-  }
-
-  useEffect(() => {
-    const darkThemeMq = window.matchMedia("(prefers-color-scheme: dark)")
-    darkThemeMq.addListener(mqListener)
-    darkThemeMq.matches ? updateSystemTheme("dark") : updateSystemTheme("light")
-    return () => darkThemeMq.removeListener(mqListener)
-    // eslint-disable-next-line
-  }, [])
-
   if (!completedAuthInitialProcess) return <LoadAnimation />
 
   return (
     <div>
       <LoadingAnimationDatabase />
-      {!(
-        path.includes("editor") ||
-        path.includes("event") ||
-        path === "/sign-in" ||
-        path === "/sign-up" ||
-        path === "/" ||
-        path === "" ||
-        path === "/not-found"
-      ) && <div className="div" style={{ paddingTop: "80px" }}></div>}
-      {!(
-        path.includes("editor") ||
-        path.includes("event") ||
-        path.includes("event") ||
-        path === "/sign-in" ||
-        path === "/sign-up" ||
-        path === "/" ||
-        path === "" ||
-        path === "/not-found"
-      ) && <Navbar />}
+      <DarkThemeListener />
+      <NavbarRender />
 
       <Switch>
         <PrivateRoute
@@ -199,7 +159,6 @@ const mapDispatchToProps = dispatch => ({
   fetchCollectionsStart: currentUser => dispatch(fetchCollectionsStart(currentUser)),
   updatePlayers: players => dispatch(updatePlayersLocal(players)),
   updateAnswers: answers => dispatch(updateAnswers(answers)),
-  updateSystemTheme: theme => dispatch(updateSystemTheme(theme)),
 })
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App))
+export default connect(mapStateToProps, mapDispatchToProps)(App)

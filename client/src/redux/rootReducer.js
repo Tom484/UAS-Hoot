@@ -24,6 +24,7 @@ const persistConfig = {
     "eventPlayers",
     "eventAnswers",
     "eventResults",
+    "notificationsReducer",
   ],
 }
 

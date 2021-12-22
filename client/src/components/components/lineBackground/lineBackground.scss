@@ -5,10 +5,10 @@
   height: 100%;
   width: 100%;
   overflow: hidden;
-  background: var(--background-color-1);
+  background: #f9f9fb;
   z-index: -101;
   .line {
-    border-left: 2px dashed var(--color-background-3);
+    border-left: 2px dashed #f0f0f6;
     width: 100%;
     &:first-child {
       border: none;

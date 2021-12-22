@@ -1,7 +1,7 @@
 import React from "react"
+import useWindowSize from "../../../functions/hooks/useWindowSize"
 
 import "./lineBackground.scss"
-import useWindowSize from "../../../functions/hooks/useWindowSize"
 
 const LineBackground = () => {
   const { width } = useWindowSize()
