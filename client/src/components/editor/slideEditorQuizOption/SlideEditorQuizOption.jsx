@@ -1,14 +1,13 @@
 import React from "react"
 import { connect } from "react-redux"
-import TextareaAutosize from "react-textarea-autosize"
 import {
   ICONCloudOutline,
   ICONDropOutline,
   ICONFlashOutline,
   ICONMoonOutline,
-  ICONTickSquareBold,
 } from "../../../icons/Icons"
 import { editorEditOption } from "../../../redux/editor/editorActions"
+import { CustomTextarea } from "../../components/customTextarea/CustomTextarea"
 
 import "./slideEditorQuizOption.scss"
 
@@ -21,22 +20,26 @@ const SlideEditorQuizOption = ({ editOption, option, order }) => {
   }
   return (
     <div className="slide-editor-quiz-option">
-      {order === 1 && <ICONFlashOutline className="select-icon" />}
-      {order === 2 && <ICONCloudOutline className="select-icon" />}
-      {order === 3 && <ICONDropOutline className="select-icon" />}
-      {order === 4 && <ICONMoonOutline className="select-icon" />}
-
-      <TextareaAutosize
-        className="textarea-create textarea textarea-option"
+      <div
+        className={`icon-container ${option.correct ? "active" : ""}`}
+        onClick={() => editOptionProperties({ correct: !option.correct })}
+      >
+        {order === 1 && <ICONFlashOutline className="select-icon" />}
+        {order === 2 && <ICONCloudOutline className="select-icon" />}
+        {order === 3 && <ICONDropOutline className="select-icon" />}
+        {order === 4 && <ICONMoonOutline className="select-icon" />}
+      </div>
+      <CustomTextarea
         onChange={e => editOptionProperties({ option: e.target.value })}
         placeholder={`Add answer ${order}`}
         value={option.option}
         maxLength={75}
-      />
-
-      <ICONTickSquareBold
-        className={`icon-df-size icon ${option.correct ? "checked" : ""}`}
-        onClick={() => editOptionProperties({ correct: !option.correct })}
+        style={{
+          background: "var(--color-background-1)",
+          padding: "20px",
+          borderRadius: "0 12px 12px 0",
+          borderWidth: "2px",
+        }}
       />
     </div>
   )

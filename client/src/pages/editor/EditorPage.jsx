@@ -8,6 +8,7 @@ import { editorCopyCollection } from "../../redux/editor/editorActions"
 import { selectEditorCollection } from "../../redux/editor/editorSelectors"
 import CollectionEditorCard from "../../components/editor/collectionEditorCard/CollectionEditorCard"
 import LoadingAnimation from "../../components/components/loadingAnimation/LoadingAnimation"
+import LineBackground from "../../components/components/lineBackground/LineBackground"
 import { withRouter } from "react-router-dom"
 
 import "./editorPage.scss"
@@ -22,6 +23,7 @@ const EditorPage = ({ editorCollection, collection, copyCollection, history }) =
 
   return (
     <div className="editor-page">
+      <LineBackground />
       <div className="editor-page-container">
         <SlidesEditor />
         <SlideEditor />

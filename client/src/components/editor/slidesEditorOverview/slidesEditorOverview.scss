@@ -4,12 +4,8 @@
   .slides-container-component {
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    overflow: hidden;
     overflow-y: auto;
-    max-height: calc(100vh - 87px);
-  }
-  .add-button {
-    width: calc(100%);
+    gap: 20px;
+    max-height: calc(100vh - 89px);
   }
 }

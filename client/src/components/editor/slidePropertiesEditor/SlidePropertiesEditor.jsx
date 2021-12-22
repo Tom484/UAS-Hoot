@@ -13,10 +13,8 @@ const SlidePropertiesEditor = ({ match }) => {
         <div>
           <CustomTextLarge
             style={{
-              marginBottom: "10px",
               paddingBottom: "8px",
               color: "var(--color-text-2)",
-              borderBottom: "2px dashed var(--color-background-3)",
             }}
             center
           >

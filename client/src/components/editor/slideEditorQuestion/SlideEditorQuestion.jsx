@@ -1,10 +1,10 @@
 import React from "react"
 import { connect } from "react-redux"
 import { selectEditorSlideCurrent } from "../../../redux/editor/editorSelectors"
-import TextareaAutosize from "react-textarea-autosize"
 import { editorEditSlide } from "../../../redux/editor/editorActions"
 
 import "./slideEditorQuestion.scss"
+import { CustomTextarea } from "../../components/customTextarea/CustomTextarea"
 
 const SlideEditorQuestion = ({ slide, editSlide }) => {
   const handleChange = e => {
@@ -15,12 +15,18 @@ const SlideEditorQuestion = ({ slide, editSlide }) => {
 
   return (
     <div>
-      <TextareaAutosize
+      <CustomTextarea
         onChange={handleChange}
-        className="text-area textarea-question"
         placeholder="Start typing your question..."
         value={slide.question}
         maxLength={125}
+        style={{
+          textAlign: "center",
+          fontSize: "32px",
+          background: "var(--color-background-1)",
+          borderWidth: "3px",
+          borderRadius: "12px",
+        }}
       />
     </div>
   )

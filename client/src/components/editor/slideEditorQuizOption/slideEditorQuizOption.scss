@@ -1,48 +1,36 @@
 @import "../../../styles/colors.scss";
+@import "../../../styles/mixins.scss";
 
-.textarea-container {
-  position: relative;
-  .characters-left {
-    position: absolute;
-    top: 4px;
-    right: 6px;
-    font-size: 12px;
-  }
-}
 .slide-editor-quiz-option {
+  width: 100%;
+  border-radius: 12px;
   font-size: 18px;
   display: grid;
-  justify-content: center;
   align-items: center;
-  width: 100%;
-  padding: 20px;
-  border-radius: 8px;
-  grid-template-columns: 40px 1fr 35px;
-  background: var(--color-background-2);
+  justify-content: center;
+  grid-template-columns: 50px 1fr;
+  background: var(--color-background-1);
+  overflow: hidden;
+
   .select-icon {
     width: 24px;
     height: 24px;
     fill: var(--color-icon-1);
   }
-
-  .textarea-option {
-    width: 100%;
-    background: none;
-    font-size: 16px;
-    background: var(--color-background-2);
-    color: var(--color-text-3);
-    border-radius: 6px;
-    border: none;
-  }
-
-  .icon {
-    opacity: 0.3;
-    fill: var(--color-main-2);
+  .icon-container {
+    @include flex-center-center();
     cursor: pointer;
-    width: 40px;
-    height: 40px;
-    &.checked {
-      opacity: 1;
+    height: 100%;
+    width: 100%;
+    background: var(--color-background-3);
+    &:hover {
+      background: var(--color-background-4);
+    }
+    &.active {
+      background: var(--color-main-2);
+      .select-icon {
+        fill: var(--color-white);
+      }
     }
   }
 }
