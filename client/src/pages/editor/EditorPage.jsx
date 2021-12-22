@@ -7,21 +7,18 @@ import { selectUserCollection } from "../../redux/collections/collectionsSelecto
 import { editorCopyCollection } from "../../redux/editor/editorActions"
 import { selectEditorCollection } from "../../redux/editor/editorSelectors"
 import CollectionEditorCard from "../../components/editor/collectionEditorCard/CollectionEditorCard"
+import LoadingAnimation from "../../components/components/loadingAnimation/LoadingAnimation"
 import { withRouter } from "react-router-dom"
 
 import "./editorPage.scss"
 
 const EditorPage = ({ editorCollection, collection, copyCollection, history }) => {
   useEffect(() => {
-    if (collection) {
-      copyCollection(collection)
-    } else {
-      history.push("/library/recent")
-    }
+    collection ? copyCollection(collection) : history.push("/library/recent")
     // eslint-disable-next-line
   }, [])
 
-  if (!editorCollection) return <div>Loading</div>
+  if (!editorCollection) return <LoadingAnimation />
 
   return (
     <div className="editor-page">

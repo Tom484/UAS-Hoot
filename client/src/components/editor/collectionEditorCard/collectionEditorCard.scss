@@ -1,45 +1,28 @@
+@import "../../../styles/mixins.scss";
 .collection-editor-card-layer {
-  background: rgba(0, 0, 0, 0.39);
+  @include flex-center-center();
+  background: rgba(0, 0, 0, 0.4);
   position: fixed;
   top: 0;
   left: 0;
   bottom: 0;
   right: 0;
-  display: flex;
-  position: fixed;
-  align-items: center;
-  justify-content: center;
 
   .collection-editor-card {
     background: var(--color-background-1);
     width: 800px;
-    border-radius: 10px;
+    border-radius: 20px;
 
     .collection-editor-card-container {
-      padding: 20px 30px;
-      display: flex;
       flex-direction: column;
+      display: flex;
+      padding: 30px;
       gap: 20px;
-      h2 {
-        margin: 0.5em 0;
-        font-weight: 500;
-      }
 
       .options-container {
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 25px;
-
-        .box {
-          .label {
-            font-size: 16px;
-            padding-bottom: 5px;
-          }
-          textarea {
-            resize: none;
-            height: 120px;
-          }
-        }
       }
     }
   }

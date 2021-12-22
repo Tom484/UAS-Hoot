@@ -1,17 +1,17 @@
 import React from "react"
-import { connect } from "react-redux"
 import Select from "react-select"
-import { selectLocalSettingTheme } from "../../../redux/localSetting/localSettingSelectors"
+import { CustomTextInfoSmall } from "../customText/CustomText"
 
 import "./customSelectBox.scss"
 
-const CustomSelectBox = ({ localTheme, ...props }) => {
-  return <Select theme={localTheme === "light" ? themeLight : themeDark} {...props} />
+const CustomSelectBox = ({ ...properties }) => {
+  return <Select theme={themeLight} {...properties} />
 }
 
 const themeLight = theme => ({
   ...theme,
-  borderRadius: 4,
+  borderRadius: 5,
+  padding: 20,
   colors: {
     ...theme.colors,
     primary75: "#e9e9e9",
@@ -21,20 +21,13 @@ const themeLight = theme => ({
   },
 })
 
-const themeDark = theme => ({
-  ...theme,
-  borderRadius: 4,
-  colors: {
-    ...theme.colors,
-    primary75: "#060606",
-    primary50: "#060606",
-    primary25: "#060606",
-    primary: "#7134ff",
-  },
-})
+export default CustomSelectBox
 
-const mapStateToProps = state => ({
-  localTheme: selectLocalSettingTheme(state),
-})
-
-export default connect(mapStateToProps)(CustomSelectBox)
+export const CustomSelectBoxWithLabel = ({ label, className, style, ...properties }) => {
+  return (
+    <div className={`custom-select-box-with-label ${className}`} style={style}>
+      <CustomTextInfoSmall>{label}</CustomTextInfoSmall>
+      <Select theme={themeLight} {...properties} />
+    </div>
+  )
+}

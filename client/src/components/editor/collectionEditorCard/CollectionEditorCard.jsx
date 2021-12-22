@@ -2,7 +2,11 @@ import React from "react"
 import { connect } from "react-redux"
 import { editorEditCollection } from "../../../redux/editor/editorActions"
 import { selectEditorCollection } from "../../../redux/editor/editorSelectors"
-import CustomSelectBox from "../../components/customSelectBox/CustomSelectBox"
+import CustomButton from "../../components/customButton/CustomButton"
+import { CustomInputWithLabel } from "../../components/customInput/CustomInput"
+import { CustomSelectBoxWithLabel } from "../../components/customSelectBox/CustomSelectBox"
+import { CustomTextLarge } from "../../components/customText/CustomText"
+import { CustomTextareaWithLabel } from "../../components/customTextarea/CustomTextarea"
 import EditorButton from "../editorButton/EditorButton"
 
 import "./collectionEditorCard.scss"
@@ -17,55 +21,43 @@ const CollectionEditorCard = ({ collection, editCollection }) => {
         <div className="collection-editor-card-layer">
           <div className="collection-editor-card">
             <div className="collection-editor-card-container">
-              <div className="title">
-                <h2>UAS Hoot summary</h2>
-              </div>
-
+              <CustomTextLarge style={{ marginBottom: "15px" }}>UAS Hoot summary</CustomTextLarge>
               <div className="options-container">
-                <div className="box">
-                  <div className="label">Title</div>
-                  <input
-                    type="text"
-                    className="input-basic input-100"
-                    value={name}
-                    onChange={e => edit({ name: e.target.value })}
-                    maxLength={50}
-                  />
-                </div>
+                <CustomInputWithLabel
+                  label="Name"
+                  type="text"
+                  value={name}
+                  onChange={e => edit({ name: e.target.value })}
+                  maxLength={50}
+                />
 
-                <div className="box">
-                  <div className="label">Language</div>
-                  <CustomSelectBox
-                    options={languageOptions}
-                    value={language}
-                    onChange={e => edit({ language: e })}
-                  />
-                </div>
+                <CustomSelectBoxWithLabel
+                  label="Language"
+                  options={languageOptions}
+                  value={language}
+                  onChange={e => edit({ language: e })}
+                />
 
-                <div className="box">
-                  <div className="label">Description</div>
-                  <textarea
-                    type="text"
-                    className="textarea-basic w-100"
-                    value={description}
-                    onChange={e => edit({ description: e.target.value })}
-                    maxLength={400}
-                  />
-                </div>
+                <CustomTextareaWithLabel
+                  styleTextarea={{ fontSize: "20px" }}
+                  label="Description"
+                  type="text"
+                  value={description}
+                  onChange={e => edit({ description: e.target.value })}
+                  maxLength={400}
+                />
 
-                <div className="box">
-                  <div className="label">Lobby Music</div>
-                  <CustomSelectBox
-                    options={musicOptions}
-                    value={lobbyMusic}
-                    onChange={e => edit({ lobbyMusic: e })}
-                  />
-                </div>
+                <CustomSelectBoxWithLabel
+                  label="Lobby Music"
+                  options={musicOptions}
+                  value={lobbyMusic}
+                  onChange={e => edit({ lobbyMusic: e })}
+                />
               </div>
 
-              <div className="buttons">
-                <EditorButton type="COLLECTION_EDITOR_CARD_TOGGLE_SHOW" className="w-100" />
-              </div>
+              <EditorButton type="COLLECTION_EDITOR_CARD_TOGGLE_SHOW" className="w-100">
+                <CustomButton>OK</CustomButton>
+              </EditorButton>
             </div>
           </div>
         </div>

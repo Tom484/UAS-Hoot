@@ -13,11 +13,18 @@ export const CustomTextarea = ({ center, className, ...properties }) => {
   )
 }
 
-export const CustomTextareaWithLabel = ({ label, className, classNameTextarea, ...properties }) => {
+export const CustomTextareaWithLabel = ({
+  label,
+  className,
+  classNameTextarea,
+  style,
+  styleTextarea,
+  ...properties
+}) => {
   return (
-    <div className={`custom-textarea-with-label ${className}`}>
+    <div className={`custom-textarea-with-label ${className}`} style={style}>
       <CustomTextInfoSmall>{label}</CustomTextInfoSmall>
-      <CustomTextarea className={classNameTextarea} {...properties} />
+      <CustomTextarea style={styleTextarea} className={classNameTextarea} {...properties} />
     </div>
   )
 }
