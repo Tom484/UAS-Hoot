@@ -1,0 +1,67 @@
+.custom-select-container {
+  position: relative;
+  width: 100%;
+  .custom-select {
+    width: 100%;
+    font-size: 20px;
+    font-weight: 500;
+    padding: 0.5em 1em;
+    border: none;
+    border-radius: 8px;
+    background: var(--color-background-2);
+    &.background-1 {
+      background: var(--color-background-1);
+    }
+    color: var(--color-text-3);
+    border: 1px solid transparent;
+    position: relative;
+    cursor: pointer;
+    &.open {
+      border: 1px solid var(--color-background-3);
+    }
+    .custom-select-icon {
+      position: absolute;
+      top: 50%;
+      transform: translate(-80%, -50%);
+      right: 0;
+      width: 20px;
+      height: 20px;
+      cursor: pointer;
+    }
+  }
+  .custom-select-menu {
+    position: absolute;
+    background: var(--color-background-2);
+    width: 100%;
+    top: 65px;
+    border-radius: 8px;
+    box-shadow: var(--box-shadow-medium), var(--box-shadow-medium);
+    font-size: 16px;
+    overflow: hidden;
+    z-index: 10;
+    cursor: pointer;
+    .select {
+      padding: 0.5em 20px;
+      &:hover {
+        background: var(--color-background-3);
+        &.active {
+          background: var(--color-main-2);
+          color: var(--color-white);
+        }
+      }
+      &.active {
+        color: var(--color-white);
+        background: var(--color-main-2);
+      }
+    }
+  }
+}
+
+.custom-select-with-label {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 100%;
+  gap: 5px;
+  text-align: left;
+}

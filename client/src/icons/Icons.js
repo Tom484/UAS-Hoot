@@ -107,3 +107,6 @@ export { ReactComponent as ICONSettingOutline } from "./icons/setting/setting-ou
 export { ReactComponent as ICONSliderBold } from "./icons/slider/slider-bold.svg"
 export { ReactComponent as ICONSliderBroken } from "./icons/slider/slider-broken.svg"
 export { ReactComponent as ICONSliderOutline } from "./icons/slider/slider-outline.svg"
+
+// ArrowDown
+export { ReactComponent as ICONArrowDownOutline } from "./icons/arrowDown/arrow-down-outline.svg"

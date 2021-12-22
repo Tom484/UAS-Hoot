@@ -4,7 +4,7 @@ import { editorEditCollection } from "../../../redux/editor/editorActions"
 import { selectEditorCollection } from "../../../redux/editor/editorSelectors"
 import CustomButton from "../../components/customButton/CustomButton"
 import { CustomInputWithLabel } from "../../components/customInput/CustomInput"
-import { CustomSelectBoxWithLabel } from "../../components/customSelectBox/CustomSelectBox"
+import { CustomSelectWithLabel } from "../../components/customSelect/CustomSelect"
 import { CustomTextLarge } from "../../components/customText/CustomText"
 import { CustomTextareaWithLabel } from "../../components/customTextarea/CustomTextarea"
 import EditorButton from "../editorButton/EditorButton"
@@ -31,10 +31,10 @@ const CollectionEditorCard = ({ collection, editCollection }) => {
                   maxLength={50}
                 />
 
-                <CustomSelectBoxWithLabel
+                <CustomSelectWithLabel
                   label="Language"
                   options={languageOptions}
-                  value={language}
+                  option={language}
                   onChange={e => edit({ language: e })}
                 />
 
@@ -47,11 +47,11 @@ const CollectionEditorCard = ({ collection, editCollection }) => {
                   maxLength={400}
                 />
 
-                <CustomSelectBoxWithLabel
+                <CustomSelectWithLabel
                   label="Lobby Music"
                   options={musicOptions}
-                  value={lobbyMusic}
                   onChange={e => edit({ lobbyMusic: e })}
+                  option={lobbyMusic}
                 />
               </div>
 
