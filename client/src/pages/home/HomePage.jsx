@@ -1,8 +1,7 @@
 import React from "react"
-import SignInPage from "../signIn/SignInPage"
 
 const HomePage = () => {
-  return <SignInPage />
+  return <div>Home</div>
 }
 
 export default HomePage

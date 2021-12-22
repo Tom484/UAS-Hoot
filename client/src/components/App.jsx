@@ -16,25 +16,17 @@ import AccountPage from "../pages/account/AccountPage"
 import EditorPage from "../pages/editor/EditorPage"
 import EventCreatePage from "../pages/eventCreate/EventCreatePage"
 import EventPage from "../pages/event/EventPage"
-import { firestore } from "../firebase/firebaseUtils"
-import { updatePlayersLocal } from "../redux/eventPlayers/eventPlayersActions"
-import { selectEventDataConnect, selectEventDataEvent } from "../redux/eventData/eventDataSelectors"
-import { updateAnswers } from "../redux/eventAnswers/eventAnswersActions"
 import LoadAnimation from "../components/components/loadAnimation/LoadAnimation"
 import SignInPage from "../pages/signIn/SignInPage"
 import SignUpPage from "../pages/signUp/SignUpPage"
 import HomePage from "../pages/home/HomePage"
 import LoadingAnimationDatabase from "./components/loadingAnimation/LoadingAnimationDatabase"
 import DarkThemeListener from "./components/darkThemeListener/DarkThemeListener"
-import NavbarRender from "./components/navbarRender/NavbarRender"
 
 const App = ({
+  currentUser,
   checkUserSession,
   fetchCollectionsStart,
-  currentUser,
-  updatePlayers,
-  eventDataConnect,
-  updateAnswers,
   completedAuthInitialProcess,
 }) => {
   useEffect(() => {
@@ -43,82 +35,22 @@ const App = ({
     // eslint-disable-next-line
   }, [currentUser])
 
-  useEffect(() => {
-    if (!currentUser || !eventDataConnect) return
-    const unsubscribe = firestore
-      .collection(`events/${eventDataConnect.enterCode}/players`)
-      .onSnapshot(snapshot => {
-        const players = snapshot.docs.map(doc => doc.data())
-        updatePlayers(players)
-      })
-    return () => unsubscribe()
-    // eslint-disable-next-line
-  }, [currentUser, eventDataConnect])
-
-  useEffect(() => {
-    if (!currentUser) return
-    const unsubscribe = firestore
-      .collection(`events/${eventDataConnect.enterCode}/answers`)
-      .onSnapshot(snapshot => {
-        const answers = snapshot.docs.map(doc => doc.data())
-        updateAnswers(answers)
-      })
-    return () => unsubscribe()
-    // eslint-disable-next-line
-  }, [currentUser, eventDataConnect])
-
   if (!completedAuthInitialProcess) return <LoadAnimation />
 
   return (
     <div>
       <LoadingAnimationDatabase />
       <DarkThemeListener />
-      <NavbarRender />
-
       <Switch>
-        <PrivateRoute
-          exact
-          onlyLogged={true}
-          redirect="/sign-in"
-          path="/reports"
-          component={ReportsPage}
-        />
-        <PrivateRoute
-          exact
-          onlyLogged={true}
-          redirect="/sign-in"
-          path="/library/:sortId"
-          component={LibraryPage}
-        />
-        <PrivateRoute
-          exact
-          onlyLogged={true}
-          redirect="/sign-in"
-          path="/discover"
-          component={DiscoverPage}
-        />
-        <PrivateRoute
-          exact
-          onlyLogged={true}
-          redirect="/sign-in"
-          path="/account"
-          component={AccountPage}
-        />
-        <PrivateRoute
-          exact
-          onlyLogged={true}
-          redirect="/sign-in"
-          path="/create-event/:collectionId"
-          component={EventCreatePage}
-        />
         <PrivateRoute exact onlyLogged={true} redirect="/" path="/event" component={EventPage} />
         <PrivateRoute
           exact
           onlyLogged={true}
-          redirect="/sign-in"
+          redirect="/"
           path="/editor/:collectionId"
           component={EditorPage}
         />
+        <Route exact onlyLogged={false} redirect="/library/recent" path="/" component={HomePage} />
         <PrivateRoute
           exact
           onlyLogged={false}
@@ -135,11 +67,41 @@ const App = ({
         />
         <PrivateRoute
           exact
-          onlyLogged={false}
-          redirect="/library/recent"
-          path="/"
-          component={HomePage}
+          onlyLogged={true}
+          redirect="/"
+          path="/create-event/:collectionId"
+          component={EventCreatePage}
         />
+
+        <PrivateRoute
+          exact
+          onlyLogged={true}
+          redirect="/"
+          path="/reports"
+          component={ReportsPage}
+        />
+        <PrivateRoute
+          exact
+          onlyLogged={true}
+          redirect="/"
+          path="/library/:sortId"
+          component={LibraryPage}
+        />
+        <PrivateRoute
+          exact
+          onlyLogged={true}
+          redirect="/"
+          path="/discover"
+          component={DiscoverPage}
+        />
+        <PrivateRoute
+          exact
+          onlyLogged={true}
+          redirect="/"
+          path="/account"
+          component={AccountPage}
+        />
+
         <Route exact path="/not-found" component={NotFoundPage} />
         <Redirect to="/not-found" />
       </Switch>
@@ -149,16 +111,12 @@ const App = ({
 
 const mapStateToProps = state => ({
   currentUser: selectCurrentUser(state),
-  eventDataConnect: selectEventDataConnect(state),
-  eventDataEvent: selectEventDataEvent(state),
   completedAuthInitialProcess: selectCompletedAuthInitialProcess(state),
 })
 
 const mapDispatchToProps = dispatch => ({
   checkUserSession: () => dispatch(checkUserSession()),
   fetchCollectionsStart: currentUser => dispatch(fetchCollectionsStart(currentUser)),
-  updatePlayers: players => dispatch(updatePlayersLocal(players)),
-  updateAnswers: answers => dispatch(updateAnswers(answers)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)
