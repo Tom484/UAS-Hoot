@@ -1,11 +1,9 @@
 @import "../../../styles/colors.scss";
 
-.slides-editor-overview {
-  .slides-container-component {
-    display: flex;
-    flex-direction: column;
-    overflow-y: auto;
-    gap: 20px;
-    max-height: calc(100vh - 89px);
-  }
+.slides-container-component {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  gap: 20px;
+  max-height: calc(100vh - 89px);
 }

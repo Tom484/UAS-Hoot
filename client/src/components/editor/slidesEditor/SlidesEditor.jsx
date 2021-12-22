@@ -9,7 +9,7 @@ const SlidesEditor = () => {
     <div className="slides-editor">
       <div className="slides-editor-container">
         <SlidesEditorOverview />
-        <EditorButton type="ADD_SLIDE_QUIZ" className="w-100" />
+        <EditorButton type="ADD_SLIDE_QUIZ" />
       </div>
     </div>
   )

@@ -1,17 +1,16 @@
+@import "../../../styles/mixins.scss";
+
 .slides-editor {
-  background: var(--color-background-2);
-  border-right: 2px solid var(--color-background-3);
   height: 100%;
   padding: 15px;
+  background: var(--color-background-2);
+  border-right: 2px solid var(--color-background-3);
 
   .slides-editor-container {
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
+    @include flex-spaceBetween-column();
     height: 100%;
     gap: 20px;
   }
-
   ::-webkit-scrollbar {
     width: 0px;
   }

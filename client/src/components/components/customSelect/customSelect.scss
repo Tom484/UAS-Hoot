@@ -1,9 +1,9 @@
 .custom-select-container {
   position: relative;
   width: 100%;
+  font-size: 20px;
   .custom-select {
     width: 100%;
-    font-size: 20px;
     font-weight: 500;
     padding: 0.5em 1em;
     border: none;
@@ -36,7 +36,7 @@
     top: 65px;
     border-radius: 8px;
     box-shadow: var(--box-shadow-medium), var(--box-shadow-medium);
-    font-size: 16px;
+    font-size: 0.85em;
     overflow: hidden;
     z-index: 10;
     cursor: pointer;

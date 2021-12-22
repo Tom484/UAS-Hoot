@@ -28,7 +28,7 @@
 }
 @mixin flex-spaceBetween {
   display: flex;
-  justify-content: spaceBetween;
+  justify-content: space-between;
 }
 @mixin flex-spaceBetween-column {
   display: flex;

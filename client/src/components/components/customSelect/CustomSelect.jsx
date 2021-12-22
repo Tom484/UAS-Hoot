@@ -4,11 +4,11 @@ import { CustomTextInfoSmall } from "../customText/CustomText"
 
 import "./customSelect.scss"
 
-const CustomSelect = ({ options = [], onChange, option, theme = "background-2" }) => {
+const CustomSelect = ({ options = [], onChange, option, style, theme = "background-2" }) => {
   const [open, setOpen] = useState(false)
 
   return (
-    <div className="custom-select-container">
+    <div className="custom-select-container" style={style}>
       <div
         className={`custom-select ${open ? "open" : ""} ${theme}`}
         onClick={() => setOpen(previousOpen => !previousOpen)}

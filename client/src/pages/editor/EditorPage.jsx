@@ -18,7 +18,6 @@ const EditorPage = ({ editorCollection, collection, copyCollection, history }) =
     collection ? copyCollection(collection) : history.push("/library/recent")
     // eslint-disable-next-line
   }, [])
-
   if (!editorCollection) return <LoadingAnimation />
 
   return (
