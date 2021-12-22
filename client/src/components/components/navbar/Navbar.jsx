@@ -27,6 +27,7 @@ const Header = ({ currentUser, signOutStart, history, location }) => {
             UAS <span className="app-name-bold">Hoot Creator</span>
           </div>
         </div>
+
         {currentUser ? (
           <div className="side-links">
             <div
