@@ -1,0 +1,12 @@
+@import "../../../styles/mixins.scss";
+.event-question {
+  @include flex-center-center();
+  background: var(--color-background-1);
+  grid-column: span 2;
+  border-radius: 16px;
+  padding: 10px 30px;
+  text-align: center;
+  font-size: 2.5vw;
+  font-weight: 500;
+  margin: 0;
+}

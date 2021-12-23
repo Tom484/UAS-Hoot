@@ -1,0 +1,8 @@
+@import "../../../styles/mixins.scss";
+.event-number-of-answers {
+  @include flex-center-center();
+  font-size: 4vw;
+  background: var(--color-background-1);
+  border-radius: 16px;
+  font-weight: 600;
+}

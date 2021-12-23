@@ -5,6 +5,7 @@ import { SLIDE_TYPES } from "../../../redux/eventData/eventDataTypes"
 
 const SlideGameVote = ({ eventDataEvent }) => {
   const { slideType } = eventDataEvent
+
   if (slideType === SLIDE_TYPES.QUIZ) return <SlideGameVoteQuiz />
   return <SlideGameVoteQuiz />
 }

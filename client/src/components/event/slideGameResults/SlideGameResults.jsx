@@ -1,8 +1,9 @@
 import React, { useState } from "react"
 import InterimResults from "../interimResults/InterimResults"
+import CurrentResults from "../currentResults/CurrentResults"
+import CustomBackground from "../../components/customBackground/CustomBackground"
 
 import "./slideGameResults.scss"
-import CurrentResults from "../currentResults/CurrentResults"
 
 const SLIDE_TYPES = {
   CURRENT_GAME_RESULTS: "GAME_RESULTS",
@@ -20,14 +21,20 @@ const SlideGameResults = () => {
   }
 
   return (
-    <div className="slide-game-results">
-      <div className="slide-game-results-container">
-        <h2 className="slide-name" onClick={toggleSlideHandler}>
-          {resultSlide === SLIDE_TYPES.CURRENT_GAME_RESULTS ? "Game Results" : "Interim Results"}
-        </h2>
-        {resultSlide === SLIDE_TYPES.CURRENT_GAME_RESULTS ? <CurrentResults /> : <InterimResults />}
+    <CustomBackground eventNavbar>
+      <div className="slide-game-results">
+        <div className="slide-game-results-container">
+          <h2 className="slide-name" onClick={toggleSlideHandler}>
+            {resultSlide === SLIDE_TYPES.CURRENT_GAME_RESULTS ? "Game Results" : "Interim Results"}
+          </h2>
+          {resultSlide === SLIDE_TYPES.CURRENT_GAME_RESULTS ? (
+            <CurrentResults />
+          ) : (
+            <InterimResults />
+          )}
+        </div>
       </div>
-    </div>
+    </CustomBackground>
   )
 }
 
