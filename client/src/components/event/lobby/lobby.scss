@@ -1,75 +1,67 @@
 @import "../../../styles/colors.scss";
+@import "../../../styles/mixins.scss";
 
 .home-lobby {
   position: relative;
-  min-height: calc(100vh - 60px);
   .home-lobby-container {
-    padding: 20px;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    padding: 20px;
     grid-template-rows: 8vw 1fr;
+    grid-template-columns: 1fr;
     min-height: calc(100vh - 60px);
     height: 100%;
-    gap: 40px;
-    .container-title {
-      grid-column: span 2;
-      text-align: center;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--color-white);
-      background: var(--color-main-2);
-      // background: var(--color-background-2);
+    row-gap: 40px;
 
-      border-radius: 8px;
+    .container-title {
+      @include flex-center-center;
+      background: var(--color-main-2);
+      color: var(--color-white);
+      border-radius: 16px;
       h2 {
         margin: 0;
         font-weight: 400;
-        font-size: 2.4vw;
+        font-size: 2.2vw;
       }
     }
-    .container-players {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      height: 100%;
+    .bottom-container {
+      @include flex-center-center;
       width: 100%;
-      padding: 20px;
-      background: var(--color-background-1);
-      box-shadow: var(--box-shadow-medium);
-      border-radius: 10px;
+      gap: 40px;
+      .container-players {
+        @include flex-center-center-column;
 
-      .players-container {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-wrap: wrap;
-        font-size: 1.4vw;
-        padding: 0.5em;
-        gap: 1em;
+        height: 100%;
         width: 100%;
-        .player {
-          background: var(--color-main-2);
-          font-weight: 600;
-          color: var(--color-white);
-          padding: 0.5em 1em;
-          border-radius: 0.25em;
+        padding: 20px;
+        background: var(--color-background-1);
+        box-shadow: var(--box-shadow-medium);
+
+        border-radius: 16px;
+        flex-shrink: 1;
+
+        .players-container {
+          @include flex-center-center;
+          flex-wrap: wrap;
+          font-size: 1.2vw;
+          width: 100%;
+          gap: 1em;
+          .player {
+            background: var(--color-main-2);
+            color: var(--color-white);
+            font-weight: 600;
+            padding: 0.5em 1em;
+            border-radius: 0.25em;
+          }
         }
       }
-    }
-    .container-qr-code {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-      height: 100%;
-
-      .box-qr-code {
-        border-radius: 12px;
+      .container-qr-code {
+        @include flex-center-center-column;
         box-shadow: var(--box-shadow-medium), var(--box-shadow-medium);
         background: var(--color-background-1);
-        padding: 20px;
+        border-radius: 16px;
+        padding: 30px;
+        height: 100%;
+        gap: 30px;
       }
     }
   }

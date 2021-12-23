@@ -35,3 +35,37 @@
   justify-content: space-between;
   flex-direction: column;
 }
+
+@mixin flex-spaceAround-center {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+@mixin flex-spaceAround-center-column {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+}
+@mixin flex-spaceAround {
+  display: flex;
+  justify-content: space-around;
+}
+@mixin flex-spaceAround-column {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+}
+
+@mixin flex-spaceBetween-flexStart-column {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  flex-direction: column;
+}
+@mixin flex-spaceBetween-flexEnd-column {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  flex-direction: column;
+}

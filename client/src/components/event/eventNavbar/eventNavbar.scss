@@ -1,62 +1,46 @@
 @import "../../../styles/colors.scss";
+@import "../../../styles/mixins.scss";
 
 .event-navbar {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @include flex-center-center();
+  position: fixed;
   height: 60px;
   width: 100%;
   top: 0;
-  position: fixed;
   background: var(--color-background-1);
   box-shadow: var(--box-shadow-medium);
-  z-index: 100000;
+  z-index: 10000;
+
   .event-navbar-container {
     width: 100%;
-    padding: 0 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    padding: 0 14px;
+    @include flex-spaceBetween-center();
 
     .name-container {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
+      @include flex-center-center();
       font-size: 22px;
-      .name {
-        @media (max-width: 1200px) {
-          display: none;
-        }
-      }
+      gap: 10px;
       .icon-logo {
-        @media (max-width: 1200px) {
-          display: none;
-        }
-        width: 38px;
         width: 38px;
       }
-      .bold {
-        font-weight: 600;
+      @media (max-width: 1200px) {
+        display: none;
       }
     }
+
     .event-setting {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
+      @include flex-center-center();
+      gap: 10px;
       .container-setting {
         padding: 7px 12px;
         border-radius: 6px;
         background: var(--color-background-2);
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        @include flex-center-center();
         gap: 10px;
         &.highlight {
           background: var(--color-main-2);
-          font-weight: 500;
           color: var(--color-white);
+          font-weight: 500;
           cursor: pointer;
           .icon-setting {
             fill: var(--color-white);
@@ -65,8 +49,8 @@
         .icon-setting {
           width: 22px;
           height: 22px;
-          cursor: pointer;
           fill: var(--icon-color-2);
+          cursor: pointer;
         }
         span {
           width: 24px;

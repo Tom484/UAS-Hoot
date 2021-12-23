@@ -34,7 +34,7 @@ const EventPage = ({ eventDataConnect, updatePlayers, updateAnswers }) => {
   }, [eventDataConnect])
 
   return (
-    <div className="event-page">
+    <div style={{ paddingTop: "60px" }}>
       <EventNavbar />
       <EventSlide />
     </div>
