@@ -1,6 +1,16 @@
 import React from "react"
 import "./customText.scss"
 
+export const CustomTextExtraLarge = ({ children, className, center = false, ...properties }) => {
+  return (
+    <div
+      className={`custom-text-extra-large ${className} ${center ? "text-center" : ""}`}
+      {...properties}
+    >
+      {children}
+    </div>
+  )
+}
 export const CustomTextLarge = ({ children, className, center = false, ...properties }) => {
   return (
     <div

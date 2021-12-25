@@ -1,19 +1,16 @@
+@import "../../../styles/mixins.scss";
 .slide-game-results {
-  height: calc(100vh - 60px);
-  .slide-game-results-container {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    flex-direction: column;
+  min-height: calc(100vh - 60px);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 20px;
+  gap: 20px;
+  width: 100%;
+  .current-results-chart {
+    grid-column: span 2;
+    @include flex-center-center();
     width: 100%;
-    .slide-name {
-      font-size: 48px;
-      color: var(--color-text-3);
-      background: var(--color-background-2);
-      padding: 10px 40px;
-      border-radius: 8px;
-      margin: 30px;
-      cursor: pointer;
-    }
+    background-color: var(--color-white);
+    border-radius: 16px;
   }
 }

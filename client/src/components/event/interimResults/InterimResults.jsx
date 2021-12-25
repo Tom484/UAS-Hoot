@@ -1,14 +1,14 @@
 import React from "react"
+import CustomBackground from "../../components/customBackground/CustomBackground"
 import PlayersResult from "../playersResult/PlayersResult"
-import "./interimResults.scss"
 
 const InterimResults = () => {
   return (
-    <div className="interim-results">
-      <div className="interim-results-container">
-        <PlayersResult />
+    <CustomBackground eventNavbar>
+      <div style={{ padding: "30px" }}>
+        <PlayersResult title="Interim Results" />
       </div>
-    </div>
+    </CustomBackground>
   )
 }
 

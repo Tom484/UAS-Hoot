@@ -1,39 +1,28 @@
-import React, { useState } from "react"
-import InterimResults from "../interimResults/InterimResults"
-import CurrentResults from "../currentResults/CurrentResults"
+import React from "react"
 import CustomBackground from "../../components/customBackground/CustomBackground"
+import EventQuizOptions from "../eventQuizOptions/EventQuizOptions"
+import EventQuestion from "../eventQuestion/EventQuestion"
 
 import "./slideGameResults.scss"
+import CustomButton from "../../components/customButton/CustomButton"
 
-const SLIDE_TYPES = {
-  CURRENT_GAME_RESULTS: "GAME_RESULTS",
-  INTERIM_RESULTS: "INTERIM_RESULTS",
-}
-
-const SlideGameResults = () => {
-  const [resultSlide, setResultSlide] = useState(SLIDE_TYPES.CURRENT_GAME_RESULTS)
-  const toggleSlideHandler = () => {
-    if (resultSlide === SLIDE_TYPES.CURRENT_GAME_RESULTS) {
-      setResultSlide(SLIDE_TYPES.INTERIM_RESULTS)
-    } else {
-      setResultSlide(SLIDE_TYPES.CURRENT_GAME_RESULTS)
-    }
-  }
-
+const SlideGameResults = ({ next }) => {
   return (
-    <CustomBackground eventNavbar>
-      <div className="slide-game-results">
-        <div className="slide-game-results-container">
-          <h2 className="slide-name" onClick={toggleSlideHandler}>
-            {resultSlide === SLIDE_TYPES.CURRENT_GAME_RESULTS ? "Game Results" : "Interim Results"}
-          </h2>
-          {resultSlide === SLIDE_TYPES.CURRENT_GAME_RESULTS ? (
-            <CurrentResults />
-          ) : (
-            <InterimResults />
-          )}
-        </div>
-      </div>
+    <CustomBackground style={{ position: "relative" }} className="slide-game-results" eventNavbar>
+      <CustomButton
+        style={{
+          position: "absolute",
+          width: "180px",
+          right: "10px",
+          top: "10px",
+          fontSize: "16px",
+        }}
+        onClick={next}
+      >
+        Interim Results
+      </CustomButton>
+      <EventQuestion />
+      <EventQuizOptions showCorrect />
     </CustomBackground>
   )
 }

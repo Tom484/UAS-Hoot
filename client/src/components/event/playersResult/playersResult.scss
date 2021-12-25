@@ -1,14 +1,12 @@
+@import "../../../styles/mixins.scss";
 .players-result {
   .players-result-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-direction: column;
+    @include flex-spaceBetween-center-column();
     gap: 10px;
-    width: 600px;
+    width: 750px;
     background: var(--color-background-1);
     box-shadow: var(--box-shadow-medium);
-    padding: 20px;
-    border-radius: 8px;
+    padding: 25px;
+    border-radius: 16px;
   }
 }

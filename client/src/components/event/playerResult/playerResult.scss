@@ -4,32 +4,33 @@
     padding: 15px 25px;
     font-size: 18px;
     background: var(--color-background-2);
-
-    &.label {
-      background: var(--color-background-1);
-      color: var(--color-text-4);
-      padding: 5px 25px;
-    }
-
-    border-radius: 5px;
+    font-weight: 600;
+    border-radius: 8px;
     flex-shrink: 0;
     display: grid;
     grid-template-columns: 50px 3fr 2fr 1fr;
     text-align: left;
-    .right {
-      text-align: right;
-    }
+
     &.first {
       background: var(--color-main-2);
       color: var(--color-white);
     }
     &.second {
-      background: var(--color-main-4);
+      background: var(--color-main-3);
       color: var(--color-white);
     }
     &.third {
-      background: var(--color-main-6);
+      background: var(--color-main-4);
       color: var(--color-white);
+    }
+
+    &.label {
+      background: var(--color-background-1);
+      color: var(--color-text-4);
+      padding: 5px 25px;
+      font-weight: 400;
+      position: relative;
+      top: 5px;
     }
   }
 }

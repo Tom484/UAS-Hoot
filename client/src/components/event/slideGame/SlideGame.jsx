@@ -7,6 +7,7 @@ import SlideGameVote from "../slideGameVote/SlideGameVote"
 import SlideGameResults from "../slideGameResults/SlideGameResults"
 
 import "./slideGame.scss"
+import InterimResults from "../interimResults/InterimResults"
 
 const SlideGame = ({ eventDataEvent, analyzeAnswers }) => {
   const { openVoteAt, closeVoteAt } = eventDataEvent
@@ -15,6 +16,7 @@ const SlideGame = ({ eventDataEvent, analyzeAnswers }) => {
     SLIDE_GAME_PREVIEW: "SLIDE_GAME_PREVIEW",
     SLIDE_GAME_VOTE: "SLIDE_GAME_VOTE",
     SLIDE_GAME_RESULTS: "SLIDE_GAME_RESULTS",
+    SLIDE_GAME_INTERIM_RESULTS: "SLIDE_GAME_INTERIM_RESULTS",
   }
 
   const [renderSlide, setRenderSlide] = useState(RENDER_SLIDE_TYPES.SLIDE_GAME_PREVIEW)
@@ -48,11 +50,18 @@ const SlideGame = ({ eventDataEvent, analyzeAnswers }) => {
     // eslint-disable-next-line
   }, [eventDataEvent])
 
+  const renderSlideInterimResults = () => {
+    setRenderSlide(RENDER_SLIDE_TYPES.SLIDE_GAME_INTERIM_RESULTS)
+  }
+
   return (
     <div>
       {renderSlide === RENDER_SLIDE_TYPES.SLIDE_GAME_PREVIEW && <SlideGamePreview />}
       {renderSlide === RENDER_SLIDE_TYPES.SLIDE_GAME_VOTE && <SlideGameVote />}
-      {renderSlide === RENDER_SLIDE_TYPES.SLIDE_GAME_RESULTS && <SlideGameResults />}
+      {renderSlide === RENDER_SLIDE_TYPES.SLIDE_GAME_RESULTS && (
+        <SlideGameResults next={renderSlideInterimResults} />
+      )}
+      {renderSlide === RENDER_SLIDE_TYPES.SLIDE_GAME_INTERIM_RESULTS && <InterimResults />}
     </div>
   )
 }
