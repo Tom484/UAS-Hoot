@@ -9,8 +9,6 @@ import "./eventQuizOptions.scss"
 const EventQuizOptions = ({ eventCurrentSlide, showCorrect = false, eventResults }) => {
   const { options } = eventCurrentSlide
 
-  console.log(eventResults)
-
   return (
     <Fragment>
       {Object.values(options).map((option, i) => (
@@ -22,7 +20,7 @@ const EventQuizOptions = ({ eventCurrentSlide, showCorrect = false, eventResults
         >
           <div className={`icon-container option-${i + 1}`}>
             {showCorrect ? (
-              eventResults[i].count
+              eventResults[i]?.count
             ) : (
               <span>
                 {i === 0 && <ICONFlashBold className="icon-option" />}

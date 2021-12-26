@@ -16,7 +16,7 @@ const HomePage = ({ history }) => {
     <CustomBackground>
       <CustomCard className="home-page">
         <CustomTextExtraLarge style={{ paddingBottom: "10px" }}>
-          <spans className="fw-400">UAS</spans> <span className="fw-600">Hoot</span>
+          <span className="fw-400">UAS</span> <span className="fw-600">Hoot</span>
         </CustomTextExtraLarge>
         <CustomTextLarge center style={{ fontSize: "22px", color: "var(--color-text-3)" }}>
           Create and play your own events for free. And have fun!

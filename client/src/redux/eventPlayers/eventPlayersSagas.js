@@ -6,19 +6,16 @@ import EventPlayersActions from "./eventPlayersTypes"
 
 export function* updatePlayersAsync({ payload }) {
   try {
-    const event = yield select(selectEventDataConnect)
-    const players = Object.entries(payload)
+    const { enterCode } = yield select(selectEventDataConnect)
+    const players = Object.values(payload)
 
     const batch = firestore.batch()
     yield players.forEach(player => {
-      const playerRef = firestore
-        .collection("events")
-        .doc(event.enterCode)
-        .collection("players")
-        .doc(player[0])
-      batch.set(playerRef, player[1])
+      const playerRef = firestore.doc(`events/${enterCode}/players/${player.id}`)
+      batch.set(playerRef, player)
     })
     yield batch.commit()
+
     yield put(updatePlayersSuccess(payload))
   } catch (error) {
     yield put(updatePlayersFailure(error.message))
