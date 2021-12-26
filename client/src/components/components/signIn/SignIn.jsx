@@ -52,7 +52,11 @@ const SignIn = ({ googleSignInStart, emailSignInStart, history }) => {
       <CustomButton onClick={googleSignInStart}>
         <span className="fw-600">Google Sign In</span>
       </CustomButton>
-      <CustomTextInfoSmall className="cursor-pointer" onClick={() => history.push("/sign-up")}>
+      <CustomTextInfoSmall
+        style={{ marginTop: "10px" }}
+        className="cursor-pointer"
+        onClick={() => history.push("/sign-up")}
+      >
         Don't have an account? Sign up.
       </CustomTextInfoSmall>
     </form>

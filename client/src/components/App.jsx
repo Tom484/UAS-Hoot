@@ -68,7 +68,7 @@ const App = ({
         <PrivateRoute
           exact
           onlyLogged={true}
-          redirect="/"
+          redirect="/sign-in"
           path="/create-event/:collectionId"
           component={EventCreatePage}
         />
@@ -76,28 +76,28 @@ const App = ({
         <PrivateRoute
           exact
           onlyLogged={true}
-          redirect="/"
+          redirect="/sign-in"
           path="/reports"
           component={ReportsPage}
         />
         <PrivateRoute
           exact
           onlyLogged={true}
-          redirect="/"
+          redirect="/sign-in"
           path="/library/:sortId"
           component={LibraryPage}
         />
         <PrivateRoute
           exact
           onlyLogged={true}
-          redirect="/"
+          redirect="/sign-in"
           path="/discover"
           component={DiscoverPage}
         />
         <PrivateRoute
           exact
           onlyLogged={true}
-          redirect="/"
+          redirect="/sign-in"
           path="/account"
           component={AccountPage}
         />

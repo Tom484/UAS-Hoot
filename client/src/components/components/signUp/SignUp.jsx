@@ -74,7 +74,11 @@ const SignUpComponent = ({ emailSignUpStart, history }) => {
         style={{ fontSize: "17px" }}
       />
       <CustomButton type="submit">Sign Up</CustomButton>
-      <CustomTextInfoSmall className="cursor-pointer" onClick={() => history.push("/sign-in")}>
+      <CustomTextInfoSmall
+        style={{ marginTop: "10px" }}
+        className="cursor-pointer"
+        onClick={() => history.push("/sign-in")}
+      >
         Do you already have an account? Sign in.
       </CustomTextInfoSmall>
     </form>
