@@ -24,9 +24,6 @@ export function* analyzeAnswersAsync() {
     const updatedPlayers = getUpdatedPlayers(playersArray, optionsArray, answers, slide, event)
     const eventResults = getEventQuizResults(optionsArray, answersArray)
 
-    console.log(updatedPlayers)
-    console.log(eventResults)
-
     yield put(analyzeAnswersSuccess(eventResults))
     yield put(updatePlayersStart(updatedPlayers))
   } catch (error) {

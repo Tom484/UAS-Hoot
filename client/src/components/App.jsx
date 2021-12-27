@@ -22,6 +22,7 @@ import HomePage from "../pages/home/HomePage"
 import LoadingAnimationDatabase from "./components/loadingAnimation/LoadingAnimationDatabase"
 import DarkThemeListener from "./components/darkThemeListener/DarkThemeListener"
 import LoadingAnimation from "./components/loadingAnimation/LoadingAnimation"
+import Notifications from "./components/notifications/Notifications"
 
 const App = ({
   currentUser,
@@ -41,6 +42,7 @@ const App = ({
     <div>
       <LoadingAnimationDatabase />
       <DarkThemeListener />
+      <Notifications />
       <Switch>
         <PrivateRoute exact onlyLogged={true} redirect="/" path="/event" component={EventPage} />
         <PrivateRoute

@@ -2,11 +2,12 @@ import React from "react"
 import { connect } from "react-redux"
 import { selectUserCollectionsIsLoading } from "../../../redux/collections/collectionsSelectors"
 import RollerAnimation from "../../animation/rollerAnimation/RollerAnimation"
+import { selectUserIsLoading } from "../../../redux/user/userSelectors"
 
 import "./loadingAnimation.scss"
 
-const LoadingAnimationDatabase = ({ collectionsIsLoading }) => {
-  if (!collectionsIsLoading) return <></>
+const LoadingAnimationDatabase = ({ collectionsIsLoading, userIsLoading }) => {
+  if (!collectionsIsLoading && !userIsLoading) return <></>
 
   return (
     <div className="loading-animation">
@@ -22,6 +23,7 @@ const LoadingAnimationDatabase = ({ collectionsIsLoading }) => {
 
 const mapStateToProps = state => ({
   collectionsIsLoading: selectUserCollectionsIsLoading(state),
+  userIsLoading: selectUserIsLoading(state),
 })
 
 export default connect(mapStateToProps)(LoadingAnimationDatabase)

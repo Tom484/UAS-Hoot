@@ -4,12 +4,13 @@ import { withRouter } from "react-router-dom"
 import { emailSignUpStart } from "../../../redux/user/userActions"
 import CustomButton from "../customButton/CustomButton"
 import { CustomInputWithLabel } from "../customInput/CustomInput"
-
 import { CustomTextInfoSmall, CustomTextLarge } from "../customText/CustomText"
+import { createNotification } from "../../../redux/notifications/notificationsActions"
 
 import "./signUp.scss"
+import { NOTIFICATIONS } from "../../../redux/notifications/notificationsTypes"
 
-const SignUpComponent = ({ emailSignUpStart, history }) => {
+const SignUpComponent = ({ emailSignUpStart, history, createNotification }) => {
   const [userCredentials, setUserCredentials] = useState({
     displayName: "",
     email: "",
@@ -26,10 +27,7 @@ const SignUpComponent = ({ emailSignUpStart, history }) => {
     e.preventDefault()
     const { displayName, email, password, passwordConfirm } = userCredentials
 
-    if (password !== passwordConfirm) {
-      alert("passwords do not much")
-      return
-    }
+    if (password !== passwordConfirm) return createNotification(NOTIFICATIONS.PASSWORD_NOT_MATCH)
 
     emailSignUpStart(email, password, displayName)
   }
@@ -86,6 +84,7 @@ const SignUpComponent = ({ emailSignUpStart, history }) => {
 }
 
 const mapDispatchToPro = dispatch => ({
+  createNotification: notification => dispatch(createNotification(notification)),
   emailSignUpStart: (email, password, displayName) =>
     dispatch(emailSignUpStart({ user: { email, password }, additionalData: { displayName } })),
 })

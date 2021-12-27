@@ -7,8 +7,10 @@ import CustomInputCard from "../customInputCard/CustomInputCard"
 import { CustomInputWithLabel } from "../customInput/CustomInput"
 import { CustomTextLarge } from "../customText/CustomText"
 import CustomButton from "../customButton/CustomButton"
+import { createNotification } from "../../../redux/notifications/notificationsActions"
+import { NOTIFICATIONS } from "../../../redux/notifications/notificationsTypes"
 
-const UpdateAccountPassword = ({ changePassword }) => {
+const UpdateAccountPassword = ({ changePassword, createNotification }) => {
   const [userPassword, setUserPassword] = useState({ password: "", passwordConfirmation: "" })
 
   const inputHandler = e => {
@@ -17,8 +19,10 @@ const UpdateAccountPassword = ({ changePassword }) => {
 
   const changePasswordHandler = e => {
     const { password, passwordConfirmation } = userPassword
-    if (password !== passwordConfirmation) return alert("Passwords do not match!")
-    changePassword(userPassword.password)
+    if (password !== passwordConfirmation)
+      return createNotification(NOTIFICATIONS.PASSWORD_NOT_MATCH)
+    setUserPassword({ password: "", passwordConfirmation: "" })
+    changePassword(password)
   }
 
   return (
@@ -44,6 +48,7 @@ const UpdateAccountPassword = ({ changePassword }) => {
 }
 
 const mapDispatchToProps = dispatch => ({
+  createNotification: notification => dispatch(createNotification(notification)),
   changePassword: password => dispatch(changePasswordStart({ password })),
 })
 

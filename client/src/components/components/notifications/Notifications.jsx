@@ -26,8 +26,8 @@ const Notifications = ({ notifications, deleteNotification }) => {
   return (
     <div className="notifications">
       <div className="notifications-container">
-        {notifications.map(notification => (
-          <Notification notification={notification} />
+        {notifications.map((notification, i) => (
+          <Notification key={i} notification={notification} />
         ))}
       </div>
     </div>

@@ -110,3 +110,8 @@ export { ReactComponent as ICONSliderOutline } from "./icons/slider/slider-outli
 
 // ArrowDown
 export { ReactComponent as ICONArrowDownOutline } from "./icons/arrowDown/arrow-down-outline.svg"
+
+// CloseSquare
+export { ReactComponent as ICONCloseSquareBold } from "./icons/close-square/close-square-bold.svg"
+export { ReactComponent as ICONCloseSquareBroken } from "./icons/close-square/close-square-broken.svg"
+export { ReactComponent as ICONCloseSquareOutline } from "./icons/close-square/close-square-outline.svg"

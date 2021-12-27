@@ -27,6 +27,8 @@ import {
 } from "./userActions"
 import { selectCurrentUser } from "./userSelectors"
 import { deleteReference } from "../../functions/redux/reduxFunctions"
+import { createNotification } from "../notifications/notificationsActions"
+import { NOTIFICATIONS } from "../notifications/notificationsTypes"
 
 export function* getSnapshotFromUserAuth(userAuth, additionalData) {
   try {
@@ -43,6 +45,7 @@ export function* signInWithGoogle() {
     const { user } = yield auth.signInWithPopup(googleProvider)
     yield getSnapshotFromUserAuth(user)
   } catch (error) {
+    yield put(createNotification(NOTIFICATIONS.SIGN_IN_WITH_GOOGLE_FAILURE))
     yield put(signInFailure(error))
   }
 }
@@ -52,6 +55,7 @@ export function* signInWithEmail({ payload: { email, password } }) {
     const { user } = yield auth.signInWithEmailAndPassword(email, password)
     yield getSnapshotFromUserAuth(user)
   } catch (error) {
+    yield put(createNotification(NOTIFICATIONS.SIGN_IN_WITH_EMAIL_FAILURE))
     yield put(signInFailure(error))
   }
 }
@@ -66,6 +70,7 @@ export function* signUpWithEmail({
     const { user } = yield auth.createUserWithEmailAndPassword(email, password)
     yield put(signUpSuccess({ user, additionalData: { displayName } }))
   } catch (error) {
+    yield put(createNotification(NOTIFICATIONS.SIGN_UP_WITH_EMAIL_FAILURE))
     yield put(signUpFailure(error))
   }
 }
@@ -91,6 +96,7 @@ export function* signOut() {
     yield auth.signOut()
     yield put(signOutSuccess())
   } catch (error) {
+    yield put(createNotification(NOTIFICATIONS.SIGN_OUT_FAILURE))
     yield put(signOutFailure(error))
   }
 }
@@ -105,7 +111,7 @@ export function* toggleFavoriteCollection({ payload: { collectionId } }) {
       ? favoritesArray.splice(favoriteIndex, 1)
       : favoritesArray.push(collectionId)
 
-    const collectionRef = yield firestore.collection(`users`).doc(currentUser.id)
+    const collectionRef = yield firestore.doc(`users/${currentUser.id}`)
     yield collectionRef.update({ favorites: favoritesArray })
     currentUser.favoritesArray = favoritesArray
 
@@ -118,11 +124,13 @@ export function* toggleFavoriteCollection({ payload: { collectionId } }) {
 export function* updateProfile({ payload }) {
   try {
     const currentUser = yield select(selectCurrentUser)
-    const collectionRef = yield firestore.collection(`users`).doc(currentUser.id)
+    const collectionRef = yield firestore.doc(`users/${currentUser.id}`)
     yield collectionRef.update({ ...payload })
 
+    yield put(createNotification(NOTIFICATIONS.UPDATE_PROFILE_SUCCESS))
     yield put(updateProfileSuccess({ ...currentUser, ...payload }))
   } catch (error) {
+    yield put(createNotification(NOTIFICATIONS.UPDATE_PROFILE_FAILURE))
     yield put(updateProfileFailure(error.message))
   }
 }
@@ -130,8 +138,10 @@ export function* updateProfile({ payload }) {
 export function* changePassword({ payload }) {
   try {
     yield auth.currentUser.updatePassword(payload.password)
+    yield put(createNotification(NOTIFICATIONS.UPDATE_PASSWORD_SUCCESS))
     yield put(changePasswordSuccess())
   } catch (error) {
+    yield put(createNotification(NOTIFICATIONS.UPDATE_PASSWORD_FAILURE))
     yield put(changePasswordFailure(error.message))
   }
 }

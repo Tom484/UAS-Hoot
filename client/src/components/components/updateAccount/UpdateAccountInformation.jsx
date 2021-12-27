@@ -1,5 +1,7 @@
 import React, { useState } from "react"
 import { connect } from "react-redux"
+import { createNotification } from "../../../redux/notifications/notificationsActions"
+import { NOTIFICATIONS } from "../../../redux/notifications/notificationsTypes"
 import { updateProfileStart } from "../../../redux/user/userActions"
 import { selectCurrentUser } from "../../../redux/user/userSelectors"
 import CustomButton from "../customButton/CustomButton"
@@ -11,7 +13,7 @@ import { CustomTextareaWithLabel } from "../customTextarea/CustomTextarea"
 
 import "./updateAccount.scss"
 
-const UpdateAccountInformation = ({ updateProfile, currentUser }) => {
+const UpdateAccountInformation = ({ updateProfile, currentUser, createNotification }) => {
   const [userCredentials, setUserCredentials] = useState({
     displayName: currentUser?.displayName || "",
     bio: currentUser?.bio || "",
@@ -23,9 +25,11 @@ const UpdateAccountInformation = ({ updateProfile, currentUser }) => {
 
   const updateProfileHandler = e => {
     const { displayName, bio } = userCredentials
-    if (displayName < 4 || displayName > 18)
-      return alert("Nickname must be long 4 to 18 characters!")
-    if (bio > 500) return alert("The maximum length of the About Me is 500 characters!")
+    console.log(displayName)
+    if (displayName.length < 3 || displayName.length > 18)
+      return createNotification(NOTIFICATIONS.NICKNAME_LENGTH)
+    if (bio.length > 500) return createNotification(NOTIFICATIONS.ABOUT_ME_LENGTH)
+
     updateProfile({ ...userCredentials })
   }
 
@@ -59,6 +63,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
+  createNotification: notification => dispatch(createNotification(notification)),
   updateProfile: profileInformation => dispatch(updateProfileStart(profileInformation)),
 })
 

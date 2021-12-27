@@ -49,7 +49,7 @@ const SignIn = ({ googleSignInStart, emailSignInStart, history }) => {
       <CustomButton type="submit">
         <span className="fw-600">Sign In</span>
       </CustomButton>
-      <CustomButton onClick={googleSignInStart}>
+      <CustomButton onClick={googleSignInStart} type="button">
         <span className="fw-600">Google Sign In</span>
       </CustomButton>
       <CustomTextInfoSmall

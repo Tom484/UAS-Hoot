@@ -1,7 +1,7 @@
 .notifications {
   display: flex;
   justify-content: flex-end;
-  position: absolute;
+  position: fixed;
   z-index: 100000;
   padding: 15px;
   width: 100%;
