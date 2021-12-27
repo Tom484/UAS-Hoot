@@ -76,4 +76,14 @@ export const NOTIFICATIONS = {
     message: "The maximum length of the about me is 500 characters!",
     type: NOTIFICATION_TYPES.ERROR,
   },
+  RESET_PASSWORD_EMAIL_SUCCESS: {
+    title: "Reset password email success",
+    message: "Check your email box for further instructions!",
+    type: NOTIFICATION_TYPES.SUCCESS,
+  },
+  RESET_PASSWORD_EMAIL_FAILURE: {
+    title: "Reset password failure",
+    message: "Something went wrong, this account with this email may not exist.",
+    type: NOTIFICATION_TYPES.ERROR,
+  },
 }

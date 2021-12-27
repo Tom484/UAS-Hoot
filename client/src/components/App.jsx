@@ -23,6 +23,7 @@ import LoadingAnimationDatabase from "./components/loadingAnimation/LoadingAnima
 import DarkThemeListener from "./components/darkThemeListener/DarkThemeListener"
 import LoadingAnimation from "./components/loadingAnimation/LoadingAnimation"
 import Notifications from "./components/notifications/Notifications"
+import ResetPasswordEmailPage from "../pages/resetPasswordEmail/ResetPasswordEmailPage"
 
 const App = ({
   currentUser,
@@ -66,6 +67,13 @@ const App = ({
           redirect="/library/recent"
           path="/sign-up"
           component={SignUpPage}
+        />
+        <PrivateRoute
+          exact
+          onlyLogged={false}
+          redirect="/library/recent"
+          path="/reset-password-email"
+          component={ResetPasswordEmailPage}
         />
         <PrivateRoute
           exact

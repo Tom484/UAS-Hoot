@@ -7,7 +7,6 @@ import { CustomInputWithLabel } from "../customInput/CustomInput"
 import { CustomTextInfoSmall, CustomTextLarge } from "../customText/CustomText"
 import { createNotification } from "../../../redux/notifications/notificationsActions"
 
-import "./signUp.scss"
 import { NOTIFICATIONS } from "../../../redux/notifications/notificationsTypes"
 
 const SignUpComponent = ({ emailSignUpStart, history, createNotification }) => {

@@ -14,6 +14,8 @@ const userReducer = (state = INITIAL_STATE, action) => {
     case UserActionTypes.SIGN_OUT_START:
     case UserActionTypes.UPDATE_PROFILE_START:
     case UserActionTypes.CHANGE_PASSWORD_START:
+    case UserActionTypes.RESET_PASSWORD_EMAIL_START:
+    case UserActionTypes.RESET_PASSWORD_EMAIL_START:
       return { ...state, error: null, isLoading: true }
     case UserActionTypes.COMPLETED_AUTH_INITIAL_PROCESS:
       return {
@@ -35,6 +37,7 @@ const userReducer = (state = INITIAL_STATE, action) => {
         isLoading: false,
       }
     case UserActionTypes.SIGN_IN_FAILURE:
+    case UserActionTypes.RESET_PASSWORD_EMAIL_FAILURE:
     case UserActionTypes.SIGN_OUT_FAILURE:
     case UserActionTypes.SIGN_UP_FAILURE:
     case UserActionTypes.UPDATE_PROFILE_FAILURE:
@@ -49,6 +52,7 @@ const userReducer = (state = INITIAL_STATE, action) => {
     case UserActionTypes.UPDATE_PROFILE_SUCCESS:
       return { ...state, currentUser: action.payload, isLoading: false }
     case UserActionTypes.CHANGE_PASSWORD_SUCCESS:
+    case UserActionTypes.RESET_PASSWORD_EMAIL_SUCCESS:
       return { ...state, isLoading: false }
     default:
       return state

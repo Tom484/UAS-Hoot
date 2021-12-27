@@ -14,6 +14,8 @@ import {
   changePasswordFailure,
   changePasswordSuccess,
   completedAuthInitialProcess,
+  resetPasswordEmailFailure,
+  resetPasswordEmailSuccess,
   signInFailure,
   signInSuccess,
   signOutFailure,
@@ -146,6 +148,17 @@ export function* changePassword({ payload }) {
   }
 }
 
+export function* resetPasswordEmail({ payload }) {
+  try {
+    yield auth.sendPasswordResetEmail(payload)
+    yield put(createNotification(NOTIFICATIONS.RESET_PASSWORD_EMAIL_SUCCESS))
+    yield put(resetPasswordEmailSuccess())
+  } catch (error) {
+    yield put(resetPasswordEmailFailure(error.message))
+    yield put(createNotification(NOTIFICATIONS.RESET_PASSWORD_EMAIL_FAILURE))
+  }
+}
+
 export function* onGoogleSignInStart() {
   yield takeLatest(UserActionTypes.GOOGLE_SIGN_IN_START, signInWithGoogle)
 }
@@ -180,6 +193,9 @@ export function* onUpdateProfile() {
 export function* onChangePassword() {
   yield takeLatest(UserActionTypes.CHANGE_PASSWORD_START, changePassword)
 }
+export function* onResetPasswordEmail() {
+  yield takeLatest(UserActionTypes.RESET_PASSWORD_EMAIL_START, resetPasswordEmail)
+}
 
 export default function* userSagas() {
   yield all([
@@ -192,5 +208,6 @@ export default function* userSagas() {
     call(onToggleFavoriteCollection),
     call(onUpdateProfile),
     call(onChangePassword),
+    call(onResetPasswordEmail),
   ])
 }

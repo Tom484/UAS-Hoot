@@ -96,3 +96,15 @@ export const changePasswordFailure = errorMessage => ({
   type: UserActionTypes.CHANGE_PASSWORD_FAILURE,
   payload: errorMessage,
 })
+
+export const resetPasswordEmailStart = email => ({
+  type: UserActionTypes.RESET_PASSWORD_EMAIL_START,
+  payload: email,
+})
+export const resetPasswordEmailSuccess = () => ({
+  type: UserActionTypes.RESET_PASSWORD_EMAIL_SUCCESS,
+})
+export const resetPasswordEmailFailure = error => ({
+  type: UserActionTypes.RESET_PASSWORD_EMAIL_FAILURE,
+  payload: error,
+})
