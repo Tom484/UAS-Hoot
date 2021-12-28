@@ -1,127 +1,52 @@
 import React, { useEffect } from "react"
-
 import { Route, Switch, Redirect } from "react-router-dom"
 import { connect } from "react-redux"
-
 import { checkUserSession } from "../redux/user/userActions"
-import PrivateRoute from "./components/privateRoute/PrivateRoute"
-import { selectCompletedAuthInitialProcess, selectCurrentUser } from "../redux/user/userSelectors"
+import { selectCurrentUser } from "../redux/user/userSelectors"
 import { fetchCollectionsStart } from "../redux/collections/collectionsActions"
-
-import NotFoundPage from "../pages/notFound/NotFoundPage"
-import DiscoverPage from "../pages/discover/DiscoverPage"
-import LibraryPage from "../pages/library/LibraryPage"
-import ReportsPage from "../pages/reports/ReportsPage"
-import AccountPage from "../pages/account/AccountPage"
-import EditorPage from "../pages/editor/EditorPage"
-import EventCreatePage from "../pages/eventCreate/EventCreatePage"
-import EventPage from "../pages/event/EventPage"
-import SignInPage from "../pages/signIn/SignInPage"
-import SignUpPage from "../pages/signUp/SignUpPage"
-import HomePage from "../pages/home/HomePage"
-import LoadingAnimationDatabase from "./components/loadingAnimation/LoadingAnimationDatabase"
+import AutoLoadingAnimation from "./components/loadingAnimation/AutoLoadingAnimation"
 import DarkThemeListener from "./components/darkThemeListener/DarkThemeListener"
-import LoadingAnimation from "./components/loadingAnimation/LoadingAnimation"
 import Notifications from "./components/notifications/Notifications"
-import ResetPasswordEmailPage from "../pages/resetPasswordEmail/ResetPasswordEmailPage"
+import AuthRoutes from "../routes/auth/AuthRoutes"
+import LibraryRoutes from "../routes/library/LibraryRoutes"
+import DiscoverRoutes from "../routes/discover/DiscoverRoutes"
+import EditorRoutes from "../routes/editor/EditorRoutes"
+import NotFoundRoutes, { NOT_FOUND_ROUTES } from "../routes/notFound/NotFoundRoutes"
+import ReportRoutes from "../routes/reports/ReportsRoutes"
+import HomeRoutes from "../routes/home/HomeRoutes"
+import EventRoutes from "../routes/event/EventRoutes"
+import { selectUserCollections } from "../redux/collections/collectionsSelectors"
 
-const App = ({
-  currentUser,
-  checkUserSession,
-  fetchCollectionsStart,
-  completedAuthInitialProcess,
-}) => {
+const App = ({ currentUser, checkUserSession, fetchCollectionsStart, collections }) => {
   useEffect(() => {
-    checkUserSession()
-    if (currentUser) fetchCollectionsStart(currentUser)
+    if (!currentUser) checkUserSession()
+    if (currentUser && !collections) fetchCollectionsStart(currentUser)
     // eslint-disable-next-line
   }, [currentUser])
 
-  if (!completedAuthInitialProcess) return <LoadingAnimation />
-
   return (
     <div>
-      <LoadingAnimationDatabase />
-      <DarkThemeListener />
       <Notifications />
+      <DarkThemeListener />
+      <AutoLoadingAnimation />
       <Switch>
-        <PrivateRoute exact onlyLogged={true} redirect="/" path="/event" component={EventPage} />
-        <PrivateRoute
-          exact
-          onlyLogged={true}
-          redirect="/"
-          path="/editor/:collectionId"
-          component={EditorPage}
-        />
-        <Route exact onlyLogged={false} redirect="/library/recent" path="/" component={HomePage} />
-        <PrivateRoute
-          exact
-          onlyLogged={false}
-          redirect="/library/recent"
-          path="/sign-in"
-          component={SignInPage}
-        />
-        <PrivateRoute
-          exact
-          onlyLogged={false}
-          redirect="/library/recent"
-          path="/sign-up"
-          component={SignUpPage}
-        />
-        <PrivateRoute
-          exact
-          onlyLogged={false}
-          redirect="/library/recent"
-          path="/reset-password-email"
-          component={ResetPasswordEmailPage}
-        />
-        <PrivateRoute
-          exact
-          onlyLogged={true}
-          redirect="/sign-in"
-          path="/create-event/:collectionId"
-          component={EventCreatePage}
-        />
-
-        <PrivateRoute
-          exact
-          onlyLogged={true}
-          redirect="/sign-in"
-          path="/reports"
-          component={ReportsPage}
-        />
-        <PrivateRoute
-          exact
-          onlyLogged={true}
-          redirect="/sign-in"
-          path="/library/:sortId"
-          component={LibraryPage}
-        />
-        <PrivateRoute
-          exact
-          onlyLogged={true}
-          redirect="/sign-in"
-          path="/discover"
-          component={DiscoverPage}
-        />
-        <PrivateRoute
-          exact
-          onlyLogged={true}
-          redirect="/sign-in"
-          path="/account"
-          component={AccountPage}
-        />
-
-        <Route exact path="/not-found" component={NotFoundPage} />
-        <Redirect to="/not-found" />
+        <Route path="/auth" component={AuthRoutes} />
+        <Route path="/library" component={LibraryRoutes} />
+        <Route path="/reports" component={ReportRoutes} />
+        <Route path="/discover" component={DiscoverRoutes} />
+        <Route path="/editor" component={EditorRoutes} />
+        <Route path="/event" component={EventRoutes} />
+        <Route path="/not-found" component={NotFoundRoutes} />
+        <Route exact path="/" component={HomeRoutes} />
+        <Redirect to={NOT_FOUND_ROUTES.NOT_FOUND} />
       </Switch>
     </div>
   )
 }
 
 const mapStateToProps = state => ({
+  collections: selectUserCollections(state),
   currentUser: selectCurrentUser(state),
-  completedAuthInitialProcess: selectCompletedAuthInitialProcess(state),
 })
 
 const mapDispatchToProps = dispatch => ({

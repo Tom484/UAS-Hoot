@@ -15,7 +15,6 @@ const userReducer = (state = INITIAL_STATE, action) => {
     case UserActionTypes.UPDATE_PROFILE_START:
     case UserActionTypes.CHANGE_PASSWORD_START:
     case UserActionTypes.RESET_PASSWORD_EMAIL_START:
-    case UserActionTypes.RESET_PASSWORD_EMAIL_START:
       return { ...state, error: null, isLoading: true }
     case UserActionTypes.COMPLETED_AUTH_INITIAL_PROCESS:
       return {

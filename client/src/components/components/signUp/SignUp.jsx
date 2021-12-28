@@ -74,7 +74,7 @@ const SignUpComponent = ({ emailSignUpStart, history, createNotification }) => {
       <CustomTextInfoSmall
         style={{ marginTop: "10px" }}
         className="cursor-pointer"
-        onClick={() => history.push("/sign-in")}
+        onClick={() => history.push("/auth/sign-in")}
       >
         Do you already have an account? Sign in.
       </CustomTextInfoSmall>

@@ -1,7 +1,7 @@
 import CollectionActions from "./collectionsTypes"
 
 const INITIAL_STATE = {
-  userCollections: {},
+  userCollections: null,
   errorMessage: undefined,
   isLoading: false,
   isFetching: false,

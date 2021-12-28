@@ -55,13 +55,13 @@ const SignIn = ({ googleSignInStart, emailSignInStart, history }) => {
       <CustomTextInfoSmall
         style={{ marginTop: "10px" }}
         className="cursor-pointer"
-        onClick={() => history.push("/sign-up")}
+        onClick={() => history.push("/auth/sign-up")}
       >
         Don't have an account? Sign up.
       </CustomTextInfoSmall>
       <CustomTextInfoSmall
         className="cursor-pointer"
-        onClick={() => history.push("/reset-password-email")}
+        onClick={() => history.push("/auth/reset-password-email")}
       >
         Forgot password?
       </CustomTextInfoSmall>

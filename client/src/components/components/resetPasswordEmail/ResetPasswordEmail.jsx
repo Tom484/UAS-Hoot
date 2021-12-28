@@ -40,11 +40,11 @@ const ResetPasswordEmail = ({ resetPasswordEmail, history }) => {
       <CustomTextInfoSmall
         style={{ marginTop: "10px" }}
         className="cursor-pointer"
-        onClick={() => history.push("/sign-in")}
+        onClick={() => history.push("/auth/sign-in")}
       >
         Do you already have an account? Sign in.
       </CustomTextInfoSmall>
-      <CustomTextInfoSmall className="cursor-pointer" onClick={() => history.push("/sign-up")}>
+      <CustomTextInfoSmall className="cursor-pointer" onClick={() => history.push("/auth/sign-up")}>
         Don't have an account? Sign up.
       </CustomTextInfoSmall>
     </form>

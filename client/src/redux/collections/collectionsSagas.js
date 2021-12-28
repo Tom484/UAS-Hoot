@@ -37,7 +37,7 @@ export function* deleteCollectionAsync({ payload }) {
     const collections = yield select(selectUserCollections)
     const currentUser = yield select(selectCurrentUser)
 
-    const collectionRef = yield firestore.collection(`collections/${currentUser.id}`)
+    const collectionRef = yield firestore.doc(`collections/${currentUser.id}`)
     yield collectionRef.update({ [collectionId]: firebase.firestore.FieldValue.delete() })
     const newCollections = yield deleteCollection(collections, {
       collectionId: payload.collectionId,

@@ -21,10 +21,11 @@ const HomePage = ({ history }) => {
         <CustomTextLarge center style={{ fontSize: "22px", color: "var(--color-text-3)" }}>
           Create and play your own events for free. And have fun!
         </CustomTextLarge>
-        <CustomTextInfoBgMedium>
+        <CustomTextInfoBgMedium style={{ fontSize: "14px" }}>
           On this page you can create your custom events which you can play with your friend, family
           etc. Your own events you can share with others. This website is complete free.
         </CustomTextInfoBgMedium>
+        <CustomTextInfoBgMedium center>Created by Tomáš Kůrka 2021</CustomTextInfoBgMedium>
         <CustomButton onClick={() => history.push("/library/recent")}>Continue</CustomButton>
       </CustomCard>
     </CustomBackground>

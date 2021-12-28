@@ -19,7 +19,8 @@ const PreviewCollections = ({ collectionArray }) => {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  const { sortId } = ownProps.match.params
+  // const { sortId } = ownProps.match.params
+  const sortId = "recent"
   return {
     collectionArray: selectUserCollectionsArraySorted(sortId)(state),
   }

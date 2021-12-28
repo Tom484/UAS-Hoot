@@ -2,12 +2,19 @@ import React from "react"
 import { connect } from "react-redux"
 import { selectUserCollectionsIsLoading } from "../../../redux/collections/collectionsSelectors"
 import RollerAnimation from "../../animation/rollerAnimation/RollerAnimation"
-import { selectUserIsLoading } from "../../../redux/user/userSelectors"
+import {
+  selectCompletedAuthInitialProcess,
+  selectUserIsLoading,
+} from "../../../redux/user/userSelectors"
 
 import "./loadingAnimation.scss"
 
-const LoadingAnimationDatabase = ({ collectionsIsLoading, userIsLoading }) => {
-  if (!collectionsIsLoading && !userIsLoading) return <></>
+const AutoLoadingAnimation = ({
+  collectionsIsLoading,
+  userIsLoading,
+  completedAuthInitialProcess,
+}) => {
+  if (!collectionsIsLoading && !userIsLoading && completedAuthInitialProcess) return <></>
 
   return (
     <div className="loading-animation">
@@ -22,8 +29,9 @@ const LoadingAnimationDatabase = ({ collectionsIsLoading, userIsLoading }) => {
 }
 
 const mapStateToProps = state => ({
+  completedAuthInitialProcess: selectCompletedAuthInitialProcess(state),
   collectionsIsLoading: selectUserCollectionsIsLoading(state),
   userIsLoading: selectUserIsLoading(state),
 })
 
-export default connect(mapStateToProps)(LoadingAnimationDatabase)
+export default connect(mapStateToProps)(AutoLoadingAnimation)
