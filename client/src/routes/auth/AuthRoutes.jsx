@@ -12,6 +12,7 @@ export const AUTH_ROUTES = {
   SIGN_IN: "/auth/sign-in",
   SIGN_UP: "/auth/sign-up",
   RESET_PASSWORD_EMAIL: "/auth/reset-password-email",
+  INITIAL: "/auth",
 }
 
 const AuthRoutes = () => {

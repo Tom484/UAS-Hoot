@@ -7,6 +7,7 @@ import { NOT_FOUND_ROUTES } from "../notFound/NotFoundRoutes"
 
 export const REPORTS_ROUTERS = {
   DEFAULT: "/reports",
+  INITIAL: "/reports",
 }
 
 const ReportRoutes = () => {

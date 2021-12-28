@@ -5,6 +5,7 @@ const initialState = {
   theme: "light",
   systemTheme: "light",
   themeSetting: THEME_SETTING_VALUES.SYSTEM_THEME,
+  navbarActive: false,
 }
 
 const localSettingReducer = (state = initialState, action) => {
@@ -19,6 +20,8 @@ const localSettingReducer = (state = initialState, action) => {
       return { ...state, ...changeThemeSetting(state, action.payload) }
     case LocalSettingActionTypes.UPDATE_SYSTEM_THEME:
       return { ...state, ...changeSystemTheme(state, action.payload) }
+    case LocalSettingActionTypes.TOGGLE_NAVBAR_ACTIVE:
+      return { ...state, navbarActive: !state.navbarActive }
     default:
       return state
   }

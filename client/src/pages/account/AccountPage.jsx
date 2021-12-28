@@ -3,20 +3,19 @@ import UpdateAccountPassword from "../../components/components/updateAccount/Upd
 import UpdateAccountInformation from "../../components/components/updateAccount/UpdateAccountInformation"
 import ChangeThemeSetting from "../../components/components/changeThemeSetting/ChangeThemeSetting"
 import CustomBackground from "../../components/components/customBackground/CustomBackground"
-import Navbar from "../../components/components/navbar/Navbar"
 
 import "./accountPage.scss"
+import NavbarContainer from "../../components/components/navbarContainer/NavbarContainer"
 
 const AccountPage = () => {
   return (
-    <div style={{ paddingTop: "80px" }}>
-      <Navbar />
+    <NavbarContainer>
       <CustomBackground className="account-page-container">
         <UpdateAccountInformation />
         <UpdateAccountPassword />
         <ChangeThemeSetting />
       </CustomBackground>
-    </div>
+    </NavbarContainer>
   )
 }
 

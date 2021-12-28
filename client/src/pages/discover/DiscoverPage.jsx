@@ -1,14 +1,10 @@
 import React from "react"
-import Navbar from "../../components/components/navbar/Navbar"
+import NavbarContainer from "../../components/components/navbarContainer/NavbarContainer"
 
 import "./discoverPage.scss"
 
 const DiscoverPage = () => {
-  return (
-    <div style={{ paddingTop: "80px" }}>
-      <Navbar /> Discover Page
-    </div>
-  )
+  return <NavbarContainer>Discover Page</NavbarContainer>
 }
 
 export default DiscoverPage

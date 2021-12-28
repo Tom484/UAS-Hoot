@@ -7,6 +7,7 @@ import { NOT_FOUND_ROUTES } from "../notFound/NotFoundRoutes"
 
 export const DISCOVER_ROUTES = {
   DEFAULT: "/discover",
+  INITIAL: "/discover",
 }
 
 const DiscoverRoutes = () => {

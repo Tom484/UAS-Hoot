@@ -7,6 +7,7 @@ import { NOT_FOUND_ROUTES } from "../notFound/NotFoundRoutes"
 
 export const EDITOR_ROUTES = {
   EDITOR: "/editor/:collectionId",
+  INITIAL: "/editor",
 }
 
 const EditorRoutes = () => {

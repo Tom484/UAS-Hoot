@@ -13,3 +13,8 @@ export const selectLocalSettingSystemTheme = createSelector(
   [selectLocalSetting],
   state => state.systemTheme
 )
+
+export const selectLocalSettingNavbarActive = createSelector(
+  [selectLocalSetting],
+  state => state.navbarActive
+)

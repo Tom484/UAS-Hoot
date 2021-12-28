@@ -1,15 +1,10 @@
 import React from "react"
-import Navbar from "../../components/components/navbar/Navbar"
+import NavbarContainer from "../../components/components/navbarContainer/NavbarContainer"
 
 import "./reportsPage.scss"
 
 const ReportsPage = () => {
-  return (
-    <div style={{ paddingTop: "80px" }}>
-      <Navbar />
-      Reports Page
-    </div>
-  )
+  return <NavbarContainer>Reports Page</NavbarContainer>
 }
 
 export default ReportsPage

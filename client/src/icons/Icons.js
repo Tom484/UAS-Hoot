@@ -125,3 +125,28 @@ export { ReactComponent as ICONCalendarOutline } from "./icons/calendar/calendar
 export { ReactComponent as ICONClockBold } from "./icons/clock/clock-bold.svg"
 export { ReactComponent as ICONClockBroken } from "./icons/clock/clock-broken.svg"
 export { ReactComponent as ICONClockOutline } from "./icons/clock/clock-outline.svg"
+
+// Logout
+export { ReactComponent as ICONLogoutBold } from "./icons/logout/logout-bold.svg"
+export { ReactComponent as ICONLogoutBroken } from "./icons/logout/logout-broken.svg"
+export { ReactComponent as ICONLogoutOutline } from "./icons/logout/logout-outline.svg"
+
+// Direct
+export { ReactComponent as ICONDirectBold } from "./icons/direct/direct-bold.svg"
+export { ReactComponent as ICONDirectBroken } from "./icons/direct/direct-broken.svg"
+export { ReactComponent as ICONDirectOutline } from "./icons/direct/direct-outline.svg"
+
+// Clipboard
+export { ReactComponent as ICONClipboardBold } from "./icons/clipboard/clipboard-bold.svg"
+export { ReactComponent as ICONClipboardBroken } from "./icons/clipboard/clipboard-broken.svg"
+export { ReactComponent as ICONClipboardOutline } from "./icons/clipboard/clipboard-outline.svg"
+
+// Book
+export { ReactComponent as ICONBookBold } from "./icons/book/book-bold.svg"
+export { ReactComponent as ICONBookBroken } from "./icons/book/book-broken.svg"
+export { ReactComponent as ICONBookOutline } from "./icons/book/book-outline.svg"
+
+// Menu
+export { ReactComponent as ICONMenuBold } from "./icons/menu/menu-bold.svg"
+export { ReactComponent as ICONMenuBroken } from "./icons/menu/menu-broken.svg"
+export { ReactComponent as ICONMenuOutline } from "./icons/menu/menu-outline.svg"

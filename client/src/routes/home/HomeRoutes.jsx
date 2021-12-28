@@ -5,6 +5,7 @@ import { NOT_FOUND_ROUTES } from "../notFound/NotFoundRoutes"
 
 export const HOME_ROUTES = {
   HOME: "/",
+  INITIAL: "/",
 }
 
 const HomeRoutes = () => {

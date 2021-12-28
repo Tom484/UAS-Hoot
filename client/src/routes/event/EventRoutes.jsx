@@ -9,6 +9,7 @@ import { NOT_FOUND_ROUTES } from "../notFound/NotFoundRoutes"
 export const EVENT_ROUTES = {
   CREATE_EVENT: "/event/:collectionId",
   EVENT: "/event",
+  INITIAL: "/event",
 }
 
 const EventRoutes = () => {

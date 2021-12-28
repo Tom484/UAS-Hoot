@@ -4,6 +4,7 @@ import NotFoundPage from "../../pages/notFound/NotFoundPage"
 
 export const NOT_FOUND_ROUTES = {
   NOT_FOUND: "/not-found",
+  INITIAL: "/not-found",
 }
 
 const NotFoundRoutes = () => {

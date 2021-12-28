@@ -14,3 +14,7 @@ export const updateSystemTheme = data => ({
   type: LocalSettingActionTypes.UPDATE_SYSTEM_THEME,
   payload: data,
 })
+
+export const toggleNavbarActive = () => ({
+  type: LocalSettingActionTypes.TOGGLE_NAVBAR_ACTIVE,
+})

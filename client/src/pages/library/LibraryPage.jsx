@@ -7,14 +7,16 @@ import { selectUserCollectionsArraySorted } from "../../redux/collections/collec
 import { connect } from "react-redux"
 
 import "./libraryPage.scss"
+import NavbarContainer from "../../components/components/navbarContainer/NavbarContainer"
 
 const LibraryPage = ({ collectionArray }) => {
-  console.log(collectionArray)
   return (
-    <CustomBackground navbar className="library-page" bubbleBackground={false}>
-      <LibraryHeader />
-      <PreviewCollections collections={collectionArray} />
-    </CustomBackground>
+    <NavbarContainer>
+      <CustomBackground navbar className="library-page" bubbleBackground={false}>
+        <LibraryHeader />
+        <PreviewCollections collections={collectionArray} />
+      </CustomBackground>
+    </NavbarContainer>
   )
 }
 
