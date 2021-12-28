@@ -14,7 +14,7 @@ export const selectUserCollectionsIsLoading = createSelector(
 )
 
 export const selectUserCollectionsArray = createSelector([selectUserCollections], collections =>
-  Object.values(collections)
+  Object.values(collections || {})
 )
 
 export const selectUserCollectionsArraySorted = sortedId =>
@@ -22,7 +22,6 @@ export const selectUserCollectionsArraySorted = sortedId =>
     [selectUserCollectionsArray, selectCurrentUser],
     (collectionsArray, currentUser) => {
       const favorites = currentUser?.favorites || []
-
       switch (sortedId) {
         case "recent":
           return collectionsArray.sort((a, b) => b.changedAt - a.changedAt) || []

@@ -2,7 +2,7 @@ import React, { useEffect } from "react"
 import { Route, Switch, Redirect } from "react-router-dom"
 import { connect } from "react-redux"
 import { checkUserSession } from "../redux/user/userActions"
-import { selectCurrentUser } from "../redux/user/userSelectors"
+import { selectCompletedAuthInitialProcess, selectCurrentUser } from "../redux/user/userSelectors"
 import { fetchCollectionsStart } from "../redux/collections/collectionsActions"
 import AutoLoadingAnimation from "./components/loadingAnimation/AutoLoadingAnimation"
 import DarkThemeListener from "./components/darkThemeListener/DarkThemeListener"
@@ -16,13 +16,22 @@ import ReportRoutes from "../routes/reports/ReportsRoutes"
 import HomeRoutes from "../routes/home/HomeRoutes"
 import EventRoutes from "../routes/event/EventRoutes"
 import { selectUserCollections } from "../redux/collections/collectionsSelectors"
+import LoadingAnimation from "./components/loadingAnimation/LoadingAnimation"
 
-const App = ({ currentUser, checkUserSession, fetchCollectionsStart, collections }) => {
+const App = ({
+  currentUser,
+  checkUserSession,
+  fetchCollectionsStart,
+  collections,
+  completedAuthInitialProcess,
+}) => {
   useEffect(() => {
     if (!currentUser) checkUserSession()
     if (currentUser && !collections) fetchCollectionsStart(currentUser)
     // eslint-disable-next-line
   }, [currentUser])
+
+  if (!completedAuthInitialProcess) return <LoadingAnimation />
 
   return (
     <div>
@@ -47,6 +56,7 @@ const App = ({ currentUser, checkUserSession, fetchCollectionsStart, collections
 const mapStateToProps = state => ({
   collections: selectUserCollections(state),
   currentUser: selectCurrentUser(state),
+  completedAuthInitialProcess: selectCompletedAuthInitialProcess(state),
 })
 
 const mapDispatchToProps = dispatch => ({

@@ -5,29 +5,12 @@
   color: var(--color-text-3);
   width: 100%;
   position: relative;
-
-  .icon-star {
-    top: 0;
-    right: 0;
-    position: absolute;
-    transform: translate(30%, -30%);
-    height: 30px;
-    width: 30px;
-    padding: 4px;
-    border-radius: 8px;
-    background: var(--color-background-1);
-    fill: var(--color-icon-2);
-    &.active {
-      fill: var(--color-main-1);
-    }
-  }
-
+  background: var(--color-background-1);
+  border-radius: 12px;
   .preview-collection-container {
     @include flex-center-column();
-    background: var(--color-background-2);
     width: 100%;
     padding: 20px;
-    border-radius: 12px;
 
     .property-container {
       display: flex;

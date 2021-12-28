@@ -1,7 +1,7 @@
 @import "../../../styles/mixins.scss";
 .preview-collections {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  padding-top: 20px;
-  gap: 20px;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 25px;
+  margin-top: 25px;
 }

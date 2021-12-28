@@ -21,13 +21,7 @@ const PreviewCollection = ({ collection: { name, changedAt, author, id }, curren
 
   return (
     <div className="preview-collection">
-      <EditButton type="TOGGLE_FAVORITE_COLLECTION" collectionId={id}>
-        {isFavorite ? (
-          <ICONStarBold className="icon-star cursor-pointer active" />
-        ) : (
-          <ICONStarOutline className="icon-star cursor-pointer" />
-        )}
-      </EditButton>
+      {/* <EditButton type="TOGGLE_FAVORITE_COLLECTION" collectionId={id}></EditButton> */}
       <div className="preview-collection-container">
         <CustomTextMedium>
           <div className="fw-600">{name}</div>

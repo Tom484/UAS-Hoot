@@ -1,0 +1,31 @@
+@import "../../../styles/mixins.scss";
+
+.library-header-container {
+  width: 100%;
+  padding: 20px 25px;
+  background: var(--color-background-1);
+  border-radius: 12px;
+  box-shadow: var(--box-shadow-medium);
+  .library-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 50px;
+    .sorts-icon {
+      @include flex-center-center();
+      gap: 15px;
+      .sort-icon {
+        cursor: pointer;
+        fill: var(--color-text-2);
+        width: 40px;
+        height: 40px;
+        padding: 6px;
+        border-radius: 8px;
+        &.active {
+          background: var(--color-background-3);
+        }
+      }
+    }
+  }
+}

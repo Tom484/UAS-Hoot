@@ -1,15 +1,5 @@
-.library-page-container {
+.library-page {
   padding: 20px;
-  width: 1150px;
-  background: var(--color-background-1);
-  box-shadow: var(--box-shadow-medium), var(--box-shadow-medium);
-  margin: 30px 15px;
-  border-radius: 20px;
-  .library-page-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px;
-    padding-bottom: 40px;
-  }
+  width: 100%;
+  min-height: calc(100vh - 80px);
 }
