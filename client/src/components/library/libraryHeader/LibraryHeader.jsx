@@ -14,7 +14,7 @@ const LibraryHeader = ({ history, location }) => {
     <div className="library-header-container">
       <div className="library-header">
         <CustomTextLarge style={{ whiteSpace: "nowrap" }}>Your Library</CustomTextLarge>
-        <CustomInput placeholder="Search collection" />
+        <CustomInput placeholder="Search collection" style={{ maxWidth: "500px" }} />
         <div className="sorts-icon">
           <ICONEditOutline
             className={`sort-icon ${location.pathname === LIBRARY_ROUTES.RECENT ? "active" : ""}`}

@@ -1,0 +1,22 @@
+.context-menu-container {
+  font-size: 14px;
+  background-color: #fff;
+  border-radius: 8px;
+  width: 150px;
+  position: absolute;
+  list-style: none;
+  overflow: hidden;
+  z-index: 500000;
+  box-shadow: var(--box-shadow-medium);
+  .context-menu-items {
+    display: flex;
+    flex-direction: column;
+    .context-menu-item {
+      font-size: 16px;
+      padding: 8px 15px;
+      &:hover {
+        background: var(--color-background-2);
+      }
+    }
+  }
+}

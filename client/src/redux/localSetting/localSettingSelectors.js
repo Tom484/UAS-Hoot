@@ -18,3 +18,8 @@ export const selectLocalSettingNavbarActive = createSelector(
   [selectLocalSetting],
   state => state.navbarActive
 )
+
+export const selectLocalSettingContextMenuItems = createSelector(
+  [selectLocalSetting],
+  state => state.contextMenuItems
+)

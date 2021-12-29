@@ -17,6 +17,7 @@ import HomeRoutes from "../routes/home/HomeRoutes"
 import EventRoutes from "../routes/event/EventRoutes"
 import { selectUserCollections } from "../redux/collections/collectionsSelectors"
 import LoadingAnimation from "./components/loadingAnimation/LoadingAnimation"
+import ContextMenu from "./components/ContextMenu/ContextMenu"
 
 const App = ({
   currentUser,
@@ -38,6 +39,7 @@ const App = ({
       <Notifications />
       <DarkThemeListener />
       <AutoLoadingAnimation />
+      <ContextMenu />
       <Switch>
         <Route path="/auth" component={AuthRoutes} />
         <Route path="/library" component={LibraryRoutes} />

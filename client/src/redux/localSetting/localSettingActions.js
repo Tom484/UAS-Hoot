@@ -18,3 +18,8 @@ export const updateSystemTheme = data => ({
 export const toggleNavbarActive = () => ({
   type: LocalSettingActionTypes.TOGGLE_NAVBAR_ACTIVE,
 })
+
+export const setContextMenuItems = items => ({
+  type: LocalSettingActionTypes.SET_CONTEXT_MENU_ITEMS,
+  payload: items,
+})

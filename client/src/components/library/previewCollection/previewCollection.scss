@@ -1,4 +1,3 @@
-@import "../../../styles/colors.scss";
 @import "../../../styles/mixins.scss";
 
 .preview-collection {
@@ -7,39 +6,12 @@
   position: relative;
   background: var(--color-background-1);
   border-radius: 12px;
+  &.favorite {
+  }
   .preview-collection-container {
     @include flex-center-column();
-    width: 100%;
     padding: 20px;
-
-    .property-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding-top: 20px;
-
-      .side-container-1 {
-        display: flex;
-        align-items: center;
-      }
-      .side-container-2 {
-        @include flex-center-center();
-        background: var(--color-background-3);
-        gap: 10px;
-        padding: 5px;
-        border-radius: 8px;
-        .icon {
-          height: 30px;
-          width: 30px;
-          padding: 5px;
-          border-radius: 5px;
-          color: var(--color-text-2);
-          fill: var(--color-icon-2);
-          &:hover {
-            background: var(--color-background-2);
-          }
-        }
-      }
-    }
+    width: 100%;
+    gap: 12px;
   }
 }

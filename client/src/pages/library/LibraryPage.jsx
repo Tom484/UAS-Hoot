@@ -4,10 +4,10 @@ import CustomBackground from "../../components/components/customBackground/Custo
 import LibraryHeader from "../../components/library/libraryHeader/LibraryHeader"
 import { withRouter } from "react-router-dom"
 import { selectUserCollectionsArraySorted } from "../../redux/collections/collectionsSelectors"
+import NavbarContainer from "../../components/components/navbarContainer/NavbarContainer"
 import { connect } from "react-redux"
 
 import "./libraryPage.scss"
-import NavbarContainer from "../../components/components/navbarContainer/NavbarContainer"
 
 const LibraryPage = ({ collectionArray }) => {
   return (

@@ -4,8 +4,8 @@
   width: 100%;
   padding: 20px 25px;
   background: var(--color-background-1);
-  border-radius: 12px;
   box-shadow: var(--box-shadow-medium);
+  border-radius: 12px;
   .library-header {
     width: 100%;
     display: flex;
@@ -23,7 +23,8 @@
         padding: 6px;
         border-radius: 8px;
         &.active {
-          background: var(--color-background-3);
+          background: var(--color-main-9);
+          fill: var(--color-main-2);
         }
       }
     }

@@ -1,10 +1,15 @@
 import React from "react"
+import CustomBackground from "../../components/components/customBackground/CustomBackground"
 import NavbarContainer from "../../components/components/navbarContainer/NavbarContainer"
 
 import "./discoverPage.scss"
 
 const DiscoverPage = () => {
-  return <NavbarContainer>Discover Page</NavbarContainer>
+  return (
+    <NavbarContainer>
+      <CustomBackground>Discover Page</CustomBackground>
+    </NavbarContainer>
+  )
 }
 
 export default DiscoverPage
