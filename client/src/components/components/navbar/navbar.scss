@@ -2,9 +2,10 @@
 .navbar-holder {
   width: 100px;
   height: 100vh;
-  transition: width 0.5s;
+  // transition: width 0.5s;
   &.active {
     width: 300px;
+    min-width: 300px;
     .navbar {
       .navbar-container {
         .links-container {
@@ -20,7 +21,7 @@
   }
 
   .navbar {
-    transition: width 0.5s;
+    // transition: width 0.5s;
     position: fixed;
     padding: 10px;
     overflow: hidden;

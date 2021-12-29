@@ -16,11 +16,11 @@ import { HOME_ROUTES } from "../../../routes/home/HomeRoutes"
 import { AUTH_ROUTES } from "../../../routes/auth/AuthRoutes"
 import { REPORTS_ROUTERS } from "../../../routes/reports/ReportsRoutes"
 import { DISCOVER_ROUTES } from "../../../routes/discover/DiscoverRoutes"
+import { toggleNavbarActive } from "../../../redux/localSetting/localSettingActions"
+import { selectLocalSettingNavbarActive } from "../../../redux/localSetting/localSettingSelectors"
 import { LIBRARY_ROUTES } from "../../../routes/library/LibraryRoutes"
 
 import "./navbar.scss"
-import { toggleNavbarActive } from "../../../redux/localSetting/localSettingActions"
-import { selectLocalSettingNavbarActive } from "../../../redux/localSetting/localSettingSelectors"
 
 const Navbar = ({ signOut, history, location, toggleNavbarActive, navbarActive }) => {
   const path = location.pathname

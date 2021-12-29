@@ -1,5 +1,6 @@
 import { withRouter } from "react-router-dom"
 import PreviewCollection from "../previewCollection/PreviewCollection"
+import PreviewCollectionCreate from "../previewCollectionCreate/PreviewCollectionCreate"
 
 import "./previewCollections.scss"
 
@@ -8,6 +9,7 @@ const PreviewCollections = ({ collections }) => {
 
   return (
     <div className="preview-collections">
+      <PreviewCollectionCreate />
       {collections.map(collection => (
         <PreviewCollection key={collection.id} collection={collection} />
       ))}

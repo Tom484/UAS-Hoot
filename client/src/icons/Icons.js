@@ -150,3 +150,8 @@ export { ReactComponent as ICONBookOutline } from "./icons/book/book-outline.svg
 export { ReactComponent as ICONMenuBold } from "./icons/menu/menu-bold.svg"
 export { ReactComponent as ICONMenuBroken } from "./icons/menu/menu-broken.svg"
 export { ReactComponent as ICONMenuOutline } from "./icons/menu/menu-outline.svg"
+
+// Menu
+export { ReactComponent as ICONAddBold } from "./icons/add/add-bold.svg"
+export { ReactComponent as ICONAddBroken } from "./icons/add/add-broken.svg"
+export { ReactComponent as ICONAddOutline } from "./icons/add/add-outline.svg"

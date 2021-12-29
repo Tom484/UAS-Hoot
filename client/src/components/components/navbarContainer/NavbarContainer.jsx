@@ -6,7 +6,6 @@ import Navbar from "../navbar/Navbar"
 import "./navbarContainer.scss"
 
 const NavbarContainer = ({ children, navbarActive }) => {
-  console.log(navbarActive)
   return (
     <div className={`navbar-container-component ${navbarActive ? "active" : ""}`}>
       <Navbar />

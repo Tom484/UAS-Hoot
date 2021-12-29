@@ -2,15 +2,11 @@ import React from "react"
 import { format } from "date-fns"
 import { selectCurrentUser } from "../../../redux/user/userSelectors"
 import { connect } from "react-redux"
-import {
-  CustomTextInfoBgMedium,
-  CustomTextMedium,
-  CustomTextSmall,
-} from "../../components/customText/CustomText"
+import { CustomTextMedium, CustomTextSmall } from "../../components/customText/CustomText"
 
 import "./previewCollection.scss"
 import { setContextMenuItems } from "../../../redux/localSetting/localSettingActions"
-import { CONTEXT_MENU_TYPES } from "../../components/ContextMenu/ContextMenu"
+import { CONTEXT_MENU_TYPES } from "../../components/contextMenu/ContextMenu"
 
 const PreviewCollection = ({
   collection: { name, changedAt, author, id },
@@ -32,9 +28,9 @@ const PreviewCollection = ({
           <div className="fw-600">{name}</div>
         </CustomTextMedium>
         <CustomTextSmall>Ready to play</CustomTextSmall>
-        <CustomTextInfoBgMedium style={{ color: "var(--color-text-3)", fontWeight: "500" }}>
+        <CustomTextSmall className="collection-highlight">
           {author} | {format(new Date(changedAt), "LLLL dd yyyy")}
-        </CustomTextInfoBgMedium>
+        </CustomTextSmall>
       </div>
     </div>
   )

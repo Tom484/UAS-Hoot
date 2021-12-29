@@ -23,6 +23,8 @@ const Notifications = ({ notifications, deleteNotification }) => {
     })
   }
 
+  if (!notifications || notifications.length === 0) return <></>
+
   return (
     <div className="notifications">
       <div className="notifications-container">

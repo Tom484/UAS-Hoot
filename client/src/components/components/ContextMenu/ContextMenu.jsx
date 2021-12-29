@@ -2,8 +2,8 @@ import { useCallback, useEffect, useState } from "react"
 import { connect } from "react-redux"
 import { setContextMenuItems } from "../../../redux/localSetting/localSettingActions"
 import { selectLocalSettingContextMenuItems } from "../../../redux/localSetting/localSettingSelectors"
-import "./contextMenu.scss"
 import ContextMenuPreviewCollection from "./ContextMenuPreviewCollection"
+import "./contextMenu.scss"
 
 export const CONTEXT_MENU_TYPES = {
   PREVIEW_COLLECTION: "PREVIEW_COLLECTION",
@@ -25,6 +25,7 @@ const ContextMenu = ({ contextMenuItems, setContextMenuItems }) => {
   const handleClick = useCallback(() => {
     setContextMenuItems({})
     return show ? setShow(false) : null
+    // eslint-disable-next-line
   }, [show])
 
   useEffect(() => {

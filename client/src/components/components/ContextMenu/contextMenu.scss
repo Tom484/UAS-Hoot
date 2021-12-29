@@ -13,6 +13,7 @@
     flex-direction: column;
     .context-menu-item {
       font-size: 16px;
+      font-weight: 500;
       padding: 8px 15px;
       &:hover {
         background: var(--color-background-2);

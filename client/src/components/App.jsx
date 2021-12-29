@@ -17,7 +17,7 @@ import HomeRoutes from "../routes/home/HomeRoutes"
 import EventRoutes from "../routes/event/EventRoutes"
 import { selectUserCollections } from "../redux/collections/collectionsSelectors"
 import LoadingAnimation from "./components/loadingAnimation/LoadingAnimation"
-import ContextMenu from "./components/ContextMenu/ContextMenu"
+import ContextMenu from "./components/contextMenu/ContextMenu"
 
 const App = ({
   currentUser,

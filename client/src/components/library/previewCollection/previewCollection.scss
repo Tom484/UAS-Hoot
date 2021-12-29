@@ -6,12 +6,29 @@
   position: relative;
   background: var(--color-background-1);
   border-radius: 12px;
+  font-weight: 500;
+  transition: box-shadow 0.3s;
+  &:hover {
+    box-shadow: var(--box-shadow-medium);
+  }
   &.favorite {
+    color: var(--color-main-2);
+    background: var(--color-main-11);
+    .preview-collection-container {
+      .collection-highlight {
+        background: var(--color-main-10);
+      }
+    }
   }
   .preview-collection-container {
     @include flex-center-column();
     padding: 20px;
     width: 100%;
     gap: 12px;
+    .collection-highlight {
+      padding: 10px;
+      border-radius: 8px;
+      background: var(--color-background-2);
+    }
   }
 }
