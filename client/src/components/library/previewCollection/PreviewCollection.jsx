@@ -3,10 +3,10 @@ import { format } from "date-fns"
 import { selectCurrentUser } from "../../../redux/user/userSelectors"
 import { connect } from "react-redux"
 import { CustomTextMedium, CustomTextSmall } from "../../components/customText/CustomText"
-
-import "./previewCollection.scss"
 import { setContextMenuItems } from "../../../redux/localSetting/localSettingActions"
 import { CONTEXT_MENU_TYPES } from "../../components/contextMenu/ContextMenu"
+
+import "./previewCollection.scss"
 
 const PreviewCollection = ({
   collection: { name, changedAt, author, id },
@@ -25,7 +25,7 @@ const PreviewCollection = ({
     >
       <div className="preview-collection-container">
         <CustomTextMedium>
-          <div className="fw-600">{name}</div>
+          <span className="fw-600">{name}</span>
         </CustomTextMedium>
         <CustomTextSmall>Ready to play</CustomTextSmall>
         <CustomTextSmall className="collection-highlight">

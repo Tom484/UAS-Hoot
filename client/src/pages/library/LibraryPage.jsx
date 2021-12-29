@@ -15,8 +15,10 @@ const LibraryPage = ({ collectionArray }) => {
 
   const handleSearchFilter = e => {
     const value = e?.target?.value || ""
+
     setSearchFilter(value)
     if (!value) return setFilterCollections(collectionArray)
+
     setFilterCollections(
       collectionArray.filter(collection =>
         collection.name.toLowerCase().includes(value.toLowerCase())

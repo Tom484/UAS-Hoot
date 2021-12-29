@@ -1,13 +1,11 @@
 import React from "react"
-import { withRouter } from "react-router-dom"
-import { ICONCalendarOutline, ICONEditOutline, ICONHeartOutline } from "../../../icons/Icons"
-import { LIBRARY_ROUTES } from "../../../routes/library/LibraryRoutes"
 import { CustomInput } from "../../components/customInput/CustomInput"
 import { CustomTextLarge } from "../../components/customText/CustomText"
+import LibrarySortIcons from "../librarySortIcons/LibrarySortIcons"
 
 import "./libraryHeader.scss"
 
-const LibraryHeader = ({ history, location, searchFilter, handleSearchFilter }) => {
+const LibraryHeader = ({ searchFilter, handleSearchFilter }) => {
   return (
     <div className="library-header-container">
       <div className="library-header">
@@ -17,25 +15,10 @@ const LibraryHeader = ({ history, location, searchFilter, handleSearchFilter }) 
           value={searchFilter}
           onChange={e => handleSearchFilter(e)}
         />
-        <div className="sorts-icon">
-          <ICONEditOutline
-            className={`sort-icon ${location.pathname === LIBRARY_ROUTES.RECENT ? "active" : ""}`}
-            onClick={() => history.push(LIBRARY_ROUTES.RECENT)}
-          />
-          <ICONCalendarOutline
-            className={`sort-icon ${location.pathname === LIBRARY_ROUTES.CREATED ? "active" : ""}`}
-            onClick={() => history.push(LIBRARY_ROUTES.CREATED)}
-          />
-          <ICONHeartOutline
-            className={`sort-icon ${
-              location.pathname === LIBRARY_ROUTES.FAVORITES ? "active" : ""
-            }`}
-            onClick={() => history.push(LIBRARY_ROUTES.FAVORITES)}
-          />
-        </div>
+        <LibrarySortIcons />
       </div>
     </div>
   )
 }
 
-export default withRouter(LibraryHeader)
+export default LibraryHeader

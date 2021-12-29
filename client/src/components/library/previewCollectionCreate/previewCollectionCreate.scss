@@ -5,14 +5,16 @@
   border-radius: 12px;
   padding: 20px;
   background: var(--color-background-1);
-  background: rgba(219, 255, 216, 0.774);
   height: 100%;
+  transition: box-shadow 0.3s;
   &:hover {
-    background: rgb(219, 255, 216);
+    box-shadow: var(--box-shadow-medium);
   }
   .preview-collection-icon {
-    width: 100px;
-    height: 100px;
-    fill: rgb(67, 238, 52);
+    width: 110px;
+    height: 110px;
+    fill: var(--color-text-3);
+    background: var(--color-background-2);
+    border-radius: 12px;
   }
 }
