@@ -1,6 +1,6 @@
 import React from "react"
-import CustomBackground from "../../components/custom/customBackground/CustomBackground"
-import NavbarContainer from "../../components/navbar/navbarContainer/NavbarContainer"
+import CustomBackground from "../../../components/custom/customBackground/CustomBackground"
+import NavbarContainer from "../../../components/navbar/navbarContainer/NavbarContainer"
 
 import "./reportsPage.scss"
 

@@ -1,8 +1,8 @@
 import React from "react"
 import { Redirect, Switch } from "react-router-dom"
 import PrivateRoute from "../../components/components/privateRoute/PrivateRoute"
-import EventPage from "../../pages/event/EventPage"
-import EventCreatePage from "../../pages/eventCreate/EventCreatePage"
+import EventPage from "../../pages/event/event/EventPage"
+import EventCreatePage from "../../pages/event/eventCreate/EventCreatePage"
 import { AUTH_ROUTES } from "../auth/AuthRoutes"
 import { NOT_FOUND_ROUTES } from "../notFound/NotFoundRoutes"
 

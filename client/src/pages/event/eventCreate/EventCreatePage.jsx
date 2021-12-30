@@ -1,15 +1,15 @@
 import React from "react"
 import { connect } from "react-redux"
 import { withRouter } from "react-router-dom"
-import { selectUserCollection } from "../../redux/collections/collectionsSelectors"
-import HostButton from "../../components/event/eventButton/EventButton"
-import CustomBackground from "../../components/custom/customBackground/CustomBackground"
-import CustomCard from "../../components/custom/customCard/CustomCard"
+import { selectUserCollection } from "../../../redux/collections/collectionsSelectors"
+import HostButton from "../../../components/event/eventButton/EventButton"
+import CustomBackground from "../../../components/custom/customBackground/CustomBackground"
+import CustomCard from "../../../components/custom/customCard/CustomCard"
 import {
   CustomTextInfoBgMedium,
   CustomTextLarge,
   CustomTextMedium,
-} from "../../components/custom/customText/CustomText"
+} from "../../../components/custom/customText/CustomText"
 
 import "./eventCreatePage.scss"
 

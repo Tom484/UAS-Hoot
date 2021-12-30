@@ -1,6 +1,6 @@
 import React from "react"
 import { Redirect, Route, Switch } from "react-router-dom"
-import HomePage from "../../pages/home/HomePage"
+import HomePage from "../../pages/home/home/HomePage"
 import { NOT_FOUND_ROUTES } from "../notFound/NotFoundRoutes"
 
 export const HOME_ROUTES = {

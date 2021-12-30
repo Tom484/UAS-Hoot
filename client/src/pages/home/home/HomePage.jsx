@@ -1,8 +1,8 @@
 import React from "react"
-import CustomBackground from "../../components/custom/customBackground/CustomBackground"
-import HomePageContent from "../../components/components/homePageContent/HomePageContent"
-import NavbarContainer from "../../components/navbar/navbarContainer/NavbarContainer"
-import { selectCurrentUser } from "../../redux/user/userSelectors"
+import CustomBackground from "../../../components/custom/customBackground/CustomBackground"
+import HomePageContent from "../../../components/components/homePageContent/HomePageContent"
+import NavbarContainer from "../../../components/navbar/navbarContainer/NavbarContainer"
+import { selectCurrentUser } from "../../../redux/user/userSelectors"
 import { connect } from "react-redux"
 
 import "./homePage.scss"

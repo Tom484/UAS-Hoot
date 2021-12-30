@@ -1,6 +1,6 @@
 import React from "react"
 import { Redirect, Route, Switch } from "react-router-dom"
-import NotFoundPage from "../../pages/notFound/NotFoundPage"
+import NotFoundPage from "../../pages/notFound/notFound/NotFoundPage"
 
 export const NOT_FOUND_ROUTES = {
   NOT_FOUND: "/not-found",

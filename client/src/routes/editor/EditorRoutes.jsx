@@ -1,7 +1,7 @@
 import React from "react"
 import { Redirect, Switch } from "react-router-dom"
 import PrivateRoute from "../../components/components/privateRoute/PrivateRoute"
-import EditorPage from "../../pages/editor/EditorPage"
+import EditorPage from "../../pages/editor/editor/EditorPage"
 import { AUTH_ROUTES } from "../auth/AuthRoutes"
 import { NOT_FOUND_ROUTES } from "../notFound/NotFoundRoutes"
 

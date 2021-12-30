@@ -1,11 +1,11 @@
 import React, { useEffect } from "react"
 import { connect } from "react-redux"
-import EventNavbar from "../../components/event/eventNavbar/EventNavbar"
-import EventSlide from "../../components/event/eventSlide/EventSlide"
-import { firestore } from "../../firebase/firebaseUtils"
-import { updateAnswers } from "../../redux/eventAnswers/eventAnswersActions"
-import { selectEventDataConnect } from "../../redux/eventData/eventDataSelectors"
-import { updatePlayersLocal } from "../../redux/eventPlayers/eventPlayersActions"
+import EventNavbar from "../../../components/event/eventNavbar/EventNavbar"
+import EventSlide from "../../../components/event/eventSlide/EventSlide"
+import { firestore } from "../../../firebase/firebaseUtils"
+import { updateAnswers } from "../../../redux/eventAnswers/eventAnswersActions"
+import { selectEventDataConnect } from "../../../redux/eventData/eventDataSelectors"
+import { updatePlayersLocal } from "../../../redux/eventPlayers/eventPlayersActions"
 
 import "./eventPage.scss"
 
