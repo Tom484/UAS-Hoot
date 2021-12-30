@@ -8,6 +8,8 @@ import {
 } from "../../../redux/collections/collectionsActions"
 import { toggleFavoriteCollectionStart } from "../../../redux/user/userActions"
 import CustomButton from "../../custom/customButton/CustomButton"
+import { EVENT_ROUTES } from "../../../routes/event/EventRoutes"
+import { EDITOR_ROUTES } from "../../../routes/editor/EditorRoutes"
 
 const EditButton = ({
   type,
@@ -16,7 +18,6 @@ const EditButton = ({
   children,
   match,
   label,
-  className,
   deleteCollection,
   createCollection,
   toggleFavoriteCollection,
@@ -26,46 +27,27 @@ const EditButton = ({
   const clickHandler = () => {
     switch (type) {
       case EditButtonTypes.CREATE_COLLECTION.id:
-        createCollectionHandler()
+        createCollection({ history })
         break
       case EditButtonTypes.DELETE_COLLECTION.id:
-        deleteCollectionHandler()
+        deleteCollection({ collectionId })
         break
       case EditButtonTypes.LINK_TO_EDIT.id:
-        linkToEditHandler()
+        history.push(`${EDITOR_ROUTES.INITIAL}/${collectionId}`)
         break
       case EditButtonTypes.TOGGLE_FAVORITE_COLLECTION.id:
-        toggleFavoriteCollectionHandler()
+        toggleFavoriteCollection({ collectionId })
         break
       case EditButtonTypes.LINK_TO_CREATE_EVENT.id:
-        linkToCreateEventHandler()
+        history.push(`${EVENT_ROUTES.INITIAL}/${collectionId}`)
         break
       default:
         console.log("Error! Enter correct type name!")
     }
   }
 
-  const createCollectionHandler = () => {
-    createCollection({ history })
-  }
-
-  const deleteCollectionHandler = () => {
-    deleteCollection({ collectionId })
-  }
-
-  const linkToEditHandler = () => {
-    history.push(`/editor/${collectionId}`)
-  }
-
-  const linkToCreateEventHandler = () => {
-    history.push(`/create-event/${collectionId}`)
-  }
-
-  const toggleFavoriteCollectionHandler = () => {
-    toggleFavoriteCollection({ collectionId })
-  }
-
   if (children) return <span onClick={clickHandler}>{children}</span>
+
   return (
     <CustomButton style={{ fontSize: "16px", width: "auto" }} onClick={clickHandler}>
       {label ? label : EditButtonTypes[type]?.label || "Enter correct type"}
