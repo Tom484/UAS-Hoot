@@ -3,9 +3,9 @@ import UpdateAccountPassword from "../../components/components/updateAccount/Upd
 import UpdateAccountInformation from "../../components/components/updateAccount/UpdateAccountInformation"
 import ChangeThemeSetting from "../../components/components/changeThemeSetting/ChangeThemeSetting"
 import CustomBackground from "../../components/components/customBackground/CustomBackground"
+import NavbarContainer from "../../components/navbar/navbarContainer/NavbarContainer"
 
 import "./accountPage.scss"
-import NavbarContainer from "../../components/components/navbarContainer/NavbarContainer"
 
 const AccountPage = () => {
   return (

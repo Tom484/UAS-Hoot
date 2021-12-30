@@ -84,3 +84,22 @@
   flex-direction: column;
   justify-content: flex-start;
 }
+
+@mixin disableUserSelect {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+@mixin flex-center-flexStart {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+@mixin flex-center-flexStart-column {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+}

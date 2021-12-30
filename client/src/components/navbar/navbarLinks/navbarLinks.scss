@@ -1,0 +1,37 @@
+@import "../../../styles/mixins.scss";
+
+.navbar-links-container {
+  @include flex-center-column();
+  align-items: flex-start;
+  padding-top: 45px;
+  padding: 10px;
+  width: 100%;
+  gap: 10px;
+
+  .link-container {
+    @include flex-flexStart-center();
+    border-radius: 12px;
+    cursor: pointer;
+    padding: 15px;
+    width: 100%;
+    gap: 20px;
+
+    &.active,
+    &:hover {
+      background: var(--color-background-1);
+      .link-icon {
+        fill: var(--color-main-2);
+      }
+    }
+    .link-text {
+      display: none;
+      font-size: 20px;
+      font-weight: 500;
+    }
+    .link-icon {
+      fill: var(--color-text-2);
+      width: 35px;
+      height: 35px;
+    }
+  }
+}

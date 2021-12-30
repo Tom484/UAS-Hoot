@@ -1,0 +1,59 @@
+@import "../../../styles/mixins.scss";
+.navbar-holder {
+  width: 100px;
+  min-width: 100px;
+  height: 100vh;
+  &.active {
+    width: 300px;
+    min-width: 300px;
+    .navbar {
+      .navbar-container {
+        .navbar-links-container {
+          .link-container {
+            min-width: 200px;
+            .link-text {
+              display: flex;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .navbar {
+    @include disableUserSelect();
+    position: fixed;
+    overflow: hidden;
+    top: 0;
+    padding: 10px;
+    z-index: 1000000000;
+    box-shadow: var(--box-shadow-medium);
+    background: var(--color-background-2);
+    height: 100%;
+    height: 100vh;
+    width: 100px;
+    &.active {
+      width: 300px;
+    }
+
+    .navbar-active-toggle {
+      background: var(--color-background-2);
+      fill: var(--color-text-2);
+      position: absolute;
+      cursor: pointer;
+      height: 60px;
+      width: 60px;
+      right: 20px;
+      padding: 15px;
+      z-index: 1000;
+    }
+
+    .navbar-container {
+      @include flex-center-flexStart-column();
+      color: var(--color-text-2);
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}

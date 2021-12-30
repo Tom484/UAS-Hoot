@@ -1,11 +1,11 @@
 import React from "react"
 import CustomBackground from "../../components/components/customBackground/CustomBackground"
 import HomePageContent from "../../components/components/homePageContent/HomePageContent"
+import NavbarContainer from "../../components/navbar/navbarContainer/NavbarContainer"
 import { selectCurrentUser } from "../../redux/user/userSelectors"
 import { connect } from "react-redux"
 
 import "./homePage.scss"
-import NavbarContainer from "../../components/components/navbarContainer/NavbarContainer"
 
 const HomePage = ({ currentUser }) => {
   if (currentUser)
