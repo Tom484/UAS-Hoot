@@ -6,7 +6,7 @@ import { selectCompletedAuthInitialProcess, selectCurrentUser } from "../redux/u
 import { fetchCollectionsStart } from "../redux/collections/collectionsActions"
 import AutoLoadingAnimation from "./components/loadingAnimation/AutoLoadingAnimation"
 import DarkThemeListener from "./components/darkThemeListener/DarkThemeListener"
-import Notifications from "./components/notifications/Notifications"
+import Notifications from "./notifications/notifications/Notifications"
 import AuthRoutes from "../routes/auth/AuthRoutes"
 import LibraryRoutes from "../routes/library/LibraryRoutes"
 import DiscoverRoutes from "../routes/discover/DiscoverRoutes"

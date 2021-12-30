@@ -1,12 +1,13 @@
 import React from "react"
 import { withRouter } from "react-router-dom"
-import CustomButton from "../customButton/CustomButton"
-import CustomCard from "../customCard/CustomCard"
+import CustomButton from "../../custom/customButton/CustomButton"
+
+import CustomCard from "../../custom/customCard/CustomCard"
 import {
   CustomTextExtraLarge,
   CustomTextInfoBgMedium,
   CustomTextLarge,
-} from "../customText/CustomText"
+} from "../../custom/customText/CustomText"
 
 const HomePageContent = ({ history }) => {
   return (

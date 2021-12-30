@@ -2,7 +2,7 @@ import React from "react"
 import { format } from "date-fns"
 import { selectCurrentUser } from "../../../redux/user/userSelectors"
 import { connect } from "react-redux"
-import { CustomTextMedium, CustomTextSmall } from "../../components/customText/CustomText"
+import { CustomTextMedium, CustomTextSmall } from "../../custom/customText/CustomText"
 import { setContextMenuItems } from "../../../redux/localSetting/localSettingActions"
 import { CONTEXT_MENU_TYPES } from "../../components/contextMenu/ContextMenu"
 

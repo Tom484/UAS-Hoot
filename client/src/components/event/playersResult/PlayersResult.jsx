@@ -1,7 +1,7 @@
 import React from "react"
 import { connect } from "react-redux"
 import { selectEventPlayersArraySorted } from "../../../redux/eventPlayers/eventPlayersSelectors"
-import { CustomTextExtraLarge } from "../../components/customText/CustomText"
+import { CustomTextExtraLarge } from "../../custom/customText/CustomText"
 import PlayerResult from "../playerResult/PlayerResult"
 import PlayerResultLabel from "../playerResultLabel/PlayerResultLabel"
 

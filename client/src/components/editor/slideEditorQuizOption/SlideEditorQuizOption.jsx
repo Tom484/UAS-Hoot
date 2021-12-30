@@ -7,7 +7,7 @@ import {
   ICONMoonOutline,
 } from "../../../icons/Icons"
 import { editorEditOption } from "../../../redux/editor/editorActions"
-import { CustomTextarea } from "../../components/customTextarea/CustomTextarea"
+import { CustomTextarea } from "../../custom/customTextarea/CustomTextarea"
 
 import "./slideEditorQuizOption.scss"
 

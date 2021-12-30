@@ -1,10 +1,10 @@
 import React from "react"
 import { Redirect, Switch } from "react-router-dom"
 import PrivateRoute from "../../components/components/privateRoute/PrivateRoute"
-import AccountPage from "../../pages/account/AccountPage"
-import ResetPasswordEmailPage from "../../pages/resetPasswordEmail/ResetPasswordEmailPage"
-import SignInPage from "../../pages/signIn/SignInPage"
-import SignUpPage from "../../pages/signUp/SignUpPage"
+import AccountPage from "../../pages/auth/account/AccountPage"
+import ResetPasswordEmailPage from "../../pages/auth/resetPasswordEmail/ResetPasswordEmailPage"
+import SignInPage from "../../pages/auth/signIn/SignInPage"
+import SignUpPage from "../../pages/auth/signUp/SignUpPage"
 import { NOT_FOUND_ROUTES } from "../notFound/NotFoundRoutes"
 
 export const AUTH_ROUTES = {

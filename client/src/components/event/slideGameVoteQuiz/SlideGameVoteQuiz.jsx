@@ -1,5 +1,5 @@
 import React from "react"
-import CustomBackground from "../../components/customBackground/CustomBackground"
+import CustomBackground from "../../custom/customBackground/CustomBackground"
 import EventQuestion from "../eventQuestion/EventQuestion"
 import EventTimeLeft from "../eventTimeLeft/EventTimeLeft"
 import EventNumberOfAnswers from "../eventNumberOfAnswers/EventNumberOfAnswers"

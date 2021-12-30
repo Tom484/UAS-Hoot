@@ -1,6 +1,6 @@
 import React from "react"
-import { CustomInput } from "../../components/customInput/CustomInput"
-import { CustomTextLarge } from "../../components/customText/CustomText"
+import { CustomInput } from "../../custom/customInput/CustomInput"
+import { CustomTextLarge } from "../../custom/customText/CustomText"
 import LibrarySortIcons from "../librarySortIcons/LibrarySortIcons"
 
 import "./libraryHeader.scss"

@@ -3,10 +3,11 @@ import { changePasswordStart } from "../../../redux/user/userActions"
 import { connect } from "react-redux"
 
 import "./updateAccount.scss"
-import CustomInputCard from "../customInputCard/CustomInputCard"
-import { CustomInputWithLabel } from "../customInput/CustomInput"
-import { CustomTextLarge } from "../customText/CustomText"
-import CustomButton from "../customButton/CustomButton"
+import CustomInputCard from "../../custom/customInputCard/CustomInputCard"
+import { CustomInputWithLabel } from "../../custom/customInput/CustomInput"
+import { CustomTextLarge } from "../../custom/customText/CustomText"
+import CustomButton from "../../custom/customButton/CustomButton"
+
 import { createNotification } from "../../../redux/notifications/notificationsActions"
 import { NOTIFICATIONS } from "../../../redux/notifications/notificationsTypes"
 

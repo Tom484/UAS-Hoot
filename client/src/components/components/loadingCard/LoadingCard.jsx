@@ -2,7 +2,11 @@ import React from "react"
 import DotsAnimation from "../../animation/dotsAnimation/DotsAnimation"
 import { getRandomFacts } from "../../../data/facts"
 import CustomCard from "../customCard/CustomCard"
-import { CustomTextInfoBgMedium, CustomTextLarge, CustomTextMedium } from "../customText/CustomText"
+import {
+  CustomTextInfoBgMedium,
+  CustomTextLarge,
+  CustomTextMedium,
+} from "../../custom/customText/CustomText"
 
 import "./loadingCard.scss"
 

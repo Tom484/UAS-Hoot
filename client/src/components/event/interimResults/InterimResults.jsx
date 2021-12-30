@@ -1,5 +1,5 @@
 import React from "react"
-import CustomBackground from "../../components/customBackground/CustomBackground"
+import CustomBackground from "../../custom/customBackground/CustomBackground"
 import PlayersResult from "../playersResult/PlayersResult"
 
 const InterimResults = () => {

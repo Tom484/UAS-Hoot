@@ -1,6 +1,6 @@
 import React from "react"
 import RollerAnimation from "../../animation/rollerAnimation/RollerAnimation"
-import CustomBackground from "../customBackground/CustomBackground"
+import CustomBackground from "../../custom/customBackground/CustomBackground"
 import "./loadingAnimation.scss"
 
 const LoadingAnimation = () => {

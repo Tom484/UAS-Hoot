@@ -1,6 +1,6 @@
 import React from "react"
 import { withRouter } from "react-router-dom"
-import { CustomTextLarge } from "../../components/customText/CustomText"
+import { CustomTextLarge } from "../../custom/customText/CustomText"
 import EditorButton from "../editorButton/EditorButton"
 import SelectBoxEditorProperties from "../selectBoxEditorProperties/SelectBoxEditorProperties"
 

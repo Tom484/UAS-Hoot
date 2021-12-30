@@ -1,9 +1,9 @@
 import React, { useState } from "react"
 import { googleSignInStart, emailSignInStart } from "../../../redux/user/userActions"
 import { connect } from "react-redux"
-import { CustomInputWithLabel } from "../customInput/CustomInput"
-import CustomButton from "../customButton/CustomButton"
-import { CustomTextInfoSmall, CustomTextLarge } from "../customText/CustomText"
+import { CustomInputWithLabel } from "../../custom/customInput/CustomInput"
+import CustomButton from "../../custom/customButton/CustomButton"
+import { CustomTextInfoSmall, CustomTextLarge } from "../../custom/customText/CustomText"
 import { withRouter } from "react-router-dom"
 
 import "./signIn.scss"

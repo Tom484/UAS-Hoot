@@ -3,15 +3,15 @@ import { connect } from "react-redux"
 import { withRouter } from "react-router-dom"
 import { selectUserCollection } from "../../redux/collections/collectionsSelectors"
 import HostButton from "../../components/event/eventButton/EventButton"
-
-import "./eventCreatePage.scss"
-import CustomBackground from "../../components/components/customBackground/CustomBackground"
-import CustomCard from "../../components/components/customCard/CustomCard"
+import CustomBackground from "../../components/custom/customBackground/CustomBackground"
+import CustomCard from "../../components/custom/customCard/CustomCard"
 import {
   CustomTextInfoBgMedium,
   CustomTextLarge,
   CustomTextMedium,
-} from "../../components/components/customText/CustomText"
+} from "../../components/custom/customText/CustomText"
+
+import "./eventCreatePage.scss"
 
 const EventCreatePage = ({ collection }) => {
   if (!collection) return <div>This collection was not found</div>

@@ -1,5 +1,5 @@
 import React from "react"
-import { CustomTextSmall } from "../../components/customText/CustomText"
+import { CustomTextSmall } from "../../custom/customText/CustomText"
 
 const PlayerResultLabel = () => {
   return (

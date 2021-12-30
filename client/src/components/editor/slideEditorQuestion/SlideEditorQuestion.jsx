@@ -4,7 +4,7 @@ import { selectEditorSlideCurrent } from "../../../redux/editor/editorSelectors"
 import { editorEditSlide } from "../../../redux/editor/editorActions"
 
 import "./slideEditorQuestion.scss"
-import { CustomTextarea } from "../../components/customTextarea/CustomTextarea"
+import { CustomTextarea } from "../../custom/customTextarea/CustomTextarea"
 
 const SlideEditorQuestion = ({ slide, editSlide }) => {
   const handleChange = e => {

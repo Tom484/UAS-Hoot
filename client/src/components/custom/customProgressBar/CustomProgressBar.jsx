@@ -1,5 +1,5 @@
 import React from "react"
-import { CustomTextInfoLarge } from "../customText/CustomText"
+import { CustomTextInfoLarge } from "../../components/customText/CustomText"
 
 import "./customProgressBar.scss"
 

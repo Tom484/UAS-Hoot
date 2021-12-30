@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import PreviewCollections from "../../components/library/previewCollections/PreviewCollections"
 import { selectUserCollectionsArraySorted } from "../../redux/collections/collectionsSelectors"
-import CustomBackground from "../../components/components/customBackground/CustomBackground"
+import CustomBackground from "../../components/custom/customBackground/CustomBackground"
 import NavbarContainer from "../../components/navbar/navbarContainer/NavbarContainer"
 import LibraryHeader from "../../components/library/libraryHeader/LibraryHeader"
 import { withRouter } from "react-router-dom"

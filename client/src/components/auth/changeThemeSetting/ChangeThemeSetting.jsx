@@ -8,7 +8,7 @@ import {
 } from "../../../redux/localSetting/localSettingSelectors"
 import { THEME_SETTING_VALUES } from "../../../redux/localSetting/localSettingTypes"
 import CustomInputCard from "../../custom/customInputCard/CustomInputCard"
-import { CustomTextLarge } from "../../components/customText/CustomText"
+import { CustomTextLarge } from "../../custom/customText/CustomText"
 
 import "./changeThemeSetting.scss"
 

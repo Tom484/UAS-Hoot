@@ -12,7 +12,7 @@ import {
   ICONUserBold,
   ICONUserOutline,
 } from "../../../icons/Icons"
-import { CustomTextMedium } from "../../components/customText/CustomText"
+import { CustomTextMedium } from "../../custom/customText/CustomText"
 import { HOME_ROUTES } from "../../../routes/home/HomeRoutes"
 import { AUTH_ROUTES } from "../../../routes/auth/AuthRoutes"
 import { REPORTS_ROUTERS } from "../../../routes/reports/ReportsRoutes"

@@ -1,12 +1,12 @@
 import React from "react"
 import { withRouter } from "react-router-dom"
-import CustomBackground from "../../components/components/customBackground/CustomBackground"
-import CustomButton from "../../components/components/customButton/CustomButton"
-import CustomCard from "../../components/components/customCard/CustomCard"
+import CustomBackground from "../../components/custom/customBackground/CustomBackground"
+import CustomButton from "../../components/custom/customButton/CustomButton"
+import CustomCard from "../../components/custom/customCard/CustomCard"
 import {
   CustomTextInfoBgMedium,
   CustomTextLarge,
-} from "../../components/components/customText/CustomText"
+} from "../../components/custom/customText/CustomText"
 
 import "./notFoundPage.scss"
 

@@ -1,7 +1,7 @@
 import React from "react"
 import { connect } from "react-redux"
 import { selectEventCurrentSlide } from "../../../redux/eventData/eventDataSelectors"
-import CustomBackground from "../../components/customBackground/CustomBackground"
+import CustomBackground from "../../custom/customBackground/CustomBackground"
 import "./slideGamePreview.scss"
 
 const SlideGamePreview = ({ eventCurrentSlide }) => {

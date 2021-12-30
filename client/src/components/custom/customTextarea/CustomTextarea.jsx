@@ -1,6 +1,6 @@
 import React from "react"
 import TextareaAutosize from "react-textarea-autosize"
-import { CustomTextInfoSmall } from "../customText/CustomText"
+import { CustomTextInfoSmall } from "../../custom/customText/CustomText"
 
 import "./customTextarea.scss"
 

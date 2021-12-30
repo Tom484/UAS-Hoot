@@ -1,4 +1,4 @@
-import { CustomTextInfoSmall } from "../customText/CustomText"
+import { CustomTextInfoSmall } from "../../custom/customText/CustomText"
 
 import "./customInput.scss"
 

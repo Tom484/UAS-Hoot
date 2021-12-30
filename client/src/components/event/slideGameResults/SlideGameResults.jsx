@@ -1,10 +1,10 @@
 import React from "react"
-import CustomBackground from "../../components/customBackground/CustomBackground"
+import CustomBackground from "../../custom/customBackground/CustomBackground"
 import EventQuizOptions from "../eventQuizOptions/EventQuizOptions"
 import EventQuestion from "../eventQuestion/EventQuestion"
 
 import "./slideGameResults.scss"
-import CustomButton from "../../components/customButton/CustomButton"
+import CustomButton from "../../custom/customButton/CustomButton"
 
 const SlideGameResults = ({ next }) => {
   return (

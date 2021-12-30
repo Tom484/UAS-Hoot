@@ -1,5 +1,5 @@
 import React from "react"
-import CustomBackground from "../../components/components/customBackground/CustomBackground"
+import CustomBackground from "../../components/custom/customBackground/CustomBackground"
 import HomePageContent from "../../components/components/homePageContent/HomePageContent"
 import NavbarContainer from "../../components/navbar/navbarContainer/NavbarContainer"
 import { selectCurrentUser } from "../../redux/user/userSelectors"

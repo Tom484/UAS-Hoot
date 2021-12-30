@@ -7,7 +7,7 @@ import {
   deleteCollectionStart,
 } from "../../../redux/collections/collectionsActions"
 import { toggleFavoriteCollectionStart } from "../../../redux/user/userActions"
-import CustomButton from "../customButton/CustomButton"
+import CustomButton from "../../custom/customButton/CustomButton"
 
 const EditButton = ({
   type,

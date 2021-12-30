@@ -3,7 +3,7 @@ import { connect } from "react-redux"
 import { ICONCopyOutline, ICONTrashOutline } from "../../../icons/Icons"
 import { editorEditCollection } from "../../../redux/editor/editorActions"
 import { selectEditorCollection } from "../../../redux/editor/editorSelectors"
-import { CustomTextSmall } from "../../components/customText/CustomText"
+import { CustomTextSmall } from "../../custom/customText/CustomText"
 import EditorButton from "../editorButton/EditorButton"
 
 import "./slidesEditorOverviewComponent.scss"

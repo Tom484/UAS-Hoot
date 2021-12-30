@@ -1,6 +1,6 @@
 import React from "react"
-import BubbleBackground from "../bubbleBackground/BubbleBackground"
-import LineBackground from "../lineBackground/LineBackground"
+import BubbleBackground from "../../components/bubbleBackground/BubbleBackground"
+import LineBackground from "../../components/lineBackground/LineBackground"
 
 import "./customBackground.scss"
 

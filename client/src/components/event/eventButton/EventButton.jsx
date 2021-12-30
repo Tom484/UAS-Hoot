@@ -9,7 +9,7 @@ import {
   updateDataConnectStart,
   updateDataEventStart,
 } from "../../../redux/eventData/eventDataActions"
-import CustomButton from "../../components/customButton/CustomButton"
+import CustomButton from "../../custom/customButton/CustomButton"
 
 const EventButton = ({
   children,

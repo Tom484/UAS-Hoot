@@ -1,8 +1,8 @@
 import React from "react"
 import { connect } from "react-redux"
 import { selectEventPlayersArraySorted } from "../../../redux/eventPlayers/eventPlayersSelectors"
-import CustomBackground from "../../components/customBackground/CustomBackground"
-import { CustomTextExtraLarge } from "../../components/customText/CustomText"
+import CustomBackground from "../../custom/customBackground/CustomBackground"
+import { CustomTextExtraLarge } from "../../custom/customText/CustomText"
 
 import "./overallResults.scss"
 

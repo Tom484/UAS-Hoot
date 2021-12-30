@@ -4,12 +4,13 @@ import { createNotification } from "../../../redux/notifications/notificationsAc
 import { NOTIFICATIONS } from "../../../redux/notifications/notificationsTypes"
 import { updateProfileStart } from "../../../redux/user/userActions"
 import { selectCurrentUser } from "../../../redux/user/userSelectors"
-import CustomButton from "../customButton/CustomButton"
-import { CustomInputWithLabel } from "../customInput/CustomInput"
-import CustomInputCard from "../customInputCard/CustomInputCard"
+import CustomButton from "../../custom/customButton/CustomButton"
 
-import { CustomTextLarge } from "../customText/CustomText"
-import { CustomTextareaWithLabel } from "../customTextarea/CustomTextarea"
+import { CustomInputWithLabel } from "../../custom/customInput/CustomInput"
+import CustomInputCard from "../../custom/customInputCard/CustomInputCard"
+
+import { CustomTextLarge } from "../../custom/customText/CustomText"
+import { CustomTextareaWithLabel } from "../../custom/customTextarea/CustomTextarea"
 
 import "./updateAccount.scss"
 

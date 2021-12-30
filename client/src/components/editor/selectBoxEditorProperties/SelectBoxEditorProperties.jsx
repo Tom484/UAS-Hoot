@@ -2,7 +2,7 @@ import React from "react"
 import { connect } from "react-redux"
 import { editorEditSlide } from "../../../redux/editor/editorActions"
 import { selectEditorSlideCurrent } from "../../../redux/editor/editorSelectors"
-import { CustomSelectWithLabel } from "../../components/customSelect/CustomSelect"
+import { CustomSelectWithLabel } from "../../custom/customSelect/CustomSelect"
 
 import "./selectBoxEditorProperties.scss"
 
