@@ -1,6 +1,6 @@
 import { firestore } from "../../firebase/firebaseUtils"
 
-export const eventDataTemplate = (collection, enterCode, currentUser) => {
+export const eventDataTemplate = (collection, enterCode, currentUser, timeDifference) => {
   return {
     collection: { ...collection },
     connect: {
@@ -19,6 +19,7 @@ export const eventDataTemplate = (collection, enterCode, currentUser) => {
     host: {
       id: currentUser.id,
       displayName: currentUser.displayName,
+      timeDifference,
     },
   }
 }

@@ -1,5 +1,6 @@
 import { all, call, put, select, takeLatest } from "redux-saga/effects"
 import { firestore } from "../../firebase/firebaseUtils"
+import { getTimeDifference } from "../../functions/time/getTimeDifference"
 import { selectUserCollection } from "../collections/collectionsSelectors"
 import { selectCurrentUser } from "../user/userSelectors"
 import {
@@ -35,7 +36,10 @@ export function* createEventAsync({ payload: { collectionId, history } }) {
     const collection = yield select(selectUserCollection(collectionId))
     // const enterCode = Math.round(Math.random() * 1000000).toString()
     const enterCode = "1000"
-    const event = yield eventDataTemplate(collection, enterCode, currentUser)
+
+    const hostTimeDifference = yield getTimeDifference()
+
+    const event = yield eventDataTemplate(collection, enterCode, currentUser, hostTimeDifference)
 
     const collectionRef = yield createCollectionRef(enterCode)
     const connectRef = yield createConnectRef(enterCode)
