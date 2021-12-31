@@ -20,10 +20,10 @@ const SlideEditorQuestion = ({ slide, editSlide }) => {
         placeholder="Start typing your question..."
         value={slide.question}
         maxLength={125}
+        className={!slide?.question ? "warning" : ""}
         style={{
           textAlign: "center",
           fontSize: "32px",
-          background: "var(--color-background-1)",
           borderWidth: "3px",
           borderRadius: "12px",
         }}

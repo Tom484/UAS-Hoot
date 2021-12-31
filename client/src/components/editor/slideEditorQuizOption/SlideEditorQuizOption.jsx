@@ -31,11 +31,11 @@ const SlideEditorQuizOption = ({ editOption, option, order }) => {
       </div>
       <CustomTextarea
         onChange={e => editOptionProperties({ option: e.target.value })}
-        placeholder={`Add answer ${order}`}
+        placeholder={`Add answer`}
         value={option.option}
         maxLength={75}
+        className={!option?.option ? "warning" : ""}
         style={{
-          background: "var(--color-background-1)",
           padding: "20px",
           borderRadius: "0 12px 12px 0",
           borderWidth: "2px",

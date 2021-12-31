@@ -8,28 +8,26 @@ import { editorCopyCollection } from "../../../redux/editor/editorActions"
 import { selectEditorCollection } from "../../../redux/editor/editorSelectors"
 import CollectionEditorCard from "../../../components/editor/collectionEditorCard/CollectionEditorCard"
 import LoadingAnimation from "../../../components/components/loadingAnimation/LoadingAnimation"
-import LineBackground from "../../../components/components/lineBackground/LineBackground"
+import CustomBackground from "../../../components/custom/customBackground/CustomBackground"
+import { LIBRARY_ROUTES } from "../../../routes/library/LibraryRoutes"
 import { withRouter } from "react-router-dom"
 
 import "./editorPage.scss"
 
 const EditorPage = ({ editorCollection, collection, copyCollection, history }) => {
   useEffect(() => {
-    collection ? copyCollection(collection) : history.push("/library/recent")
+    collection ? copyCollection(collection) : history.push(LIBRARY_ROUTES.RECENT)
     // eslint-disable-next-line
   }, [])
   if (!editorCollection) return <LoadingAnimation />
 
   return (
-    <div className="editor-page">
-      <LineBackground />
-      <div className="editor-page-container">
-        <SlidesEditor />
-        <SlideEditor />
-        <SlidePropertiesEditor />
-        <CollectionEditorCard />
-      </div>
-    </div>
+    <CustomBackground className="editor-page" bubbleBackground={false}>
+      <SlidesEditor />
+      <SlideEditor />
+      <SlidePropertiesEditor />
+      <CollectionEditorCard />
+    </CustomBackground>
   )
 }
 
