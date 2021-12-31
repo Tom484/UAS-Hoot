@@ -3,16 +3,21 @@
 .library-sort-icons {
   @include flex-center-center();
   gap: 15px;
-  .sort-icon {
-    cursor: pointer;
-    fill: var(--color-text-2);
+  span {
     width: 40px;
     height: 40px;
-    padding: 6px;
-    border-radius: 8px;
-    &.active {
-      background: var(--color-main-10);
-      fill: var(--color-main-2);
+    .sort-icon {
+      cursor: pointer;
+      fill: var(--color-text-2);
+      width: 40px;
+      height: 40px;
+      padding: 6px;
+      border-radius: 8px;
+      background: var(--color-background-2);
+      &.active,
+      &:hover {
+        fill: var(--color-main-2);
+      }
     }
   }
 }

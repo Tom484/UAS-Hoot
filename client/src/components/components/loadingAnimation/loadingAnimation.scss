@@ -15,16 +15,9 @@
     height: 100%;
     .loading-card {
       @include flex-spaceAround-center-column();
-      background: var(--color-background-2);
-      border-radius: 20px;
-      padding: 30px 40px;
-      font-size: 28px;
-      gap: 25px;
-      .label {
-        font-weight: 600;
-        letter-spacing: 1px;
-        color: var(--color-text-3);
-      }
+      background: rgba(249, 249, 251, 0.911);
+      border-radius: 50%;
+      padding: 25px 25px;
     }
   }
 }
