@@ -38,6 +38,7 @@ export function* createEventAsync({ payload: { collectionId, history } }) {
     const enterCode = "1000"
 
     const hostTimeDifference = yield getTimeDifference()
+    console.log(hostTimeDifference)
 
     const event = yield eventDataTemplate(collection, enterCode, currentUser, hostTimeDifference)
 
