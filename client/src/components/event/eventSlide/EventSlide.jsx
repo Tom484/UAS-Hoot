@@ -10,15 +10,10 @@ import SlideGame from "../slideGame/SlideGame"
 const EventSlide = ({ eventDataEvent }) => {
   const { status } = eventDataEvent
 
-  if (!status) return <LoadingAnimation />
-
-  return (
-    <div>
-      {status === STATUS_TYPES.LOBBY && <Lobby />}
-      {status === STATUS_TYPES.GAME && <SlideGame />}
-      {status === STATUS_TYPES.OVERALL_RESULTS && <OverallResults />}
-    </div>
-  )
+  if (status === STATUS_TYPES.LOBBY) return <Lobby />
+  if (status === STATUS_TYPES.GAME) return <SlideGame />
+  if (status === STATUS_TYPES.GAME_RESULTS) return <OverallResults />
+  return <LoadingAnimation />
 }
 
 const mapStateToProps = state => ({

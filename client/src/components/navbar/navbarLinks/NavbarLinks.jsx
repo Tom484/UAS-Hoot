@@ -21,10 +21,11 @@ import { LIBRARY_ROUTES } from "../../../routes/library/LibraryRoutes"
 import { signOutStart } from "../../../redux/user/userActions"
 import { withRouter } from "react-router-dom"
 import { connect } from "react-redux"
+import NavbarToggleThemeLink from "../navbarToggleThemeLink/NavbarToggleThemeLink"
 
 import "./navbarLinks.scss"
 
-const NavbarLinks = ({ signOut, history, location }) => {
+const NavbarLinks = ({ signOut, history, location, toggleTheme }) => {
   const path = location.pathname
 
   return (
@@ -88,6 +89,7 @@ const NavbarLinks = ({ signOut, history, location }) => {
         <ICONLogoutOutline className="link-icon" />
         <CustomTextMedium className="link-text">Sign Out</CustomTextMedium>
       </div>
+      <NavbarToggleThemeLink />
     </div>
   )
 }

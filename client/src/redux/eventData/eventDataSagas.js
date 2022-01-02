@@ -19,6 +19,7 @@ import {
   selectEventDataCollection,
   selectEventDataConnect,
   selectEventDataEvent,
+  selectEventDataHost,
 } from "./eventDataSelectors"
 import {
   createCollectionRef,
@@ -38,8 +39,6 @@ export function* createEventAsync({ payload: { collectionId, history } }) {
     const enterCode = "1000"
 
     const hostTimeDifference = yield getTimeDifference()
-    console.log(hostTimeDifference)
-
     const event = yield eventDataTemplate(collection, enterCode, currentUser, hostTimeDifference)
 
     const collectionRef = yield createCollectionRef(enterCode)
@@ -65,6 +64,7 @@ export function* startEventAsync() {
   try {
     const collection = yield select(selectEventDataCollection)
     const eventDataConnect = yield select(selectEventDataConnect)
+    const { timeDifference } = yield select(selectEventDataHost)
     let event = yield select(selectEventDataEvent)
 
     const id = collection.slidesOrder[0]
@@ -77,8 +77,8 @@ export function* startEventAsync() {
       slideIndex: 0,
       status: STATUS_TYPES.GAME,
       slideType: slide.type,
-      openVoteAt: date + 7000,
-      closeVoteAt: date + 7000 + slide.time.value * 1000,
+      openVoteAt: date + 7000 + timeDifference,
+      closeVoteAt: date + 7000 + slide.time.value * 1000 + timeDifference,
     }
 
     const eventRef = yield createEventRef(eventDataConnect.enterCode)
@@ -120,6 +120,7 @@ export function* eventNextSlideAsync() {
   try {
     const collection = yield select(selectEventDataCollection)
     const eventDataConnect = yield select(selectEventDataConnect)
+    const { timeDifference } = yield select(selectEventDataHost)
     let event = yield select(selectEventDataEvent)
 
     const id = collection?.slidesOrder[event?.slideIndex + 1]
@@ -135,8 +136,8 @@ export function* eventNextSlideAsync() {
         slideIndex: event.slideIndex + 1,
         status: STATUS_TYPES.GAME,
         slideType: slide.type,
-        openVoteAt: date + 8000,
-        closeVoteAt: date + 8000 + slide.time.value * 1000,
+        openVoteAt: date + 7000 - timeDifference,
+        closeVoteAt: date + 7000 + slide.time.value * 1000 - timeDifference,
       }
     } else {
       event = {

@@ -1,11 +1,20 @@
 import React, { useEffect } from "react"
 import { connect } from "react-redux"
 import { updateSystemTheme } from "../../../redux/localSetting/localSettingActions"
+import { selectLocalSettingTheme } from "../../../redux/localSetting/localSettingSelectors"
 
-const DarkThemeListener = ({ updateSystemTheme }) => {
+const DarkThemeListener = ({ updateSystemTheme, theme }) => {
   const mqListener = e => {
     e.matches ? updateSystemTheme("dark") : updateSystemTheme("light")
   }
+
+  useEffect(() => {
+    if (theme === "light") {
+      document.body.classList.remove("dark-theme")
+    } else {
+      document.body.classList.add("dark-theme")
+    }
+  }, [theme])
 
   useEffect(() => {
     const darkThemeMq = window.matchMedia("(prefers-color-scheme: dark)")
@@ -18,8 +27,12 @@ const DarkThemeListener = ({ updateSystemTheme }) => {
   return <></>
 }
 
+const mapStateToProps = state => ({
+  theme: selectLocalSettingTheme(state),
+})
+
 const mapDispatchToProps = dispatch => ({
   updateSystemTheme: theme => dispatch(updateSystemTheme(theme)),
 })
 
-export default connect(null, mapDispatchToProps)(DarkThemeListener)
+export default connect(mapStateToProps, mapDispatchToProps)(DarkThemeListener)
