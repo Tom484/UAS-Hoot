@@ -15,7 +15,7 @@
     height: 100%;
     .loading-card {
       @include flex-spaceAround-center-column();
-      background: rgba(249, 249, 251, 0.911);
+      background: var(--color-background-2);
       border-radius: 50%;
       padding: 25px 25px;
     }

@@ -1,6 +1,6 @@
 import React from "react"
 import { Redirect, Switch } from "react-router-dom"
-import PrivateRoute from "../../components/components/privateRoute/PrivateRoute"
+import PrivateRoute from "../../components/auth/privateRoute/PrivateRoute"
 import AccountPage from "../../pages/auth/account/AccountPage"
 import ResetPasswordEmailPage from "../../pages/auth/resetPasswordEmail/ResetPasswordEmailPage"
 import SignInPage from "../../pages/auth/signIn/SignInPage"

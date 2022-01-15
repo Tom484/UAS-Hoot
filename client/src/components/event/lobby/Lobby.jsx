@@ -4,7 +4,7 @@ import { selectEventPlayersArray } from "../../../redux/eventPlayers/eventPlayer
 import { selectEventDataConnect } from "../../../redux/eventData/eventDataSelectors"
 import QRCode from "react-qr-code"
 import useWindowSize from "../../../functions/hooks/useWindowSize"
-import LineBackground from "../../components/lineBackground/LineBackground"
+import LineBackground from "../../custom/lineBackground/LineBackground"
 
 import "./lobby.scss"
 

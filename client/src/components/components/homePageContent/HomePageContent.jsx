@@ -19,8 +19,8 @@ const HomePageContent = ({ history }) => {
         Create and play your own events for free. And have fun!
       </CustomTextLarge>
       <CustomTextInfoBgMedium style={{ fontSize: "14px" }}>
-        On this page you can create your custom events which you can play with your friend, family
-        etc. Your own events you can share with others. This website is complete free.
+        On this page you can create your own events that you can play with your friends, family,
+        etc. You can share your own events with others. This site is completely free.
       </CustomTextInfoBgMedium>
       <CustomTextInfoBgMedium center style={{ fontWeight: "600", color: "var(--color-text-3)" }}>
         Created by Tomáš Kůrka 2021

@@ -14,7 +14,6 @@ const AutoLoadingAnimation = ({ collectionsIsLoading, userIsLoading }) => {
       <div className="loading-animation-container">
         <div className="loading-card">
           <RollerAnimation />
-          <div className="label">Please wait</div>
         </div>
       </div>
     </div>

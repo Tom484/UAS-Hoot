@@ -1,6 +1,6 @@
 import React from "react"
 import { Redirect, Switch } from "react-router-dom"
-import PrivateRoute from "../../components/components/privateRoute/PrivateRoute"
+import PrivateRoute from "../../components/auth/privateRoute/PrivateRoute"
 import EventPage from "../../pages/event/event/EventPage"
 import EventCreatePage from "../../pages/event/eventCreate/EventCreatePage"
 import { AUTH_ROUTES } from "../auth/AuthRoutes"
