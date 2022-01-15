@@ -12,7 +12,7 @@ const EventSlide = ({ eventDataEvent }) => {
 
   if (status === STATUS_TYPES.LOBBY) return <Lobby />
   if (status === STATUS_TYPES.GAME) return <SlideGame />
-  if (status === STATUS_TYPES.GAME_RESULTS) return <OverallResults />
+  if (status === STATUS_TYPES.OVERALL_RESULTS) return <OverallResults />
   return <LoadingAnimation />
 }
 

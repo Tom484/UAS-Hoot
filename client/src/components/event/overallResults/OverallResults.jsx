@@ -7,6 +7,8 @@ import { CustomTextExtraLarge } from "../../custom/customText/CustomText"
 import "./overallResults.scss"
 
 const OverallResults = ({ eventPlayers }) => {
+  console.log(eventPlayers)
+
   return (
     <CustomBackground className="overall-results">
       <div className="results-container">

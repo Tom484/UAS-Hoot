@@ -8,7 +8,7 @@ export function getEventQuizResults(optionsArray, answerArray) {
 export function getSlideScore(submitTime, slide, event, timeDifference) {
   return (
     Math.round(
-      Math.abs(submitTime - event.openVoteAt - slide.time.value * 1000 + timeDifference) *
+      Math.abs(submitTime - event.openVoteAt - slide.time.value * 1000 - timeDifference) *
         (500 / (slide.time.value * 1000))
     ) + 500
   )
