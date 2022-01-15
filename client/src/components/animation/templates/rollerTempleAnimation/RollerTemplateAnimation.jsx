@@ -1,8 +1,8 @@
 import React from "react"
 
-import "./rollerAnimation.scss"
+import "./rollerTemplateAnimation.scss"
 
-const RollerAnimation = () => {
+const RollerTemplateAnimation = () => {
   return (
     <div className="lds-roller">
       <div></div>
@@ -17,4 +17,4 @@ const RollerAnimation = () => {
   )
 }
 
-export default RollerAnimation
+export default RollerTemplateAnimation

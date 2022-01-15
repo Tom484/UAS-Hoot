@@ -7,19 +7,19 @@ import { selectUserCollection } from "../../../redux/collections/collectionsSele
 import { editorCopyCollection } from "../../../redux/editor/editorActions"
 import { selectEditorCollection } from "../../../redux/editor/editorSelectors"
 import CollectionEditorCard from "../../../components/editor/collectionEditorCard/CollectionEditorCard"
-import LoadingAnimation from "../../../components/components/loadingAnimation/LoadingAnimation"
+import LoadingAnimationFullScreen from "../../../components/animation/loadingAnimation/LoadingAnimationFullScreen"
 import CustomBackground from "../../../components/custom/customBackground/CustomBackground"
 import { withRouter } from "react-router-dom"
+import ROUTES from "../../../routes/routes"
 
 import "./editorPage.scss"
-import ROUTES from "../../../routes/routes"
 
 const EditorPage = ({ editorCollection, collection, copyCollection, history }) => {
   useEffect(() => {
     collection ? copyCollection(collection) : history.push(ROUTES.LIBRARY.RECENT)
     // eslint-disable-next-line
   }, [])
-  if (!editorCollection) return <LoadingAnimation />
+  if (!editorCollection) return <LoadingAnimationFullScreen />
 
   return (
     <CustomBackground className="editor-page" bubbleBackground={false}>

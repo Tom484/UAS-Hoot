@@ -1,15 +1,15 @@
 import React from "react"
-import RollerAnimation from "../../animation/rollerAnimation/RollerAnimation"
 import CustomBackground from "../../custom/customBackground/CustomBackground"
+import RollerTemplateAnimation from "../templates/rollerTempleAnimation/RollerTemplateAnimation"
 import "./loadingAnimation.scss"
 
-const LoadingAnimation = () => {
+const LoadingAnimationFullScreen = () => {
   return (
     <CustomBackground>
       <div className="loading-animation">
         <div className="loading-animation-container">
           <div className="loading-card">
-            <RollerAnimation />
+            <RollerTemplateAnimation />
           </div>
         </div>
       </div>
@@ -17,4 +17,4 @@ const LoadingAnimation = () => {
   )
 }
 
-export default LoadingAnimation
+export default LoadingAnimationFullScreen

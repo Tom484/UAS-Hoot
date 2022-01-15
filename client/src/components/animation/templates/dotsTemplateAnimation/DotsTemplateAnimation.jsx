@@ -1,8 +1,8 @@
 import React from "react"
 
-import "./dotsAnimation.scss"
+import "./dotsTemplateAnimation.scss"
 
-const DotsAnimation = () => {
+const DotsTemplateAnimation = () => {
   return (
     <div className="dots">
       <div className="dot dot-1"></div>
@@ -18,4 +18,4 @@ const DotsAnimation = () => {
   )
 }
 
-export default DotsAnimation
+export default DotsTemplateAnimation

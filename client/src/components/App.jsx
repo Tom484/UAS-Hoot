@@ -3,13 +3,13 @@ import { connect } from "react-redux"
 import { checkUserSession } from "../redux/user/userActions"
 import { selectCompletedAuthInitialProcess, selectCurrentUser } from "../redux/user/userSelectors"
 import { fetchCollectionsStart } from "../redux/collections/collectionsActions"
-import AutoLoadingAnimation from "./components/loadingAnimation/AutoLoadingAnimation"
 import DarkThemeListener from "./components/darkThemeListener/DarkThemeListener"
 import Notifications from "./notifications/notifications/Notifications"
 import { selectUserCollections } from "../redux/collections/collectionsSelectors"
-import LoadingAnimation from "./components/loadingAnimation/LoadingAnimation"
 import ContextMenu from "./components/contextMenu/ContextMenu"
 import AppRoutes from "../routes/AppRoutes"
+import LoadingAnimationFullScreen from "./animation/loadingAnimation/LoadingAnimationFullScreen"
+import LoadingAnimationOnEvent from "./animation/loadingAnimation/LoadingAnimationOnEvent"
 
 const App = ({
   currentUser,
@@ -24,15 +24,15 @@ const App = ({
     // eslint-disable-next-line
   }, [currentUser])
 
-  if (!completedAuthInitialProcess) return <LoadingAnimation />
+  if (!completedAuthInitialProcess) return <LoadingAnimationFullScreen />
 
   return (
     <div>
       <Notifications />
       <DarkThemeListener />
-      <AutoLoadingAnimation />
-
+      <LoadingAnimationOnEvent />
       <ContextMenu />
+
       <AppRoutes />
     </div>
   )

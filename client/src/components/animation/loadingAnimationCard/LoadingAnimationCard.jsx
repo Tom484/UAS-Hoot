@@ -1,6 +1,6 @@
 import React from "react"
-import DotsAnimation from "../../animation/dotsAnimation/DotsAnimation"
 import { getRandomFacts } from "../../../data/facts"
+import DotsTemplateAnimation from "../templates/dotsTemplateAnimation/DotsTemplateAnimation"
 import CustomCard from "../customCard/CustomCard"
 import {
   CustomTextInfoBgMedium,
@@ -10,7 +10,7 @@ import {
 
 import "./loadingCard.scss"
 
-const LoadingCard = ({ name }) => {
+const LoadingAnimationCard = ({ name }) => {
   const facts = getRandomFacts(2)
   return (
     <CustomCard>
@@ -20,9 +20,9 @@ const LoadingCard = ({ name }) => {
       </CustomTextMedium>
       <CustomTextInfoBgMedium>{facts[0]}</CustomTextInfoBgMedium>
       <CustomTextInfoBgMedium style={{ marginBottom: "20px" }}>{facts[1]}</CustomTextInfoBgMedium>
-      <DotsAnimation />
+      <DotsTemplateAnimation />
     </CustomCard>
   )
 }
 
-export default LoadingCard
+export default LoadingAnimationCard
