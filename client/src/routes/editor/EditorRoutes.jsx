@@ -2,13 +2,7 @@ import React from "react"
 import { Redirect, Switch } from "react-router-dom"
 import PrivateRoute from "../../components/auth/privateRoute/PrivateRoute"
 import EditorPage from "../../pages/editor/editor/EditorPage"
-import { AUTH_ROUTES } from "../auth/AuthRoutes"
-import { NOT_FOUND_ROUTES } from "../notFound/NotFoundRoutes"
-
-export const EDITOR_ROUTES = {
-  EDITOR: "/editor/:collectionId",
-  INITIAL: "/editor",
-}
+import ROUTES from "../routes"
 
 const EditorRoutes = () => {
   return (
@@ -17,11 +11,11 @@ const EditorRoutes = () => {
         <PrivateRoute
           exact
           onlyLogged={true}
-          redirect={AUTH_ROUTES.SIGN_IN}
-          path={EDITOR_ROUTES.EDITOR}
+          redirect={ROUTES.AUTH.SIGN_IN}
+          path={ROUTES.EDITOR.EDITOR}
           component={EditorPage}
         />
-        <Redirect to={NOT_FOUND_ROUTES.NOT_FOUND} />
+        <Redirect to={ROUTES.NOT_FOUND.NOT_FOUND} />
       </Switch>
     </div>
   )

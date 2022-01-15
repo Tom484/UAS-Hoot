@@ -1,19 +1,14 @@
 import React from "react"
 import { Redirect, Route, Switch } from "react-router-dom"
 import HomePage from "../../pages/home/home/HomePage"
-import { NOT_FOUND_ROUTES } from "../notFound/NotFoundRoutes"
-
-export const HOME_ROUTES = {
-  HOME: "/",
-  INITIAL: "/",
-}
+import ROUTES from "../routes"
 
 const HomeRoutes = () => {
   return (
     <div>
       <Switch>
-        <Route exact path={HOME_ROUTES.HOME} component={HomePage} />
-        <Redirect to={NOT_FOUND_ROUTES.NOT_FOUND} />
+        <Route exact path={ROUTES.HOME.HOME} component={HomePage} />
+        <Redirect to={ROUTES.NOT_FOUND.NOT_FOUND} />
       </Switch>
     </div>
   )

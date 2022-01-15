@@ -13,17 +13,13 @@ import {
   ICONUserOutline,
 } from "../../../icons/Icons"
 import { CustomTextMedium } from "../../custom/customText/CustomText"
-import { HOME_ROUTES } from "../../../routes/home/HomeRoutes"
-import { AUTH_ROUTES } from "../../../routes/auth/AuthRoutes"
-import { REPORTS_ROUTERS } from "../../../routes/reports/ReportsRoutes"
-import { DISCOVER_ROUTES } from "../../../routes/discover/DiscoverRoutes"
-import { LIBRARY_ROUTES } from "../../../routes/library/LibraryRoutes"
 import { signOutStart } from "../../../redux/user/userActions"
 import { withRouter } from "react-router-dom"
 import { connect } from "react-redux"
 import NavbarToggleThemeLink from "../navbarToggleThemeLink/NavbarToggleThemeLink"
 
 import "./navbarLinks.scss"
+import ROUTES from "../../../routes/routes"
 
 const NavbarLinks = ({ signOut, history, location, toggleTheme }) => {
   const path = location.pathname
@@ -31,10 +27,10 @@ const NavbarLinks = ({ signOut, history, location, toggleTheme }) => {
   return (
     <div className="navbar-links-container">
       <div
-        className={`link-container ${path === HOME_ROUTES.INITIAL ? "active" : ""}`}
-        onClick={() => history.push(HOME_ROUTES.HOME)}
+        className={`link-container ${path === ROUTES.HOME.INITIAL ? "active" : ""}`}
+        onClick={() => history.push(ROUTES.HOME.HOME)}
       >
-        {path === HOME_ROUTES.INITIAL ? (
+        {path === ROUTES.HOME.INITIAL ? (
           <ICONLogoBold className="link-icon" />
         ) : (
           <ICONLogoOutline className="link-icon" />
@@ -42,10 +38,10 @@ const NavbarLinks = ({ signOut, history, location, toggleTheme }) => {
         <CustomTextMedium className="link-text">UAS Hoot</CustomTextMedium>
       </div>
       <div
-        className={`link-container ${path.includes(LIBRARY_ROUTES.INITIAL) ? "active" : ""}`}
-        onClick={() => history.push(LIBRARY_ROUTES.RECENT)}
+        className={`link-container ${path.includes(ROUTES.LIBRARY.INITIAL) ? "active" : ""}`}
+        onClick={() => history.push(ROUTES.LIBRARY.RECENT)}
       >
-        {path.includes(LIBRARY_ROUTES.INITIAL) ? (
+        {path.includes(ROUTES.LIBRARY.INITIAL) ? (
           <ICONBookBold className="link-icon" />
         ) : (
           <ICONBookOutline className="link-icon" />
@@ -53,10 +49,10 @@ const NavbarLinks = ({ signOut, history, location, toggleTheme }) => {
         <CustomTextMedium className="link-text">Library</CustomTextMedium>
       </div>
       <div
-        className={`link-container ${path.includes(DISCOVER_ROUTES.INITIAL) ? "active" : ""}`}
-        onClick={() => history.push(DISCOVER_ROUTES.DEFAULT)}
+        className={`link-container ${path.includes(ROUTES.DISCOVER.INITIAL) ? "active" : ""}`}
+        onClick={() => history.push(ROUTES.DISCOVER.DEFAULT)}
       >
-        {path.includes(DISCOVER_ROUTES.INITIAL) ? (
+        {path.includes(ROUTES.DISCOVER.INITIAL) ? (
           <ICONClipboardBold className="link-icon" />
         ) : (
           <ICONClipboardOutline className="link-icon" />
@@ -64,10 +60,10 @@ const NavbarLinks = ({ signOut, history, location, toggleTheme }) => {
         <CustomTextMedium className="link-text">Discover</CustomTextMedium>
       </div>
       <div
-        className={`link-container ${path.includes(REPORTS_ROUTERS.INITIAL) ? "active" : ""}`}
-        onClick={() => history.push(REPORTS_ROUTERS.DEFAULT)}
+        className={`link-container ${path.includes(ROUTES.REPORTS.INITIAL) ? "active" : ""}`}
+        onClick={() => history.push(ROUTES.REPORTS.DEFAULT)}
       >
-        {path.includes(REPORTS_ROUTERS.INITIAL) ? (
+        {path.includes(ROUTES.REPORTS.INITIAL) ? (
           <ICONDirectBold className="link-icon" />
         ) : (
           <ICONDirectOutline className="link-icon" />
@@ -75,10 +71,10 @@ const NavbarLinks = ({ signOut, history, location, toggleTheme }) => {
         <CustomTextMedium className="link-text">Reports</CustomTextMedium>
       </div>
       <div
-        className={`link-container ${path.includes(AUTH_ROUTES.INITIAL) ? "active" : ""}`}
-        onClick={() => history.push(AUTH_ROUTES.ACCOUNT)}
+        className={`link-container ${path.includes(ROUTES.AUTH.INITIAL) ? "active" : ""}`}
+        onClick={() => history.push(ROUTES.AUTH.ACCOUNT)}
       >
-        {path.includes(AUTH_ROUTES.INITIAL) ? (
+        {path.includes(ROUTES.AUTH.INITIAL) ? (
           <ICONUserBold className="link-icon" />
         ) : (
           <ICONUserOutline className="link-icon" />

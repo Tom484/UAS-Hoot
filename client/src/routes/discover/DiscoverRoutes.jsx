@@ -2,13 +2,7 @@ import React from "react"
 import { Redirect, Switch } from "react-router-dom"
 import PrivateRoute from "../../components/auth/privateRoute/PrivateRoute"
 import DiscoverPage from "../../pages/discover/discover/DiscoverPage"
-import { AUTH_ROUTES } from "../auth/AuthRoutes"
-import { NOT_FOUND_ROUTES } from "../notFound/NotFoundRoutes"
-
-export const DISCOVER_ROUTES = {
-  DEFAULT: "/discover",
-  INITIAL: "/discover",
-}
+import ROUTES from "../routes"
 
 const DiscoverRoutes = () => {
   return (
@@ -17,11 +11,11 @@ const DiscoverRoutes = () => {
         <PrivateRoute
           exact
           onlyLogged={true}
-          redirect={AUTH_ROUTES.SIGN_IN}
-          path={DISCOVER_ROUTES.DEFAULT}
+          redirect={ROUTES.AUTH.SIGN_IN}
+          path={ROUTES.DISCOVER.DEFAULT}
           component={DiscoverPage}
         />
-        <Redirect to={NOT_FOUND_ROUTES.NOT_FOUND} />
+        <Redirect to={ROUTES.NOT_FOUND.NOT_FOUND} />
       </Switch>
     </div>
   )

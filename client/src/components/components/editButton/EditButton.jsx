@@ -8,8 +8,7 @@ import {
 } from "../../../redux/collections/collectionsActions"
 import { toggleFavoriteCollectionStart } from "../../../redux/user/userActions"
 import CustomButton from "../../custom/customButton/CustomButton"
-import { EVENT_ROUTES } from "../../../routes/event/EventRoutes"
-import { EDITOR_ROUTES } from "../../../routes/editor/EditorRoutes"
+import ROUTES from "../../../routes/routes"
 
 const EditButton = ({
   type,
@@ -33,13 +32,13 @@ const EditButton = ({
         deleteCollection({ collectionId })
         break
       case EditButtonTypes.LINK_TO_EDIT.id:
-        history.push(`${EDITOR_ROUTES.INITIAL}/${collectionId}`)
+        history.push(`${ROUTES.EDITOR.INITIAL}/${collectionId}`)
         break
       case EditButtonTypes.TOGGLE_FAVORITE_COLLECTION.id:
         toggleFavoriteCollection({ collectionId })
         break
       case EditButtonTypes.LINK_TO_CREATE_EVENT.id:
-        history.push(`${EVENT_ROUTES.INITIAL}/${collectionId}`)
+        history.push(`${ROUTES.EVENT.INITIAL}/${collectionId}`)
         break
       default:
         console.log("Error! Enter correct type name!")

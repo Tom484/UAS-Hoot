@@ -3,14 +3,7 @@ import { Redirect, Switch } from "react-router-dom"
 import PrivateRoute from "../../components/auth/privateRoute/PrivateRoute"
 import EventPage from "../../pages/event/event/EventPage"
 import EventCreatePage from "../../pages/event/eventCreate/EventCreatePage"
-import { AUTH_ROUTES } from "../auth/AuthRoutes"
-import { NOT_FOUND_ROUTES } from "../notFound/NotFoundRoutes"
-
-export const EVENT_ROUTES = {
-  CREATE_EVENT: "/event/:collectionId",
-  EVENT: "/event",
-  INITIAL: "/event",
-}
+import ROUTES from "../routes"
 
 const EventRoutes = () => {
   return (
@@ -19,18 +12,18 @@ const EventRoutes = () => {
         <PrivateRoute
           exact
           onlyLogged={true}
-          redirect={AUTH_ROUTES.SIGN_IN}
-          path={EVENT_ROUTES.CREATE_EVENT}
+          redirect={ROUTES.AUTH.SIGN_IN}
+          path={ROUTES.EVENT.CREATE_EVENT}
           component={EventCreatePage}
         />
         <PrivateRoute
           exact
           onlyLogged={true}
-          redirect={AUTH_ROUTES.SIGN_IN}
-          path={EVENT_ROUTES.EVENT}
+          redirect={ROUTES.AUTH.SIGN_IN}
+          path={ROUTES.EVENT.EVENT}
           component={EventPage}
         />
-        <Redirect to={NOT_FOUND_ROUTES.NOT_FOUND} />
+        <Redirect to={ROUTES.NOT_FOUND.NOT_FOUND} />
       </Switch>
     </div>
   )
