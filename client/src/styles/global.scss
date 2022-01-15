@@ -42,12 +42,6 @@ input:-webkit-autofill:active {
   -webkit-box-shadow: 0 0 0 30px var(--color-background-2) inset !important;
 }
 
-.cover-fullscreen {
-  @include flex-center-center-column();
-  min-height: calc(100vh - 60px);
-  width: 100%;
-}
-
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;

@@ -1,30 +1,5 @@
-@import "./colors.scss";
-
 button {
   outline: none;
   font-family: Poppins, Nunito, sans-serif;
   cursor: pointer;
-}
-
-.btn-basic {
-  padding: 0.6em 1em;
-  border-radius: 0.3em;
-  background: var(--color-background-3);
-  color: var(--color-text-3);
-  border: none;
-  outline: none;
-  cursor: pointer;
-  &:hover {
-    background: var(--color-main-2);
-    color: var(--color-white);
-  }
-  &.active {
-    background: var(--color-main-2);
-    color: var(--color-white);
-  }
-}
-
-.button-100 {
-  padding: 0.6em;
-  width: 100%;
 }
