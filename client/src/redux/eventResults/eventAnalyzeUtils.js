@@ -5,16 +5,16 @@ export function getEventQuizResults(optionsArray, answerArray) {
   return result
 }
 
-export function getSlideScore(submitTime, slide, eventt) {
+export function getSlideScore(submitTime, slide, event, timeDifference) {
   return (
     Math.round(
-      Math.abs(submitTime - eventt.openVoteAt - slide.time.value * 1000) *
+      Math.abs(submitTime - event.openVoteAt - slide.time.value * 1000 + timeDifference) *
         (500 / (slide.time.value * 1000))
     ) + 500
   )
 }
 
-export function getUpdatedPlayers(playersArray, optionsArray, answers, slide, eventt) {
+export function getUpdatedPlayers(playersArray, optionsArray, answers, slide, event) {
   const players = {}
   playersArray.forEach((player, i) => {
     const answer = answers?.[player.id] || null
@@ -27,23 +27,23 @@ export function getUpdatedPlayers(playersArray, optionsArray, answers, slide, ev
         consecutiveCorrectAnswers: 0,
         lastScore: 0,
         lastAnswer: false,
-        lastDataUpdateSlideIndex: eventt.slideIndex,
+        lastDataUpdateSlideIndex: event.slideIndex,
       })
     }
 
-    const slideScore = getSlideScore(answer.submitTime, slide, eventt)
+    const slideScore = getSlideScore(answer.submitTime, slide, event, player.timeDifference)
     players[player.id] = {
       ...player,
       score: player.score + slideScore,
       lastScore: slideScore,
       consecutiveCorrectAnswers: player.consecutiveCorrectAnswers + 1,
       lastAnswer: true,
-      lastDataUpdateSlideIndex: eventt.slideIndex,
+      lastDataUpdateSlideIndex: event.slideIndex,
     }
   })
 
-  const playersValue = Object.values(players).sort((a, b) => b.score - a.score)
-  playersValue.forEach((player, i) => (players[player.id].position = i + 1))
+  const sortedPlayers = Object.values(players).sort((a, b) => b.score - a.score)
+  sortedPlayers.forEach((player, i) => (players[player.id].position = i + 1))
 
-  return players
+  return sortedPlayers
 }

@@ -34,8 +34,8 @@ export const updateToStartEvent = (collection, hostTimeDifference, preEvent) => 
     slideIndex: 0,
     status: STATUS_TYPES.GAME,
     slideType: slide.type,
-    openVoteAt: date + 5000 + hostTimeDifference,
-    closeVoteAt: date + 5000 + slide.time.value * 1000 + hostTimeDifference,
+    openVoteAt: date + 6000 + hostTimeDifference,
+    closeVoteAt: date + 6000 + slide.time.value * 1000 + hostTimeDifference,
   }
 }
 
@@ -51,8 +51,8 @@ export const updateToNextEvent = (collection, hostTimeDifference, preEvent) => {
       slideIndex: preEvent.slideIndex + 1,
       status: STATUS_TYPES.GAME,
       slideType: slide.type,
-      openVoteAt: date + 7000 + hostTimeDifference,
-      closeVoteAt: date + 7000 + slide.time.value * 1000 + hostTimeDifference,
+      openVoteAt: date + 6000 + hostTimeDifference,
+      closeVoteAt: date + 6000 + slide.time.value * 1000 + hostTimeDifference,
     }
   } else {
     return {
