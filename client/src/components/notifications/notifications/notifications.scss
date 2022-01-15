@@ -1,3 +1,4 @@
+@import "../../../styles/mixins.scss";
 .notifications {
   display: flex;
   justify-content: flex-end;
@@ -9,11 +10,9 @@
   top: 0px;
 
   .notifications-container {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    gap: 15px;
+    @include flex-center-column();
     width: 350px;
+    gap: 15px;
     @media screen and (max-width: 600px) {
       width: 100%;
     }
