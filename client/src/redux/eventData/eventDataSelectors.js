@@ -25,3 +25,13 @@ export const selectEventCurrentSlideOptionsArray = createSelector(
   [selectEventCurrentSlideOptions],
   options => Object.values(options)
 )
+
+export const selectEventDataConnectEnterCode = createSelector(
+  [selectEventDataConnect],
+  eventDataConnect => eventDataConnect?.enterCode || null
+)
+
+export const selectEventDataHostTimeDifference = createSelector(
+  [selectEventDataHost],
+  data => data?.timeDifference || null
+)

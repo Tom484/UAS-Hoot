@@ -1,6 +1,5 @@
 import { all, call, put, select, takeLatest } from "redux-saga/effects"
 import { firestore } from "../../firebase/firebaseUtils"
-import { getTimeDifference } from "../../functions/time/getTimeDifference"
 import { selectUserCollection } from "../collections/collectionsSelectors"
 import { selectCurrentUser } from "../user/userSelectors"
 import {
@@ -18,39 +17,28 @@ import {
 import {
   selectEventDataCollection,
   selectEventDataConnect,
+  selectEventDataConnectEnterCode,
   selectEventDataEvent,
-  selectEventDataHost,
+  selectEventDataHostTimeDifference,
 } from "./eventDataSelectors"
-import {
-  createCollectionRef,
-  createConnectRef,
-  createEventRef,
-  createHostRef,
-  eventDataTemplate,
-} from "./eventDataTemplates"
+import { createConnectRef } from "./eventDataTemplates"
 
-import EventDataActions, { STATUS_TYPES } from "./eventDataTypes"
+import EventDataActions from "./eventDataTypes"
+import { createNewEvent, updateToNextEvent, updateToStartEvent } from "./eventDataUtils"
 
-export function* createEventAsync({ payload: { collectionId, history } }) {
+function* createEventAsync({ payload: { collectionId, history } }) {
   try {
     const currentUser = yield select(selectCurrentUser)
     const collection = yield select(selectUserCollection(collectionId))
-    // const enterCode = Math.round(Math.random() * 1000000).toString()
-    const enterCode = "1000"
 
-    const hostTimeDifference = yield getTimeDifference()
-    const event = yield eventDataTemplate(collection, enterCode, currentUser, hostTimeDifference)
-
-    const collectionRef = yield createCollectionRef(enterCode)
-    const connectRef = yield createConnectRef(enterCode)
-    const eventRef = yield createEventRef(enterCode)
-    const adminRef = yield createHostRef(enterCode)
+    const event = yield createNewEvent(currentUser, collection)
+    const { enterCode } = event.connect
 
     const batch = firestore.batch()
-    yield batch.set(collectionRef, event.collection)
-    yield batch.set(connectRef, event.connect)
-    yield batch.set(eventRef, event.event)
-    yield batch.set(adminRef, event.host)
+    yield batch.set(firestore.doc(`events/${enterCode}/data/collection`), event.collection)
+    yield batch.set(firestore.doc(`events/${enterCode}/data/connect`), event.connect)
+    yield batch.set(firestore.doc(`events/${enterCode}/data/event`), event.event)
+    yield batch.set(firestore.doc(`events/${enterCode}/data/host`), event.host)
     yield batch.commit()
 
     yield put(createEventSuccess(event))
@@ -60,131 +48,95 @@ export function* createEventAsync({ payload: { collectionId, history } }) {
   }
 }
 
-export function* startEventAsync() {
+function* startEventAsync() {
   try {
     const collection = yield select(selectEventDataCollection)
-    const eventDataConnect = yield select(selectEventDataConnect)
-    const { timeDifference } = yield select(selectEventDataHost)
-    let event = yield select(selectEventDataEvent)
+    const enterCode = yield select(selectEventDataConnectEnterCode)
+    const hostTimeDifference = yield select(selectEventDataHostTimeDifference)
+    const preEvent = yield select(selectEventDataEvent)
 
-    const id = collection.slidesOrder[0]
-    const date = new Date().getTime()
-    const slide = collection.slides[id]
+    const event = updateToStartEvent(collection, hostTimeDifference, preEvent)
 
-    event = {
-      ...event,
-      slideId: id,
-      slideIndex: 0,
-      status: STATUS_TYPES.GAME,
-      slideType: slide.type,
-      openVoteAt: date + 7000 + timeDifference,
-      closeVoteAt: date + 7000 + slide.time.value * 1000 + timeDifference,
-    }
+    const eventRef = yield firestore.doc(`events/${enterCode}/data/event`)
+    yield eventRef.set(event)
 
-    const eventRef = yield createEventRef(eventDataConnect.enterCode)
-    yield eventRef.set({ ...event })
     yield put(startEventSuccess(event))
   } catch (error) {
     yield put(startEventFailure(error.message))
   }
 }
 
-export function* eventDataEventAsync({ payload }) {
+function* eventDataEventAsync({ payload }) {
   try {
     const eventDataEvent = yield select(selectEventDataEvent)
     const newData = yield { ...eventDataEvent, ...payload }
+
     const connectRef = yield createConnectRef(newData.enterCode)
     yield connectRef.update({ ...newData })
+
     yield put(updateDataEventSuccess(newData))
   } catch (error) {
     yield put(updateDataEventFailure(error.message))
   }
 }
 
-export function* eventDataConnectAsync({ payload: { data } }) {
+function* eventDataConnectAsync({ payload: { data } }) {
   try {
     const eventDataConnect = yield select(selectEventDataConnect)
     if (data?.isOpen === "toggle") {
       data.isOpen = !eventDataConnect.isOpen
     }
+
     const newData = yield { ...eventDataConnect, ...data }
     const connectRef = yield createConnectRef(newData.enterCode)
     yield connectRef.update({ ...newData })
+
     yield put(updateDataConnectSuccess(newData))
   } catch (error) {
     yield put(updateDataConnectFailure(error.message))
   }
 }
 
-export function* eventNextSlideAsync() {
+function* eventNextSlideAsync() {
   try {
     const collection = yield select(selectEventDataCollection)
-    const eventDataConnect = yield select(selectEventDataConnect)
-    const { timeDifference } = yield select(selectEventDataHost)
-    let event = yield select(selectEventDataEvent)
+    const enterCode = yield select(selectEventDataConnectEnterCode)
+    const hostTimeDifference = yield select(selectEventDataHostTimeDifference)
+    const preEvent = yield select(selectEventDataEvent)
 
-    const id = collection?.slidesOrder[event?.slideIndex + 1]
-    const date = new Date().getTime()
-    const slide = collection.slides[id]
+    const event = updateToNextEvent(collection, hostTimeDifference, preEvent)
 
-    console.log(event)
+    const eventRef = firestore.doc(`events/${enterCode}/data/event`)
+    const answersRef = firestore.collection(`events/${enterCode}/answers`)
 
-    if (id) {
-      event = {
-        ...event,
-        slideId: id,
-        slideIndex: event.slideIndex + 1,
-        status: STATUS_TYPES.GAME,
-        slideType: slide.type,
-        openVoteAt: date + 7000 - timeDifference,
-        closeVoteAt: date + 7000 + slide.time.value * 1000 - timeDifference,
-      }
-    } else {
-      event = {
-        ...event,
-        status: STATUS_TYPES.OVERALL_RESULTS,
-      }
-    }
-
-    const eventRef = yield createEventRef(eventDataConnect.enterCode)
-
-    const answersRef = yield firestore
-      .collection(`events`)
-      .doc(eventDataConnect.enterCode)
-      .collection("answers")
     const snapshot = yield answersRef.get()
+
     const batch = firestore.batch()
     if (snapshot.size !== 0) {
-      snapshot.docs.forEach(doc => {
-        batch.delete(doc.ref)
-      })
+      snapshot.docs.forEach(doc => batch.delete(doc.ref))
       yield batch.commit()
     }
 
-    yield eventRef.set({ ...event })
+    yield eventRef.set(event)
     yield put(eventNextSlideSuccess(event))
   } catch (error) {
     yield put(eventNextSlideFailure(error.message))
   }
 }
 
-export function* createEventStart() {
+function* createEventStart() {
   yield takeLatest(EventDataActions.CREATE_EVENT_START, createEventAsync)
 }
-
-export function* startEventStart() {
+function* startEventStart() {
   yield takeLatest(EventDataActions.START_EVENT_START, startEventAsync)
 }
-
-export function* eventDataEventStart() {
+function* eventDataEventStart() {
   yield takeLatest(EventDataActions.UPDATE_DATA_EVENT_START, eventDataEventAsync)
 }
-
-export function* eventDataConnectStart() {
+function* eventDataConnectStart() {
   yield takeLatest(EventDataActions.UPDATE_DATA_CONNECT_START, eventDataConnectAsync)
 }
-
-export function* eventNextSlideStart() {
+function* eventNextSlideStart() {
   yield takeLatest(EventDataActions.EVENT_NEXT_SLIDE_START, eventNextSlideAsync)
 }
 
