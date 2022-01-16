@@ -48,6 +48,7 @@ const UpdateAccountInformation = ({ updateProfile, currentUser, createNotificati
       <CustomInputWithLabel label="Email" input="email" value={currentUser.email} readOnly />
       <CustomTextareaWithLabel
         label="About me"
+        styleTextarea={{ background: "var(--color-background-2)" }}
         onChange={inputHandler}
         name="bio"
         type="text"
