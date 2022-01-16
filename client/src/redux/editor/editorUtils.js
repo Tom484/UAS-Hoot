@@ -22,6 +22,12 @@ export const editorEditSlide = (previousCollection, { slideId, properties }) => 
 export const editorAddSlideQuiz = previousCollection => {
   return addSlideQuiz(previousCollection)
 }
+export const editorAddSlideTrueFalse = previousCollection => {
+  return addSlideQuiz(previousCollection)
+}
+export const editorAddSlideInput = previousCollection => {
+  return addSlideQuiz(previousCollection)
+}
 
 export const editorDuplicateSlide = (previousCollection, { slideId }) => {
   slideId = slideId || previousCollection.currentSlideId

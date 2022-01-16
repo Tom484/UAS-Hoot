@@ -6,6 +6,8 @@ import {
   editorDuplicateSlide,
   editorDeleteSlide,
   editorEditOption,
+  editorAddSlideTrueFalse,
+  editorAddSlideInput,
 } from "./editorUtils"
 
 const INITIAL_STATE = {
@@ -29,8 +31,11 @@ const editorReducer = (state = INITIAL_STATE, action) => {
         collection: editorAddSlideQuiz(collection),
       }
 
-    case EditorActions.ADD_SLIDE_TRUE_FALSE:
-      return state
+    case EditorActions.EDITOR_ADD_SLIDE_TRUE_FALSE:
+      return { ...state, collection: editorAddSlideTrueFalse(collection) }
+
+    case EditorActions.EDITOR_ADD_SLIDE_INPUT:
+      return { ...state, collection: editorAddSlideInput(collection) }
 
     case EditorActions.EDITOR_EDIT_SLIDE:
       return {

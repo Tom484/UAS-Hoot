@@ -7,7 +7,7 @@ const SlidesOrder = ({ eventDataEvent }) => {
   return (
     <div className="container-setting">
       <span>
-        <ICONSliderOutline className="icon-user" />
+        <ICONSliderOutline className="icon-setting" />
       </span>
       <div className="label">
         Slides:{" "}

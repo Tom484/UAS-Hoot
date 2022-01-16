@@ -7,7 +7,7 @@ const HostName = ({ eventDataHost }) => {
   return (
     <div className="container-setting">
       <span>
-        <ICONMainComponentOutline className="icon-user" />
+        <ICONMainComponentOutline className="icon-setting" />
       </span>
       <div className="label">
         Host: <span className="fw-500">{eventDataHost?.displayName}</span>

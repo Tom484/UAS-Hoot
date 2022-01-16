@@ -7,7 +7,7 @@ const PlayersCount = ({ eventPlayersCount }) => {
   return (
     <div className="container-setting">
       <span>
-        <ICONUserOutline className="icon-user" />
+        <ICONUserOutline className="icon-setting" />
       </span>
       <div className="label">
         Players: <span className="fw-500">{eventPlayersCount}</span>

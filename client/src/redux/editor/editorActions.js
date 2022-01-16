@@ -17,6 +17,9 @@ export const editorAddSlideQuiz = () => ({
 export const editorAddSlideTrueFalse = () => ({
   type: EditorActions.EDITOR_ADD_SLIDE_TRUE_FALSE,
 })
+export const editorAddSlideInput = () => ({
+  type: EditorActions.EDITOR_ADD_SLIDE_INPUT,
+})
 
 export const editorEditSlide = idAndProperties => ({
   type: EditorActions.EDITOR_EDIT_SLIDE,

@@ -16,7 +16,7 @@ const SelectBoxEditorProperties = ({ slide, editSlide, label, options, name }) =
 
   return (
     <CustomSelectWithLabel
-      style={{ fontSize: "16px" }}
+      style={{ fontSize: "18px" }}
       theme="background-1"
       options={options}
       onChange={changeHandler}

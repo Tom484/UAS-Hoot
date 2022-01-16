@@ -9,7 +9,7 @@ import ContextMenu from "./components/contextMenu/ContextMenu"
 import { checkUserSession } from "../redux/user/userActions"
 import AppRoutes from "../routes/AppRoutes"
 import { connect } from "react-redux"
-import useUpdateDocumentTheme from "../functions/hooks/useUpdateDocumentTheme"
+import useUpdateDocumentTheme from "../functions/hooks/useChangeDocumentTheme"
 import useThemeDetector from "../functions/hooks/useThemeDetector"
 
 const App = ({
@@ -35,7 +35,6 @@ const App = ({
       <Notifications />
       <LoadingAnimationOnEvent />
       <ContextMenu />
-
       <AppRoutes />
     </div>
   )

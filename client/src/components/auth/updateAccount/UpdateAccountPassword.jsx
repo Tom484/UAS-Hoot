@@ -2,7 +2,6 @@ import React, { useState } from "react"
 import { changePasswordStart } from "../../../redux/user/userActions"
 import { connect } from "react-redux"
 
-import "./updateAccount.scss"
 import CustomInputCard from "../../custom/customInputCard/CustomInputCard"
 import { CustomInputWithLabel } from "../../custom/customInput/CustomInput"
 import { CustomTextLarge } from "../../custom/customText/CustomText"
@@ -10,6 +9,8 @@ import CustomButton from "../../custom/customButton/CustomButton"
 
 import { createNotification } from "../../../redux/notifications/notificationsActions"
 import { NOTIFICATIONS } from "../../../redux/notifications/notificationsTypes"
+
+import "./updateAccount.scss"
 
 const UpdateAccountPassword = ({ changePassword, createNotification }) => {
   const [userPassword, setUserPassword] = useState({ password: "", passwordConfirmation: "" })

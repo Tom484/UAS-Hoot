@@ -34,6 +34,7 @@
   --color-white: #ffffff;
   --color-ripple-1: #a6a6b1;
   --color-background-border: #f0f0f6;
+  --color-warning: rgb(255, 208, 208);
 }
 
 body.dark-theme {
@@ -58,7 +59,7 @@ body.dark-theme {
   --color-main-11: #f5f1ff;
 
   --color-background-2: #060606;
-  --color-background-1: #0a0a0a;
+  --color-background-1: #141414;
   --color-background-3: #181818;
   --color-background-4: #2b2b2b;
   --color-background-5: #333333;
@@ -72,5 +73,6 @@ body.dark-theme {
 
   --color-ripple-1: #160f0f;
   --color-transparent-background-1: rgba(0, 0, 0, 0.6);
-  --color-background-border: #0c0c11;
+  --color-background-border: #16161d;
+  --color-warning: rgb(78, 41, 41);
 }

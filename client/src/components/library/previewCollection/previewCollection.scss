@@ -12,11 +12,12 @@
     box-shadow: var(--box-shadow-medium);
   }
   &.favorite {
-    color: var(--color-main-2);
-    background: var(--color-main-11);
+    color: var(--color-white);
+    background: var(--color-main-2);
+    // background: var(--color-main-11);
     .preview-collection-container {
       .collection-highlight {
-        background: var(--color-main-10);
+        background: var(--color-main-3);
       }
     }
   }

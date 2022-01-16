@@ -39,7 +39,7 @@ const CollectionEditorCard = ({ collection, editCollection }) => {
                 />
 
                 <CustomTextareaWithLabel
-                  styleTextarea={{ fontSize: "20px" }}
+                  styleTextarea={{ fontSize: "20px", background: "var(--color-background-2)" }}
                   label="Description"
                   type="text"
                   value={description}

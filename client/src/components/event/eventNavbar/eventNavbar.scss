@@ -22,6 +22,7 @@
       gap: 10px;
       .icon-logo {
         width: 38px;
+        fill: var(--color-text-2);
       }
       @media (max-width: 1200px) {
         display: none;
@@ -49,7 +50,7 @@
         .icon-setting {
           width: 22px;
           height: 22px;
-          fill: var(--icon-color-2);
+          fill: var(--color-text-2);
           cursor: pointer;
         }
         span {
