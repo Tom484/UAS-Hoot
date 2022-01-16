@@ -12,9 +12,12 @@ import {
 } from "../../../components/custom/customText/CustomText"
 
 import "./eventCreatePage.scss"
+import ROUTES from "../../../routes/routes"
 
-const EventCreatePage = ({ collection }) => {
-  if (!collection) return <div>This collection was not found</div>
+const EventCreatePage = ({ collection, history }) => {
+  if (!collection) history.push(ROUTES.LIBRARY.RECENT)
+  if (!collection) return <></>
+
   return (
     <CustomBackground>
       <CustomCard>

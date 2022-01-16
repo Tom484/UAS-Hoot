@@ -36,7 +36,10 @@ export const selectUserCollectionsArraySorted = sortedId =>
   )
 
 export const selectUserCollection = collectionId =>
-  createSelector([selectUserCollections], userCollections => userCollections[collectionId])
+  createSelector(
+    [selectUserCollections],
+    userCollections => userCollections?.[collectionId] || null
+  )
 
 export const selectUserSlidesOrder = collectionId =>
   createSelector(

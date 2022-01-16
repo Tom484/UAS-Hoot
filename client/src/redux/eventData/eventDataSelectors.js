@@ -2,7 +2,7 @@ import { createSelector } from "reselect"
 
 const selectEvent = state => state.eventData
 
-export const selectEventData = createSelector([selectEvent], event => event?.data)
+export const selectEventData = createSelector([selectEvent], event => event?.data || null)
 
 export const selectEventDataCollection = createSelector(
   [selectEventData],
