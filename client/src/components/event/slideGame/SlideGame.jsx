@@ -56,7 +56,9 @@ const SlideGame = ({ eventDataEvent, analyzeAnswers }) => {
 
   return (
     <div>
-      {renderSlide === RENDER_SLIDE_TYPES.SLIDE_GAME_PREVIEW && <SlideGamePreview />}
+      {renderSlide === RENDER_SLIDE_TYPES.SLIDE_GAME_PREVIEW && (
+        <SlideGamePreview timeLeft={openVoteAt - new Date().getTime()} />
+      )}
       {renderSlide === RENDER_SLIDE_TYPES.SLIDE_GAME_VOTE && <SlideGameVote />}
       {renderSlide === RENDER_SLIDE_TYPES.SLIDE_GAME_RESULTS && (
         <SlideGameResults next={renderSlideInterimResults} />

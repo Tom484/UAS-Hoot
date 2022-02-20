@@ -1,14 +1,15 @@
 import React from "react"
 import { connect } from "react-redux"
+import { withRouter } from "react-router-dom"
 import { selectEventPlayersArraySorted } from "../../../redux/eventPlayers/eventPlayersSelectors"
+import ROUTES from "../../../routes/routes"
 import CustomBackground from "../../custom/customBackground/CustomBackground"
+import CustomButton from "../../custom/customButton/CustomButton"
 import { CustomTextExtraLarge } from "../../custom/customText/CustomText"
 
 import "./overallResults.scss"
 
-const OverallResults = ({ eventPlayers }) => {
-  console.log(eventPlayers)
-
+const OverallResults = ({ eventPlayers, history }) => {
   return (
     <CustomBackground className="overall-results">
       <div className="results-container">
@@ -46,6 +47,14 @@ const OverallResults = ({ eventPlayers }) => {
               )
             })}
         </div>
+
+        <CustomButton
+          onClick={() => {
+            history.push(ROUTES.LIBRARY.RECENT)
+          }}
+        >
+          End event
+        </CustomButton>
       </div>
     </CustomBackground>
   )
@@ -55,4 +64,4 @@ const mapStateToProps = state => ({
   eventPlayers: selectEventPlayersArraySorted(state),
 })
 
-export default connect(mapStateToProps)(OverallResults)
+export default withRouter(connect(mapStateToProps)(OverallResults))

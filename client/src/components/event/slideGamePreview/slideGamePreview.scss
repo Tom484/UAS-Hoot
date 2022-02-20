@@ -2,7 +2,9 @@
 
 .slide-game-preview {
   position: relative;
+  width: 100%;
   .slide-game-preview-container {
+    width: 100%;
     padding: 20px;
     min-height: calc(100vh - 60px);
     @include flex-spaceBetween-center-column();
