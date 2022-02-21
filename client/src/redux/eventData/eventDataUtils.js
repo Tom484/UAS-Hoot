@@ -16,8 +16,7 @@ export const updateDataEvent = (previousData, event) => {
 }
 
 export const createNewEvent = async (currentUser, collection) => {
-  // const enterCode = Math.round(Math.random() * 1000000).toString()
-  const enterCode = "1000"
+  const enterCode = Math.round(Math.random() * 1000000).toString()
 
   const hostTimeDifference = await getTimeDifference()
   return eventDataTemplate(collection, enterCode, currentUser, hostTimeDifference)

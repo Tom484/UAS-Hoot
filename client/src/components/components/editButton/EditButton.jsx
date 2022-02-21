@@ -9,6 +9,8 @@ import {
 import { toggleFavoriteCollectionStart } from "../../../redux/user/userActions"
 import CustomButton from "../../custom/customButton/CustomButton"
 import ROUTES from "../../../routes/routes"
+import { showPopUpCard } from "../../../redux/localSetting/localSettingActions"
+import { CUSTOM_POP_UP_CARD_ACTIONS } from "../../custom/customPopUpCard/CustomPopUpCard"
 
 const EditButton = ({
   type,
@@ -20,6 +22,7 @@ const EditButton = ({
   deleteCollection,
   createCollection,
   toggleFavoriteCollection,
+  showPopUpCard,
 }) => {
   collectionId = collectionId || match.params.collectionId
 
@@ -29,7 +32,7 @@ const EditButton = ({
         createCollection({ history })
         break
       case EditButtonTypes.DELETE_COLLECTION.id:
-        deleteCollection({ collectionId })
+        showPopUpCard({ type: CUSTOM_POP_UP_CARD_ACTIONS.DELETE_COLLECTION, collectionId })
         break
       case EditButtonTypes.LINK_TO_EDIT.id:
         history.push(`${ROUTES.EDITOR.INITIAL}/${collectionId}`)
@@ -58,6 +61,7 @@ const mapDispatchToProps = dispatch => ({
   deleteCollection: id => dispatch(deleteCollectionStart(id)),
   createCollection: id => dispatch(createCollectionStart(id)),
   toggleFavoriteCollection: id => dispatch(toggleFavoriteCollectionStart(id)),
+  showPopUpCard: action => dispatch(showPopUpCard(action)),
 })
 
 export default withRouter(connect(null, mapDispatchToProps)(EditButton))

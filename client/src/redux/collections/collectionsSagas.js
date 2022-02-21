@@ -14,6 +14,7 @@ import { selectUserCollections } from "./collectionsSelectors"
 import { deleteCollection } from "./collectionsUtils"
 import { createCollection } from "./functions/editCollection"
 import uuid from "react-uuid"
+import { isCollectionValid } from "./functions/isCollectionValid"
 
 import CollectionActions from "./collectionsTypes"
 import { selectCurrentUser } from "../user/userSelectors"
@@ -76,8 +77,11 @@ export function* saveCollectionAsync({ payload: { collectionId } }) {
   try {
     const currentUser = yield select(selectCurrentUser)
     const newCollection = yield select(selectEditorCollection)
-    newCollection.changedAt = new Date().getTime()
     const collections = yield select(selectUserCollections)
+
+    newCollection.changedAt = new Date().getTime()
+    console.log(isCollectionValid(newCollection))
+    newCollection.isValid = isCollectionValid(newCollection)
 
     const collectionRef = yield firestore.doc(`collections/${currentUser.id}`)
     yield collectionRef.update({ [collectionId]: newCollection })

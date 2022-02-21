@@ -7,6 +7,10 @@ const initialState = {
   themeSetting: THEME_SETTING_VALUES.SYSTEM_THEME,
   navbarActive: false,
   contextMenuItems: null,
+  popUpCard: {
+    show: false,
+    action: null,
+  },
 }
 
 const localSettingReducer = (state = initialState, action) => {
@@ -25,6 +29,10 @@ const localSettingReducer = (state = initialState, action) => {
       return { ...state, navbarActive: !state.navbarActive }
     case LocalSettingActionTypes.SET_CONTEXT_MENU_ITEMS:
       return { ...state, contextMenuItems: action.payload }
+    case LocalSettingActionTypes.SHOW_POP_UP_CARD:
+      return { ...state, popUpCard: { show: true, action: action.payload } }
+    case LocalSettingActionTypes.HIDE_POP_UP_CARD:
+      return { ...state, popUpCard: { show: false, action: null } }
     default:
       return state
   }

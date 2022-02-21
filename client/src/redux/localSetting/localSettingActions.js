@@ -23,3 +23,12 @@ export const setContextMenuItems = items => ({
   type: LocalSettingActionTypes.SET_CONTEXT_MENU_ITEMS,
   payload: items,
 })
+
+export const showPopUpCard = payload => ({
+  type: LocalSettingActionTypes.SHOW_POP_UP_CARD,
+  payload: payload,
+})
+
+export const hidePopUpCard = () => ({
+  type: LocalSettingActionTypes.HIDE_POP_UP_CARD,
+})

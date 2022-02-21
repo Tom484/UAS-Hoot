@@ -22,6 +22,7 @@ export const createCollection = (collectionId, { name, author, authorId }) => {
     collectionEditorCardShow: true,
     language: { value: "english", label: "English" },
     lobbyMusic: { value: "cold", label: "Neffex - Cold" },
+    isValid: false,
 
     slides: {
       [slideId]: {

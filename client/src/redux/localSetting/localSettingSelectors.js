@@ -23,3 +23,8 @@ export const selectLocalSettingContextMenuItems = createSelector(
   [selectLocalSetting],
   state => state.contextMenuItems
 )
+
+export const selectLocalSettingPopUpCard = createSelector(
+  [selectLocalSetting],
+  state => state.popUpCard
+)

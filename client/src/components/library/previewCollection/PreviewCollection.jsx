@@ -9,7 +9,7 @@ import { CONTEXT_MENU_TYPES } from "../../components/contextMenu/ContextMenu"
 import "./previewCollection.scss"
 
 const PreviewCollection = ({
-  collection: { name, changedAt, author, id },
+  collection: { name, changedAt, author, id, isValid },
   currentUser,
   setContextMenuItems,
 }) => {
@@ -27,7 +27,7 @@ const PreviewCollection = ({
         <CustomTextMedium>
           <span className="fw-600">{name}</span>
         </CustomTextMedium>
-        <CustomTextSmall>Ready to play</CustomTextSmall>
+        <CustomTextSmall>{isValid ? "Ready to play" : "Not ready to play"}</CustomTextSmall>
         <CustomTextSmall className="collection-highlight">
           {author} | {format(new Date(changedAt), "LLLL dd yyyy")}
         </CustomTextSmall>

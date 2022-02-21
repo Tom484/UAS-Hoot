@@ -12,6 +12,8 @@ import { selectEditorCollection } from "../../../redux/editor/editorSelectors"
 import EditorButtonTypes from "./editorButtonTypes"
 
 import "./editorButton.scss"
+import { showPopUpCard } from "../../../redux/localSetting/localSettingActions"
+import { CUSTOM_POP_UP_CARD_ACTIONS } from "../../custom/customPopUpCard/CustomPopUpCard"
 
 const EditorButton = ({
   collection,
@@ -26,7 +28,7 @@ const EditorButton = ({
   className,
   children,
   label,
-  history,
+  showPopUpCard,
 }) => {
   const clickHandler = () => {
     switch (type) {
@@ -49,7 +51,10 @@ const EditorButton = ({
         deleteSlideHandler()
         break
       case EditorButtonTypes.EXIT.id:
-        history.push("/library/recent")
+        showPopUpCard({
+          type: CUSTOM_POP_UP_CARD_ACTIONS.EXIT_EVENT_EDITOR,
+          collectionId: collection.id,
+        })
         break
       default:
         console.log("Error! Enter correct type name!")
@@ -100,6 +105,7 @@ const mapDispatchToProps = dispatch => ({
   duplicateSlide: id => dispatch(editorDuplicateSlide(id)),
   deleteSlide: id => dispatch(editorDeleteSlide(id)),
   saveCollection: id => dispatch(saveCollectionStart(id)),
+  showPopUpCard: payload => dispatch(showPopUpCard(payload)),
 })
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(EditorButton))

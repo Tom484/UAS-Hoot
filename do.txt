@@ -1,2 +1,0 @@
-// fix dark theme bug - completed
-// fix route navigation bug

@@ -11,6 +11,7 @@ import AppRoutes from "../routes/AppRoutes"
 import { connect } from "react-redux"
 import useUpdateDocumentTheme from "../functions/hooks/useChangeDocumentTheme"
 import useThemeDetector from "../functions/hooks/useThemeDetector"
+import CustomPopUpCard from "./custom/customPopUpCard/CustomPopUpCard"
 
 const App = ({
   currentUser,
@@ -35,6 +36,7 @@ const App = ({
       <Notifications />
       <LoadingAnimationOnEvent />
       <ContextMenu />
+      <CustomPopUpCard />
       <AppRoutes />
     </div>
   )

@@ -4,7 +4,6 @@ import { editorEditCollection } from "../../../redux/editor/editorActions"
 import { selectEditorCollection } from "../../../redux/editor/editorSelectors"
 import CustomButton from "../../custom/customButton/CustomButton"
 import { CustomInputWithLabel } from "../../custom/customInput/CustomInput"
-import { CustomSelectWithLabel } from "../../custom/customSelect/CustomSelect"
 import { CustomTextLarge } from "../../custom/customText/CustomText"
 import { CustomTextareaWithLabel } from "../../custom/customTextarea/CustomTextarea"
 import EditorButton from "../editorButton/EditorButton"
@@ -12,7 +11,7 @@ import EditorButton from "../editorButton/EditorButton"
 import "./collectionEditorCard.scss"
 
 const CollectionEditorCard = ({ collection, editCollection }) => {
-  const { name, description, language, lobbyMusic } = collection
+  const { name, description } = collection
   const edit = properties => editCollection({ properties })
 
   return (
@@ -31,12 +30,12 @@ const CollectionEditorCard = ({ collection, editCollection }) => {
                   maxLength={50}
                 />
 
-                <CustomSelectWithLabel
+                {/* <CustomSelectWithLabel
                   label="Language"
                   options={languageOptions}
                   option={language}
                   onChange={e => edit({ language: e })}
-                />
+                /> */}
 
                 <CustomTextareaWithLabel
                   styleTextarea={{ fontSize: "20px", background: "var(--color-background-2)" }}
@@ -47,12 +46,12 @@ const CollectionEditorCard = ({ collection, editCollection }) => {
                   maxLength={400}
                 />
 
-                <CustomSelectWithLabel
+                {/* <CustomSelectWithLabel
                   label="Lobby Music"
                   options={musicOptions}
                   onChange={e => edit({ lobbyMusic: e })}
                   option={lobbyMusic}
-                />
+                /> */}
               </div>
 
               <EditorButton type="COLLECTION_EDITOR_CARD_TOGGLE_SHOW" className="w-100">
@@ -76,13 +75,13 @@ const mapDispatchToProps = dispatch => ({
 
 export default connect(mapStateToProps, mapDispatchToProps)(CollectionEditorCard)
 
-const musicOptions = [
-  { value: "cold", label: "Neffex - Cold" },
-  { value: "destiny", label: "Neffex - Destiny" },
-  { value: "rumors", label: "Neffex - Rumors" },
-]
-const languageOptions = [
-  { value: "english", label: "English" },
-  { value: "czech", label: "Czech" },
-  { value: "germany", label: "Germany" },
-]
+// const musicOptions = [
+//   { value: "cold", label: "Neffex - Cold" },
+//   { value: "destiny", label: "Neffex - Destiny" },
+//   { value: "rumors", label: "Neffex - Rumors" },
+// ]
+// const languageOptions = [
+//   { value: "english", label: "English" },
+//   { value: "czech", label: "Czech" },
+//   { value: "germany", label: "Germany" },
+// ]

@@ -16,6 +16,7 @@ import ROUTES from "../../../routes/routes"
 
 const EventCreatePage = ({ collection, history }) => {
   if (!collection) history.push(ROUTES.LIBRARY.RECENT)
+  if (!collection.isValid) history.push(ROUTES.LIBRARY.RECENT)
   if (!collection) return <></>
 
   return (

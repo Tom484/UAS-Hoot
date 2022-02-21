@@ -2,10 +2,6 @@ import React from "react"
 import {
   ICONBookBold,
   ICONBookOutline,
-  ICONClipboardBold,
-  ICONClipboardOutline,
-  ICONDirectBold,
-  ICONDirectOutline,
   ICONLogoBold,
   ICONLogoOutline,
   ICONLogoutOutline,
@@ -48,7 +44,7 @@ const NavbarLinks = ({ signOut, history, location, toggleTheme }) => {
         )}
         <CustomTextMedium className="link-text">Library</CustomTextMedium>
       </div>
-      <div
+      {/* <div
         className={`link-container ${path.includes(ROUTES.DISCOVER.INITIAL) ? "active" : ""}`}
         onClick={() => history.push(ROUTES.DISCOVER.DEFAULT)}
       >
@@ -58,8 +54,8 @@ const NavbarLinks = ({ signOut, history, location, toggleTheme }) => {
           <ICONClipboardOutline className="link-icon" />
         )}
         <CustomTextMedium className="link-text">Discover</CustomTextMedium>
-      </div>
-      <div
+      </div> */}
+      {/* <div
         className={`link-container ${path.includes(ROUTES.REPORTS.INITIAL) ? "active" : ""}`}
         onClick={() => history.push(ROUTES.REPORTS.DEFAULT)}
       >
@@ -69,7 +65,7 @@ const NavbarLinks = ({ signOut, history, location, toggleTheme }) => {
           <ICONDirectOutline className="link-icon" />
         )}
         <CustomTextMedium className="link-text">Reports</CustomTextMedium>
-      </div>
+      </div> */}
       <div
         className={`link-container ${path.includes(ROUTES.AUTH.INITIAL) ? "active" : ""}`}
         onClick={() => history.push(ROUTES.AUTH.ACCOUNT)}
