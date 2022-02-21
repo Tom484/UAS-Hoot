@@ -17,7 +17,7 @@ import NavbarToggleThemeLink from "../navbarToggleThemeLink/NavbarToggleThemeLin
 import "./navbarLinks.scss"
 import ROUTES from "../../../routes/routes"
 
-const NavbarLinks = ({ signOut, history, location, toggleTheme }) => {
+const NavbarLinks = ({ signOut, history, location }) => {
   const path = location.pathname
 
   return (

@@ -49,6 +49,7 @@ const OverallResults = ({ eventPlayers, history }) => {
         </div>
 
         <CustomButton
+          style={{ marginTop: "15px" }}
           onClick={() => {
             history.push(ROUTES.LIBRARY.RECENT)
           }}
