@@ -97,6 +97,7 @@ export function* signOut() {
   try {
     yield auth.signOut()
     yield put(signOutSuccess())
+    document.location.reload()
   } catch (error) {
     yield put(createNotification(NOTIFICATIONS.SIGN_OUT_FAILURE))
     yield put(signOutFailure(error))

@@ -22,7 +22,7 @@ const App = ({
 }) => {
   useEffect(() => {
     if (!currentUser) checkUserSession()
-    if (currentUser && !collections) fetchCollectionsStart(currentUser)
+    if (currentUser && !collections) fetchCollectionsStart()
     // eslint-disable-next-line
   }, [currentUser])
 

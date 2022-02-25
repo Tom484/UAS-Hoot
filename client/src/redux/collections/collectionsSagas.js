@@ -21,11 +21,14 @@ import { selectCurrentUser } from "../user/userSelectors"
 import { selectEditorCollection } from "../editor/editorSelectors"
 import { deleteReference } from "../../functions/redux/reduxFunctions"
 
-export function* fetchCollectionAsync({ payload }) {
+export function* fetchCollectionsAsync() {
   try {
-    const collectionRef = yield firestore.doc(`collections/${payload.id}`)
+    const currentUser = yield select(selectCurrentUser)
+
+    const collectionRef = yield firestore.doc(`collections/${currentUser.id}`)
     const snapshot = yield collectionRef.get()
     const collections = yield snapshot.data() || {}
+
     yield put(fetchCollectionsSuccess(collections))
   } catch (error) {
     yield put(fetchCollectionsFailure(error.message))
@@ -39,7 +42,9 @@ export function* deleteCollectionAsync({ payload }) {
     const currentUser = yield select(selectCurrentUser)
 
     const collectionRef = yield firestore.doc(`collections/${currentUser.id}`)
+
     yield collectionRef.update({ [collectionId]: firebase.firestore.FieldValue.delete() })
+
     const newCollections = yield deleteCollection(collections, {
       collectionId: payload.collectionId,
     })
@@ -63,7 +68,9 @@ export function* createCollectionAsync({ payload }) {
       author: currentUser.displayName,
       authorId: currentUser.id,
     })
+
     const collectionRef = yield firestore.doc(`collections/${currentUser.id}`)
+
     yield collectionRef.update({ ...newCollection })
 
     yield put(createCollectionSuccess(deleteReference({ ...collections, ...newCollection })))
@@ -80,7 +87,6 @@ export function* saveCollectionAsync({ payload: { collectionId } }) {
     const collections = yield select(selectUserCollections)
 
     newCollection.changedAt = new Date().getTime()
-    console.log(isCollectionValid(newCollection))
     newCollection.isValid = isCollectionValid(newCollection)
 
     const collectionRef = yield firestore.doc(`collections/${currentUser.id}`)
@@ -94,7 +100,7 @@ export function* saveCollectionAsync({ payload: { collectionId } }) {
 }
 
 export function* fetchCollectionsStart() {
-  yield takeLatest(CollectionActions.FETCH_COLLECTIONS_START, fetchCollectionAsync)
+  yield takeLatest(CollectionActions.FETCH_COLLECTIONS_START, fetchCollectionsAsync)
 }
 
 export function* deleteCollectionStart() {
