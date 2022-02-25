@@ -35,6 +35,7 @@ export const updateToStartEvent = (collection, hostTimeDifference, preEvent) => 
     slideType: slide.type,
     openVoteAt: date + 6000 + hostTimeDifference,
     closeVoteAt: date + 6000 + slide.time.value * 1000 + hostTimeDifference,
+    points: slide.points,
   }
 }
 
@@ -52,6 +53,7 @@ export const updateToNextEvent = (collection, hostTimeDifference, preEvent) => {
       slideType: slide.type,
       openVoteAt: date + 6000 + hostTimeDifference,
       closeVoteAt: date + 6000 + slide.time.value * 1000 + hostTimeDifference,
+      points: slide.points,
     }
   } else {
     return {

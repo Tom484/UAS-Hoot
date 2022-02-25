@@ -6,11 +6,14 @@ export function getEventQuizResults(optionsArray, answerArray) {
 }
 
 export function getSlideScore(submitTime, slide, event, timeDifference) {
+  console.log(event)
   return (
-    Math.round(
+    (Math.round(
       Math.abs(submitTime - event.openVoteAt - slide.time.value * 1000 - timeDifference) *
         (500 / (slide.time.value * 1000))
-    ) + 500
+    ) +
+      500) *
+    slide.points.value
   )
 }
 
